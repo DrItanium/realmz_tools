@@ -35,6 +35,8 @@ Dodge Missile: (5, 2)
 Melee Attack: (5, 5)
 Missile Attack: (5, 4)
 Hand To Hand: (4, 0)
+Creator Code Id?: 1
+Starting Age Group: Young
 }
 
 
@@ -76,6 +78,8 @@ Dodge Missile: (5, 3)
 Melee Attack: (4, 4)
 Missile Attack: (3, 3)
 Hand To Hand: (2, 2)
+Creator Code Id?: 2
+Starting Age Group: Young
 }
 
 
@@ -117,6 +121,8 @@ Dodge Missile: (5, 2)
 Melee Attack: (5, 5)
 Missile Attack: (0, 0)
 Hand To Hand: (3, 0)
+Creator Code Id?: 7
+Starting Age Group: Young
 }
 
 
@@ -158,6 +164,8 @@ Dodge Missile: (6, 3)
 Melee Attack: (4, 4)
 Missile Attack: (15, 5)
 Hand To Hand: (2, 0)
+Creator Code Id?: 3
+Starting Age Group: Young
 }
 
 
@@ -199,6 +207,8 @@ Dodge Missile: (5, 3)
 Melee Attack: (5, 3)
 Missile Attack: (3, 3)
 Hand To Hand: (3, 0)
+Creator Code Id?: 2
+Starting Age Group: Young
 }
 
 
@@ -240,6 +250,8 @@ Dodge Missile: (3, 1)
 Melee Attack: (2, 2)
 Missile Attack: (3, 1)
 Hand To Hand: (2, 0)
+Creator Code Id?: 4
+Starting Age Group: Youth
 }
 
 
@@ -281,6 +293,8 @@ Dodge Missile: (4, 2)
 Melee Attack: (4, 4)
 Missile Attack: (3, 2)
 Hand To Hand: (2, 0)
+Creator Code Id?: 5
+Starting Age Group: Youth
 }
 
 
@@ -322,6 +336,8 @@ Dodge Missile: (3, 1)
 Melee Attack: (2, 2)
 Missile Attack: (3, 1)
 Hand To Hand: (2, 0)
+Creator Code Id?: 6
+Starting Age Group: Youth
 }
 
 
@@ -363,6 +379,8 @@ Dodge Missile: (2, 1)
 Melee Attack: (2, 2)
 Missile Attack: (0, 0)
 Hand To Hand: (1, 0)
+Creator Code Id?: 6
+Starting Age Group: Prime
 }
 
 
@@ -404,6 +422,8 @@ Dodge Missile: (3, 1)
 Melee Attack: (3, 3)
 Missile Attack: (0, 0)
 Hand To Hand: (1, 0)
+Creator Code Id?: 5
+Starting Age Group: Prime
 }
 
 
@@ -445,6 +465,8 @@ Dodge Missile: (2, 1)
 Melee Attack: (2, 2)
 Missile Attack: (0, 0)
 Hand To Hand: (1, 0)
+Creator Code Id?: 4
+Starting Age Group: Prime
 }
 
 
@@ -486,6 +508,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (10, 4)
 Missile Attack: (0, 0)
 Hand To Hand: (6, 0)
+Creator Code Id?: 1
+Starting Age Group: Young
 }
 
 
@@ -527,6 +551,8 @@ Dodge Missile: (8, 2)
 Melee Attack: (4, 4)
 Missile Attack: (3, 3)
 Hand To Hand: (3, 0)
+Creator Code Id?: 2
+Starting Age Group: Prime
 }
 
 
@@ -568,6 +594,8 @@ Dodge Missile: (6, 1)
 Melee Attack: (15, 6)
 Missile Attack: (0, 0)
 Hand To Hand: (2, 0)
+Creator Code Id?: 1
+Starting Age Group: Youth
 }
 
 
@@ -609,6 +637,8 @@ Dodge Missile: (8, 3)
 Melee Attack: (3, 3)
 Missile Attack: (15, 7)
 Hand To Hand: (2, 0)
+Creator Code Id?: 3
+Starting Age Group: Youth
 }
 
 
@@ -650,6 +680,8 @@ Dodge Missile: (5, 3)
 Melee Attack: (6, 3)
 Missile Attack: (3, 3)
 Hand To Hand: (4, 0)
+Creator Code Id?: 2
+Starting Age Group: Youth
 }
 
 
@@ -691,6 +723,8 @@ Dodge Missile: (4, 2)
 Melee Attack: (4, 4)
 Missile Attack: (3, 2)
 Hand To Hand: (2, 0)
+Creator Code Id?: 7
+Starting Age Group: Youth
 }
 
 
@@ -732,6 +766,8 @@ Dodge Missile: (4, 2)
 Melee Attack: (4, 4)
 Missile Attack: (3, 2)
 Hand To Hand: (2, 0)
+Creator Code Id?: 7
+Starting Age Group: Youth
 }
 
 
@@ -773,6 +809,8 @@ Dodge Missile: (2, 1)
 Melee Attack: (1, 1)
 Missile Attack: (0, 0)
 Hand To Hand: (1, 0)
+Creator Code Id?: 6
+Starting Age Group: Prime
 }
 
 
@@ -814,6 +852,8 @@ Dodge Missile: (4, 3)
 Melee Attack: (5, 3)
 Missile Attack: (3, 3)
 Hand To Hand: (8, 0)
+Creator Code Id?: 7
+Starting Age Group: Young
 }
 
 
@@ -855,6 +895,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -896,6 +938,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -937,6 +981,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -978,6 +1024,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -1019,6 +1067,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -1060,6 +1110,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -1101,6 +1153,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -1142,6 +1196,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -1183,6 +1239,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 
@@ -1224,6 +1282,8 @@ Dodge Missile: (0, 0)
 Melee Attack: (0, 0)
 Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
+Creator Code Id?: 0
+Starting Age Group: Young
 }
 
 

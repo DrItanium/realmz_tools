@@ -2,7 +2,62 @@
 #include <cstdint>
 #include <optional>
 #include <array>
-#include <tuple>
+
+enum class CasteKind {
+    Fighter = 0,
+    Monk,
+    Crusader,
+    Archer,
+    Rogue,
+    Sorcerer,
+    Priest,
+    Enchanter,
+    Evoker,
+    Cardinal,
+    Cabalist,
+    Berzerker,
+    Bard,
+    Fencer,
+    Marksman,
+    Assassin,
+    Dabbler,
+    BattleMage,
+    Warlock,
+    Minstrel,
+};
+
+std::ostream& operator<<(std::ostream& os, CasteKind ck) noexcept {
+    switch (ck) {
+#define X(field, str) case CasteKind:: field : os << str; break
+#define Y(field) X(field, #field)
+        Y(Fencer);
+        Y(Fighter);
+        Y(Monk);
+        Y(Crusader);
+        Y(Archer);
+        Y(Rogue);
+        Y(Sorcerer);
+        Y(Priest);
+        Y(Enchanter);
+        Y(Evoker);
+        Y(Cardinal);
+        Y(Cabalist);
+        Y(Berzerker);
+        Y(Bard);
+        Y(Marksman);
+        Y(Assassin);
+        Y(Dabbler);
+        X(BattleMage, "Battle Mage");
+        Y(Warlock);
+        Y(Minstrel);
+#undef Y
+#undef X
+        default:
+            os << "UNKNOWN_CASTE_KIND(" << static_cast<int>(ck) << ")";
+            break;
+    }
+    return os;
+}
 class CharacterAttribute {
 public:
     CharacterAttribute() = default;
@@ -217,6 +272,37 @@ std::ostream& operator<<(std::ostream& os, const SpellCastingAbilities& sci) noe
     sci.print(os);
     return os;
 }
+enum class AgeGroup {
+    None = 0,
+    Young = 1,
+    Youth,
+    Prime,
+    Adult,
+    Senior,
+};
+std::ostream& operator<<(std::ostream& os, AgeGroup group) noexcept {
+    switch (group) {
+        case AgeGroup::Youth:
+            os << "Youth";
+            break;
+        case AgeGroup::Young:
+            os << "Young";
+            break;
+        case AgeGroup::Prime:
+            os << "Prime";
+            break;
+        case AgeGroup::Adult:
+            os << "Adult";
+            break;
+        case AgeGroup::Senior:
+            os << "Senior";
+            break;
+        default:
+            os << "UNKNOWN_AGE_GROUP(" << static_cast<int>(group) << ")!";
+            break;
+    }
+    return os;
+}
 class Caste {
 public:
     Caste(const DataBuffer& buffer);
@@ -233,7 +319,8 @@ private:
     Ability _meleeAttack;
     Ability _missileAttack;
     Ability _handToHand;
-
+    int _creatorCodeId = 0;
+    AgeGroup _startingAgeGroup = AgeGroup::None;
 };
 
 constexpr int16_t make(uint8_t first, uint8_t second) noexcept {
@@ -261,6 +348,8 @@ Caste::print(std::ostream &os) const noexcept {
     os << "Melee Attack: " << _meleeAttack << std::endl;
     os << "Missile Attack: " << _missileAttack << std::endl;
     os << "Hand To Hand: " << _handToHand << std::endl;
+    os << "Creator Code Id?: " << _creatorCodeId << std::endl;
+    os << "Starting Age Group: " << _startingAgeGroup << std::endl;
     os << "}" << std::endl;
 }
 
@@ -276,7 +365,9 @@ _stamina(buffer[108], buffer[109]),
 _dodgeMissile(buffer[112], buffer[113]),
 _meleeAttack(buffer[114], buffer[115]),
 _missileAttack(buffer[116], buffer[117]),
-_handToHand(buffer[118], buffer[119])
+_handToHand(buffer[118], buffer[119]),
+_creatorCodeId(buffer[124]),
+_startingAgeGroup(static_cast<AgeGroup>(buffer[125]))
 { }
 
 
@@ -301,9 +392,14 @@ readOne(std::istream& input, std::ostream& output) noexcept {
     return true;
 }
 int main() {
-    while (readOne(std::cin, std::cout)) {
+    bool invoke = true;
+    int index = 0;
+    while (invoke) {
+        std::cout << "Caste: " << static_cast<CasteKind>(index) << std::endl;
+        invoke = readOne(std::cin, std::cout);
         std::cout << std::endl
                   << std::endl;
+        ++index;
     }
     return 0;
 }
