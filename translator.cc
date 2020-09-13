@@ -3,6 +3,7 @@
 //
 #include <cstdint>
 #include <iostream>
+#include <sstream>
 constexpr uint8_t translationTable[] = {
         0x0, 0x1, 0x2, 0x3,
         0x4, 0x5, 0x6, 0x7,
@@ -75,7 +76,27 @@ constexpr uint32_t TranslateUintToProperCharacter2(uint32_t param_1) noexcept {
         return translationTable[param_1 & 0xff];
     }
 }
+
+std::string
+transform(const std::string& input) noexcept {
+    std::stringstream ss;
+    for (auto c : input) {
+        ss.put(TranslateUintToProperCharacter2(c) & 0xFF);
+    }
+    auto result = ss.str();
+    return result;
+}
 int main() {
+    int32_t serialNumber = 0;
+    std::string registrationName, scenarioName;
+    std::cout << "Enter Serial Number: ";
+    std::cin >> serialNumber;
+    std::cout << "Enter Registration Name: ";
+    std::cin >> registrationName;
+    auto transformedRegistrationName = transform(registrationName);
+    std::cout << "Enter Scenario Name: ";
+    std::cin >> scenarioName;
+    auto transformedScenarioName = transform(scenarioName);
     while (true) {
         auto value = std::cin.get();
         if (std::cin.eof() || std::cin.bad()) {
