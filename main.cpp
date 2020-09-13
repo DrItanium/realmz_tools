@@ -22,7 +22,9 @@ private:
     int _initial = 0;
     int _levelUp = 0;
 };
+using DataBuffer = std::array<char, 576>;
 struct Caste {
+    Caste(const DataBuffer& buffer);
     struct SpecialAbilities {
         SpecialAbility _sneakAttack;
         SpecialAbility _majorWound;
@@ -33,7 +35,7 @@ struct Caste {
         SpecialAbility _forceLock;
         SpecialAbility _pickLock;
         SpecialAbility _turnUndead;
-
+        SpecialAbilities(const DataBuffer& buf);
         void print(std::ostream& os) {
             os << "{" << std::endl;
 #define X(field) _ ## field . print( #field , os)
@@ -50,7 +52,7 @@ struct Caste {
             os << "}" << std::endl;
         }
     };
-    struct CasteDRVAdjustments {
+    struct DRVAdjustments {
         int _charm;
         int _heat;
         int _cold;
@@ -58,7 +60,7 @@ struct Caste {
         int _chemical;
         int _mental;
         int _magical;
-
+        DRVAdjustments(const DataBuffer& buf);
         void print(std::ostream& os) {
             os << "{" << std::endl;
 #define X(field) \
@@ -75,7 +77,7 @@ struct Caste {
         }
     };
     SpecialAbilities _initial;
-    CasteDRVAdjustments _adjustmentForCaste;
+    DRVAdjustments _drvs;
 
     void print(std::ostream& os);
 };
@@ -83,17 +85,12 @@ struct Caste {
 constexpr int16_t make(uint8_t first, uint8_t second) noexcept {
     return (static_cast<int16_t>(first) << 8) | (static_cast<int16_t>(second));
 }
-int16_t make(std::istream& in) noexcept {
-    auto f = in.get();
-    auto s = in.get();
-    return make(f, s);
-}
 
 void
 Caste::print(std::ostream &os) {
     os << "{" << std::endl;
     _initial.print(os);
-    _adjustmentForCaste.print(os);
+    _drvs.print(os);
     os << "}" << std::endl;
 
 }
@@ -105,13 +102,10 @@ readOne(std::istream& input, std::ostream& output) noexcept {
     if (input.gcount() != 576) {
         return false;
     }
-    if (auto target = makeCaste(buf.cbegin(), buf.cend()); target) {
-        target->print(output);
-        output << std::endl;
-        return true;
-    } else {
-        return false;
-    }
+    Caste target(buf);
+    target.print(output);
+    output << std::endl;
+    return true;
 }
 int main() {
     while (readOne(std::cin, std::cout)) {
