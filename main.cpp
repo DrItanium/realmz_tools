@@ -361,12 +361,12 @@ _startingAgeGroup(static_cast<AgeGroup>(buffer[125]))
 { }
 
 
-bool
+std::optional<Caste>
 readOne(std::istream& input, std::ostream& output) noexcept {
     std::array<int16_t, 576 / 2> buf;
     input.read((char*)buf.data(), 576);
     if (input.gcount() != 576) {
-        return false;
+        return std::nullopt;
     }
     auto swap = [](int16_t value) noexcept {
        auto lower = value & 0xFF;
@@ -377,19 +377,19 @@ readOne(std::istream& input, std::ostream& output) noexcept {
     for (int i = 0; i < (576/2); ++i) {
         buf[i] = swap(buf[i]);
     }
-    Caste target(buf);
-    output << target << std::endl;
-    return true;
+    return Caste(buf);
 }
 int main() {
     bool invoke = true;
     int index = 0;
-    while (invoke) {
-        std::cout << "Caste: " << static_cast<CasteKind>(index) << std::endl;
-        invoke = readOne(std::cin, std::cout);
-        std::cout << std::endl
-                  << std::endl;
-        ++index;
+    while (true) {
+        if (auto result = readOne(std::cin, std::cout); result) {
+            std::cout << "Caste: " << static_cast<CasteKind>(index) << std::endl;
+            std::cout << *result << std::endl << std::endl << std::endl;
+            ++index;
+        } else {
+            break;
+        }
     }
     return 0;
 }
