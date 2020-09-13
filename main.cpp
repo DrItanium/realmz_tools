@@ -58,13 +58,9 @@ std::ostream& operator<<(std::ostream& os, CasteKind ck) noexcept {
     }
     return os;
 }
-class CharacterAttribute {
+class Attribute {
 public:
-    CharacterAttribute() = default;
-    constexpr CharacterAttribute(int min, int max, int adjustment) : _min(min), _max(max), _adjustment(adjustment) {}
-    void setMin(int value) noexcept { _min = value; }
-    void setMax(int value) noexcept { _max = value; }
-    void setAdjustment(int value) noexcept { _adjustment = value; }
+    constexpr Attribute(int min, int max, int adjustment) : _min(min), _max(max), _adjustment(adjustment) {}
     constexpr auto getMin() const noexcept { return _min; }
     constexpr auto getMax() const noexcept { return _max; }
     constexpr auto getAdjustment() const noexcept { return _adjustment; }
@@ -72,12 +68,12 @@ public:
        os << "(" << _min << ", " << _max << ", " << _adjustment << ")";
     }
 private:
-    int _min = 0;
-    int _max = 0;
+    int _min = 3;
+    int _max = 25;
     int _adjustment = 0;
 
 };
-std::ostream& operator<<(std::ostream& os, const CharacterAttribute& ca) noexcept {
+std::ostream& operator<<(std::ostream& os, const Attribute& ca) noexcept {
     ca.print(os);
     return os;
 }
@@ -168,12 +164,12 @@ std::ostream& operator<<(std::ostream& os, const DRVAdjustments& drv) noexcept {
 }
 struct Attributes {
 public:
-    CharacterAttribute _brawn;
-    CharacterAttribute _knowledge;
-    CharacterAttribute _judgment;
-    CharacterAttribute _agility;
-    CharacterAttribute _vitality;
-    CharacterAttribute _luck;
+    Attribute _brawn;
+    Attribute _knowledge;
+    Attribute _judgment;
+    Attribute _agility;
+    Attribute _vitality;
+    Attribute _luck;
     Attributes(const DataBuffer& buf) :
     _brawn(buf[54], buf[55], buf[36]),
     _knowledge(buf[56], buf[57], buf[37]),
@@ -317,6 +313,12 @@ private:
     Ability _handToHand;
     int _creatorCodeId = 0;
     AgeGroup _startingAgeGroup = AgeGroup::None;
+    int _movementPoints = 0;
+    int _magicResistance = 0;
+    int _twoHandedAdjust = 0;
+    int _maxStaminaBonus = 0;
+    int _bonusAttacksNumerator = 0;
+    int _maxAttacksPerRound = 0;
 };
 
 constexpr int16_t make(uint8_t first, uint8_t second) noexcept {
@@ -341,6 +343,12 @@ Caste::print(std::ostream &os) const noexcept {
     os << "Hand To Hand: " << _handToHand << std::endl;
     os << "Creator Code Id?: " << _creatorCodeId << std::endl;
     os << "Starting Age Group: " << _startingAgeGroup << std::endl;
+    os << "Movement Point Modification: " << _movementPoints << std::endl;
+    os << "Magic Resistance Modification: " << _magicResistance << std::endl;
+    os << "Two Handed Adjust: " << _twoHandedAdjust << std::endl;
+    os << "Max Stamina Bonus: " << _maxStaminaBonus << std::endl;
+    os << "Bonus Attacks Numerator: " << _bonusAttacksNumerator << std::endl;
+    os << "Max Attacks per Round: " << _maxAttacksPerRound << std::endl;
 }
 
 Caste::Caste(const DataBuffer &buffer) :
@@ -357,7 +365,13 @@ _meleeAttack(buffer[114], buffer[115]),
 _missileAttack(buffer[116], buffer[117]),
 _handToHand(buffer[118], buffer[119]),
 _creatorCodeId(buffer[124]),
-_startingAgeGroup(static_cast<AgeGroup>(buffer[125]))
+_startingAgeGroup(static_cast<AgeGroup>(buffer[125])),
+_movementPoints(buffer[126]),
+_magicResistance(buffer[127]),
+_twoHandedAdjust(buffer[128]),
+_maxStaminaBonus(buffer[129]),
+_bonusAttacksNumerator(buffer[130]),
+_maxAttacksPerRound(buffer[131])
 { }
 
 
