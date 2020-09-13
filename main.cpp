@@ -22,7 +22,7 @@ private:
     int _initial = 0;
     int _levelUp = 0;
 };
-using DataBuffer = std::array<char, 576>;
+using DataBuffer = std::array<int16_t, 576/2>;
 struct Caste {
     Caste(const DataBuffer& buffer);
     struct SpecialAbilities {
@@ -35,7 +35,17 @@ struct Caste {
         SpecialAbility _forceLock;
         SpecialAbility _pickLock;
         SpecialAbility _turnUndead;
-        SpecialAbilities(const DataBuffer& buf);
+        SpecialAbilities(const DataBuffer& buf) :
+        _sneakAttack(buf[0], buf[14]),
+        _majorWound(buf[3], buf[14+3]),
+        _detectSecret(buf[4], buf[14+4]),
+        _acrobaticAct(buf[5], buf[14+5]),
+        _detectTrap(buf[6], buf[14+6]),
+        _disableTrap(buf[7], buf[14+7]),
+        _forceLock(buf[9], buf[14+9]),
+        _pickLock(buf[11], buf[14+11]),
+        _turnUndead(buf[13], buf[14+13]) {
+        }
         void print(std::ostream& os) {
             os << "{" << std::endl;
 #define X(field) _ ## field . print( #field , os)
@@ -60,7 +70,7 @@ struct Caste {
         int _chemical;
         int _mental;
         int _magical;
-        DRVAdjustments(const DataBuffer& buf);
+        DRVAdjustments(const DataBuffer& buf) : _charm(buf[28]), _heat(buf[29]), _cold(buf[30]), _electric(buf[31]), _chemical(buf[32]), _mental(buf[33]), _magical(buf[34]) { }
         void print(std::ostream& os) {
             os << "{" << std::endl;
 #define X(field) \
@@ -95,12 +105,24 @@ Caste::print(std::ostream &os) {
 
 }
 
+Caste::Caste(const DataBuffer &buffer) : _initial(buffer), _drvs(buffer) { }
+
+
 bool
 readOne(std::istream& input, std::ostream& output) noexcept {
-    std::array<char, 576> buf;
-    input.read(buf.data(), 576);
+    std::array<int16_t, 576 / 2> buf;
+    input.read((char*)buf.data(), 576);
     if (input.gcount() != 576) {
         return false;
+    }
+    auto swap = [](int16_t value) noexcept {
+       auto lower = value & 0xFF;
+       auto upper = (value >> 8) & 0xFF;
+       return ((lower << 8) | upper);
+    };
+    // swap all of the shorts to be correctly described
+    for (int i = 0; i < (576/2); ++i) {
+        buf[i] = swap(buf[i]);
     }
     Caste target(buf);
     target.print(output);
