@@ -28,6 +28,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (15, 10)
+Dodge Missile: (5, 2)
+Melee Attack: (5, 5)
+Missile Attack: (5, 4)
+Hand To Hand: (4, 0)
 }
 
 
@@ -62,6 +69,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (12, 8)
+Dodge Missile: (5, 3)
+Melee Attack: (4, 4)
+Missile Attack: (3, 3)
+Hand To Hand: (2, 2)
 }
 
 
@@ -96,6 +110,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (true, 7, 4)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (15, 10)
+Dodge Missile: (5, 2)
+Melee Attack: (5, 5)
+Missile Attack: (0, 0)
+Hand To Hand: (3, 0)
 }
 
 
@@ -130,6 +151,13 @@ Luck: (3, 25, 0)
 Sorcerer: (true, 15, 2)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: true
+Stamina: (12, 8)
+Dodge Missile: (6, 3)
+Melee Attack: (4, 4)
+Missile Attack: (15, 5)
+Hand To Hand: (2, 0)
 }
 
 
@@ -164,6 +192,13 @@ Luck: (8, 25, 0)
 Sorcerer: (true, 15, 3)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (10, 8)
+Dodge Missile: (5, 3)
+Melee Attack: (5, 3)
+Missile Attack: (3, 3)
+Hand To Hand: (3, 0)
 }
 
 
@@ -198,6 +233,13 @@ Luck: (3, 25, 0)
 Sorcerer: (true, 1, 7)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (8, 6)
+Dodge Missile: (3, 1)
+Melee Attack: (2, 2)
+Missile Attack: (3, 1)
+Hand To Hand: (2, 0)
 }
 
 
@@ -232,6 +274,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (true, 1, 7)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (12, 8)
+Dodge Missile: (4, 2)
+Melee Attack: (4, 4)
+Missile Attack: (3, 2)
+Hand To Hand: (2, 0)
 }
 
 
@@ -266,6 +315,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (true, 1, 7)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (8, 6)
+Dodge Missile: (3, 1)
+Melee Attack: (2, 2)
+Missile Attack: (3, 1)
+Hand To Hand: (2, 0)
 }
 
 
@@ -300,6 +356,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (true, 1, 7)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (8, 4)
+Dodge Missile: (2, 1)
+Melee Attack: (2, 2)
+Missile Attack: (0, 0)
+Hand To Hand: (1, 0)
 }
 
 
@@ -334,6 +397,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (true, 1, 7)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (10, 6)
+Dodge Missile: (3, 1)
+Melee Attack: (3, 3)
+Missile Attack: (0, 0)
+Hand To Hand: (1, 0)
 }
 
 
@@ -368,6 +438,13 @@ Luck: (3, 25, 0)
 Sorcerer: (true, 1, 7)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (8, 4)
+Dodge Missile: (2, 1)
+Melee Attack: (2, 2)
+Missile Attack: (0, 0)
+Hand To Hand: (1, 0)
 }
 
 
@@ -402,6 +479,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (20, 8)
+Dodge Missile: (0, 0)
+Melee Attack: (10, 4)
+Missile Attack: (0, 0)
+Hand To Hand: (6, 0)
 }
 
 
@@ -436,6 +520,13 @@ Luck: (8, 25, 0)
 Sorcerer: (true, 20, 3)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (18, 6)
+Dodge Missile: (8, 2)
+Melee Attack: (4, 4)
+Missile Attack: (3, 3)
+Hand To Hand: (3, 0)
 }
 
 
@@ -470,6 +561,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (15, 8)
+Dodge Missile: (6, 1)
+Melee Attack: (15, 6)
+Missile Attack: (0, 0)
+Hand To Hand: (2, 0)
 }
 
 
@@ -504,6 +602,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: true
+Stamina: (18, 8)
+Dodge Missile: (8, 3)
+Melee Attack: (3, 3)
+Missile Attack: (15, 7)
+Hand To Hand: (2, 0)
 }
 
 
@@ -538,6 +643,13 @@ Luck: (9, 25, 0)
 Sorcerer: (true, 15, 3)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (10, 5)
+Dodge Missile: (5, 3)
+Melee Attack: (6, 3)
+Missile Attack: (3, 3)
+Hand To Hand: (4, 0)
 }
 
 
@@ -572,6 +684,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (true, 5, 5)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (12, 8)
+Dodge Missile: (4, 2)
+Melee Attack: (4, 4)
+Missile Attack: (3, 2)
+Hand To Hand: (2, 0)
 }
 
 
@@ -606,6 +725,13 @@ Luck: (3, 25, 0)
 Sorcerer: (true, 5, 5)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (12, 8)
+Dodge Missile: (4, 2)
+Melee Attack: (4, 4)
+Missile Attack: (3, 2)
+Hand To Hand: (2, 0)
 }
 
 
@@ -640,6 +766,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (true, 1, 7)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (8, 4)
+Dodge Missile: (2, 1)
+Melee Attack: (1, 1)
+Missile Attack: (0, 0)
+Hand To Hand: (1, 0)
 }
 
 
@@ -674,6 +807,13 @@ Luck: (3, 25, 2)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (true, 4, 4)
+Can Use Missile Weapons: true
+Gets Missile Bonus Damage: false
+Stamina: (15, 10)
+Dodge Missile: (4, 3)
+Melee Attack: (5, 3)
+Missile Attack: (3, 3)
+Hand To Hand: (8, 0)
 }
 
 
@@ -708,6 +848,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -742,6 +889,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -776,6 +930,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -810,6 +971,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -844,6 +1012,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -878,6 +1053,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -912,6 +1094,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -946,6 +1135,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -980,6 +1176,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 
@@ -1014,6 +1217,13 @@ Luck: (3, 25, 0)
 Sorcerer: (false, 0, 0)
 Priest: (false, 0, 0)
 Enchanter: (false, 0, 0)
+Can Use Missile Weapons: false
+Gets Missile Bonus Damage: false
+Stamina: (0, 0)
+Dodge Missile: (0, 0)
+Melee Attack: (0, 0)
+Missile Attack: (0, 0)
+Hand To Hand: (0, 0)
 }
 
 

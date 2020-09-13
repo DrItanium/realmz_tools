@@ -264,7 +264,20 @@ Caste::print(std::ostream &os) const noexcept {
     os << "}" << std::endl;
 }
 
-Caste::Caste(const DataBuffer &buffer) : _initial(buffer), _drvs(buffer), _attributes(buffer), _spellCasting(buffer) { }
+Caste::Caste(const DataBuffer &buffer) :
+_initial(buffer),
+_drvs(buffer),
+_attributes(buffer),
+_spellCasting(buffer),
+_canUseMissileWeapons(buffer[106]),
+_getsMissileBonusDamage(buffer[107]),
+_stamina(buffer[108], buffer[109]),
+// skip buffer 110 and 111 for now, unsure what it is for
+_dodgeMissile(buffer[112], buffer[113]),
+_meleeAttack(buffer[114], buffer[115]),
+_missileAttack(buffer[116], buffer[117]),
+_handToHand(buffer[118], buffer[119])
+{ }
 
 
 bool
