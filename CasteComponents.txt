@@ -1,0 +1,750 @@
+{
+{
+sneakAttack: (0, 0)
+majorWound: (5, 1)
+detectSecret: (1, 0)
+acrobaticAct: (6, 1)
+detectTrap: (1, 0)
+disableTrap: (0, 0)
+forceLock: (12, 3)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: -5
+heat: 10
+cold: 5
+electric: 5
+chemical: 10
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (2, 1)
+detectSecret: (5, 0)
+acrobaticAct: (8, 4)
+detectTrap: (10, 0)
+disableTrap: (5, 0)
+forceLock: (8, 2)
+pickLock: (10, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 10
+heat: 5
+cold: 5
+electric: 5
+chemical: 5
+mental: 5
+magical: -15
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (3, 0)
+detectSecret: (1, 0)
+acrobaticAct: (5, 1)
+detectTrap: (1, 0)
+disableTrap: (0, 0)
+forceLock: (10, 2)
+pickLock: (0, 0)
+turnUndead: (-9, 3)
+}
+{
+charm: 10
+heat: 5
+cold: 5
+electric: 5
+chemical: -5
+mental: 5
+magical: -10
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (3, 0)
+detectSecret: (1, 0)
+acrobaticAct: (4, 0)
+detectTrap: (1, 0)
+disableTrap: (0, 0)
+forceLock: (8, 1)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: -10
+heat: -5
+cold: -5
+electric: -5
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: (2, 1)
+majorWound: (0, 0)
+detectSecret: (15, 3)
+acrobaticAct: (8, 3)
+detectTrap: (8, 2)
+disableTrap: (5, 3)
+forceLock: (0, 0)
+pickLock: (5, 3)
+turnUndead: (0, 0)
+}
+{
+charm: -20
+heat: -5
+cold: -5
+electric: 5
+chemical: -5
+mental: -10
+magical: 15
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (5, 2)
+acrobaticAct: (2, 0)
+detectTrap: (5, 0)
+disableTrap: (5, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 10
+heat: -5
+cold: -5
+electric: 5
+chemical: -10
+mental: 5
+magical: 10
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (5, 2)
+acrobaticAct: (2, 0)
+detectTrap: (5, 0)
+disableTrap: (2, 0)
+forceLock: (10, 1)
+pickLock: (0, 0)
+turnUndead: (5, 5)
+}
+{
+charm: 15
+heat: -5
+cold: 5
+electric: 0
+chemical: 5
+mental: 5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (5, 2)
+acrobaticAct: (2, 0)
+detectTrap: (5, 0)
+disableTrap: (5, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 10
+heat: -5
+cold: -5
+electric: -5
+chemical: -10
+mental: 5
+magical: 10
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (10, 1)
+acrobaticAct: (2, 0)
+detectTrap: (5, 0)
+disableTrap: (5, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 15
+heat: -5
+cold: -5
+electric: -5
+chemical: -5
+mental: 5
+magical: 15
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (10, 1)
+acrobaticAct: (2, 0)
+detectTrap: (5, 0)
+disableTrap: (3, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (15, 3)
+}
+{
+charm: 20
+heat: 5
+cold: 5
+electric: 5
+chemical: -10
+mental: 10
+magical: -15
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (10, 1)
+acrobaticAct: (2, 0)
+detectTrap: (5, 0)
+disableTrap: (5, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 10
+heat: -5
+cold: -5
+electric: -5
+chemical: -5
+mental: 10
+magical: 20
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (8, 1)
+detectSecret: (1, 0)
+acrobaticAct: (6, 2)
+detectTrap: (1, 0)
+disableTrap: (0, 0)
+forceLock: (15, 2)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 20
+heat: 10
+cold: 10
+electric: 10
+chemical: 10
+mental: -25
+magical: -15
+}
+}
+
+
+
+{
+{
+sneakAttack: (10, 0)
+majorWound: (0, 0)
+detectSecret: (25, 1)
+acrobaticAct: (10, 2)
+detectTrap: (20, 1)
+disableTrap: (15, 1)
+forceLock: (0, 0)
+pickLock: (20, 1)
+turnUndead: (0, 0)
+}
+{
+charm: -15
+heat: -5
+cold: -5
+electric: -5
+chemical: -5
+mental: 5
+magical: 15
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (3, 2)
+detectSecret: (1, 0)
+acrobaticAct: (6, 1)
+detectTrap: (1, 0)
+disableTrap: (0, 0)
+forceLock: (5, 1)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 5
+heat: 5
+cold: 5
+electric: 5
+chemical: 5
+mental: 5
+magical: -10
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (4, 0)
+detectSecret: (1, 0)
+acrobaticAct: (3, 1)
+detectTrap: (1, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: -5
+heat: -5
+cold: -5
+electric: -5
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: (5, 1)
+majorWound: (0, 0)
+detectSecret: (13, 2)
+acrobaticAct: (10, 3)
+detectTrap: (15, 1)
+disableTrap: (10, 2)
+forceLock: (0, 0)
+pickLock: (10, 2)
+turnUndead: (0, 0)
+}
+{
+charm: 10
+heat: -5
+cold: -5
+electric: -5
+chemical: 10
+mental: 10
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (3, 0)
+detectSecret: (3, 1)
+acrobaticAct: (5, 1)
+detectTrap: (2, 0)
+disableTrap: (2, 0)
+forceLock: (5, 1)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 5
+heat: 5
+cold: 5
+electric: 5
+chemical: 5
+mental: 5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (3, 0)
+detectSecret: (3, 1)
+acrobaticAct: (5, 1)
+detectTrap: (2, 0)
+disableTrap: (5, 0)
+forceLock: (5, 1)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 10
+heat: -5
+cold: -5
+electric: -5
+chemical: -5
+mental: 10
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (1, 2)
+acrobaticAct: (2, 0)
+detectTrap: (8, 0)
+disableTrap: (10, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (-21, 3)
+}
+{
+charm: 15
+heat: -15
+cold: -15
+electric: -15
+chemical: -15
+mental: 20
+magical: 25
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (4, 1)
+detectSecret: (3, 1)
+acrobaticAct: (3, 1)
+detectTrap: (3, 1)
+disableTrap: (1, 1)
+forceLock: (5, 1)
+pickLock: (5, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 15
+heat: -5
+cold: -5
+electric: -5
+chemical: -5
+mental: 15
+magical: 10
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: (0, 0)
+majorWound: (0, 0)
+detectSecret: (0, 0)
+acrobaticAct: (0, 0)
+detectTrap: (0, 0)
+disableTrap: (0, 0)
+forceLock: (0, 0)
+pickLock: (0, 0)
+turnUndead: (0, 0)
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+

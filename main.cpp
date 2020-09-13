@@ -106,10 +106,101 @@ struct DRVAdjustments {
         os << "}" << std::endl;
     }
 };
+struct Attributes {
+public:
+    CharacterAttribute _brawn;
+    CharacterAttribute _knowledge;
+    CharacterAttribute _judgment;
+    CharacterAttribute _agility;
+    CharacterAttribute _vitality;
+    CharacterAttribute _luck;
+    Attributes(const DataBuffer& buf) :
+    _brawn(buf[54], buf[55], buf[36]),
+    _knowledge(buf[56], buf[57], buf[37]),
+    _judgment(buf[58], buf[59], buf[38]),
+    _agility(buf[60], buf[61], buf[39]),
+    _vitality(buf[62], buf[63], buf[40]),
+    _luck(buf[64],buf[65],buf[41]) {
+
+    }
+    void print(std::ostream& out) const noexcept {
+        _brawn.print(out, "Brawn");
+        _knowledge.print(out, "Knowledge");
+        _judgment.print(out, "Judgment");
+        _agility.print(out, "Agility");
+        _vitality.print(out, "Vitality");
+        _luck.print(out, "Luck");
+    }
+};
+class SpellClassInfo
+{
+public:
+    constexpr SpellClassInfo(bool enabled, int startingLevel, int maxLevelSpells) : _enabled(enabled), _startingLevel(startingLevel), _maxLevelSpells(maxLevelSpells) { }
+    constexpr auto isEnabled() const noexcept { return _enabled; }
+    constexpr auto getStartingLevel() const noexcept { return _startingLevel; }
+    constexpr auto getMaxLevelSpells() const noexcept { return _maxLevelSpells; }
+    void print(std::ostream& out, const std::string& targetClass) const noexcept {
+        out << targetClass << ": (" << std::boolalpha << _enabled << ", " << std::dec << _startingLevel << ", " << _maxLevelSpells << ")" << std::endl;
+    }
+private:
+    bool _enabled = false;
+    int _startingLevel = 0;
+    int _maxLevelSpells = 0;
+};
+struct SpellCastingAbilities
+{
+public:
+    SpellCastingAbilities(const DataBuffer & buf) :
+    _sorcerer(buf[42], buf[43], buf[44]),
+    _priest(buf[45], buf[46], buf[47]),
+    _enchanter(buf[48], buf[49], buf[50]) {
+
+    }
+    const SpellClassInfo& getSorcererInfo() const noexcept { return _sorcerer; }
+    const SpellClassInfo& getPriestInfo() const noexcept { return _priest; }
+    const SpellClassInfo& getEnchanterInfo() const noexcept { return _enchanter; }
+    constexpr bool canCastSpells() const noexcept { return _sorcerer.isEnabled() || _priest.isEnabled() || _enchanter.isEnabled(); }
+    constexpr bool supportsSorcererSpellClass() const noexcept { return _sorcerer.isEnabled(); }
+    constexpr bool supportsPriestSpellClass() const noexcept { return _priest.isEnabled(); }
+    constexpr bool supportsEnchanterSpellClass() const noexcept { return _enchanter.isEnabled(); }
+    constexpr auto getStartingLevel() const noexcept {
+        if (_sorcerer.isEnabled()) {
+            return _sorcerer.getStartingLevel();
+        } else if (_priest.isEnabled()) {
+            return _priest.getStartingLevel();
+        } else if (_enchanter.isEnabled()) {
+            return _enchanter.getStartingLevel();
+        } else {
+            return -1;
+        }
+    }
+    constexpr auto getMaxLevelSpells() const noexcept {
+        if (_sorcerer.isEnabled()) {
+            return _sorcerer.getMaxLevelSpells();
+        } else if (_priest.isEnabled()) {
+            return _priest.getMaxLevelSpells();
+        } else if (_enchanter.isEnabled()) {
+            return _enchanter.getMaxLevelSpells();
+        } else {
+            return -1;
+        }
+    }
+    void print(std::ostream& out) const noexcept {
+        _sorcerer.print(out, "Sorcerer");
+        _priest.print(out, "Priest");
+        _enchanter.print(out, "Enchanter");
+    }
+private:
+    SpellClassInfo _sorcerer;
+    SpellClassInfo _priest;
+    SpellClassInfo _enchanter;
+};
 struct Caste {
     Caste(const DataBuffer& buffer);
     SpecialAbilities _initial;
     DRVAdjustments _drvs;
+    Attributes _attributes;
+    SpellCastingAbilities _spellCasting;
 
     void print(std::ostream& os);
 };
@@ -123,11 +214,13 @@ Caste::print(std::ostream &os) {
     os << "{" << std::endl;
     _initial.print(os);
     _drvs.print(os);
+    _attributes.print(os);
+    _spellCasting.print(os);
     os << "}" << std::endl;
 
 }
 
-Caste::Caste(const DataBuffer &buffer) : _initial(buffer), _drvs(buffer) { }
+Caste::Caste(const DataBuffer &buffer) : _initial(buffer), _drvs(buffer), _attributes(buffer), _spellCasting(buffer) { }
 
 
 bool
