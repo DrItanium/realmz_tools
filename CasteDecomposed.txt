@@ -1,0 +1,1020 @@
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 5
+acrobaticAct: 1
+detectTrap: 6
+disableTrap: 1
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 1
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: -5
+chemical: 10
+mental: 5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 2
+acrobaticAct: 5
+detectTrap: 8
+disableTrap: 10
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 1
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 10
+chemical: 5
+mental: 5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 3
+acrobaticAct: 1
+detectTrap: 5
+disableTrap: 1
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: -9
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 3
+electric: 10
+chemical: 5
+mental: 5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 3
+acrobaticAct: 1
+detectTrap: 4
+disableTrap: 1
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: -10
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 2
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 15
+detectTrap: 8
+disableTrap: 8
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 1
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 3
+forceLockLvlUp: 2
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 3
+heat: 0
+cold: 0
+electric: -20
+chemical: -5
+mental: -5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 5
+detectTrap: 2
+disableTrap: 5
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 2
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 10
+chemical: -5
+mental: -5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 5
+detectTrap: 2
+disableTrap: 5
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 5
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 2
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 5
+electric: 15
+chemical: -5
+mental: 5
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 5
+detectTrap: 2
+disableTrap: 5
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 2
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 10
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 10
+detectTrap: 2
+disableTrap: 5
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 1
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 15
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 10
+detectTrap: 2
+disableTrap: 5
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 15
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 1
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 3
+electric: 20
+chemical: 5
+mental: 5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 10
+detectTrap: 2
+disableTrap: 5
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 1
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 10
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 8
+acrobaticAct: 1
+detectTrap: 6
+disableTrap: 1
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 1
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 20
+chemical: 10
+mental: 10
+magical: 10
+}
+}
+
+
+
+{
+{
+sneakAttack: 10
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 25
+detectTrap: 10
+disableTrap: 20
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 1
+forceLockLvlUp: 1
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 1
+heat: 0
+cold: 0
+electric: -15
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 3
+acrobaticAct: 1
+detectTrap: 6
+disableTrap: 1
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 2
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 5
+chemical: 5
+mental: 5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 4
+acrobaticAct: 1
+detectTrap: 3
+disableTrap: 1
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: -5
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 5
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 13
+detectTrap: 10
+disableTrap: 15
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 1
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 2
+forceLockLvlUp: 1
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 2
+heat: 0
+cold: 0
+electric: 10
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 3
+acrobaticAct: 3
+detectTrap: 5
+disableTrap: 2
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 1
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 5
+chemical: 5
+mental: 5
+magical: 5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 3
+acrobaticAct: 3
+detectTrap: 5
+disableTrap: 2
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 1
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 10
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 1
+detectTrap: 2
+disableTrap: 8
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: -21
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 2
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 3
+electric: 15
+chemical: -15
+mental: -15
+magical: -15
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 4
+acrobaticAct: 3
+detectTrap: 3
+disableTrap: 3
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 1
+disableTrapLvlUp: 1
+forceLockLvlUp: 1
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 15
+chemical: -5
+mental: -5
+magical: -5
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
+{
+{
+sneakAttack: 0
+majorWound: 0
+detectSecret: 0
+acrobaticAct: 0
+detectTrap: 0
+disableTrap: 0
+forceLock: 0
+pickLock: 0
+turnUndead: 0
+sneakAttackLvlUp: 0
+majorWoundLvlUp: 0
+detectSecretLvlUp: 0
+acrobaticActLvlUp: 0
+detectTrapLvlUp: 0
+disableTrapLvlUp: 0
+forceLockLvlUp: 0
+pickLockLvlUp: 0
+turnUndeadLvlUp: 0
+}
+{
+charm: 0
+heat: 0
+cold: 0
+electric: 0
+chemical: 0
+mental: 0
+magical: 0
+}
+}
+
+
+
