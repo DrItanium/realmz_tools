@@ -220,14 +220,17 @@ public:
     SpellCastingAbilities(const DataBuffer & buf) :
     _sorcerer(buf[42], buf[43], buf[44]),
     _priest(buf[45], buf[46], buf[47]),
-    _enchanter(buf[48], buf[49], buf[50]) { }
+    _enchanter(buf[48], buf[49], buf[50]),
+    _unused(buf[51], buf[52], buf[53]) { }
     const SpellClassInfo& getSorcererInfo() const noexcept { return _sorcerer; }
     const SpellClassInfo& getPriestInfo() const noexcept { return _priest; }
     const SpellClassInfo& getEnchanterInfo() const noexcept { return _enchanter; }
-    constexpr bool canCastSpells() const noexcept { return _sorcerer.isEnabled() || _priest.isEnabled() || _enchanter.isEnabled(); }
+    const SpellClassInfo& getUnusedInfo() const noexcept { return _unused; }
+    constexpr bool canCastSpells() const noexcept { return _sorcerer.isEnabled() || _priest.isEnabled() || _enchanter.isEnabled() || _unused.isEnabled(); }
     constexpr bool supportsSorcererSpellClass() const noexcept { return _sorcerer.isEnabled(); }
     constexpr bool supportsPriestSpellClass() const noexcept { return _priest.isEnabled(); }
     constexpr bool supportsEnchanterSpellClass() const noexcept { return _enchanter.isEnabled(); }
+    constexpr bool supportsUnusedSpellClass() const noexcept { return _unused.isEnabled(); }
     constexpr auto getStartingLevel() const noexcept {
         if (_sorcerer.isEnabled()) {
             return _sorcerer.getStartingLevel();
@@ -235,6 +238,8 @@ public:
             return _priest.getStartingLevel();
         } else if (_enchanter.isEnabled()) {
             return _enchanter.getStartingLevel();
+        } else if (_unused.isEnabled()) {
+            return _unused.getStartingLevel();
         } else {
             return -1;
         }
@@ -246,6 +251,8 @@ public:
             return _priest.getMaxLevelSpells();
         } else if (_enchanter.isEnabled()) {
             return _enchanter.getMaxLevelSpells();
+        } else if (_unused.isEnabled()) {
+            return _unused.getMaxLevelSpells();
         } else {
             return -1;
         }
@@ -254,11 +261,13 @@ public:
         out << "Sorcerer: " << _sorcerer << std::endl;
         out << "Priest: " << _priest << std::endl;
         out << "Enchanter: " << _enchanter << std::endl;
+        out << "Unused: " << _unused << std::endl;
     }
 private:
     SpellClassInfo _sorcerer;
     SpellClassInfo _priest;
     SpellClassInfo _enchanter;
+    SpellClassInfo _unused;
 };
 std::ostream& operator<<(std::ostream& os, const SpellCastingAbilities& sci) noexcept {
     sci.print(os);
@@ -295,6 +304,36 @@ std::ostream& operator<<(std::ostream& os, AgeGroup group) noexcept {
     }
     return os;
 }
+enum class BonusAttacksStyle {
+    None = 0,
+    OneHalf = 1,
+    One,
+    OneAndOneHalf,
+    Two,
+};
+std::ostream& operator<<(std::ostream& os, BonusAttacksStyle group) noexcept {
+    switch (group) {
+        case BonusAttacksStyle::None:
+            os << "0";
+            break;
+        case BonusAttacksStyle::OneHalf:
+            os << "1/2";
+            break;
+        case BonusAttacksStyle::One:
+            os << "1";
+            break;
+        case BonusAttacksStyle::OneAndOneHalf:
+            os << "1 1/2";
+            break;
+        case BonusAttacksStyle::Two:
+            os << "2";
+            break;
+        default:
+            os << "UNKNOWN_BONUS_ATTACK_STYLE(" << static_cast<int>(group) << ")!";
+            break;
+    }
+    return os;
+}
 class Caste {
 public:
     Caste(const DataBuffer& buffer);
@@ -317,7 +356,7 @@ private:
     int _magicResistance = 0;
     int _twoHandedAdjust = 0;
     int _maxStaminaBonus = 0;
-    int _bonusAttacksNumerator = 0;
+    BonusAttacksStyle _bonusAttacks = BonusAttacksStyle::None;
     int _maxAttacksPerRound = 0;
 };
 
@@ -347,7 +386,7 @@ Caste::print(std::ostream &os) const noexcept {
     os << "Magic Resistance Modification: " << _magicResistance << std::endl;
     os << "Two Handed Adjust: " << _twoHandedAdjust << std::endl;
     os << "Max Stamina Bonus: " << _maxStaminaBonus << std::endl;
-    os << "Bonus Attacks Numerator: " << _bonusAttacksNumerator << std::endl;
+    os << "Bonus Attacks: " << _bonusAttacks << std::endl;
     os << "Max Attacks per Round: " << _maxAttacksPerRound << std::endl;
 }
 
@@ -370,7 +409,7 @@ _movementPoints(buffer[126]),
 _magicResistance(buffer[127]),
 _twoHandedAdjust(buffer[128]),
 _maxStaminaBonus(buffer[129]),
-_bonusAttacksNumerator(buffer[130]),
+_bonusAttacks(static_cast<BonusAttacksStyle>(buffer[130])),
 _maxAttacksPerRound(buffer[131])
 { }
 
