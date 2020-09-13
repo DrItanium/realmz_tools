@@ -123,7 +123,6 @@ struct SpecialAbilities {
             _turnUndead(buf[13], buf[14+13]) {
     }
     void print(std::ostream& os) const noexcept {
-        os << "{" << std::endl;
 #define X(field) os << #field << ": " <<  _ ## field << std::endl
         X(sneakAttack);
         X(majorWound);
@@ -135,7 +134,6 @@ struct SpecialAbilities {
         X(pickLock);
         X(turnUndead);
 #undef X
-        os << "}" << std::endl;
     }
 };
 std::ostream& operator<<(std::ostream& os, const SpecialAbilities& sa) noexcept {
@@ -152,7 +150,6 @@ struct DRVAdjustments {
     int _magical;
     DRVAdjustments(const DataBuffer& buf) : _charm(buf[28]), _heat(buf[29]), _cold(buf[30]), _electric(buf[31]), _chemical(buf[32]), _mental(buf[33]), _magical(buf[34]) { }
     void print(std::ostream& os) const noexcept {
-        os << "{" << std::endl;
 #define X(field) \
             os << #field << ": " << _ ## field << std::endl
         X(charm);
@@ -163,7 +160,6 @@ struct DRVAdjustments {
         X(mental);
         X(magical);
 #undef X
-        os << "}" << std::endl;
     }
 };
 std::ostream& operator<<(std::ostream& os, const DRVAdjustments& drv) noexcept {
@@ -335,12 +331,7 @@ std::ostream& operator<<(std::ostream& os, const Caste& caste) noexcept {
 
 void
 Caste::print(std::ostream &os) const noexcept {
-    os << "{"
-       << std::endl
-       << _initial
-       << _drvs
-       << _attributes
-       << _spellCasting;
+    os << _initial << _drvs << _attributes << _spellCasting;
     os << "Can Use Missile Weapons: " << std::boolalpha << _canUseMissileWeapons << std::endl;
     os << "Gets Missile Bonus Damage: " << std::boolalpha << _getsMissileBonusDamage << std::endl;
     os << "Stamina: " << _stamina << std::endl;
@@ -350,7 +341,6 @@ Caste::print(std::ostream &os) const noexcept {
     os << "Hand To Hand: " << _handToHand << std::endl;
     os << "Creator Code Id?: " << _creatorCodeId << std::endl;
     os << "Starting Age Group: " << _startingAgeGroup << std::endl;
-    os << "}" << std::endl;
 }
 
 Caste::Caste(const DataBuffer &buffer) :

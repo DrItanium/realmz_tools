@@ -1,5 +1,4 @@
-{
-{
+Caste: Fighter
 sneakAttack: (0, 0)
 majorWound: (5, 1)
 detectSecret: (1, 0)
@@ -9,8 +8,6 @@ disableTrap: (0, 0)
 forceLock: (12, 3)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: -5
 heat: 10
 cold: 5
@@ -18,7 +15,6 @@ electric: 5
 chemical: 10
 mental: -5
 magical: -5
-}
 Brawn: (8, 25, 2)
 Knowledge: (4, 19, -2)
 Judgment: (4, 20, -1)
@@ -37,12 +33,10 @@ Missile Attack: (5, 4)
 Hand To Hand: (4, 0)
 Creator Code Id?: 1
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: Monk
 sneakAttack: (0, 0)
 majorWound: (2, 1)
 detectSecret: (5, 0)
@@ -52,8 +46,6 @@ disableTrap: (5, 0)
 forceLock: (8, 2)
 pickLock: (10, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 10
 heat: 5
 cold: 5
@@ -61,7 +53,6 @@ electric: 5
 chemical: 5
 mental: 5
 magical: -15
-}
 Brawn: (14, 22, 0)
 Knowledge: (5, 20, 0)
 Judgment: (14, 23, 1)
@@ -80,12 +71,10 @@ Missile Attack: (3, 3)
 Hand To Hand: (2, 2)
 Creator Code Id?: 2
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: Crusader
 sneakAttack: (0, 0)
 majorWound: (3, 0)
 detectSecret: (1, 0)
@@ -95,8 +84,6 @@ disableTrap: (0, 0)
 forceLock: (10, 2)
 pickLock: (0, 0)
 turnUndead: (-9, 3)
-}
-{
 charm: 10
 heat: 5
 cold: 5
@@ -104,7 +91,6 @@ electric: 5
 chemical: -5
 mental: 5
 magical: -10
-}
 Brawn: (11, 23, 1)
 Knowledge: (8, 22, -1)
 Judgment: (12, 25, 1)
@@ -123,12 +109,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (3, 0)
 Creator Code Id?: 7
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: Archer
 sneakAttack: (0, 0)
 majorWound: (3, 0)
 detectSecret: (1, 0)
@@ -138,8 +122,6 @@ disableTrap: (0, 0)
 forceLock: (8, 1)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: -10
 heat: -5
 cold: -5
@@ -147,7 +129,6 @@ electric: -5
 chemical: -5
 mental: -5
 magical: -5
-}
 Brawn: (12, 22, -2)
 Knowledge: (6, 22, 0)
 Judgment: (7, 22, 0)
@@ -166,12 +147,10 @@ Missile Attack: (15, 5)
 Hand To Hand: (2, 0)
 Creator Code Id?: 3
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: Rogue
 sneakAttack: (2, 1)
 majorWound: (0, 0)
 detectSecret: (15, 3)
@@ -181,8 +160,6 @@ disableTrap: (5, 3)
 forceLock: (0, 0)
 pickLock: (5, 3)
 turnUndead: (0, 0)
-}
-{
 charm: -20
 heat: -5
 cold: -5
@@ -190,7 +167,6 @@ electric: 5
 chemical: -5
 mental: -10
 magical: 15
-}
 Brawn: (5, 20, -2)
 Knowledge: (5, 23, 1)
 Judgment: (4, 20, -2)
@@ -209,12 +185,10 @@ Missile Attack: (3, 3)
 Hand To Hand: (3, 0)
 Creator Code Id?: 2
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: Sorcerer
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (5, 2)
@@ -224,8 +198,6 @@ disableTrap: (5, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 10
 heat: -5
 cold: -5
@@ -233,7 +205,6 @@ electric: 5
 chemical: -10
 mental: 5
 magical: 10
-}
 Brawn: (4, 19, -2)
 Knowledge: (8, 25, 2)
 Judgment: (5, 25, 1)
@@ -252,12 +223,10 @@ Missile Attack: (3, 1)
 Hand To Hand: (2, 0)
 Creator Code Id?: 4
 Starting Age Group: Youth
-}
 
 
 
-{
-{
+Caste: Priest
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (5, 2)
@@ -267,8 +236,6 @@ disableTrap: (2, 0)
 forceLock: (10, 1)
 pickLock: (0, 0)
 turnUndead: (5, 5)
-}
-{
 charm: 15
 heat: -5
 cold: 5
@@ -276,7 +243,6 @@ electric: 0
 chemical: 5
 mental: 5
 magical: -5
-}
 Brawn: (5, 23, -1)
 Knowledge: (5, 23, 1)
 Judgment: (8, 25, 2)
@@ -295,12 +261,10 @@ Missile Attack: (3, 2)
 Hand To Hand: (2, 0)
 Creator Code Id?: 5
 Starting Age Group: Youth
-}
 
 
 
-{
-{
+Caste: Enchanter
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (5, 2)
@@ -310,8 +274,6 @@ disableTrap: (5, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 10
 heat: -5
 cold: -5
@@ -319,7 +281,6 @@ electric: -5
 chemical: -10
 mental: 5
 magical: 10
-}
 Brawn: (4, 19, -2)
 Knowledge: (8, 25, 1)
 Judgment: (5, 25, 2)
@@ -338,12 +299,10 @@ Missile Attack: (3, 1)
 Hand To Hand: (2, 0)
 Creator Code Id?: 6
 Starting Age Group: Youth
-}
 
 
 
-{
-{
+Caste: Evoker
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (10, 1)
@@ -353,8 +312,6 @@ disableTrap: (5, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 15
 heat: -5
 cold: -5
@@ -362,7 +319,6 @@ electric: -5
 chemical: -5
 mental: 5
 magical: 15
-}
 Brawn: (4, 18, -2)
 Knowledge: (12, 23, 0)
 Judgment: (6, 25, 3)
@@ -381,12 +337,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (1, 0)
 Creator Code Id?: 6
 Starting Age Group: Prime
-}
 
 
 
-{
-{
+Caste: Cardinal
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (10, 1)
@@ -396,8 +350,6 @@ disableTrap: (3, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (15, 3)
-}
-{
 charm: 20
 heat: 5
 cold: 5
@@ -405,7 +357,6 @@ electric: 5
 chemical: -10
 mental: 10
 magical: -15
-}
 Brawn: (5, 19, -1)
 Knowledge: (7, 25, 1)
 Judgment: (14, 25, 3)
@@ -424,12 +375,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (1, 0)
 Creator Code Id?: 5
 Starting Age Group: Prime
-}
 
 
 
-{
-{
+Caste: Cabalist
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (10, 1)
@@ -439,8 +388,6 @@ disableTrap: (5, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 10
 heat: -5
 cold: -5
@@ -448,7 +395,6 @@ electric: -5
 chemical: -5
 mental: 10
 magical: 20
-}
 Brawn: (4, 20, -2)
 Knowledge: (13, 25, 3)
 Judgment: (6, 24, 0)
@@ -467,12 +413,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (1, 0)
 Creator Code Id?: 4
 Starting Age Group: Prime
-}
 
 
 
-{
-{
+Caste: Berzerker
 sneakAttack: (0, 0)
 majorWound: (8, 1)
 detectSecret: (1, 0)
@@ -482,8 +426,6 @@ disableTrap: (0, 0)
 forceLock: (15, 2)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 20
 heat: 10
 cold: 10
@@ -491,7 +433,6 @@ electric: 10
 chemical: 10
 mental: -25
 magical: -15
-}
 Brawn: (11, 24, 3)
 Knowledge: (4, 18, -2)
 Judgment: (4, 18, -3)
@@ -510,12 +451,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (6, 0)
 Creator Code Id?: 1
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: Bard
 sneakAttack: (10, 0)
 majorWound: (0, 0)
 detectSecret: (25, 1)
@@ -525,8 +464,6 @@ disableTrap: (15, 1)
 forceLock: (0, 0)
 pickLock: (20, 1)
 turnUndead: (0, 0)
-}
-{
 charm: -15
 heat: -5
 cold: -5
@@ -534,7 +471,6 @@ electric: -5
 chemical: -5
 mental: 5
 magical: 15
-}
 Brawn: (7, 22, -1)
 Knowledge: (8, 23, 1)
 Judgment: (8, 23, 1)
@@ -553,12 +489,10 @@ Missile Attack: (3, 3)
 Hand To Hand: (3, 0)
 Creator Code Id?: 2
 Starting Age Group: Prime
-}
 
 
 
-{
-{
+Caste: Fencer
 sneakAttack: (0, 0)
 majorWound: (3, 2)
 detectSecret: (1, 0)
@@ -568,8 +502,6 @@ disableTrap: (0, 0)
 forceLock: (5, 1)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 5
 heat: 5
 cold: 5
@@ -577,7 +509,6 @@ electric: 5
 chemical: 5
 mental: 5
 magical: -10
-}
 Brawn: (12, 23, -1)
 Knowledge: (5, 21, -2)
 Judgment: (6, 21, -2)
@@ -596,12 +527,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (2, 0)
 Creator Code Id?: 1
 Starting Age Group: Youth
-}
 
 
 
-{
-{
+Caste: Marksman
 sneakAttack: (0, 0)
 majorWound: (4, 0)
 detectSecret: (1, 0)
@@ -611,8 +540,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: -5
 heat: -5
 cold: -5
@@ -620,7 +547,6 @@ electric: -5
 chemical: -5
 mental: -5
 magical: -5
-}
 Brawn: (11, 23, 1)
 Knowledge: (6, 22, -1)
 Judgment: (7, 22, -1)
@@ -639,12 +565,10 @@ Missile Attack: (15, 7)
 Hand To Hand: (2, 0)
 Creator Code Id?: 3
 Starting Age Group: Youth
-}
 
 
 
-{
-{
+Caste: Assassin
 sneakAttack: (5, 1)
 majorWound: (0, 0)
 detectSecret: (13, 2)
@@ -654,8 +578,6 @@ disableTrap: (10, 2)
 forceLock: (0, 0)
 pickLock: (10, 2)
 turnUndead: (0, 0)
-}
-{
 charm: 10
 heat: -5
 cold: -5
@@ -663,7 +585,6 @@ electric: -5
 chemical: 10
 mental: 10
 magical: -5
-}
 Brawn: (5, 23, -1)
 Knowledge: (9, 20, -2)
 Judgment: (14, 22, 1)
@@ -682,12 +603,10 @@ Missile Attack: (3, 3)
 Hand To Hand: (4, 0)
 Creator Code Id?: 2
 Starting Age Group: Youth
-}
 
 
 
-{
-{
+Caste: Dabbler
 sneakAttack: (0, 0)
 majorWound: (3, 0)
 detectSecret: (3, 1)
@@ -697,8 +616,6 @@ disableTrap: (2, 0)
 forceLock: (5, 1)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 5
 heat: 5
 cold: 5
@@ -706,7 +623,6 @@ electric: 5
 chemical: 5
 mental: 5
 magical: 5
-}
 Brawn: (10, 23, 1)
 Knowledge: (11, 23, 1)
 Judgment: (13, 23, 1)
@@ -725,12 +641,10 @@ Missile Attack: (3, 2)
 Hand To Hand: (2, 0)
 Creator Code Id?: 7
 Starting Age Group: Youth
-}
 
 
 
-{
-{
+Caste: Battle Mage
 sneakAttack: (0, 0)
 majorWound: (3, 0)
 detectSecret: (3, 1)
@@ -740,8 +654,6 @@ disableTrap: (5, 0)
 forceLock: (5, 1)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 10
 heat: -5
 cold: -5
@@ -749,7 +661,6 @@ electric: -5
 chemical: -5
 mental: 10
 magical: 5
-}
 Brawn: (12, 23, 1)
 Knowledge: (12, 23, 1)
 Judgment: (14, 23, -1)
@@ -768,12 +679,10 @@ Missile Attack: (3, 2)
 Hand To Hand: (2, 0)
 Creator Code Id?: 7
 Starting Age Group: Youth
-}
 
 
 
-{
-{
+Caste: Warlock
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (1, 2)
@@ -783,8 +692,6 @@ disableTrap: (10, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (-21, 3)
-}
-{
 charm: 15
 heat: -15
 cold: -15
@@ -792,7 +699,6 @@ electric: -15
 chemical: -15
 mental: 20
 magical: 25
-}
 Brawn: (4, 18, -3)
 Knowledge: (15, 25, 3)
 Judgment: (9, 24, 1)
@@ -811,12 +717,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (1, 0)
 Creator Code Id?: 6
 Starting Age Group: Prime
-}
 
 
 
-{
-{
+Caste: Minstrel
 sneakAttack: (0, 0)
 majorWound: (4, 1)
 detectSecret: (3, 1)
@@ -826,8 +730,6 @@ disableTrap: (1, 1)
 forceLock: (5, 1)
 pickLock: (5, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 15
 heat: -5
 cold: -5
@@ -835,7 +737,6 @@ electric: -5
 chemical: -5
 mental: 15
 magical: 10
-}
 Brawn: (9, 23, -1)
 Knowledge: (11, 23, 2)
 Judgment: (13, 23, 0)
@@ -854,12 +755,10 @@ Missile Attack: (3, 3)
 Hand To Hand: (8, 0)
 Creator Code Id?: 7
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(20)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -869,8 +768,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -878,7 +775,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -897,12 +793,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(21)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -912,8 +806,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -921,7 +813,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -940,12 +831,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(22)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -955,8 +844,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -964,7 +851,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -983,12 +869,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(23)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -998,8 +882,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -1007,7 +889,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -1026,12 +907,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(24)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -1041,8 +920,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -1050,7 +927,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -1069,12 +945,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(25)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -1084,8 +958,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -1093,7 +965,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -1112,12 +983,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(26)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -1127,8 +996,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -1136,7 +1003,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -1155,12 +1021,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(27)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -1170,8 +1034,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -1179,7 +1041,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -1198,12 +1059,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(28)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -1213,8 +1072,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -1222,7 +1079,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -1241,12 +1097,10 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
 
 
-{
-{
+Caste: UNKNOWN_CASTE_KIND(29)
 sneakAttack: (0, 0)
 majorWound: (0, 0)
 detectSecret: (0, 0)
@@ -1256,8 +1110,6 @@ disableTrap: (0, 0)
 forceLock: (0, 0)
 pickLock: (0, 0)
 turnUndead: (0, 0)
-}
-{
 charm: 0
 heat: 0
 cold: 0
@@ -1265,7 +1117,6 @@ electric: 0
 chemical: 0
 mental: 0
 magical: 0
-}
 Brawn: (3, 25, 0)
 Knowledge: (3, 25, 0)
 Judgment: (3, 25, 0)
@@ -1284,7 +1135,9 @@ Missile Attack: (0, 0)
 Hand To Hand: (0, 0)
 Creator Code Id?: 0
 Starting Age Group: Young
-}
 
+
+
+Caste: UNKNOWN_CASTE_KIND(30)
 
 
