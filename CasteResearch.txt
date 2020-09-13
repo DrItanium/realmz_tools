@@ -4598,6 +4598,7 @@ list1 {
 	0
 	0
 	0
+	0 (80)
 	0
 	0
 	0
@@ -4607,9 +4608,7 @@ list1 {
 	0
 	0
 	0
-	0
-	15 // Condition gained at level 15????
-	0
+	15 // Condition gained at level 15???? (90)
 	0
 	0
 	0
@@ -4619,13 +4618,14 @@ list1 {
 	0
 	0
 	0
+	0 (100)
 	0
 	0
 	0
 	0
 	0
-	1
-	0
+	1 // Can Use Missile Weapons (106)
+	0 // Gets Missile Bonus Damage (107)
 	10 // stamina initial
 	5 // lvl up stamina
 	16
@@ -4644,7 +4644,7 @@ list1 {
 	0
 }
 creatorCodeId: 2
-age: 2
+Starting age group: 2 (Young)
 list2 {
 	3 // movement points
 	1 // magic resistance

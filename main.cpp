@@ -26,11 +26,11 @@ std::ostream& operator<<(std::ostream& os, const CharacterAttribute& ca) noexcep
     ca.print(os);
     return os;
 }
-class SpecialAbility {
+class Ability {
 public:
-    SpecialAbility() = default;
-    constexpr SpecialAbility(int initial, int levelUp) : _initial(initial), _levelUp(levelUp) { }
-    ~SpecialAbility() = default;
+    Ability() = default;
+    constexpr Ability(int initial, int levelUp) : _initial(initial), _levelUp(levelUp) { }
+    ~Ability() = default;
     constexpr auto getInitial() const noexcept { return _initial; }
     constexpr auto getLevelUp() const noexcept { return _levelUp; }
     void setInitial(int value) noexcept { _initial = value; }
@@ -41,21 +41,21 @@ private:
     int _levelUp = 0;
 };
 
-std::ostream& operator<<(std::ostream& os, const SpecialAbility& sa) noexcept {
+std::ostream& operator<<(std::ostream& os, const Ability& sa) noexcept {
     sa.print(os);
     return os;
 }
 using DataBuffer = std::array<int16_t, 576/2>;
 struct SpecialAbilities {
-    SpecialAbility _sneakAttack;
-    SpecialAbility _majorWound;
-    SpecialAbility _detectSecret;
-    SpecialAbility _acrobaticAct;
-    SpecialAbility _detectTrap;
-    SpecialAbility _disableTrap;
-    SpecialAbility _forceLock;
-    SpecialAbility _pickLock;
-    SpecialAbility _turnUndead;
+    Ability _sneakAttack;
+    Ability _majorWound;
+    Ability _detectSecret;
+    Ability _acrobaticAct;
+    Ability _detectTrap;
+    Ability _disableTrap;
+    Ability _forceLock;
+    Ability _pickLock;
+    Ability _turnUndead;
     SpecialAbilities(const DataBuffer& buf) :
             _sneakAttack(buf[0], buf[14]),
             _majorWound(buf[3], buf[14+3]),
@@ -217,14 +217,23 @@ std::ostream& operator<<(std::ostream& os, const SpellCastingAbilities& sci) noe
     sci.print(os);
     return os;
 }
-struct Caste {
+class Caste {
+public:
     Caste(const DataBuffer& buffer);
+    void print(std::ostream& os) const noexcept;
+private:
     SpecialAbilities _initial;
     DRVAdjustments _drvs;
     Attributes _attributes;
     SpellCastingAbilities _spellCasting;
+    bool _canUseMissileWeapons = false;
+    bool _getsMissileBonusDamage = false;
+    Ability _stamina;
+    Ability _dodgeMissile;
+    Ability _meleeAttack;
+    Ability _missileAttack;
+    Ability _handToHand;
 
-    void print(std::ostream& os) const noexcept;
 };
 
 constexpr int16_t make(uint8_t first, uint8_t second) noexcept {
@@ -244,9 +253,15 @@ Caste::print(std::ostream &os) const noexcept {
        << _initial
        << _drvs
        << _attributes
-       << _spellCasting
-       << "}"
-       << std::endl;
+       << _spellCasting;
+    os << "Can Use Missile Weapons: " << std::boolalpha << _canUseMissileWeapons << std::endl;
+    os << "Gets Missile Bonus Damage: " << std::boolalpha << _getsMissileBonusDamage << std::endl;
+    os << "Stamina: " << _stamina << std::endl;
+    os << "Dodge Missile: " << _dodgeMissile << std::endl;
+    os << "Melee Attack: " << _meleeAttack << std::endl;
+    os << "Missile Attack: " << _missileAttack << std::endl;
+    os << "Hand To Hand: " << _handToHand << std::endl;
+    os << "}" << std::endl;
 }
 
 Caste::Caste(const DataBuffer &buffer) : _initial(buffer), _drvs(buffer), _attributes(buffer), _spellCasting(buffer) { }
