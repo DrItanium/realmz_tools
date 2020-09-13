@@ -13,11 +13,8 @@ public:
     constexpr auto getMin() const noexcept { return _min; }
     constexpr auto getMax() const noexcept { return _max; }
     constexpr auto getAdjustment() const noexcept { return _adjustment; }
-    void print(std::ostream& os, const std::string& fieldName) const noexcept {
-       os << fieldName << ": (" << _min << ", " << _max << ", " << _adjustment << ")" << std::endl;
-    }
-    void print (std::ostream& os) const noexcept {
-        print(os, "");
+    void print(std::ostream& os) const noexcept {
+       os << "(" << _min << ", " << _max << ", " << _adjustment << ")";
     }
 private:
     int _min = 0;
@@ -25,6 +22,10 @@ private:
     int _adjustment = 0;
 
 };
+std::ostream& operator<<(std::ostream& os, const CharacterAttribute& ca) noexcept {
+    ca.print(os);
+    return os;
+}
 class SpecialAbility {
 public:
     SpecialAbility() = default;
@@ -34,16 +35,16 @@ public:
     constexpr auto getLevelUp() const noexcept { return _levelUp; }
     void setInitial(int value) noexcept { _initial = value; }
     void setLevelUp(int value) noexcept { _levelUp = value; }
-    void print(std::ostream& os, const std::string& name) const noexcept {
-        os << name << ": (" << _initial << ", " << _levelUp << ")" << std::endl;
-    }
-    void print(std::ostream& os) const noexcept {
-        print(os, "");
-    }
+    void print(std::ostream& os) const noexcept { os << "(" << _initial << ", " << _levelUp << ")"; }
 private:
     int _initial = 0;
     int _levelUp = 0;
 };
+
+std::ostream& operator<<(std::ostream& os, const SpecialAbility& sa) noexcept {
+    sa.print(os);
+    return os;
+}
 using DataBuffer = std::array<int16_t, 576/2>;
 struct SpecialAbilities {
     SpecialAbility _sneakAttack;
@@ -66,9 +67,9 @@ struct SpecialAbilities {
             _pickLock(buf[11], buf[14+11]),
             _turnUndead(buf[13], buf[14+13]) {
     }
-    void print(std::ostream& os) {
+    void print(std::ostream& os) const noexcept {
         os << "{" << std::endl;
-#define X(field) _ ## field . print(os, #field )
+#define X(field) os << #field << ": " <<  _ ## field << std::endl
         X(sneakAttack);
         X(majorWound);
         X(detectSecret);
@@ -82,6 +83,10 @@ struct SpecialAbilities {
         os << "}" << std::endl;
     }
 };
+std::ostream& operator<<(std::ostream& os, const SpecialAbilities& sa) noexcept {
+    sa.print(os);
+    return os;
+}
 struct DRVAdjustments {
     int _charm;
     int _heat;
@@ -91,7 +96,7 @@ struct DRVAdjustments {
     int _mental;
     int _magical;
     DRVAdjustments(const DataBuffer& buf) : _charm(buf[28]), _heat(buf[29]), _cold(buf[30]), _electric(buf[31]), _chemical(buf[32]), _mental(buf[33]), _magical(buf[34]) { }
-    void print(std::ostream& os) {
+    void print(std::ostream& os) const noexcept {
         os << "{" << std::endl;
 #define X(field) \
             os << #field << ": " << _ ## field << std::endl
@@ -106,6 +111,10 @@ struct DRVAdjustments {
         os << "}" << std::endl;
     }
 };
+std::ostream& operator<<(std::ostream& os, const DRVAdjustments& drv) noexcept {
+    drv.print(os);
+    return os;
+}
 struct Attributes {
 public:
     CharacterAttribute _brawn;
@@ -124,14 +133,19 @@ public:
 
     }
     void print(std::ostream& out) const noexcept {
-        _brawn.print(out, "Brawn");
-        _knowledge.print(out, "Knowledge");
-        _judgment.print(out, "Judgment");
-        _agility.print(out, "Agility");
-        _vitality.print(out, "Vitality");
-        _luck.print(out, "Luck");
+        out << "Brawn: " << _brawn << std::endl;
+        out << "Knowledge: " << _knowledge << std::endl;
+        out << "Judgment: " << _judgment << std::endl;
+        out << "Agility: " << _agility << std::endl;
+        out << "Vitality: " << _vitality << std::endl;
+        out << "Luck: " << _luck<< std::endl;
     }
 };
+
+std::ostream& operator<<(std::ostream& os, const Attributes& attrib) noexcept {
+    attrib.print(os);
+    return os;
+}
 class SpellClassInfo
 {
 public:
@@ -139,23 +153,27 @@ public:
     constexpr auto isEnabled() const noexcept { return _enabled; }
     constexpr auto getStartingLevel() const noexcept { return _startingLevel; }
     constexpr auto getMaxLevelSpells() const noexcept { return _maxLevelSpells; }
-    void print(std::ostream& out, const std::string& targetClass) const noexcept {
-        out << targetClass << ": (" << std::boolalpha << _enabled << ", " << std::dec << _startingLevel << ", " << _maxLevelSpells << ")" << std::endl;
+    void print(std::ostream& out) const noexcept {
+        out << "(" << std::boolalpha << _enabled << ", " << std::dec << _startingLevel << ", " << _maxLevelSpells << ")";
     }
 private:
     bool _enabled = false;
     int _startingLevel = 0;
     int _maxLevelSpells = 0;
 };
+std::ostream&
+operator<<(std::ostream& os, const SpellClassInfo& sci) noexcept
+{
+    sci.print(os) ;
+    return os;
+}
 struct SpellCastingAbilities
 {
 public:
     SpellCastingAbilities(const DataBuffer & buf) :
     _sorcerer(buf[42], buf[43], buf[44]),
     _priest(buf[45], buf[46], buf[47]),
-    _enchanter(buf[48], buf[49], buf[50]) {
-
-    }
+    _enchanter(buf[48], buf[49], buf[50]) { }
     const SpellClassInfo& getSorcererInfo() const noexcept { return _sorcerer; }
     const SpellClassInfo& getPriestInfo() const noexcept { return _priest; }
     const SpellClassInfo& getEnchanterInfo() const noexcept { return _enchanter; }
@@ -186,15 +204,19 @@ public:
         }
     }
     void print(std::ostream& out) const noexcept {
-        _sorcerer.print(out, "Sorcerer");
-        _priest.print(out, "Priest");
-        _enchanter.print(out, "Enchanter");
+        out << "Sorcerer: " << _sorcerer << std::endl;
+        out << "Priest: " << _priest << std::endl;
+        out << "Enchanter: " << _enchanter << std::endl;
     }
 private:
     SpellClassInfo _sorcerer;
     SpellClassInfo _priest;
     SpellClassInfo _enchanter;
 };
+std::ostream& operator<<(std::ostream& os, const SpellCastingAbilities& sci) noexcept {
+    sci.print(os);
+    return os;
+}
 struct Caste {
     Caste(const DataBuffer& buffer);
     SpecialAbilities _initial;
@@ -202,22 +224,29 @@ struct Caste {
     Attributes _attributes;
     SpellCastingAbilities _spellCasting;
 
-    void print(std::ostream& os);
+    void print(std::ostream& os) const noexcept;
 };
 
 constexpr int16_t make(uint8_t first, uint8_t second) noexcept {
     return (static_cast<int16_t>(first) << 8) | (static_cast<int16_t>(second));
 }
 
-void
-Caste::print(std::ostream &os) {
-    os << "{" << std::endl;
-    _initial.print(os);
-    _drvs.print(os);
-    _attributes.print(os);
-    _spellCasting.print(os);
-    os << "}" << std::endl;
+std::ostream& operator<<(std::ostream& os, const Caste& caste) noexcept {
+    caste.print(os);
+    return os;
+}
 
+
+void
+Caste::print(std::ostream &os) const noexcept {
+    os << "{"
+       << std::endl
+       << _initial
+       << _drvs
+       << _attributes
+       << _spellCasting
+       << "}"
+       << std::endl;
 }
 
 Caste::Caste(const DataBuffer &buffer) : _initial(buffer), _drvs(buffer), _attributes(buffer), _spellCasting(buffer) { }
@@ -240,8 +269,7 @@ readOne(std::istream& input, std::ostream& output) noexcept {
         buf[i] = swap(buf[i]);
     }
     Caste target(buf);
-    target.print(output);
-    output << std::endl;
+    output << target << std::endl;
     return true;
 }
 int main() {
