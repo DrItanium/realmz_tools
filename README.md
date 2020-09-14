@@ -24,7 +24,7 @@ Right now the most important parts are going to be:
    (right now bytes have to be swapped)
 
 Also, here are the codes that Skip Meier released at the same time as declaring Realmz freeware:
-
+```
 I haven't tried them yet but supposedly they work. 
 
 FOR THE WINDOWS VERSION :
@@ -43,6 +43,8 @@ Mithril Vault : 162011
 Twin Sands of Time : ?
 War is the Sword Lands : ?
 Half Truth : ?
-
+```
 
 NOTE: This is all for realmz 7.1.2, not the newer 8.0.? release for mac os classic.
+
+I have tested these tools with GCC 9.2.0 on Gentoo Linux x86_64 with Cmake.
