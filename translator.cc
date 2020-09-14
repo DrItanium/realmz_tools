@@ -265,7 +265,9 @@ main() {
     auto p7 = p3 + p6 + 0x400;
     auto p8 = p7 * licenseConstant;
     auto p9 = p8 + -0x200;
-    auto style2Key = p9/ licenseDenominator;
+    auto p10 = p9/ licenseDenominator;
+    auto style2Key = p10 + 0x12;
+
 
     std::cout << std::endl
               << std::endl
