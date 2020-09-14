@@ -80,6 +80,7 @@ constexpr uint8_t translationTable[] = {
  * @brief The name of the adventure menu items is important starting at City of Bywater
  */
  std::vector<std::string> MenuEntries {
+     "",
     "Begin New Adventure",
     "",
     "End This Adventure",
@@ -92,7 +93,7 @@ constexpr uint8_t translationTable[] = {
     "City of Bywater",
     "Prelude to Pestilence",
     "Assault on Giant Mountain",
-    "Destroy the Necronomicon",
+    "Destroy The Necronomicon",
     "Castle in the Clouds",
     "Grilochs Revenge",
     "White Dragon",
@@ -174,14 +175,13 @@ constexpr uint32_t swapBytes(uint32_t value) noexcept {
 static_assert(swapBytes(0x1000'0000) == 0x10);
 static_assert(swapBytes(0x0011'0011) == 0x11001100);
 
-void populateCommonConstants(const std::filesystem::path& realmzRoot, const std::string& scenarioName) {
+auto populateCommonConstants(const std::filesystem::path& realmzRoot, const std::string& scenarioName) {
 
     auto scenarioLocation = realmzRoot / "Scenarios" / scenarioName;
     auto primaryData = scenarioLocation / scenarioName;
     std::ifstream pdata(primaryData);
     if (!pdata.is_open()) {
-        std::cerr << "Could not open scenario file!" << std::endl;
-        exit(1);
+        return false;
     }
     // load components as needed to generate the parts the needed for key generation
     pdata.read(reinterpret_cast<char*>(&licenseDenominator), 4);
@@ -197,14 +197,19 @@ void populateCommonConstants(const std::filesystem::path& realmzRoot, const std:
     pdata.close();
     std::ifstream datacd(scenarioLocation / "Data CS");
     if (!datacd.is_open()) {
-        std::cerr << "Could not open Data CS file!" << std::endl;
-        exit(1);
+        // try "DATA CS" instead because case sensitivity isn't a thing outside nix systems... T_T
+        datacd.close();
+        datacd.open(scenarioLocation / "DATA CS");
+        if (!datacd.is_open()) {
+            return false;
+        }
     }
     // once again jump past the initial 20 bytes
     datacd.seekg(20);
     datacd.read(DataCD0.data(), 0x14);
     datacd.read(DataCD1.data(), 0x14);
     datacd.close();
+    return true;
 }
 
 int32_t transformRegistrationName(int32_t serialNumber, const std::string& registrationName) {
@@ -235,7 +240,9 @@ constexpr int32_t computeCoefficient2(int32_t serialNumber, int32_t coefficient1
 }
 void generateFantasoftScenarioKeys(std::ostream& out, const std::string& registrationName, int32_t serialNumber, int32_t menuConstant, const std::filesystem::path& realmzRoot) {
     // get the name associated with the menu constant
-    populateCommonConstants(realmzRoot, MenuEntries[menuConstant]);
+    if (!populateCommonConstants(realmzRoot, MenuEntries[menuConstant])) {
+        return;
+    }
     auto transformedRegistrationName = transform(registrationName);
     auto registrationNameCoefficient = transformRegistrationName(serialNumber, transformedRegistrationName);
     auto computedRegistrationNumber = serialNumber / ((menuConstant - 5) * 0x29a);
@@ -258,7 +265,9 @@ void generateCustomScenarioKeys(std::ostream& out, const std::string& registrati
     if (scenarioName.empty()) {
         return;
     }
-    populateCommonConstants(realmzRoot, scenarioName);
+    if (!populateCommonConstants(realmzRoot, scenarioName)) {
+        return;
+    }
     for (int i = 0; i < 0x14; ++i) {
         primaryScenarioBlock1[i] = primaryScenarioBlock1[i] - DataCD0[i];
         primaryScenarioBlock0[i] = primaryScenarioBlock0[i] - primaryScenarioBlock1[i];
@@ -296,7 +305,7 @@ void generateCustomScenarioKeys(std::ostream& out, const std::string& registrati
     std::cout << scenarioName << ": " << theKey << std::endl;
 }
 void generateKeys(std::ostream& out, const std::string& registrationName, int32_t serialNumber, int32_t menuConstant, const std::filesystem::path& realmzRoot) {
-   if (menuConstant <= 10)  {
+   if (menuConstant < 10)  {
        // don't do anything when the menu constant is less than equal to 10
        // the City of Bywater scenario does not have a license check in it
        return;
@@ -320,9 +329,21 @@ main() {
     std::getline(std::cin, realmzRoot);
     std::getline(std::cin, realmzRoot);
     std::filesystem::path realmzDir(realmzRoot);
+
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << "Serial Number: " << std::dec << serialNumber << std::endl;
+    std::cout << "Reset Serial Number Code: 410" << std::endl;
+    std::cout << "Registration Name: " << registrationName << std::endl;
     for (int i = 0; i < MenuEntries.size(); ++i) {
         generateKeys(std::cout, registrationName, serialNumber, i, realmzDir);
     }
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
 
 
     return 0;
