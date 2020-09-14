@@ -142,12 +142,15 @@ int32_t transformRegistrationName(int32_t serialNumber, const std::string& regis
     auto count = serialNumber;
     for (int index = 1; ;++index) {
         auto c = registrationName[index];
-        auto goofyLen = strlen_goofy(registrationName);
-        if (goofyLen <= index) {
+        auto prevC = registrationName[index -1];
+        auto goof = strlen_goofy(registrationName);
+        if (goof <= static_cast<unsigned int>(index)) {
             break;
         }
         if (c != 0) {
-            count += ((static_cast<int>(c) * index) - ((index + 0x5177b7) * static_cast<int>(c)));
+            auto i0 = count + (c * index);
+            auto i1 = static_cast<int>(prevC) * static_cast<int>(c);
+            count = i0 - i1;
         }
     }
     return count;
@@ -161,27 +164,24 @@ constexpr int32_t computeCoefficient2(int32_t serialNumber, int32_t coefficient1
     auto p4 = p0 * 0x1c8;
     return ((p1 % p2) * 0x200) + (p3 % p4) + 999;
 }
-void
-promptUser() {
+int
+main() {
     int32_t serialNumber = 0;
     std::string registrationName, scenarioName, realmzRoot;
     std::cout << "Enter Serial Number: ";
     std::cin >> serialNumber;
     std::cout << "Enter Registration Name: ";
     std::cin >> registrationName;
-    auto transformedRegistrationName = transform(registrationName);
-    auto registrationNameCoefficient = transformRegistrationName(serialNumber, transformedRegistrationName);
-    std::cout << "Registration Name Coefficient: " << std::dec << registrationNameCoefficient << std::endl;
-    auto theKey = computeCoefficient2(serialNumber, registrationNameCoefficient);
-    std::cout << "Coefficient 2: " << std::dec << theKey << std::endl;
     std::cout << "Enter Scenario Name: ";
     std::getline(std::cin, scenarioName);
     std::getline(std::cin, scenarioName);
     std::cout << "Enter path to Realmz directory: ";
     std::getline(std::cin, realmzRoot);
     std::filesystem::path realmzDir(realmzRoot);
+
     auto scenarioLocation = realmzDir / "Scenarios" / scenarioName;
-    std::cout << "Target scenario location: " << scenarioLocation << std::endl;
+    auto registrationNameCoefficient = transformRegistrationName(serialNumber, transform(registrationName));
+    auto theKey = computeCoefficient2(serialNumber, registrationNameCoefficient);
     // load the primary file as needed
     auto primaryData = scenarioLocation / scenarioName;
     std::ifstream pdata(primaryData);
@@ -189,9 +189,8 @@ promptUser() {
         std::cerr << "Could not open scenario file!" << std::endl;
         exit(1);
     }
-    KeyStorageBlock dummy = { 0 };
     // jump past the initial twenty bytes
-    pdata.read(dummy.data(), 0x14);
+    pdata.seekg(20);
     // now pull the primary and secondary data components in
     pdata.read(primaryScenarioBlock0.data(), 0x14);
     pdata.read(primaryScenarioBlock1.data(), 0x14);
@@ -202,7 +201,7 @@ promptUser() {
         exit(1);
     }
     // once again jump past the initial 20 bytes
-    datacd.read(dummy.data(), 0x14);
+    datacd.seekg(20);
     datacd.read(DataCD0.data(), 0x14);
     datacd.read(DataCD1.data(), 0x14);
     datacd.close();
@@ -217,10 +216,10 @@ promptUser() {
     }
     for (int i = 0; ; ++i) {
         auto goof = strlen_goofy(primaryScenarioBlock0.begin(), primaryScenarioBlock0.end());
-        if (goof <= i) {
+        if (goof <= static_cast<unsigned int>(i)) {
             break;
         }
-        theKey += primaryScenarioBlock0[i] * 0x699;
+        theKey += static_cast<int16_t>(primaryScenarioBlock0[i]) * 0x699;
     }
 
     for (int i = 0; ; ++i) {
@@ -228,7 +227,7 @@ promptUser() {
         if (goof <= i) {
             break;
         }
-        theKey -= primaryScenarioBlock1[i] * 0x1a7;
+        theKey -= static_cast<int16_t>(primaryScenarioBlock1[i]) * 0x1a7;
     }
     auto transformedScenarioName = transform(scenarioName);
     for (int i = 0; ; ++i) {
@@ -238,9 +237,6 @@ promptUser() {
         }
         theKey += transformedScenarioName[i] * 0x1b669;
     }
-    std::cout << "Registration Number is: " << theKey << std::endl;
-}
-int main() {
-    promptUser();
+    std::cout << "Registration Number Style 1 is: " << theKey << std::endl;
     return 0;
 }
