@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
-project(caste_decomposer)
+project(realmz_tools)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(caste_decomposer main.cpp)
-add_executable(security_char_translator translator.cc)
+add_executable(dumpcaste CasteDecomposer.cpp)
+add_executable(realmz_keygen KeyGen.cc)
