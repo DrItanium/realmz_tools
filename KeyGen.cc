@@ -316,6 +316,12 @@ void generateKeys(std::ostream& out, const std::string& registrationName, int32_
         generateFantasoftScenarioKeys(out, registrationName, serialNumber, menuConstant, realmzRoot);
    }
 }
+
+constexpr int32_t
+generateRegistrationCode(int32_t serialNumber) noexcept {
+
+}
+
 int
 main() {
     int32_t serialNumber = 0;
