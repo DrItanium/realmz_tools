@@ -154,7 +154,12 @@ int32_t transformRegistrationName(int32_t serialNumber, const std::string& regis
 }
 
 constexpr int32_t computeCoefficient2(int32_t serialNumber, int32_t coefficient1) noexcept {
-    return ((((serialNumber / 0x14d) + 0x1c2) % (coefficient1 * 0x60)) * 0x200) + ((coefficient1 + 999) % ((serialNumber / 0x14d) * 0x1c8)) + 999;
+    auto p0 = serialNumber / 0x14d;
+    auto p1 = p0 + 0x1c2;
+    auto p2 = coefficient1 * 0x60;
+    auto p3 = coefficient1 + 999;
+    auto p4 = p0 * 0x1c8;
+    return ((p1 % p2) * 0x200) + (p3 % p4) + 999;
 }
 void
 promptUser() {
@@ -172,7 +177,6 @@ promptUser() {
     std::cout << "Enter Scenario Name: ";
     std::getline(std::cin, scenarioName);
     std::getline(std::cin, scenarioName);
-    auto transformedScenarioName = transform(scenarioName);
     std::cout << "Enter path to Realmz directory: ";
     std::getline(std::cin, realmzRoot);
     std::filesystem::path realmzDir(realmzRoot);
@@ -213,23 +217,28 @@ promptUser() {
     }
     for (int i = 0; ; ++i) {
         auto goof = strlen_goofy(primaryScenarioBlock0.begin(), primaryScenarioBlock0.end());
-        std::cout << "Goofy value: " << goof << std::endl;
         if (goof <= i) {
             break;
         }
-        theKey += static_cast<int16_t>(primaryScenarioBlock0[i] * 0x699);
-        std::cout << "\ttheKey: " << theKey << std::endl;
+        theKey += primaryScenarioBlock0[i] * 0x699;
     }
 
     for (int i = 0; ; ++i) {
         auto goof = strlen_goofy(primaryScenarioBlock1.begin(), primaryScenarioBlock1.end());
-        std::cout << "Goofy value2: " << goof << std::endl;
         if (goof <= i) {
             break;
         }
-        theKey -= static_cast<int16_t>(primaryScenarioBlock1[i] * 0x1a7);
-        std::cout << "\ttheKey: " << theKey << std::endl;
+        theKey -= primaryScenarioBlock1[i] * 0x1a7;
     }
+    auto transformedScenarioName = transform(scenarioName);
+    for (int i = 0; ; ++i) {
+        auto goof = strlen_goofy(transformedScenarioName);
+        if (goof <= i) {
+            break;
+        }
+        theKey += transformedScenarioName[i] * 0x1b669;
+    }
+    std::cout << "Registration Number is: " << theKey << std::endl;
 }
 int main() {
     promptUser();
