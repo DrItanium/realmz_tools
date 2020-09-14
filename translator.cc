@@ -95,6 +95,24 @@ strlen_goofy(const std::string& input) {
     } while(currentCharacter != 0);
     return -2 - oddCounter;
 }
+template<typename T>
+int
+strlen_goofy(T begin, T end) noexcept {
+    auto oddCounter = -1;
+    char currentCharacter = 0;
+    do {
+        if (oddCounter == 0) {
+            break;
+        }
+        oddCounter += -1;
+        currentCharacter = *begin;
+        if (currentCharacter == 0) {
+            break;
+        }
+        ++begin;
+    } while (begin != end);
+    return -2 - oddCounter;
+}
 std::string
 transform(const std::string& input) noexcept {
     std::stringstream ss;
@@ -105,10 +123,10 @@ transform(const std::string& input) noexcept {
     return result;
 }
 using KeyStorageBlock = std::array<char, 0x14>;
-KeyStorageBlock k0 = { 0 };
-KeyStorageBlock k1 = { 0 };
-KeyStorageBlock k2 = { 0 };
-KeyStorageBlock k3 = { 0 };
+KeyStorageBlock primaryScenarioBlock0 = { 0 };
+KeyStorageBlock primaryScenarioBlock1 = { 0 };
+KeyStorageBlock DataCD0 = { 0 };
+KeyStorageBlock DataCD1 = { 0 };
 void
 loadIntoKeystorage(const std::filesystem::path& path, KeyStorageBlock& k0, KeyStorageBlock& k1) noexcept {
     std::ifstream targetFile(path);
@@ -149,8 +167,8 @@ promptUser() {
     auto transformedRegistrationName = transform(registrationName);
     auto registrationNameCoefficient = transformRegistrationName(serialNumber, transformedRegistrationName);
     std::cout << "Registration Name Coefficient: " << std::dec << registrationNameCoefficient << std::endl;
-    auto coefficient2 = computeCoefficient2(serialNumber, registrationNameCoefficient);
-    std::cout << "Coefficient 2: " << std::dec << coefficient2 << std::endl;
+    auto theKey = computeCoefficient2(serialNumber, registrationNameCoefficient);
+    std::cout << "Coefficient 2: " << std::dec << theKey << std::endl;
     std::cout << "Enter Scenario Name: ";
     std::getline(std::cin, scenarioName);
     std::getline(std::cin, scenarioName);
@@ -160,6 +178,58 @@ promptUser() {
     std::filesystem::path realmzDir(realmzRoot);
     auto scenarioLocation = realmzDir / "Scenarios" / scenarioName;
     std::cout << "Target scenario location: " << scenarioLocation << std::endl;
+    // load the primary file as needed
+    auto primaryData = scenarioLocation / scenarioName;
+    std::ifstream pdata(primaryData);
+    if (!pdata.is_open()) {
+        std::cerr << "Could not open scenario file!" << std::endl;
+        exit(1);
+    }
+    KeyStorageBlock dummy = { 0 };
+    // jump past the initial twenty bytes
+    pdata.read(dummy.data(), 0x14);
+    // now pull the primary and secondary data components in
+    pdata.read(primaryScenarioBlock0.data(), 0x14);
+    pdata.read(primaryScenarioBlock1.data(), 0x14);
+    pdata.close();
+    std::ifstream datacd(scenarioLocation / "Data CS");
+    if (!datacd.is_open()) {
+        std::cerr << "Could not open Data CS file!" << std::endl;
+        exit(1);
+    }
+    // once again jump past the initial 20 bytes
+    datacd.read(dummy.data(), 0x14);
+    datacd.read(DataCD0.data(), 0x14);
+    datacd.read(DataCD1.data(), 0x14);
+    datacd.close();
+    // now that we've done that, we need to munge on the data a bit
+    for (int i = 0; i < 0x14; ++i) {
+        primaryScenarioBlock1[i] = primaryScenarioBlock1[i] - DataCD0[i];
+        primaryScenarioBlock0[i] = primaryScenarioBlock0[i] - primaryScenarioBlock1[i];
+    }
+    for (int i = 0; i < 0x14; ++i) {
+        primaryScenarioBlock0[i] = TranslateUintToProperCharacter2(primaryScenarioBlock0[i]);
+        primaryScenarioBlock1[i] = TranslateUintToProperCharacter2(primaryScenarioBlock1[i]);
+    }
+    for (int i = 0; ; ++i) {
+        auto goof = strlen_goofy(primaryScenarioBlock0.begin(), primaryScenarioBlock0.end());
+        std::cout << "Goofy value: " << goof << std::endl;
+        if (goof <= i) {
+            break;
+        }
+        theKey += static_cast<int16_t>(primaryScenarioBlock0[i] * 0x699);
+        std::cout << "\ttheKey: " << theKey << std::endl;
+    }
+
+    for (int i = 0; ; ++i) {
+        auto goof = strlen_goofy(primaryScenarioBlock1.begin(), primaryScenarioBlock1.end());
+        std::cout << "Goofy value2: " << goof << std::endl;
+        if (goof <= i) {
+            break;
+        }
+        theKey -= static_cast<int16_t>(primaryScenarioBlock1[i] * 0x1a7);
+        std::cout << "\ttheKey: " << theKey << std::endl;
+    }
 }
 int main() {
     promptUser();
