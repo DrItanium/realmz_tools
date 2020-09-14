@@ -1,4 +1,6 @@
 //
+// Generate keys for all of fantasoft shipped scenarios and potentially custom scenarios later on, a different key setup is used for those
+// Pulled the logic from the realmz executable itself using GHIDRA
 // Created by jwscoggins on 9/13/20.
 //
 #include <cstdint>
@@ -73,6 +75,33 @@ constexpr uint8_t translationTable[] = {
         0xF4, 0xF5, 0xF6, 0xF7,
         0xF8, 0xF9, 0xFA, 0xFB,
         0xFC, 0xFD, 0xFE, 0xFF };
+/**
+ * @brief The name of the adventure menu items is important starting at City of Bywater
+ */
+const std::string MenuEntries[] {
+    "Begin New Adventure",
+    "",
+    "End This Adventure",
+    "",
+    "Install Divinity Scenario",
+    "Uninstall Divinity Scenario",
+    "New Scenario",
+    "Tutorial",
+    "",
+    "City of Bywater",
+    "Prelude to Pestilence",
+    "Assault on Giant Mountain",
+    "Destroy the Necronomicon",
+    "Castle in the Clouds",
+    "Grilochs Revenge",
+    "White Dragon",
+    "Mithril Vault",
+    "Twin Sands of Time",
+    "Trouble in the Sword Lands",
+    "War in the Sword Lands",
+    "Dagger of Silences",
+    "Half Truth",
+};
 constexpr uint32_t TranslateUintToProperCharacter2(uint32_t param_1) noexcept {
     if (param_1 == 0xffffffff) {
         return 0xffffffff;
