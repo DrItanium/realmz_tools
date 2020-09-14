@@ -127,17 +127,9 @@ KeyStorageBlock primaryScenarioBlock0 = { 0 };
 KeyStorageBlock primaryScenarioBlock1 = { 0 };
 KeyStorageBlock DataCD0 = { 0 };
 KeyStorageBlock DataCD1 = { 0 };
-void
-loadIntoKeystorage(const std::filesystem::path& path, KeyStorageBlock& k0, KeyStorageBlock& k1) noexcept {
-    std::ifstream targetFile(path);
-    if (targetFile.bad()) {
-        throw "Could not open " + path.string();
-    } else {
-        targetFile.seekg(0x14); // skip ahead 0x14 bytes
-        targetFile.read(k0.data(), 0x14);
-        targetFile.read(k1.data(), 0x14);
-    }
-}
+uint32_t licenseDenominator = 0;
+uint32_t licenseConstant = 0;
+
 int32_t transformRegistrationName(int32_t serialNumber, const std::string& registrationName) {
     auto count = serialNumber;
     for (int index = 1; ;++index) {
@@ -164,9 +156,22 @@ constexpr int32_t computeCoefficient2(int32_t serialNumber, int32_t coefficient1
     auto p4 = p0 * 0x1c8;
     return ((p1 % p2) * 0x200) + (p3 % p4) + 999;
 }
+constexpr uint32_t swapBytes(uint32_t value) noexcept {
+    if (value == 0 || value == 0xffff'ffff) {
+        return value;
+    } else {
+        auto lowest = (value & 0xFF) << 24;
+        auto lower = (value & 0xFF00) << 8;
+        auto higher = (value & 0xFF0000) >> 8;
+        auto highest = (value & 0xFF000000) >> 24;
+        return lowest | lower | higher | highest;
+    }
+}
+static_assert(swapBytes(0x1000'0000) == 0x10);
+static_assert(swapBytes(0x0011'0011) == 0x11001100);
 int
 main() {
-    int32_t serialNumber = 0;
+    int32_t serialNumber = 0, menuConstant = 0;
     std::string registrationName, scenarioName, realmzRoot;
     std::cout << "Enter Serial Number: ";
     std::cin >> serialNumber;
@@ -178,10 +183,11 @@ main() {
     std::cout << "Enter path to Realmz directory: ";
     std::getline(std::cin, realmzRoot);
     std::filesystem::path realmzDir(realmzRoot);
+    std::cout << "Enter menu constant: ";
+    std::cin >> menuConstant;
+
 
     auto scenarioLocation = realmzDir / "Scenarios" / scenarioName;
-    auto registrationNameCoefficient = transformRegistrationName(serialNumber, transform(registrationName));
-    auto theKey = computeCoefficient2(serialNumber, registrationNameCoefficient);
     // load the primary file as needed
     auto primaryData = scenarioLocation / scenarioName;
     std::ifstream pdata(primaryData);
@@ -189,8 +195,15 @@ main() {
         std::cerr << "Could not open scenario file!" << std::endl;
         exit(1);
     }
-    // jump past the initial twenty bytes
-    pdata.seekg(20);
+    // load components as needed to generate the parts the needed for key generation
+    pdata.read(reinterpret_cast<char*>(&licenseDenominator), 4);
+    pdata.read(reinterpret_cast<char*>(&licenseConstant), 4);
+    licenseDenominator = swapBytes(licenseDenominator);
+    licenseConstant = swapBytes(licenseConstant);
+    std::cout << std::endl << "License Denominator: " << licenseDenominator << std::endl;
+    std::cout << "License Constant: " << licenseConstant << std::endl;
+    // skip the next 12 bytes
+    pdata.seekg(12);
     // now pull the primary and secondary data components in
     pdata.read(primaryScenarioBlock0.data(), 0x14);
     pdata.read(primaryScenarioBlock1.data(), 0x14);
@@ -205,6 +218,7 @@ main() {
     datacd.read(DataCD0.data(), 0x14);
     datacd.read(DataCD1.data(), 0x14);
     datacd.close();
+    // this is the style one key
     // now that we've done that, we need to munge on the data a bit
     for (int i = 0; i < 0x14; ++i) {
         primaryScenarioBlock1[i] = primaryScenarioBlock1[i] - DataCD0[i];
@@ -214,6 +228,9 @@ main() {
         primaryScenarioBlock0[i] = TranslateUintToProperCharacter2(primaryScenarioBlock0[i]);
         primaryScenarioBlock1[i] = TranslateUintToProperCharacter2(primaryScenarioBlock1[i]);
     }
+    auto transformedRegistrationName = transform(registrationName);
+    auto registrationNameCoefficient = transformRegistrationName(serialNumber, transformedRegistrationName);
+    auto theKey = computeCoefficient2(serialNumber, registrationNameCoefficient);
     for (int i = 0; ; ++i) {
         auto goof = strlen_goofy(primaryScenarioBlock0.begin(), primaryScenarioBlock0.end());
         if (goof <= static_cast<unsigned int>(i)) {
@@ -237,6 +254,23 @@ main() {
         }
         theKey += transformedScenarioName[i] * 0x1b669;
     }
-    std::cout << "Registration Number Style 1 is: " << theKey << std::endl;
+    auto computedRegistrationNumber = serialNumber / ((menuConstant - 5) * 0x29a);
+    auto p0 = computedRegistrationNumber + 0x200;
+    auto p1 = registrationNameCoefficient * 0x80;
+    auto p2 = p0 % p1;
+    auto p3 = p2 * 0x100;
+    auto p4 = (registrationNameCoefficient + 0x400);
+    auto p5 = computedRegistrationNumber * 0x200;
+    auto p6 = p4 % p5;
+    auto p7 = p3 + p6 + 0x400;
+    auto p8 = p7 * licenseConstant;
+    auto p9 = p8 + -0x200;
+    auto style2Key = p9/ licenseDenominator;
+
+    std::cout << std::endl
+              << std::endl
+            << "Registration Number Style 1 is: " << theKey << std::endl
+            << "Registration Number Style 2 is: " << style2Key << std::endl;
+
     return 0;
 }
