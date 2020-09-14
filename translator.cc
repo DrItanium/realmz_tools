@@ -10,6 +10,7 @@
 #include <array>
 #include <fstream>
 #include <string>
+#include <vector>
 constexpr uint8_t translationTable[] = {
         0x0, 0x1, 0x2, 0x3,
         0x4, 0x5, 0x6, 0x7,
@@ -78,7 +79,7 @@ constexpr uint8_t translationTable[] = {
 /**
  * @brief The name of the adventure menu items is important starting at City of Bywater
  */
-const std::string MenuEntries[] {
+ std::vector<std::string> MenuEntries {
     "Begin New Adventure",
     "",
     "End This Adventure",
@@ -159,6 +160,53 @@ KeyStorageBlock DataCD1 = { 0 };
 uint32_t licenseDenominator = 0;
 uint32_t licenseConstant = 0;
 
+constexpr uint32_t swapBytes(uint32_t value) noexcept {
+    if (value == 0 || value == 0xffff'ffff) {
+        return value;
+    } else {
+        auto lowest = (value & 0xFF) << 24;
+        auto lower = (value & 0xFF00) << 8;
+        auto higher = (value & 0xFF0000) >> 8;
+        auto highest = (value & 0xFF000000) >> 24;
+        return lowest | lower | higher | highest;
+    }
+}
+static_assert(swapBytes(0x1000'0000) == 0x10);
+static_assert(swapBytes(0x0011'0011) == 0x11001100);
+
+void populateCommonConstants(const std::filesystem::path& realmzRoot, const std::string& scenarioName) {
+
+    auto scenarioLocation = realmzRoot / "Scenarios" / scenarioName;
+    auto primaryData = scenarioLocation / scenarioName;
+    std::ifstream pdata(primaryData);
+    if (!pdata.is_open()) {
+        std::cerr << "Could not open scenario file!" << std::endl;
+        exit(1);
+    }
+    // load components as needed to generate the parts the needed for key generation
+    pdata.read(reinterpret_cast<char*>(&licenseDenominator), 4);
+    pdata.read(reinterpret_cast<char*>(&licenseConstant), 4);
+    /// @todo disable this swap code if we are on a big endian system
+    licenseDenominator = swapBytes(licenseDenominator);
+    licenseConstant = swapBytes(licenseConstant);
+    // skip the next 12 bytes
+    pdata.seekg(12);
+    // now pull the primary and secondary data components in
+    pdata.read(primaryScenarioBlock0.data(), 0x14);
+    pdata.read(primaryScenarioBlock1.data(), 0x14);
+    pdata.close();
+    std::ifstream datacd(scenarioLocation / "Data CS");
+    if (!datacd.is_open()) {
+        std::cerr << "Could not open Data CS file!" << std::endl;
+        exit(1);
+    }
+    // once again jump past the initial 20 bytes
+    datacd.seekg(20);
+    datacd.read(DataCD0.data(), 0x14);
+    datacd.read(DataCD1.data(), 0x14);
+    datacd.close();
+}
+
 int32_t transformRegistrationName(int32_t serialNumber, const std::string& registrationName) {
     auto count = serialNumber;
     for (int index = 1; ;++index) {
@@ -185,70 +233,32 @@ constexpr int32_t computeCoefficient2(int32_t serialNumber, int32_t coefficient1
     auto p4 = p0 * 0x1c8;
     return ((p1 % p2) * 0x200) + (p3 % p4) + 999;
 }
-constexpr uint32_t swapBytes(uint32_t value) noexcept {
-    if (value == 0 || value == 0xffff'ffff) {
-        return value;
-    } else {
-        auto lowest = (value & 0xFF) << 24;
-        auto lower = (value & 0xFF00) << 8;
-        auto higher = (value & 0xFF0000) >> 8;
-        auto highest = (value & 0xFF000000) >> 24;
-        return lowest | lower | higher | highest;
-    }
+void generateFantasoftScenarioKeys(std::ostream& out, const std::string& registrationName, int32_t serialNumber, int32_t menuConstant, const std::filesystem::path& realmzRoot) {
+    // get the name associated with the menu constant
+    populateCommonConstants(realmzRoot, MenuEntries[menuConstant]);
+    auto transformedRegistrationName = transform(registrationName);
+    auto registrationNameCoefficient = transformRegistrationName(serialNumber, transformedRegistrationName);
+    auto computedRegistrationNumber = serialNumber / ((menuConstant - 5) * 0x29a);
+    // these are broken up into many lines to prevent confusion
+    auto p0 = computedRegistrationNumber + 0x200;
+    auto p1 = registrationNameCoefficient * 0x80;
+    auto p2 = p0 % p1;
+    auto p3 = p2 * 0x100;
+    auto p4 = (registrationNameCoefficient + 0x400);
+    auto p5 = computedRegistrationNumber * 0x200;
+    auto p6 = p4 % p5;
+    auto p7 = p3 + p6 + 0x400;
+    auto p8 = p7 * licenseConstant;
+    auto p9 = p8 + -0x200;
+    auto p10 = p9/ licenseDenominator;
+    auto style2Key = p10 + 0x12;
+    out << MenuEntries[menuConstant] << ": " << style2Key << std::endl;
 }
-static_assert(swapBytes(0x1000'0000) == 0x10);
-static_assert(swapBytes(0x0011'0011) == 0x11001100);
-int
-main() {
-    int32_t serialNumber = 0, menuConstant = 0;
-    std::string registrationName, scenarioName, realmzRoot;
-    std::cout << "Enter Serial Number: ";
-    std::cin >> serialNumber;
-    std::cout << "Enter Registration Name: ";
-    std::cin >> registrationName;
-    std::cout << "Enter Scenario Name: ";
-    std::getline(std::cin, scenarioName);
-    std::getline(std::cin, scenarioName);
-    std::cout << "Enter path to Realmz directory: ";
-    std::getline(std::cin, realmzRoot);
-    std::filesystem::path realmzDir(realmzRoot);
-    std::cout << "Enter menu constant: ";
-    std::cin >> menuConstant;
-
-
-    auto scenarioLocation = realmzDir / "Scenarios" / scenarioName;
-    // load the primary file as needed
-    auto primaryData = scenarioLocation / scenarioName;
-    std::ifstream pdata(primaryData);
-    if (!pdata.is_open()) {
-        std::cerr << "Could not open scenario file!" << std::endl;
-        exit(1);
+void generateCustomScenarioKeys(std::ostream& out, const std::string& registrationName, int32_t serialNumber, const std::string& scenarioName, const std::filesystem::path& realmzRoot) {
+    if (scenarioName.empty()) {
+        return;
     }
-    // load components as needed to generate the parts the needed for key generation
-    pdata.read(reinterpret_cast<char*>(&licenseDenominator), 4);
-    pdata.read(reinterpret_cast<char*>(&licenseConstant), 4);
-    licenseDenominator = swapBytes(licenseDenominator);
-    licenseConstant = swapBytes(licenseConstant);
-    std::cout << std::endl << "License Denominator: " << licenseDenominator << std::endl;
-    std::cout << "License Constant: " << licenseConstant << std::endl;
-    // skip the next 12 bytes
-    pdata.seekg(12);
-    // now pull the primary and secondary data components in
-    pdata.read(primaryScenarioBlock0.data(), 0x14);
-    pdata.read(primaryScenarioBlock1.data(), 0x14);
-    pdata.close();
-    std::ifstream datacd(scenarioLocation / "Data CS");
-    if (!datacd.is_open()) {
-        std::cerr << "Could not open Data CS file!" << std::endl;
-        exit(1);
-    }
-    // once again jump past the initial 20 bytes
-    datacd.seekg(20);
-    datacd.read(DataCD0.data(), 0x14);
-    datacd.read(DataCD1.data(), 0x14);
-    datacd.close();
-    // this is the style one key
-    // now that we've done that, we need to munge on the data a bit
+    populateCommonConstants(realmzRoot, scenarioName);
     for (int i = 0; i < 0x14; ++i) {
         primaryScenarioBlock1[i] = primaryScenarioBlock1[i] - DataCD0[i];
         primaryScenarioBlock0[i] = primaryScenarioBlock0[i] - primaryScenarioBlock1[i];
@@ -283,25 +293,37 @@ main() {
         }
         theKey += transformedScenarioName[i] * 0x1b669;
     }
-    auto computedRegistrationNumber = serialNumber / ((menuConstant - 5) * 0x29a);
-    auto p0 = computedRegistrationNumber + 0x200;
-    auto p1 = registrationNameCoefficient * 0x80;
-    auto p2 = p0 % p1;
-    auto p3 = p2 * 0x100;
-    auto p4 = (registrationNameCoefficient + 0x400);
-    auto p5 = computedRegistrationNumber * 0x200;
-    auto p6 = p4 % p5;
-    auto p7 = p3 + p6 + 0x400;
-    auto p8 = p7 * licenseConstant;
-    auto p9 = p8 + -0x200;
-    auto p10 = p9/ licenseDenominator;
-    auto style2Key = p10 + 0x12;
+    std::cout << scenarioName << ": " << theKey << std::endl;
+}
+void generateKeys(std::ostream& out, const std::string& registrationName, int32_t serialNumber, int32_t menuConstant, const std::filesystem::path& realmzRoot) {
+   if (menuConstant <= 10)  {
+       // don't do anything when the menu constant is less than equal to 10
+       // the City of Bywater scenario does not have a license check in it
+       return;
+   } else if (menuConstant > 0x17) {
+       generateCustomScenarioKeys(out, registrationName, serialNumber, "", realmzRoot);
+       // we need to do a different method of key generation, what I used to call style 1
+   } else {
+        generateFantasoftScenarioKeys(out, registrationName, serialNumber, menuConstant, realmzRoot);
+   }
+}
+int
+main() {
+    int32_t serialNumber = 0;
+    std::string registrationName, realmzRoot;
+    std::cout << "Enter Serial Number: ";
+    std::cin >> serialNumber;
+    std::cout << "Enter Registration Name: ";
+    std::cin >> registrationName;
+    std::cout << "Enter path to Realmz directory: ";
+    // have to read twice
+    std::getline(std::cin, realmzRoot);
+    std::getline(std::cin, realmzRoot);
+    std::filesystem::path realmzDir(realmzRoot);
+    for (int i = 0; i < MenuEntries.size(); ++i) {
+        generateKeys(std::cout, registrationName, serialNumber, i, realmzDir);
+    }
 
-
-    std::cout << std::endl
-              << std::endl
-            << "Registration Number Style 1 is: " << theKey << std::endl
-            << "Registration Number Style 2 is: " << style2Key << std::endl;
 
     return 0;
 }
