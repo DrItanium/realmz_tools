@@ -120,6 +120,24 @@ loadIntoKeystorage(const std::filesystem::path& path, KeyStorageBlock& k0, KeySt
         targetFile.read(k1.data(), 0x14);
     }
 }
+int32_t transformRegistrationName(int32_t serialNumber, const std::string& registrationName) {
+    auto count = serialNumber;
+    for (int index = 1; ;++index) {
+        auto c = registrationName[index];
+        auto goofyLen = strlen_goofy(registrationName);
+        if (goofyLen <= index) {
+            break;
+        }
+        if (c != 0) {
+            count += ((static_cast<int>(c) * index) - ((index + 0x5177b7) * static_cast<int>(c)));
+        }
+    }
+    return count;
+}
+
+constexpr int32_t computeCoefficient2(int32_t serialNumber, int32_t coefficient1) noexcept {
+    return ((((serialNumber / 0x14d) + 0x1c2) % (coefficient1 * 0x60)) * 0x200) + ((coefficient1 + 999) % ((serialNumber / 0x14d) * 0x1c8)) + 999;
+}
 void
 promptUser() {
     int32_t serialNumber = 0;
@@ -129,6 +147,10 @@ promptUser() {
     std::cout << "Enter Registration Name: ";
     std::cin >> registrationName;
     auto transformedRegistrationName = transform(registrationName);
+    auto registrationNameCoefficient = transformRegistrationName(serialNumber, transformedRegistrationName);
+    std::cout << "Registration Name Coefficient: " << std::dec << registrationNameCoefficient << std::endl;
+    auto coefficient2 = computeCoefficient2(serialNumber, registrationNameCoefficient);
+    std::cout << "Coefficient 2: " << std::dec << coefficient2 << std::endl;
     std::cout << "Enter Scenario Name: ";
     std::getline(std::cin, scenarioName);
     std::getline(std::cin, scenarioName);
