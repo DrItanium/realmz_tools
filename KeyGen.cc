@@ -319,7 +319,15 @@ void generateKeys(std::ostream& out, const std::string& registrationName, int32_
 
 constexpr int32_t
 generateRegistrationCode(int32_t serialNumber) noexcept {
-
+    auto p0 = serialNumber / 6;
+    auto p1 = serialNumber >> 31;
+    auto p2 = p0 + p1;
+    auto p3 = p2 >> 2;
+    auto p4 = p3 - p1;
+    auto p5 = p4 + 48;
+    auto p6 = p5* 14;
+    auto p7 = p6 - 28;
+    return p7;
 }
 
 int
@@ -341,6 +349,7 @@ main() {
     std::cout << std::endl;
     std::cout << std::endl;
     std::cout << "Serial Number: " << std::dec << serialNumber << std::endl;
+    std::cout << "Registration Number: " << std::dec << generateRegistrationCode(serialNumber) << std::endl;
     std::cout << "Reset Serial Number Code: 410" << std::endl;
     std::cout << "Registration Name: " << registrationName << std::endl;
     for (int i = 0; i < MenuEntries.size(); ++i) {
