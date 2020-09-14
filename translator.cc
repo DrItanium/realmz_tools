@@ -4,6 +4,10 @@
 #include <cstdint>
 #include <iostream>
 #include <sstream>
+#include <filesystem>
+#include <array>
+#include <fstream>
+#include <string>
 constexpr uint8_t translationTable[] = {
         0x0, 0x1, 0x2, 0x3,
         0x4, 0x5, 0x6, 0x7,
@@ -100,35 +104,42 @@ transform(const std::string& input) noexcept {
     auto result = ss.str();
     return result;
 }
+using KeyStorageBlock = std::array<char, 0x14>;
+KeyStorageBlock k0 = { 0 };
+KeyStorageBlock k1 = { 0 };
+KeyStorageBlock k2 = { 0 };
+KeyStorageBlock k3 = { 0 };
+void
+loadIntoKeystorage(const std::filesystem::path& path, KeyStorageBlock& k0, KeyStorageBlock& k1) noexcept {
+    std::ifstream targetFile(path);
+    if (targetFile.bad()) {
+        throw "Could not open " + path.string();
+    } else {
+        targetFile.seekg(0x14); // skip ahead 0x14 bytes
+        targetFile.read(k0.data(), 0x14);
+        targetFile.read(k1.data(), 0x14);
+    }
+}
 void
 promptUser() {
     int32_t serialNumber = 0;
-    std::string registrationName, scenarioName;
+    std::string registrationName, scenarioName, realmzRoot;
     std::cout << "Enter Serial Number: ";
     std::cin >> serialNumber;
     std::cout << "Enter Registration Name: ";
     std::cin >> registrationName;
     auto transformedRegistrationName = transform(registrationName);
     std::cout << "Enter Scenario Name: ";
-    std::cin >> scenarioName;
+    std::getline(std::cin, scenarioName);
+    std::getline(std::cin, scenarioName);
     auto transformedScenarioName = transform(scenarioName);
-    while (true) {
-        auto value = std::cin.get();
-        if (std::cin.eof() || std::cin.bad()) {
-            break;
-        } else {
-            std::cout << "0x" << std::hex << static_cast<int>(TranslateUintToProperCharacter2(value)) << " ";
-        }
-    }
-    std::cout << std::endl;
-}
-void
-testStrlenGoofy(const std::string& str) {
-    std::cout << "Length of \"" << str << "\" = " << strlen_goofy(str) << std::endl;
-    std::cout << "\t.length is: " << str.length() << std::endl;
+    std::cout << "Enter path to Realmz directory: ";
+    std::getline(std::cin, realmzRoot);
+    std::filesystem::path realmzDir(realmzRoot);
+    auto scenarioLocation = realmzDir / "Scenarios" / scenarioName;
+    std::cout << "Target scenario location: " << scenarioLocation << std::endl;
 }
 int main() {
-    testStrlenGoofy("donuts are tasty");
-    testStrlenGoofy("MEIERS");
+    promptUser();
     return 0;
 }
