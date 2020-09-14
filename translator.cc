@@ -76,7 +76,21 @@ constexpr uint32_t TranslateUintToProperCharacter2(uint32_t param_1) noexcept {
         return translationTable[param_1 & 0xff];
     }
 }
-
+int
+strlen_goofy(const std::string& input) {
+    auto oddCounter = -1;
+    char currentCharacter = 0;
+    const char* ptr = input.c_str();
+    do {
+        if (oddCounter == 0) {
+            break;
+        }
+        oddCounter += -1;
+        currentCharacter = *ptr;
+        ++ptr;
+    } while(currentCharacter != 0);
+    return -2 - oddCounter;
+}
 std::string
 transform(const std::string& input) noexcept {
     std::stringstream ss;
@@ -86,7 +100,8 @@ transform(const std::string& input) noexcept {
     auto result = ss.str();
     return result;
 }
-int main() {
+void
+promptUser() {
     int32_t serialNumber = 0;
     std::string registrationName, scenarioName;
     std::cout << "Enter Serial Number: ";
@@ -106,5 +121,14 @@ int main() {
         }
     }
     std::cout << std::endl;
+}
+void
+testStrlenGoofy(const std::string& str) {
+    std::cout << "Length of \"" << str << "\" = " << strlen_goofy(str) << std::endl;
+    std::cout << "\t.length is: " << str.length() << std::endl;
+}
+int main() {
+    testStrlenGoofy("donuts are tasty");
+    testStrlenGoofy("MEIERS");
     return 0;
 }
