@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <optional>
 #include <array>
+#include "BinaryManipulation.h"
 
 enum class CasteKind {
     Fighter = 0,
@@ -360,9 +361,6 @@ private:
     int _maxAttacksPerRound = 0;
 };
 
-constexpr int16_t make(uint8_t first, uint8_t second) noexcept {
-    return (static_cast<int16_t>(first) << 8) | (static_cast<int16_t>(second));
-}
 
 std::ostream& operator<<(std::ostream& os, const Caste& caste) noexcept {
     caste.print(os);
@@ -433,7 +431,6 @@ readOne(std::istream& input, std::ostream& output) noexcept {
     return Caste(buf);
 }
 int main() {
-    bool invoke = true;
     int index = 0;
     while (true) {
         if (auto result = readOne(std::cin, std::cout); result) {
