@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <array>
 #include "RaceDataBuffer.h"
+#include "SpecialAbilities.h"
 namespace realmz {
     /**
      * @brief Realmz calls the attack versus other races "race hatred"...odd
@@ -42,6 +43,7 @@ namespace realmz {
         const RaceHatred& getRaceHatredStats() const noexcept { return _hatred; }
     private:
         RaceHatred _hatred;
+        SpecialAbilities _specialAbilities;
     };
 }
 

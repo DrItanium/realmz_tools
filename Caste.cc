@@ -4,6 +4,7 @@
 
 #include "Caste.h"
 #include "SpecialAbilities.h"
+#include "DRVAdjustments.h"
 
 namespace realmz {
     void
@@ -117,20 +118,6 @@ namespace realmz {
             _luck(buf[64], buf[65], buf[41]) {
 
     }
-    DRVAdjustments::DRVAdjustments(const CasteDataBuffer &buf) : _charm(buf[28]), _heat(buf[29]), _cold(buf[30]), _electric(buf[31]), _chemical(buf[32]), _mental(buf[33]), _magical(buf[34]) {}
-    void
-    DRVAdjustments::print(std::ostream &os) const noexcept {
-#define X(field) \
-            os << #field << ": " << _ ## field << std::endl
-        X(charm);
-        X(heat);
-        X(cold);
-        X(electric);
-        X(chemical);
-        X(mental);
-        X(magical);
-#undef X
-    }
     void
     Attribute::print(std::ostream &os) const noexcept {
         os << "(" << _min << ", " << _max << ", " << _adjustment << ")";
@@ -225,10 +212,6 @@ operator<<(std::ostream &os, realmz::BonusAttacksStyle group) noexcept {
 }
 std::ostream &operator<<(std::ostream &os, const realmz::SpellCastingAbilities &sci) noexcept {
     sci.print(os);
-    return os;
-}
-std::ostream &operator<<(std::ostream &os, const realmz::DRVAdjustments &drv) noexcept {
-    drv.print(os);
     return os;
 }
 std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept {

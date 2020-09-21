@@ -13,6 +13,7 @@
 #include "CasteDataBuffer.h"
 #include "CasteConditions.h"
 #include "SpecialAbilities.h"
+#include "DRVAdjustments.h"
 
 namespace realmz {
 
@@ -54,19 +55,6 @@ namespace realmz {
         int _max = 25;
         int _adjustment = 0;
     };
-
-    struct DRVAdjustments {
-        int _charm;
-        int _heat;
-        int _cold;
-        int _electric;
-        int _chemical;
-        int _mental;
-        int _magical;
-        DRVAdjustments(const CasteDataBuffer &buf);
-        void print(std::ostream &os) const noexcept;
-    };
-
 
     struct Attributes {
     public:
@@ -205,7 +193,6 @@ std::ostream& operator<<(std::ostream& os, const realmz::Attribute& ca) noexcept
 std::ostream& operator<<(std::ostream& os, realmz::CasteKind ck) noexcept;
 std::ostream& operator<<(std::ostream& os, realmz::BonusAttacksStyle group) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::SpellCastingAbilities& sci) noexcept;
-std::ostream &operator<<(std::ostream &os, const realmz::DRVAdjustments &drv) noexcept;
 std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept;
 std::ostream &operator<<(std::ostream &os, const realmz::Attributes &attrib) noexcept;
 std::ostream & operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept;

@@ -7,9 +7,13 @@ add_executable(dumpcaste CasteDecomposer.cpp BinaryManipulation.h Caste.cc Caste
         Ability.cc CasteConditions.cc CasteConditions.h CasteDataBuffer.h
         SpecialAbilities.cc
         SpecialAbilities.h
+        DRVAdjustments.cc
+        DRVAdjustments.h
         )
 add_executable(dumprace RaceDecomposer.cc RaceDecomposer.cc RaceData.cc RaceData.h RaceDataBuffer.h
         SpecialAbilities.cc
         SpecialAbilities.h
+        DRVAdjustments.cc
+        DRVAdjustments.h
         )
 add_executable(realmz_keygen KeyGen.cc)
