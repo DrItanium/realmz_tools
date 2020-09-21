@@ -208,8 +208,8 @@ namespace realmz {
         int _maxAttacksPerRound = 0;
 
         VictoryPoints _victoryPointsAtLevel;
-        int _initialItemsCount = 0;
-        std::array<int, 20> _initialItems = { 0 };
+        int _unknownField0 = 0;
+        std::vector<int> _initialItems;
         int64_t _allowedBits = 0; // originally two 32-bit numbers with bits [0,57] being used
         int _castePortraitIndex = 0;
     };

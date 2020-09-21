@@ -56,8 +56,17 @@ namespace realmz {
             _maxStaminaBonus(buffer[129]),
             _bonusAttacks(static_cast<BonusAttacksStyle>(buffer[130])),
             _maxAttacksPerRound(buffer[131]),
-            _victoryPointsAtLevel(buffer)
-    {}
+            _victoryPointsAtLevel(buffer),
+            _unknownField0(buffer[384/2]) // used to be initialItemsLength
+    {
+       constexpr auto itemsStartPos = 386/2;
+       constexpr auto itemsEndPos = itemsStartPos + 20;
+       for (int i = itemsStartPos; i < itemsEndPos; ++i) {
+           if (auto target = buffer[i]; target != 0) {
+               _initialItems.emplace_back(target);
+           }
+       }
+    }
 
     void
     Caste::print(std::ostream &os) const noexcept {
@@ -78,6 +87,14 @@ namespace realmz {
         os << "Bonus Attacks: " << _bonusAttacks << std::endl;
         os << "Max Attacks per Round: " << _maxAttacksPerRound << std::endl;
         os << _victoryPointsAtLevel << std::endl;
+        os << "Formerly Initial Items Length: " << std::dec << _unknownField0 << std::endl;
+        os << "Initial Items {" << std::endl;
+        int pos = 1;
+        for (const auto itemIndex : _initialItems) {
+            os << "\t" << std::dec << pos << ": " << std::dec << itemIndex << std::endl;
+            ++pos;
+        }
+        os << "}" << std::endl;
     }
     SpellCastingAbilities::SpellCastingAbilities(const CasteDataBuffer &buf) :
             _sorcerer(buf[42], buf[43], buf[44]),
