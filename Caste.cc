@@ -132,7 +132,7 @@ namespace realmz {
     void
     VictoryPoints::print(std::ostream &os) const noexcept {
         os << "Victory Points @ Level {" << std::endl;
-        int index = 0;
+        int index = 1;
         for (const auto& value : _contents) {
             os << "\t" << std::dec << index << ": " <<  std::dec << value << std::endl;
             ++index;
@@ -147,7 +147,7 @@ namespace realmz {
             auto upper = static_cast<int32_t>(buf[i]) & 0xFFFF;
             auto lower = static_cast<int32_t>(buf[i + 1]) & 0xFFFF;
             auto result = lower | ((upper << 16) & 0xFFFF0000);
-            _contents.emplace_back(-result); // this is what realmz is doing according to ghidra
+            _contents.emplace_back(result); // we need to make sure that these are marked as negative when stored in a character
         }
     }
 } // end namespace realmz
