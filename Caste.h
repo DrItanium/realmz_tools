@@ -9,12 +9,10 @@
 #include <optional>
 #include <array>
 #include "Ability.h"
+#include "CasteDataBuffer.h"
+#include "CasteConditions.h"
 
 namespace realmz {
-    /**
-     * @brief When translating from the old format we have to operate on int16_t's
-     */
-    using DataBuffer = std::array<int16_t, 576 / 2>;
 
     /**
      * @brief The kind of caste we are currently looking at
@@ -65,7 +63,7 @@ namespace realmz {
         Ability _forceLock;
         Ability _pickLock;
         Ability _turnUndead;
-        SpecialAbilities(const DataBuffer &buf);
+        SpecialAbilities(const CasteDataBuffer &buf);
         void print(std::ostream& os) const noexcept;
 
     };
@@ -79,7 +77,7 @@ namespace realmz {
         int _chemical;
         int _mental;
         int _magical;
-        DRVAdjustments(const DataBuffer &buf);
+        DRVAdjustments(const CasteDataBuffer &buf);
         void print(std::ostream &os) const noexcept;
     };
 
@@ -92,7 +90,7 @@ namespace realmz {
         Attribute _agility;
         Attribute _vitality;
         Attribute _luck;
-        Attributes(const DataBuffer &buf);
+        Attributes(const CasteDataBuffer &buf);
         void print(std::ostream &out) const noexcept;
     };
 
@@ -114,7 +112,7 @@ namespace realmz {
 
     struct SpellCastingAbilities {
     public:
-        SpellCastingAbilities(const DataBuffer &buf);
+        SpellCastingAbilities(const CasteDataBuffer &buf);
         const SpellClassInfo &getSorcererInfo() const noexcept { return _sorcerer; }
         const SpellClassInfo &getPriestInfo() const noexcept { return _priest; }
         const SpellClassInfo &getEnchanterInfo() const noexcept { return _enchanter; }
@@ -178,13 +176,14 @@ namespace realmz {
 
     class Caste {
     public:
-        Caste(const DataBuffer &buffer);
+        Caste(const CasteDataBuffer &buffer);
         void print(std::ostream &os) const noexcept;
     private:
         SpecialAbilities _initial;
         DRVAdjustments _drvs;
         Attributes _attributes;
         SpellCastingAbilities _spellCasting;
+        CasteConditions _conditions;
         bool _canUseMissileWeapons = false;
         bool _getsMissileBonusDamage = false;
         Ability _stamina;
@@ -192,7 +191,7 @@ namespace realmz {
         Ability _meleeAttack;
         Ability _missileAttack;
         Ability _handToHand;
-        int _creatorCodeId = 0;
+        int _inelegibilityIndex = 0;
         AgeGroup _startingAgeGroup = AgeGroup::None;
         int _movementPoints = 0;
         int _magicResistance = 0;
@@ -200,6 +199,12 @@ namespace realmz {
         int _maxStaminaBonus = 0;
         BonusAttacksStyle _bonusAttacks = BonusAttacksStyle::None;
         int _maxAttacksPerRound = 0;
+
+        std::array<int32_t, 30> _victoryPointsAtLevel = { 0 };
+        int _initialItemsCount = 0;
+        std::array<int, 20> _initialItems = { 0 };
+        int64_t _allowedBits = 0; // originally two 32-bit numbers with bits [0,57] being used
+        int _castePortraitIndex = 0;
     };
 
 } // end namespace realmz

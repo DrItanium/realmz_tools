@@ -5,7 +5,7 @@
 #include "Caste.h"
 
 namespace realmz {
-    SpecialAbilities::SpecialAbilities(const DataBuffer &buf) :
+    SpecialAbilities::SpecialAbilities(const CasteDataBuffer &buf) :
             _sneakAttack(buf[0], buf[14]),
             _majorWound(buf[3], buf[14 + 3]),
             _detectSecret(buf[4], buf[14 + 4]),
@@ -34,11 +34,12 @@ namespace realmz {
     SpellClassInfo::print(std::ostream &out) const noexcept {
         out << "(" << std::boolalpha << _enabled << ", " << std::dec << _startingLevel << ", " << _maxLevelSpells << ")";
     }
-    Caste::Caste(const DataBuffer &buffer) :
+    Caste::Caste(const CasteDataBuffer &buffer) :
             _initial(buffer),
             _drvs(buffer),
             _attributes(buffer),
             _spellCasting(buffer),
+            _conditions(buffer),
             _canUseMissileWeapons(buffer[106]),
             _getsMissileBonusDamage(buffer[107]),
             _stamina(buffer[108], buffer[109]),
@@ -47,7 +48,7 @@ namespace realmz {
             _meleeAttack(buffer[114], buffer[115]),
             _missileAttack(buffer[116], buffer[117]),
             _handToHand(buffer[118], buffer[119]),
-            _creatorCodeId(buffer[124]),
+            _inelegibilityIndex(buffer[124]),
             _startingAgeGroup(static_cast<AgeGroup>(buffer[125])),
             _movementPoints(buffer[126]),
             _magicResistance(buffer[127]),
@@ -58,7 +59,7 @@ namespace realmz {
 
     void
     Caste::print(std::ostream &os) const noexcept {
-        os << _initial << _drvs << _attributes << _spellCasting;
+        os << _initial << _drvs << _attributes << _spellCasting << _conditions;
         os << "Can Use Missile Weapons: " << std::boolalpha << _canUseMissileWeapons << std::endl;
         os << "Gets Missile Bonus Damage: " << std::boolalpha << _getsMissileBonusDamage << std::endl;
         os << "Stamina: " << _stamina << std::endl;
@@ -66,7 +67,7 @@ namespace realmz {
         os << "Melee Attack: " << _meleeAttack << std::endl;
         os << "Missile Attack: " << _missileAttack << std::endl;
         os << "Hand To Hand: " << _handToHand << std::endl;
-        os << "Creator Code Id?: " << _creatorCodeId << std::endl;
+        os << "Inelegibility Index?: " << _inelegibilityIndex << std::endl;
         os << "Starting Age Group: " << _startingAgeGroup << std::endl;
         os << "Movement Point Modification: " << _movementPoints << std::endl;
         os << "Magic Resistance Modification: " << _magicResistance << std::endl;
@@ -75,7 +76,7 @@ namespace realmz {
         os << "Bonus Attacks: " << _bonusAttacks << std::endl;
         os << "Max Attacks per Round: " << _maxAttacksPerRound << std::endl;
     }
-    SpellCastingAbilities::SpellCastingAbilities(const DataBuffer &buf) :
+    SpellCastingAbilities::SpellCastingAbilities(const CasteDataBuffer &buf) :
             _sorcerer(buf[42], buf[43], buf[44]),
             _priest(buf[45], buf[46], buf[47]),
             _enchanter(buf[48], buf[49], buf[50]),
@@ -97,7 +98,7 @@ namespace realmz {
         out << "Vitality: " << _vitality << std::endl;
         out << "Luck: " << _luck << std::endl;
     }
-    Attributes::Attributes(const DataBuffer &buf) :
+    Attributes::Attributes(const CasteDataBuffer &buf) :
             _brawn(buf[54], buf[55], buf[36]),
             _knowledge(buf[56], buf[57], buf[37]),
             _judgment(buf[58], buf[59], buf[38]),
@@ -106,7 +107,7 @@ namespace realmz {
             _luck(buf[64], buf[65], buf[41]) {
 
     }
-    DRVAdjustments::DRVAdjustments(const DataBuffer &buf) : _charm(buf[28]), _heat(buf[29]), _cold(buf[30]), _electric(buf[31]), _chemical(buf[32]), _mental(buf[33]), _magical(buf[34]) {}
+    DRVAdjustments::DRVAdjustments(const CasteDataBuffer &buf) : _charm(buf[28]), _heat(buf[29]), _cold(buf[30]), _electric(buf[31]), _chemical(buf[32]), _mental(buf[33]), _magical(buf[34]) {}
     void
     DRVAdjustments::print(std::ostream &os) const noexcept {
 #define X(field) \
