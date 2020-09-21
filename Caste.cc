@@ -59,13 +59,26 @@ namespace realmz {
             _victoryPointsAtLevel(buffer),
             _unknownField0(buffer[384/2]) // used to be initialItemsLength
     {
-       constexpr auto itemsStartPos = 386/2;
-       constexpr auto itemsEndPos = itemsStartPos + 20;
-       for (int i = itemsStartPos; i < itemsEndPos; ++i) {
-           if (auto target = buffer[i]; target != 0) {
-               _initialItems.emplace_back(target);
-           }
-       }
+        constexpr auto itemsStartPos = 386/2;
+        constexpr auto itemsEndPos = itemsStartPos + 20;
+        for (int i = itemsStartPos; i < itemsEndPos; ++i) {
+            if (auto target = buffer[i]; target != 0) {
+                _initialItems.emplace_back(target);
+            }
+        }
+        // need to pull in a 64-bit number
+        constexpr auto AllowedBitsPos = 436/2;
+        // this was originally two 32-bit numbers so it may be necessary to do two sets of swaps
+        // I will need to migrate this to a non binary quantity in a knowledge base as this is a nightmare to make sure we are
+        // reading it correctly!
+        auto highest = static_cast<int64_t>(buffer[AllowedBitsPos]);
+        auto higher = static_cast<int64_t>(buffer[AllowedBitsPos + 1]);
+        auto lower = static_cast<int64_t>(buffer[AllowedBitsPos + 2]);
+        auto lowest = static_cast<int64_t>(buffer[AllowedBitsPos + 3]);
+        _allowedBits = ((highest << 48) & 0xFFFF'0000'0000'0000) |
+                       ((higher << 32) & 0x0000'FFFF'0000'0000) |
+                       ((lower << 16) & 0x0000'0000'FFFF'0000) |
+                       (lowest & 0x0000'0000'0000'FFFF);
     }
 
     void
@@ -95,6 +108,7 @@ namespace realmz {
             ++pos;
         }
         os << "}" << std::endl;
+        os << "Allowed Bits: " << std::hex << _allowedBits << std::endl;
     }
     SpellCastingAbilities::SpellCastingAbilities(const CasteDataBuffer &buf) :
             _sorcerer(buf[42], buf[43], buf[44]),
@@ -107,7 +121,7 @@ namespace realmz {
         out << "Priest: " << _priest << std::endl;
         out << "Enchanter: " << _enchanter << std::endl;
         out << "Unused: " << _unused << std::endl;
-     }
+    }
     void
     Attributes::print(std::ostream &out) const noexcept
     {
