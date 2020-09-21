@@ -8,6 +8,7 @@
 #include <cstdint>
 #include <optional>
 #include <array>
+#include <vector>
 #include "Ability.h"
 #include "CasteDataBuffer.h"
 #include "CasteConditions.h"
@@ -178,7 +179,7 @@ namespace realmz {
         VictoryPoints(const CasteDataBuffer& buf);
         void print(std::ostream& os) const noexcept;
     private:
-        std::array<std::int32_t, 30> _contents = { 0 };
+        std::vector<std::int32_t> _contents;
     };
     class Caste {
     public:

@@ -132,19 +132,20 @@ namespace realmz {
     void
     VictoryPoints::print(std::ostream &os) const noexcept {
         os << "Victory Points @ Level {" << std::endl;
+        int index = 0;
         for (const auto& value : _contents) {
-            os << "\t" << std::dec << value << std::endl;
+            os << "\t" << std::dec << index << ": " <<  std::dec << value << std::endl;
         }
         os << "}" << std::endl;
     }
     VictoryPoints::VictoryPoints(const CasteDataBuffer &buf) {
         constexpr auto startPosition = 264 / 2;
         constexpr auto endPosition = startPosition + (30 * 2); // these are int32_t's
-        for (int i = 264/2, j = 0; i < endPosition; i+=2, ++j) {
+        for (int i = startPosition; i < endPosition; i+=2) {
             // eliminate sign extension by making it unsigned
-            uint32_t lower = buf[i];
-            uint32_t upper = buf[i + 1];
-            _contents[i] = lower | (upper << 16);
+            auto lower = static_cast<int32_t>(buf[i]) & 0xFFFF;
+            auto upper = static_cast<int32_t>(buf[i + 1]) & 0xFFFF;
+            _contents.emplace_back(lower | (upper << 16));
 
         }
     }
