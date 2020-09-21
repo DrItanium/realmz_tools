@@ -8,6 +8,7 @@
 #include <array>
 #include "RaceDataBuffer.h"
 #include "SpecialAbilities.h"
+#include "DRVAdjustments.h"
 namespace realmz {
     /**
      * @brief Realmz calls the attack versus other races "race hatred"...odd
@@ -41,9 +42,12 @@ namespace realmz {
     public:
         RaceData(const RaceDataBuffer& buf);
         const RaceHatred& getRaceHatredStats() const noexcept { return _hatred; }
+        const SpecialAbilities& getSpecialAbilities() const noexcept { return _specialAbilities; }
+        const DRVAdjustments& getDrvs() const noexcept { return _drvs; }
     private:
         RaceHatred _hatred;
         SpecialAbilities _specialAbilities;
+        DRVAdjustments _drvs;
     };
 }
 

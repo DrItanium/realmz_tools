@@ -3,6 +3,7 @@
 //
 
 #include "SpecialAbilities.h"
+#include "Ability.h"
 namespace realmz {
     SpecialAbilities::SpecialAbilities(const CasteDataBuffer &buf) :
             _sneakAttack(buf[0], buf[14]),

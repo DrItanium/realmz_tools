@@ -11,6 +11,8 @@ add_executable(dumpcaste CasteDecomposer.cpp BinaryManipulation.h Caste.cc Caste
         DRVAdjustments.h
         )
 add_executable(dumprace RaceDecomposer.cc RaceDecomposer.cc RaceData.cc RaceData.h RaceDataBuffer.h
+        Ability.cc
+        Ability.h
         SpecialAbilities.cc
         SpecialAbilities.h
         DRVAdjustments.cc
