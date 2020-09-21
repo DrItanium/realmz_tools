@@ -10,6 +10,7 @@
 #include <vector>
 #include "Ability.h"
 #include "CasteDataBuffer.h"
+#include "RaceDataBuffer.h"
 namespace realmz {
 
 struct SpecialAbilities {
@@ -22,8 +23,10 @@ struct SpecialAbilities {
     realmz::Ability _forceLock;
     realmz::Ability _pickLock;
     realmz::Ability _turnUndead;
-    SpecialAbilities(const realmz::CasteDataBuffer &buf);
+    SpecialAbilities(const realmz::CasteDataBuffer& buf);
+    SpecialAbilities(const realmz::RaceDataBuffer& buf);
     void print(std::ostream& os) const noexcept;
+
 
 };
 

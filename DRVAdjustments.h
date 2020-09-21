@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <iostream>
 #include "CasteDataBuffer.h"
+#include "RaceDataBuffer.h"
 
 namespace realmz {
     struct DRVAdjustments {
@@ -18,6 +19,7 @@ namespace realmz {
         int _mental = 0;
         int _magical = 0;
         DRVAdjustments(const realmz::CasteDataBuffer &buf);
+        DRVAdjustments(const realmz::RaceDataBuffer& buf);
         void print(std::ostream &os) const noexcept;
     };
 }
