@@ -12,6 +12,7 @@
 #include "Ability.h"
 #include "CasteDataBuffer.h"
 #include "CasteConditions.h"
+#include "SpecialAbilities.h"
 
 namespace realmz {
 
@@ -53,22 +54,6 @@ namespace realmz {
         int _max = 25;
         int _adjustment = 0;
     };
-
-    struct SpecialAbilities {
-        Ability _sneakAttack;
-        Ability _majorWound;
-        Ability _detectSecret;
-        Ability _acrobaticAct;
-        Ability _detectTrap;
-        Ability _disableTrap;
-        Ability _forceLock;
-        Ability _pickLock;
-        Ability _turnUndead;
-        SpecialAbilities(const CasteDataBuffer &buf);
-        void print(std::ostream& os) const noexcept;
-
-    };
-
 
     struct DRVAdjustments {
         int _charm;
@@ -223,7 +208,6 @@ std::ostream& operator<<(std::ostream& os, const realmz::SpellCastingAbilities& 
 std::ostream &operator<<(std::ostream &os, const realmz::DRVAdjustments &drv) noexcept;
 std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept;
 std::ostream &operator<<(std::ostream &os, const realmz::Attributes &attrib) noexcept;
-std::ostream &operator<<(std::ostream &os, const realmz::SpecialAbilities &sa) noexcept;
 std::ostream & operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::VictoryPoints& vp) noexcept;
 #endif //REALMZ_TOOLS_CASTE_H
