@@ -3,8 +3,9 @@
 #include <optional>
 #include <array>
 #include "BinaryManipulation.h"
+#include "Caste.h"
 
-std::optional <Caste>
+std::optional <realmz::Caste>
 readOne(std::istream &input, std::ostream &output) noexcept {
     std::array<int16_t, 576 / 2> buf;
     input.read((char *) buf.data(), 576);
@@ -20,13 +21,13 @@ readOne(std::istream &input, std::ostream &output) noexcept {
     for (int i = 0; i < (576 / 2); ++i) {
         buf[i] = swap(buf[i]);
     }
-    return Caste(buf);
+    return { buf };
 }
 int main() {
     int index = 0;
     while (true) {
         if (auto result = readOne(std::cin, std::cout); result) {
-            std::cout << "Caste: " << static_cast<CasteKind>(index) << std::endl;
+            std::cout << "Caste: " << static_cast<realmz::CasteKind>(index) << std::endl;
             std::cout << *result << std::endl << std::endl << std::endl;
             ++index;
         } else {
