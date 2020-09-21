@@ -135,6 +135,7 @@ namespace realmz {
         int index = 0;
         for (const auto& value : _contents) {
             os << "\t" << std::dec << index << ": " <<  std::dec << value << std::endl;
+            ++index;
         }
         os << "}" << std::endl;
     }
@@ -143,10 +144,10 @@ namespace realmz {
         constexpr auto endPosition = startPosition + (30 * 2); // these are int32_t's
         for (int i = startPosition; i < endPosition; i+=2) {
             // eliminate sign extension by making it unsigned
-            auto lower = static_cast<int32_t>(buf[i]) & 0xFFFF;
-            auto upper = static_cast<int32_t>(buf[i + 1]) & 0xFFFF;
-            _contents.emplace_back(lower | (upper << 16));
-
+            auto upper = static_cast<int32_t>(buf[i]) & 0xFFFF;
+            auto lower = static_cast<int32_t>(buf[i + 1]) & 0xFFFF;
+            auto result = lower | ((upper << 16) & 0xFFFF0000);
+            _contents.emplace_back(-result); // this is what realmz is doing according to ghidra
         }
     }
 } // end namespace realmz
