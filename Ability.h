@@ -23,5 +23,6 @@ namespace realmz {
         int _initial = 0;
         int _levelUp = 0;
     };
-}
+} // end namespace realmz
+std::ostream &operator<<(std::ostream &os, const realmz::Ability &sa) noexcept;
 #endif //REALMZ_TOOLS_ABILITY_H

@@ -213,5 +213,4 @@ std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept;
 std::ostream &operator<<(std::ostream &os, const realmz::Attributes &attrib) noexcept;
 std::ostream &operator<<(std::ostream &os, const realmz::SpecialAbilities &sa) noexcept;
 std::ostream & operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept;
-std::ostream &operator<<(std::ostream &os, const Ability &sa) noexcept;
 #endif //REALMZ_TOOLS_CASTE_H

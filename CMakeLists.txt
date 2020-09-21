@@ -3,5 +3,5 @@ project(realmz_tools)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(dumpcaste CasteDecomposer.cpp BinaryManipulation.h Caste.cc Caste.h)
+add_executable(dumpcaste CasteDecomposer.cpp BinaryManipulation.h Caste.cc Caste.h Ability.h Ability.cc)
 add_executable(realmz_keygen KeyGen.cc)

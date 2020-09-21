@@ -237,8 +237,3 @@ operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept {
     return os;
 }
 
-std::ostream
-&operator<<(std::ostream &os, const Ability &sa) noexcept {
-    sa.print(os);
-    return os;
-}
