@@ -5,10 +5,6 @@
 #include "Caste.h"
 
 namespace realmz {
-    void
-    Ability::print(std::ostream &os) const noexcept {
-        os << "(" << _initial << ", " << _levelUp << ")";
-    }
     SpecialAbilities::SpecialAbilities(const DataBuffer &buf) :
             _sneakAttack(buf[0], buf[14]),
             _majorWound(buf[3], buf[14 + 3]),
@@ -242,7 +238,7 @@ operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept {
 }
 
 std::ostream
-&operator<<(std::ostream &os, const realmz::Ability &sa) noexcept {
+&operator<<(std::ostream &os, const Ability &sa) noexcept {
     sa.print(os);
     return os;
 }

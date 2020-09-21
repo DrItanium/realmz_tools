@@ -8,6 +8,7 @@
 #include <cstdint>
 #include <optional>
 #include <array>
+#include "Ability.h"
 
 namespace realmz {
     /**
@@ -53,23 +54,6 @@ namespace realmz {
         int _max = 25;
         int _adjustment = 0;
     };
-
-
-    class Ability {
-    public:
-        Ability() = default;
-        constexpr Ability(int initial, int levelUp) : _initial(initial), _levelUp(levelUp) {}
-        ~Ability() = default;
-        constexpr auto getInitial() const noexcept { return _initial; }
-        constexpr auto getLevelUp() const noexcept { return _levelUp; }
-        void setInitial(int value) noexcept { _initial = value; }
-        void setLevelUp(int value) noexcept { _levelUp = value; }
-        void print(std::ostream &os) const noexcept;
-    private:
-        int _initial = 0;
-        int _levelUp = 0;
-    };
-
 
     struct SpecialAbilities {
         Ability _sneakAttack;
@@ -229,5 +213,5 @@ std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept;
 std::ostream &operator<<(std::ostream &os, const realmz::Attributes &attrib) noexcept;
 std::ostream &operator<<(std::ostream &os, const realmz::SpecialAbilities &sa) noexcept;
 std::ostream & operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept;
-std::ostream &operator<<(std::ostream &os, const realmz::Ability &sa) noexcept;
+std::ostream &operator<<(std::ostream &os, const Ability &sa) noexcept;
 #endif //REALMZ_TOOLS_CASTE_H
