@@ -55,7 +55,9 @@ namespace realmz {
             _twoHandedAdjust(buffer[128]),
             _maxStaminaBonus(buffer[129]),
             _bonusAttacks(static_cast<BonusAttacksStyle>(buffer[130])),
-            _maxAttacksPerRound(buffer[131]) {}
+            _maxAttacksPerRound(buffer[131]),
+            _victoryPointsAtLevel(buffer)
+    {}
 
     void
     Caste::print(std::ostream &os) const noexcept {
@@ -75,6 +77,7 @@ namespace realmz {
         os << "Max Stamina Bonus: " << _maxStaminaBonus << std::endl;
         os << "Bonus Attacks: " << _bonusAttacks << std::endl;
         os << "Max Attacks per Round: " << _maxAttacksPerRound << std::endl;
+        os << _victoryPointsAtLevel << std::endl;
     }
     SpellCastingAbilities::SpellCastingAbilities(const CasteDataBuffer &buf) :
             _sorcerer(buf[42], buf[43], buf[44]),
@@ -124,6 +127,26 @@ namespace realmz {
     void
     Attribute::print(std::ostream &os) const noexcept {
         os << "(" << _min << ", " << _max << ", " << _adjustment << ")";
+    }
+
+    void
+    VictoryPoints::print(std::ostream &os) const noexcept {
+        os << "Victory Points @ Level {" << std::endl;
+        for (const auto& value : _contents) {
+            os << "\t" << std::dec << value << std::endl;
+        }
+        os << "}" << std::endl;
+    }
+    VictoryPoints::VictoryPoints(const CasteDataBuffer &buf) {
+        constexpr auto startPosition = 264 / 2;
+        constexpr auto endPosition = startPosition + (30 * 2); // these are int32_t's
+        for (int i = 264/2, j = 0; i < endPosition; i+=2, ++j) {
+            // eliminate sign extension by making it unsigned
+            uint32_t lower = buf[i];
+            uint32_t upper = buf[i + 1];
+            _contents[i] = lower | (upper << 16);
+
+        }
     }
 } // end namespace realmz
 std::ostream &operator<<(std::ostream &os, const realmz::Caste &caste) noexcept {
@@ -238,3 +261,9 @@ operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept {
     return os;
 }
 
+std::ostream&
+operator<<(std::ostream& os, const realmz::VictoryPoints& vp) noexcept
+{
+    vp.print(os);
+    return os;
+}

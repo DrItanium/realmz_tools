@@ -173,7 +173,13 @@ namespace realmz {
         OneAndOneHalf,
         Two,
     };
-
+    class VictoryPoints {
+    public:
+        VictoryPoints(const CasteDataBuffer& buf);
+        void print(std::ostream& os) const noexcept;
+    private:
+        std::array<std::int32_t, 30> _contents = { 0 };
+    };
     class Caste {
     public:
         Caste(const CasteDataBuffer &buffer);
@@ -200,7 +206,7 @@ namespace realmz {
         BonusAttacksStyle _bonusAttacks = BonusAttacksStyle::None;
         int _maxAttacksPerRound = 0;
 
-        std::array<int32_t, 30> _victoryPointsAtLevel = { 0 };
+        VictoryPoints _victoryPointsAtLevel;
         int _initialItemsCount = 0;
         std::array<int, 20> _initialItems = { 0 };
         int64_t _allowedBits = 0; // originally two 32-bit numbers with bits [0,57] being used
@@ -218,4 +224,5 @@ std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept;
 std::ostream &operator<<(std::ostream &os, const realmz::Attributes &attrib) noexcept;
 std::ostream &operator<<(std::ostream &os, const realmz::SpecialAbilities &sa) noexcept;
 std::ostream & operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept;
+std::ostream& operator<<(std::ostream& os, const realmz::VictoryPoints& vp) noexcept;
 #endif //REALMZ_TOOLS_CASTE_H

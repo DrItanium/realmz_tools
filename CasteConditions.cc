@@ -19,7 +19,7 @@ namespace realmz {
         os << "Conditions {" << std::endl;
         for (const auto& level : _contents) {
             if (level != 0) {
-                os << "At Level: " << level << std::endl;
+                os << "\tAt Level: " << std::dec << level << std::endl;
             }
         }
         os << "}" << std::endl;
