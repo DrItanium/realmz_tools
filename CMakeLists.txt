@@ -294,24 +294,24 @@ add_library(clips
 	maya/Utility.c
 	maya/Watch.c)
 add_library(maya_extensions
-	BoostExtensions.cc
-	BoostExtensions.h
-	FunctionalExtensions.cpp
-	FunctionalExtensions.h
-	MayaExtensions.c 
-	FactExtensions.h 
-	InstanceExtensions.h 
-	ExternalAddressTracker.h 
-	Problem.h 
-	DefruleView.cc 
-	DefruleView.h 
-	FactView.cc 
-	FactView.h 
-	DeftemplateView.cc 
-	DeftemplateView.h 
-	GenericView.h 
-	NandFrameView.h 
-	NandFrameView.cc)
+	maya/BoostExtensions.cc
+	maya/BoostExtensions.h
+	maya/FunctionalExtensions.cpp
+	maya/FunctionalExtensions.h
+	maya/MayaExtensions.c
+	maya/FactExtensions.h
+	maya/InstanceExtensions.h
+	maya/ExternalAddressTracker.h
+	maya/Problem.h
+	maya/DefruleView.cc
+	maya/DefruleView.h
+	maya/FactView.cc
+	maya/FactView.h
+	maya/DeftemplateView.cc
+	maya/DeftemplateView.h
+	maya/GenericView.h
+	maya/NandFrameView.h
+	maya/NandFrameView.cc)
 add_library(realmz 
 	RaceData.cc 
 	RaceData.h 
