@@ -13,10 +13,10 @@ namespace realmz {
     /**
      * @brief Realmz calls the attack versus other races "race hatred"...odd
      */
-    class RaceHatred {
+    class Hatred {
     public:
-        RaceHatred() = default;
-        RaceHatred(const RaceDataBuffer& buffer);
+        Hatred() = default;
+        Hatred(const RaceDataBuffer& buffer);
         constexpr auto getHitVsMagicUsing() const noexcept { return _hitMagicUsing; }
         constexpr auto getHitVsUndead() const noexcept { return _hitUndead; }
         constexpr auto getHitVsDemonic() const noexcept { return _hitDemonic; }
@@ -41,11 +41,11 @@ namespace realmz {
     class RaceData {
     public:
         RaceData(const RaceDataBuffer& buf);
-        const RaceHatred& getRaceHatredStats() const noexcept { return _hatred; }
+        const Hatred& getRaceHatredStats() const noexcept { return _hatred; }
         const SpecialAbilities& getSpecialAbilities() const noexcept { return _specialAbilities; }
         const DRVAdjustments& getDrvs() const noexcept { return _drvs; }
     private:
-        RaceHatred _hatred;
+        Hatred _hatred;
         SpecialAbilities _specialAbilities;
         DRVAdjustments _drvs;
     };

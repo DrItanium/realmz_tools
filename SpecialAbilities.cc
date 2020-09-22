@@ -16,6 +16,15 @@ namespace realmz {
             _pickLock(buf[11], buf[14 + 11]),
             _turnUndead(buf[13], buf[14 + 13]) {
     }
+    SpecialAbilities::SpecialAbilities(const RaceDataBuffer &buf) :
+    _sneakAttack(buf[8], 0), _majorWound(buf[11], 0),
+    _detectSecret(buf[12], 0), _acrobaticAct(buf[13], 0),
+    _detectTrap(buf[14], 0), _disableTrap(buf[15], 0),
+    _forceLock(buf[17], 0), _pickLock(buf[19], 0),
+    _turnUndead(buf[21], 0)
+    {
+
+    }
     void
     SpecialAbilities::print(std::ostream &os) const noexcept {
 #define X(field) os << #field << ": " <<  _ ## field << std::endl
