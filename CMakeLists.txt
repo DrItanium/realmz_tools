@@ -312,22 +312,26 @@ add_library(maya_extensions
 	maya/GenericView.h
 	maya/NandFrameView.h
 	maya/NandFrameView.cc)
-add_library(realmz 
-	RaceData.cc 
-	RaceData.h 
-	RaceDataBuffer.h
-	BinaryManipulation.h
-	Caste.cc
-	Caste.h
-	Ability.h
-	Ability.cc
-	SpecialAbilities.cc
-	SpecialAbilities.h
-	DRVAdjustments.cc
-	DRVAdjustments.h
-	CasteConditions.cc
-	CasteConditions.h
-	CasteDataBuffer.h)
+add_library(realmz
+		Attribute.h
+		Attribute.cc
+		Attributes.cc
+		Attributes.h
+		RaceData.cc
+		RaceData.h
+		RaceDataBuffer.h
+		BinaryManipulation.h
+		Caste.cc
+		Caste.h
+		Ability.h
+		Ability.cc
+		SpecialAbilities.cc
+		SpecialAbilities.h
+		DRVAdjustments.cc
+		DRVAdjustments.h
+		CasteConditions.cc
+		CasteConditions.h
+		CasteDataBuffer.h)
 
 add_executable(dumpcaste CasteDecomposer.cpp)
 add_executable(dumprace RaceDecomposer.cc)

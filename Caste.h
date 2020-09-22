@@ -14,6 +14,7 @@
 #include "CasteConditions.h"
 #include "SpecialAbilities.h"
 #include "DRVAdjustments.h"
+#include "Attributes.h"
 
 namespace realmz {
 
@@ -42,32 +43,6 @@ namespace realmz {
         Warlock,
         Minstrel,
     };
-
-    class Attribute {
-    public:
-        constexpr Attribute(int min, int max, int adjustment) : _min(min), _max(max), _adjustment(adjustment) {}
-        constexpr auto getMin() const noexcept { return _min; }
-        constexpr auto getMax() const noexcept { return _max; }
-        constexpr auto getAdjustment() const noexcept { return _adjustment; }
-        void print(std::ostream& os) const noexcept;
-    private:
-        int _min = 3;
-        int _max = 25;
-        int _adjustment = 0;
-    };
-
-    struct Attributes {
-    public:
-        Attribute _brawn;
-        Attribute _knowledge;
-        Attribute _judgment;
-        Attribute _agility;
-        Attribute _vitality;
-        Attribute _luck;
-        Attributes(const CasteDataBuffer &buf);
-        void print(std::ostream &out) const noexcept;
-    };
-
 
     class SpellClassInfo {
     public:
@@ -189,12 +164,10 @@ namespace realmz {
 
 } // end namespace realmz
 std::ostream& operator<<(std::ostream& os, const realmz::Caste& caste) noexcept;
-std::ostream& operator<<(std::ostream& os, const realmz::Attribute& ca) noexcept;
 std::ostream& operator<<(std::ostream& os, realmz::CasteKind ck) noexcept;
 std::ostream& operator<<(std::ostream& os, realmz::BonusAttacksStyle group) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::SpellCastingAbilities& sci) noexcept;
 std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept;
-std::ostream &operator<<(std::ostream &os, const realmz::Attributes &attrib) noexcept;
 std::ostream & operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::VictoryPoints& vp) noexcept;
 #endif //REALMZ_TOOLS_CASTE_H
