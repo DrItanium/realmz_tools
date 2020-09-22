@@ -26,6 +26,17 @@ namespace realmz {
             _luck(buf[64], buf[65], buf[41]) {
 
     }
+
+    Attributes::Attributes(const RaceDataBuffer &buf) :
+        _brawn(buf[36], buf[37], buf[30]),
+        _knowledge(buf[38], buf[39], buf[31]),
+        _judgment(buf[40], buf[41], buf[32]),
+        _agility(buf[42], buf[43], buf[33]),
+        _vitality(buf[44], buf[45], buf[34]),
+        _luck(buf[46], buf[47], buf[35])
+    {
+
+    }
 }
 
 std::ostream&
