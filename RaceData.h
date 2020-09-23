@@ -45,6 +45,46 @@ namespace realmz {
         int _from = 0;
         int _to = 0;
     };
+    class AgeModifiers {
+    public:
+        constexpr AgeModifiers(char brawn, char knowledge, char judgment, char agility, char vitality, char luck, char magicResist, char movement,
+                     char charm, char heat, char cold, char electrical, char chemical, char mental, char magical) noexcept
+        : _brawn(brawn), _knowledge(knowledge), _judgment(judgment), _agility(agility), _vitality(vitality), _luck(luck),
+        _magicResist(magicResist), _movement(movement), _charm(charm), _heat(heat), _cold(cold), _electrical(electrical),
+        _chemical(chemical), _mental(mental), _magical(magical) {}
+        AgeModifiers(int baseOffset, const RaceDataBuffer& buffer);
+        [[nodiscard]] constexpr char getBrawn() const noexcept { return _brawn; }
+        [[nodiscard]] constexpr char getKnowledge() const noexcept { return _knowledge; }
+        [[nodiscard]] constexpr char getJudgment() const noexcept { return _judgment; }
+        [[nodiscard]] constexpr char getAgility() const noexcept { return _agility; }
+        [[nodiscard]] constexpr char getVitality() const noexcept { return _vitality; }
+        [[nodiscard]] constexpr char getLuck() const noexcept { return _luck; }
+        [[nodiscard]] constexpr char getMagicResist() const noexcept { return _magicResist; }
+        [[nodiscard]] constexpr char getMovement() const noexcept { return _movement; }
+        [[nodiscard]] constexpr char getCharm() const noexcept { return _charm; }
+        [[nodiscard]] constexpr char getHeat() const noexcept { return _heat; }
+        [[nodiscard]] constexpr char getCold() const noexcept { return _cold; }
+        [[nodiscard]] constexpr char getElectrical() const noexcept { return _electrical; }
+        [[nodiscard]] constexpr char getChemical() const noexcept { return _chemical; }
+        [[nodiscard]] constexpr char getMental() const noexcept { return _mental; }
+        [[nodiscard]] constexpr char getMagical() const noexcept { return _magical; }
+    private:
+        char _brawn = 0;
+        char _knowledge = 0;
+        char _judgment = 0;
+        char _agility = 0;
+        char _vitality = 0;
+        char _luck = 0;
+        char _magicResist = 0;
+        char _movement = 0;
+        char _charm = 0;
+        char _heat = 0;
+        char _cold = 0;
+        char _electrical = 0;
+        char _chemical = 0;
+        char _mental = 0;
+        char _magical = 0;
+    };
     /**
      * @brief Holds all of the data for a given race that a character can be
      */
