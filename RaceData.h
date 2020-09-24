@@ -52,7 +52,6 @@ namespace realmz {
         : _brawn(brawn), _knowledge(knowledge), _judgment(judgment), _agility(agility), _vitality(vitality), _luck(luck),
         _magicResist(magicResist), _movement(movement), _charm(charm), _heat(heat), _cold(cold), _electrical(electrical),
         _chemical(chemical), _mental(mental), _magical(magical) {}
-        AgeModifiers(int baseOffset, const RaceDataBuffer& buffer);
         [[nodiscard]] constexpr char getBrawn() const noexcept { return _brawn; }
         [[nodiscard]] constexpr char getKnowledge() const noexcept { return _knowledge; }
         [[nodiscard]] constexpr char getJudgment() const noexcept { return _judgment; }
