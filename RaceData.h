@@ -90,10 +90,27 @@ namespace realmz {
     class RaceData {
     public:
         RaceData(const RaceDataBuffer& buf);
-        const Hatred& getRaceHatredStats() const noexcept { return _hatred; }
-        const SpecialAbilities& getSpecialAbilities() const noexcept { return _specialAbilities; }
-        const DRVAdjustments& getDrvs() const noexcept { return _drvs; }
-        const Attributes& getAttributes() const noexcept { return _attributes; }
+        [[nodiscard]] const Hatred& getRaceHatredStats() const noexcept { return _hatred; }
+        [[nodiscard]] const SpecialAbilities& getSpecialAbilities() const noexcept { return _specialAbilities; }
+        [[nodiscard]] const DRVAdjustments& getDrvs() const noexcept { return _drvs; }
+        [[nodiscard]] const Attributes& getAttributes() const noexcept { return _attributes; }
+        [[nodiscard]] constexpr auto getUnused0(size_t index) const noexcept { return _unused0[index & 0b111]; }
+        [[nodiscard]] constexpr auto getCondition(size_t index) const noexcept { return _conditions[index >= 40 ? 39 : index]; }
+        [[nodiscard]] constexpr auto getUnused1() const noexcept { return _unused1; }
+        [[nodiscard]] constexpr auto getUnused2() const noexcept { return _unused2; }
+        [[nodiscard]] constexpr auto getBaseMovementPoints() const noexcept { return _baseMovementPoints; }
+        [[nodiscard]] constexpr auto getMagicResistance() const noexcept { return _magicResistance; }
+        constexpr auto getTwoHandedAdjustment() const noexcept { return _twoHandedAdjustment; }
+        constexpr auto getMissileWeaponAdjust() const noexcept { return _missileWeaponAdjust; }
+        constexpr auto getAttacksPerRound() const noexcept { return _attacksPerRound; }
+        constexpr auto getMaxAttacksPerRound() const noexcept { return _maxAttacksPerRound; }
+        constexpr auto canRegenerate() const noexcept { return _canRegenerate; }
+        constexpr auto getPortraitId() const noexcept { return _portraitId; }
+        constexpr auto getIneligibilityBits() const noexcept { return _ineligibilityBits; }
+        constexpr auto getAllowedBits() const noexcept { return _allowedBits; }
+        constexpr auto getFlags(size_t index) const noexcept { return _flags[index >= 30 ? 29 : index]; }
+        const AgeRange& getAgeRange(size_t index) const noexcept {return _ageRanges[index < 5 ? index : 4]; }
+        const AgeModifiers& getAgeModifier(size_t index) const noexcept {return _ageModifiers[index < 5 ? index : 4]; }
     private:
         Hatred _hatred;
         SpecialAbilities _specialAbilities;
