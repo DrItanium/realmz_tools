@@ -17,15 +17,15 @@ namespace realmz {
     class Hatred {
     public:
         Hatred() = default;
-        Hatred(const RaceDataBuffer& buffer);
-        constexpr auto getHitVsMagicUsing() const noexcept { return _hitMagicUsing; }
-        constexpr auto getHitVsUndead() const noexcept { return _hitUndead; }
-        constexpr auto getHitVsDemonic() const noexcept { return _hitDemonic; }
-        constexpr auto getHitVsReptilian() const noexcept { return _hitReptilian; }
-        constexpr auto getHitVsVeryEvil() const noexcept { return _hitVeryEvil; }
-        constexpr auto getHitVsIntelligent() const noexcept { return _hitIntelligent; }
-        constexpr auto getHitGiantSize() const noexcept { return _hitGiantSize; }
-        constexpr auto getHitNonHumanoid() const noexcept { return _hitNonHumanoid; }
+        explicit Hatred(const RaceDataBuffer& buffer);
+        [[nodiscard]] constexpr auto getHitVsMagicUsing() const noexcept { return _hitMagicUsing; }
+        [[nodiscard]] constexpr auto getHitVsUndead() const noexcept { return _hitUndead; }
+        [[nodiscard]] constexpr auto getHitVsDemonic() const noexcept { return _hitDemonic; }
+        [[nodiscard]] constexpr auto getHitVsReptilian() const noexcept { return _hitReptilian; }
+        [[nodiscard]] constexpr auto getHitVsVeryEvil() const noexcept { return _hitVeryEvil; }
+        [[nodiscard]] constexpr auto getHitVsIntelligent() const noexcept { return _hitIntelligent; }
+        [[nodiscard]] constexpr auto getHitGiantSize() const noexcept { return _hitGiantSize; }
+        [[nodiscard]] constexpr auto getHitNonHumanoid() const noexcept { return _hitNonHumanoid; }
     private:
         int _hitMagicUsing = 0;
         int _hitUndead = 0;
@@ -38,16 +38,16 @@ namespace realmz {
     };
     class AgeRange {
     public:
-        constexpr AgeRange(int from = 0, int to = 0) : _from(from), _to(to) { }
-        constexpr auto getFrom() const noexcept { return _from; }
-        constexpr auto getTo() const noexcept { return _to; }
+        constexpr explicit AgeRange(int from = 0, int to = 0) : _from(from), _to(to) { }
+        [[nodiscard]] constexpr auto getFrom() const noexcept { return _from; }
+        [[nodiscard]] constexpr auto getTo() const noexcept { return _to; }
     private:
         int _from = 0;
         int _to = 0;
     };
     class AgeModifiers {
     public:
-        constexpr AgeModifiers(char brawn = 0, char knowledge = 0, char judgment = 0, char agility = 0, char vitality = 0, char luck = 0, char magicResist = 0, char movement = 0,
+        constexpr explicit AgeModifiers(char brawn = 0, char knowledge = 0, char judgment = 0, char agility = 0, char vitality = 0, char luck = 0, char magicResist = 0, char movement = 0,
                      char charm = 0, char heat = 0, char cold = 0, char electrical = 0, char chemical = 0, char mental = 0, char magical = 0) noexcept
         : _brawn(brawn), _knowledge(knowledge), _judgment(judgment), _agility(agility), _vitality(vitality), _luck(luck),
         _magicResist(magicResist), _movement(movement), _charm(charm), _heat(heat), _cold(cold), _electrical(electrical),
@@ -89,7 +89,7 @@ namespace realmz {
      */
     class RaceData {
     public:
-        RaceData(const RaceDataBuffer& buf);
+        explicit RaceData(const RaceDataBuffer& buf);
         [[nodiscard]] const Hatred& getRaceHatredStats() const noexcept { return _hatred; }
         [[nodiscard]] const SpecialAbilities& getSpecialAbilities() const noexcept { return _specialAbilities; }
         [[nodiscard]] const DRVAdjustments& getDrvs() const noexcept { return _drvs; }
@@ -100,17 +100,17 @@ namespace realmz {
         [[nodiscard]] constexpr auto getUnused2() const noexcept { return _unused2; }
         [[nodiscard]] constexpr auto getBaseMovementPoints() const noexcept { return _baseMovementPoints; }
         [[nodiscard]] constexpr auto getMagicResistance() const noexcept { return _magicResistance; }
-        constexpr auto getTwoHandedAdjustment() const noexcept { return _twoHandedAdjustment; }
-        constexpr auto getMissileWeaponAdjust() const noexcept { return _missileWeaponAdjust; }
-        constexpr auto getAttacksPerRound() const noexcept { return _attacksPerRound; }
-        constexpr auto getMaxAttacksPerRound() const noexcept { return _maxAttacksPerRound; }
-        constexpr auto canRegenerate() const noexcept { return _canRegenerate; }
-        constexpr auto getPortraitId() const noexcept { return _portraitId; }
-        constexpr auto getIneligibilityBits() const noexcept { return _ineligibilityBits; }
-        constexpr auto getAllowedBits() const noexcept { return _allowedBits; }
-        constexpr auto getFlags(size_t index) const noexcept { return _flags[index >= 30 ? 29 : index]; }
-        const AgeRange& getAgeRange(size_t index) const noexcept {return _ageRanges[index < 5 ? index : 4]; }
-        const AgeModifiers& getAgeModifier(size_t index) const noexcept {return _ageModifiers[index < 5 ? index : 4]; }
+        [[nodiscard]] constexpr auto getTwoHandedAdjustment() const noexcept { return _twoHandedAdjustment; }
+        [[nodiscard]] constexpr auto getMissileWeaponAdjust() const noexcept { return _missileWeaponAdjust; }
+        [[nodiscard]] constexpr auto getAttacksPerRound() const noexcept { return _attacksPerRound; }
+        [[nodiscard]] constexpr auto getMaxAttacksPerRound() const noexcept { return _maxAttacksPerRound; }
+        [[nodiscard]] constexpr auto canRegenerate() const noexcept { return _canRegenerate; }
+        [[nodiscard]] constexpr auto getPortraitId() const noexcept { return _portraitId; }
+        [[nodiscard]] constexpr auto getIneligibilityBits() const noexcept { return _ineligibilityBits; }
+        [[nodiscard]] constexpr auto getAllowedBits() const noexcept { return _allowedBits; }
+        [[nodiscard]] constexpr auto getFlags(size_t index) const noexcept { return _flags[index >= 30 ? 29 : index]; }
+        [[nodiscard]] const AgeRange& getAgeRange(size_t index) const noexcept {return _ageRanges[index < 5 ? index : 4]; }
+        [[nodiscard]] const AgeModifiers& getAgeModifier(size_t index) const noexcept {return _ageModifiers[index < 5 ? index : 4]; }
     private:
         Hatred _hatred;
         SpecialAbilities _specialAbilities;
@@ -130,8 +130,8 @@ namespace realmz {
         int _portraitId = 0;
         int _ineligibilityBits = 0;
         uint8_t _flags[30] = { 0 };
-        AgeRange _ageRanges[5] = { 0 };
-        AgeModifiers _ageModifiers[5] = { 0 };
+        AgeRange _ageRanges[5];
+        AgeModifiers _ageModifiers[5];
         int64_t _allowedBits = 0;
     };
 }

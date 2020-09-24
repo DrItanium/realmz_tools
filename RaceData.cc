@@ -41,7 +41,7 @@ namespace realmz {
         for (int i = 119,j = 0; i < 129; i+=2, ++j) {
             auto from = buf[i];
             auto to = buf[i+1];
-            _ageRanges[j] = {from, to};
+            _ageRanges[j] = AgeRange(from, to);
         }
         // these are chars which are not buffered
         // manually unpack to be on the safe side
