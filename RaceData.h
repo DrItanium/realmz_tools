@@ -109,13 +109,13 @@ namespace realmz {
         int _missileWeaponAdjust = 0;
         int _attacksPerRound = 0;
         int _maxAttacksPerRound = 0;
+        bool _canRegenerate = false;
+        int _portraitId = 0;
+        int _ineligibilityBits = 0;
         uint8_t _flags[30] = { 0 };
         AgeRange _ageRanges[5] = { 0 };
         AgeModifiers _ageModifiers[5] = { 0 };
-        bool _canRegenerate = false;
-        int _portraitId = 0;
         int64_t _allowedBits = 0;
-        int _ineligibilityBits = 0;
     };
 }
 
