@@ -47,8 +47,8 @@ namespace realmz {
     };
     class AgeModifiers {
     public:
-        constexpr AgeModifiers(char brawn, char knowledge, char judgment, char agility, char vitality, char luck, char magicResist, char movement,
-                     char charm, char heat, char cold, char electrical, char chemical, char mental, char magical) noexcept
+        constexpr AgeModifiers(char brawn = 0, char knowledge = 0, char judgment = 0, char agility = 0, char vitality = 0, char luck = 0, char magicResist = 0, char movement = 0,
+                     char charm = 0, char heat = 0, char cold = 0, char electrical = 0, char chemical = 0, char mental = 0, char magical = 0) noexcept
         : _brawn(brawn), _knowledge(knowledge), _judgment(judgment), _agility(agility), _vitality(vitality), _luck(luck),
         _magicResist(magicResist), _movement(movement), _charm(charm), _heat(heat), _cold(cold), _electrical(electrical),
         _chemical(chemical), _mental(mental), _magical(magical) {}
@@ -111,7 +111,11 @@ namespace realmz {
         int _maxAttacksPerRound = 0;
         uint8_t _flags[30] = { 0 };
         AgeRange _ageRanges[5] = { 0 };
-
+        AgeModifiers _ageModifiers[5] = { 0 };
+        bool _canRegenerate = false;
+        int _portraitId = 0;
+        int64_t _allowedBits = 0;
+        int _ineligibilityBits = 0;
     };
 }
 
