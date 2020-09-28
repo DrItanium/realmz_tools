@@ -1,0 +1,23 @@
+------------------------------------------------
+| Save Game Name | Data Files Name | Description
+------------------------------------------------
+| Data A1        | CL              | Land Metadata (including tiles)
+------------------------------------------------
+| Data B1        | CD		       | World Metadata, Tiles, and ActionPoint codes (Probably Dungeon)
+------------------------------------------------
+| Data C1        | WN		       | World Notes
+------------------------------------------------
+| Data D1        | DN              | Dungeon Notes
+------------------------------------------------
+| Data E1        | CS              | Seems to be Shop Data
+------------------------------------------------
+| Data F1        | CE              | Simple Encounter Data
+------------------------------------------------
+| Data G1        | CE2             | Complex Encounter Data
+------------------------------------------------
+| Data H1        | CT		       | Thief Encounter Data (Rogue Encounters)
+------------------------------------------------
+| Data I1        | 				   | Seems to be a bunch of data structure dumps
+------------------------------------------------
+| Data TD3       | CTD3	           | Action/Event points
+------------------------------------------------
