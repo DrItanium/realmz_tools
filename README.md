@@ -48,3 +48,5 @@ Half Truth : ?
 NOTE: This is all for realmz 7.1.2, not the newer 8.0.? release for mac os classic.
 
 I have tested these tools with GCC 9.2.0 on Gentoo Linux x86_64 with Cmake.
+
+This project also contains notes on different file formats as well. See the notes folder for this information
