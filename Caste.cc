@@ -36,7 +36,7 @@ namespace realmz {
             _bonusAttacks(static_cast<BonusAttacksStyle>(buffer[130])),
             _maxAttacksPerRound(buffer[131]),
             _victoryPointsAtLevel(buffer),
-            _unknownField0(buffer[384/2]) // used to be initialItemsLength
+            _initialGoldAmount(buffer[384 / 2]) // used to be initialItemsLength
     {
         constexpr auto itemsStartPos = 386/2;
         constexpr auto itemsEndPos = itemsStartPos + 20;
@@ -79,7 +79,7 @@ namespace realmz {
         os << "Bonus Attacks: " << _bonusAttacks << std::endl;
         os << "Max Attacks per Round: " << _maxAttacksPerRound << std::endl;
         os << _victoryPointsAtLevel << std::endl;
-        os << "Formerly Initial Items Length: " << std::dec << _unknownField0 << std::endl;
+        os << "Initial Gold: " << std::dec << _initialGoldAmount << std::endl;
         os << "Initial Items {" << std::endl;
         int pos = 1;
         for (const auto itemIndex : _initialItems) {
