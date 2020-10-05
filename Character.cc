@@ -168,7 +168,7 @@ namespace realmz {
             _ageClass(buf[144]),
             _verifyField1(buf[145]),
             _items( {
-#define X(offset) InventoryItem(buf[(3*offset) + 146], buf[(3*offset) + 147], buf[(3*offset) + 148] )
+#define X(offset) InventoryItem(buf[(3*offset) + 146], upperHalf(buf[(3*offset) + 147]), buf[(3*offset) + 147], buf[(3*offset) + 148] )
                             X(0),
                             X(1),
                             X(2),
@@ -334,7 +334,21 @@ namespace realmz {
         print16("Dodge Missile", _dodgeMissile);
         print16("Movement Points", _movementPoints);
         print16("Missile Adjust", _missileAdjust);
+        print16("Bare Hand Damage Max", _bareHandDamageMax);
+        print16("Alliance Class", _allianceClass);
+        print16("Attacks Per Round", _attacksPerRound);
+        print16("Field 0x10", _field_0x10);
+        print16("Field 0x12", _field_0x12);
+        print16("Field 0x14", _field_0x14);
         os << _conditions << std::endl;
+        print16("Num Items", _numItems);
+        os << "{" << std::endl;
+        int index = 1;
+        for (const auto& ii : _items) {
+            os << "\t" << index << ": " << ii << std::endl;
+            ++index;
+        }
+        os << "}" << std::endl;
     }
 
     void
@@ -368,7 +382,15 @@ namespace realmz {
         Y(5th);
 #undef Y
 #undef X
-        os << "}" << std::endl;
+        os << "}";
+    }
+
+    void
+    InventoryItem::print(std::ostream &os) const noexcept {
+        os << "{" << std::dec << "Index: " << _idx <<
+        ", Field2: " << std::dec << static_cast<int>(_f2) <<
+        ", Field3: " << std::dec << static_cast<int>(_f3) <<
+        ", Flags: " << std::hex << _flags << "}";
     }
 
 }
@@ -381,5 +403,11 @@ operator<<(std::ostream& os, const realmz::Character& c) noexcept {
 std::ostream&
 operator<<(std::ostream& os, const realmz::CharacterConditions& c) noexcept {
     c.print(os);
+    return os;
+}
+
+std::ostream&
+operator<<(std::ostream& os, const realmz::InventoryItem& ii) noexcept {
+    ii.print(os);
     return os;
 }
