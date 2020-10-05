@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <array>
 #include <string>
+#include <iostream>
 namespace realmz {
     using CharacterDataBuffer = std::array<int16_t, 872/2>;
     class SpecialInfo_CharVersion {
@@ -409,6 +410,7 @@ namespace realmz {
         [[nodiscard]] const std::array<int16_t, 10> &getAnArray() const { return _anArray; }
         [[nodiscard]] const std::array<int16_t, 7> &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
         [[nodiscard]] const CharacterConditions &getConditions() const { return _conditions; }
+        void print(std::ostream& os) const noexcept;
     private:
         uint16_t _id;
         int16_t _verifyField0;
@@ -536,5 +538,6 @@ namespace realmz {
         std::array<int16_t, 42> _field_0x314;
     };
 } // end namespace realmz
+std::ostream& operator<<(std::ostream& os, const realmz::Character& c) noexcept;
 
 #endif //REALMZ_TOOLS_CHARACTER_H

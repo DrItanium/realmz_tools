@@ -316,4 +316,22 @@ namespace realmz {
     {
 
     }
+    void
+    Character::print(std::ostream& os) const noexcept {
+        os << "Name: " << _name << std::endl;
+        auto printStat = [&os](const std::string& title, int8_t value) noexcept { os << title << ": " << static_cast<int>(value) << std::endl; };
+        printStat("Brawn", _brawn);
+        printStat("Knowledge", _knowledge);
+        printStat("Judgement", _judgement);
+        printStat("Agility", _agility);
+        printStat("Vitality", _vitality);
+        printStat("Luck", _luck);
+    }
+
+}
+
+std::ostream&
+operator<<(std::ostream& os, const realmz::Character& c) noexcept {
+    c.print(os);
+    return os;
 }
