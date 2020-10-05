@@ -143,6 +143,142 @@ namespace realmz {
     };
     class Character {
     public:
+        Character(const CharacterDataBuffer& buf);
+        void setId(uint16_t id) { _id = id; }
+        void setChanceToHit(int16_t chanceToHit) { _chanceToHit = chanceToHit; }
+        void setDodgeMissile(int16_t dodgeMissile) { _dodgeMissile = dodgeMissile; }
+        void setMissileAdjust(int16_t missileAdjust) { _missileAdjust = missileAdjust; }
+        void setBareHandDamageMax(int16_t bareHandDamageMax) { _bareHandDamageMax = bareHandDamageMax; }
+        void setAllianceClass(int16_t allianceClass) { _allianceClass = allianceClass; }
+        void setAttacksPerRound(int16_t attacksPerRound) { _attacksPerRound = attacksPerRound; }
+        void setField0X10(int16_t field0X10) { _field_0x10 = field0X10; }
+        void setField0X12(int16_t field0X12) { _field_0x12 = field0X12; }
+        void setField0X14(int16_t field0X14) { _field_0x14 = field0X14; }
+        void setNumItems(int16_t numItems) { _numItems = numItems; }
+        void setField0X18(int16_t field0X18) { _field_0x18 = field0X18; }
+        void setField0X1A(int16_t field0X1A) { _field_0x1a = field0X1A; }
+        void setField0X1C(int16_t field0X1C) { _field_0x1c = field0X1C; }
+        void setOtherAttacksPerRoundModifier(int16_t otherAttacksPerRoundModifier) { _otherAttacksPerRoundModifier = otherAttacksPerRoundModifier; }
+        void setVitalityFromItems(int16_t vitalityFromItems) { _vitalityFromItems = vitalityFromItems; }
+        void setField0X22(int16_t field0X22) { _field_0x22 = field0X22; }
+        void setLuckFromItems(int16_t luckFromItems) { _luckFromItems = luckFromItems; }
+        void setBrawnFromItems(int16_t brawnFromItems) { _brawnFromItems = brawnFromItems; }
+        void setMagicResistance(int16_t magicResistance) { _magicResistance = magicResistance; }
+        void setMovementBonus(int16_t movementBonus) { _movementBonus = movementBonus; }
+        void setArmorRating(int16_t armorRating) { _armorRating = armorRating; }
+        void setDamagePlus(int16_t damagePlus) { _damagePlus = damagePlus; }
+        void setRace(int16_t race) { _race = race; }
+        void setCaste(int16_t caste) { _caste = caste; }
+        void setSupportedSpellClass(SupportedSpellClass supportedSpellClass) { _supportedSpellClass = supportedSpellClass; }
+        void setGender(Gender gender) { _gender = gender; }
+        void setSkillLevel(int16_t skillLevel) { _skillLevel = skillLevel; }
+        void setField0X3A(int16_t field0X3A) { _field_0x3a = field0X3A; }
+        void setMovementPoints(int16_t movementPoints) { _movementPoints = movementPoints; }
+        void setCombatPoints(int16_t combatPoints) { _combatPoints = combatPoints; }
+        void setTotalSpellsRemaining(size_t index, int16_t value);
+        void setStaminaCurrent(int16_t staminaCurrent) { _staminaCurrent = staminaCurrent; }
+        void setStaminaTotal(int16_t staminaTotal) { _staminaTotal = staminaTotal; }
+        void setPortraitIndex(int16_t portraitIndex) { _portraitIndex = portraitIndex; }
+        void setIconPictureIndex(int16_t iconPictureIndex) { _iconPictureIndex = iconPictureIndex; }
+        void setSpellPointsCurrent(int16_t spellPointsCurrent) { _spellPointsCurrent = spellPointsCurrent; }
+        void setSpellPointsTotal(int16_t spellPointsTotal) { _spellPointsTotal = spellPointsTotal; }
+        void setField0X5A(int16_t field0X5A) { _field_0x5a = field0X5A; }
+        void setField0X5C(int16_t field0X5C) { _field_0x5c = field0X5C; }
+        void setField0X5E(int16_t field0X5E) { _field_0x5e = field0X5E; }
+        void setHandToHandMax(int16_t handToHandMax) { _handToHandMax = handToHandMax; }
+        void setConditions(const CharacterConditions &conditions) { _conditions = conditions; }
+        void setStrong(int16_t strong) { _strong = strong; }
+        void setProtectionFromFoe(int16_t protectionFromFoe) { _protectionFromFoe = protectionFromFoe; }
+        void setSpeed(int16_t speed) { _speed = speed; }
+        void setInvisible(int16_t invisible) { _invisible = invisible; }
+        void setIsAnimated(int16_t isAnimated) { _isAnimated = isAnimated; }
+        void setStone(int16_t stone) { _stone = stone; }
+        void setBlind(int16_t blind) { _blind = blind; }
+        void setDiseased(int16_t diseased) { _diseased = diseased; }
+        void setIsConfused(int16_t isConfused) { _isConfused = isConfused; }
+        void setReflectingSpells(int16_t reflectingSpells) { _reflectingSpells = reflectingSpells; }
+        void setReflectingAttacks(int16_t reflectingAttacks) { _reflectingAttacks = reflectingAttacks; }
+        void setAttackBonus(int16_t attackBonus) { _attackBonus = attackBonus; }
+        void setAbsorbEnergy(int16_t absorbEnergy) { _absorbEnergy = absorbEnergy; }
+        void setAbsorbSpellEnergyFromAttacks(int16_t absorbSpellEnergyFromAttacks) { _absorbSpellEnergyFromAttacks = absorbSpellEnergyFromAttacks; }
+        void setField0Xa8(int16_t field0Xa8) { _field_0xa8 = field0Xa8; }
+        void setHinderedAttack(int16_t hinderedAttack) { _hinderedAttack = hinderedAttack; }
+        void setHinderedDefense(int16_t hinderedDefense) { _hinderedDefense = hinderedDefense; }
+        void setDefensiveBonus(int16_t defensiveBonus) { _defensiveBonus = defensiveBonus; }
+        void setAffectsCastingAbility(int16_t affectsCastingAbility) { _affectsCastingAbility = affectsCastingAbility; }
+        void setVsMagicUsingCreatures(int16_t vsMagicUsingCreatures) { _vsMagicUsingCreatures = vsMagicUsingCreatures; }
+        void setVsUndeadCreatures(int16_t vsUndeadCreatures) { _vsUndeadCreatures = vsUndeadCreatures; }
+        void setVsDemonicCreatures(int16_t vsDemonicCreatures) { _vsDemonicCreatures = vsDemonicCreatures; }
+        void setVsReptileCreatures(int16_t vsReptileCreatures) { _vsReptileCreatures = vsReptileCreatures; }
+        void setVsVeryEvilCreatures(int16_t vsVeryEvilCreatures) { _vsVeryEvilCreatures = vsVeryEvilCreatures; }
+        void setVsIntelligentCreatures(int16_t vsIntelligentCreatures) { _vsIntelligentCreatures = vsIntelligentCreatures; }
+        void setVsGiantSizedCreatures(int16_t vsGiantSizedCreatures) { _vsGiantSizedCreatures = vsGiantSizedCreatures; }
+        void setVsNonHumanoidCreature(int16_t vsNonHumanoidCreature) { _vsNonHumanoidCreature = vsNonHumanoidCreature; }
+        void setEquippedItems(size_t index, int16_t value);
+        void setField0Xea(int16_t field0Xea) { _field_0xea = field0Xea; }
+        void setField0Xec(int16_t field0Xec) { _field_0xec = field0Xec; }
+        void setField0Xee(int16_t field0Xee) { _field_0xee = field0Xee; }
+        void setField0Xf0(int16_t field0Xf0) { _field_0xf0 = field0Xf0; }
+        SpecialInfo_CharVersion& getSpecialInfo() noexcept { return _specialInfo; }
+        void setField0X100(uint8_t field0X100) { _field_0x100 = field0X100; }
+        void setField0X101(uint8_t field0X101) { _field_0x101 = field0X101; }
+        void setField0X102(uint8_t field0X102) { _field_0x102 = field0X102; }
+        void setField0X103(uint8_t field0X103) { _field_0x103 = field0X103; }
+        void setField0X104(uint8_t field0X104) { _field_0x104 = field0X104; }
+        void setField0X105(uint8_t field0X105) { _field_0x105 = field0X105; }
+        void setField0X106(uint8_t field0X106) { _field_0x106 = field0X106; }
+        void setField0X107(uint8_t field0X107) { _field_0x107 = field0X107; }
+        void setField0X108(uint8_t field0X108) { _field_0x108 = field0X108; }
+        void setField0X109(uint8_t field0X109) { _field_0x109 = field0X109; }
+        void setField0X10A(uint8_t field0X10A) { _field_0x10a = field0X10A; }
+        void setField0X10B(uint8_t field0X10B) { _field_0x10b = field0X10B; }
+        void setField0X10C(int16_t field0X10C) { _field_0x10c = field0X10C; }
+        void setField0X10E(int16_t field0X10E) { _field_0x10e = field0X10E; }
+        void setDamageReductionVsCharm(int16_t damageReductionVsCharm) { _damageReductionVsCharm = damageReductionVsCharm; }
+        void setDamageReductionVsHeat(int16_t damageReductionVsHeat) { _damageReductionVsHeat = damageReductionVsHeat; }
+        void setDamageReductionVsCold(int16_t damageReductionVsCold) { _damageReductionVsCold = damageReductionVsCold; }
+        void setDamageReductionVsElectric(int16_t damageReductionVsElectric) { _damageReductionVsElectric = damageReductionVsElectric; }
+        void setDamageReductionVsChemical(int16_t damageReductionVsChemical) { _damageReductionVsChemical = damageReductionVsChemical; }
+        void setDamageReductionVsMental(int16_t damageReductionVsMental) { _damageReductionVsMental = damageReductionVsMental; }
+        void setDamageReductionVsMagic(int16_t damageReductionVsMagic) { _damageReductionVsMagic = damageReductionVsMagic; }
+        void setDamageReductionVsSpecial(int16_t damageReductionVsSpecial) { _damageReductionVsSpecial = damageReductionVsSpecial; }
+        void setAgeClass(int16_t ageClass) { _ageClass = ageClass; }
+        void setVerifyField1(int16_t verifyField1) { _verifyField1 = verifyField1; }
+        void setItem(size_t index, const InventoryItem& item) noexcept;
+        void setAnArrayValue(size_t index, int value);
+        void setDaysOld(int32_t daysOld) { _daysOld = daysOld; }
+        void setVictoryPoints(int32_t victoryPoints) { _victoryPoints = victoryPoints; }
+        void setWeight(int16_t weight) { _weight = weight; }
+        void setField0X1F6(int16_t field0X1F6) { _field_0x1f6 = field0X1F6; }
+        void setGold(int16_t gold) { _gold = gold; }
+        void setGems(int16_t gems) { _gems = gems; }
+        void setJewelry(int16_t jewelry) { _jewelry = jewelry; }
+        void setField0X1Fe(int8_t field0X1Fe) { _field_0x1fe = field0X1Fe; }
+        void setIsSpellClass1(bool isSpellClass1) { _isSpellClass1 = isSpellClass1; }
+        void setIsSpellClass2(bool isSpellClass2) { _isSpellClass2 = isSpellClass2; }
+        void setIsSpellClass3(bool isSpellClass3) { _isSpellClass3 = isSpellClass3; }
+        void setItemAtIndex19IsEquipped(bool itemAtIndex19IsEquipped) { _itemAtIndex19IsEquipped = itemAtIndex19IsEquipped; }
+        void setAlive(bool alive) { _alive = alive; }
+        void setAFlag(bool aFlag) { _aFlag = aFlag; }
+        void setBrawn(char brawn) { _brawn = brawn; }
+        void setKnowledge(char knowledge) { _knowledge = knowledge; }
+        void setJudgement(char judgement) { _judgement = judgement; }
+        void setAgility(char agility) { _agility = agility; }
+        void setVitality(char vitality) { _vitality = vitality; }
+        void setLuck(char luck) { _luck = luck; }
+        std::array<SpellLevel, 7>& getSpellList() noexcept { return _spellList; }
+        void setName(const std::string &name) { _name = name; }
+        void setPrestige(const PrestigeValues &prestige) { _prestige = prestige; }
+        void setTreasureArrayIds(const std::array<int16_t, 40> &treasureArrayIds) { _treasureArrayIds = treasureArrayIds; }
+        void setField0X304(int16_t field0X304) { _field_0x304 = field0X304; }
+        void setField0X306(int16_t field0X306) { _field_0x306 = field0X306; }
+        void setField0X308(int16_t field0X308) { _field_0x308 = field0X308; }
+        void setField0X30A(int16_t field0X30A) { _field_0x30a = field0X30A; }
+        void setField0X30C(int16_t field0X30C) { _field_0x30c = field0X30C; }
+        void setField0X30E(int16_t field0X30E) { _field_0x30e = field0X30E; }
+        void setField0X310(int16_t field0X310) { _field_0x310 = field0X310; }
+        void setField0X312(int16_t field0X312) { _field_0x312 = field0X312; }
+        void setField0X314(size_t index, int16_t value);
 
         int16_t getLuckFromItems() const { return _luckFromItems; }
         int16_t getBrawnFromItems() const { return _brawnFromItems; }
