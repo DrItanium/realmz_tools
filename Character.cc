@@ -220,27 +220,27 @@ namespace realmz {
             _gold(buf[252]),
             _gems(buf[253]),
             _jewelry(buf[254]),
-            _field_0x1fe(buf[255]),
-            _isSpellClass1(upperHalf(buf[255])),
-            _isSpellClass2(buf[256]),
-            _isSpellClass3(upperHalf(buf[256])),
-            _itemAtIndex19IsEquipped(buf[257]),
-            _alive(upperHalf(buf[257])),
-            _aFlag(buf[258]),
-            _brawn(upperHalf(buf[258])),
-            _knowledge(buf[259]),
-            _judgement(upperHalf(buf[259])),
-            _agility(buf[260]),
-            _vitality(upperHalf(buf[260])),
-            _luck(buf[261]),
+            _field_0x1fe(upperHalf(buf[255])),
+            _isSpellClass1(buf[255]),
+            _isSpellClass2(upperHalf(buf[256])),
+            _isSpellClass3(buf[256]),
+            _itemAtIndex19IsEquipped(upperHalf(buf[257])),
+            _alive(buf[257]),
+            _aFlag(upperHalf(buf[258])),
+            _brawn(buf[258]),
+            _knowledge(upperHalf(buf[259])),
+            _judgement(buf[259]),
+            _agility(upperHalf(buf[260])),
+            _vitality(buf[260]),
+            _luck(upperHalf(buf[261])),
             _spellList({
 #define X(base) SpellLevel { \
-                    static_cast<bool>(upperHalf(buf[base])), static_cast<bool>(buf[base+1]), \
-                               static_cast<bool>(upperHalf(buf[base+1])), static_cast<bool>(buf[base+2]), \
-                               static_cast<bool>(upperHalf(buf[base+2])), static_cast<bool>(buf[base+3]), \
-                               static_cast<bool>(upperHalf(buf[base+3])), static_cast<bool>(buf[base+4]), \
-                               static_cast<bool>(upperHalf(buf[base+4])), static_cast<bool>(buf[base+5]), \
-                               static_cast<bool>(upperHalf(buf[base+5])), static_cast<bool>(buf[base+6])  \
+                    static_cast<bool>(buf[base]), static_cast<bool>(upperHalf(buf[base+1])), \
+                               static_cast<bool>(buf[base+1]), static_cast<bool>(upperHalf(buf[base+2])), \
+                               static_cast<bool>(buf[base+2]), static_cast<bool>(upperHalf(buf[base+3])), \
+                               static_cast<bool>(buf[base+3]), static_cast<bool>(upperHalf(buf[base+4])), \
+                               static_cast<bool>(buf[base+4]), static_cast<bool>(upperHalf(buf[base+5])), \
+                               static_cast<bool>(buf[base+5]), static_cast<bool>(upperHalf(buf[base+6]))  \
                 }
                                X(261),
                                X(267),
@@ -252,8 +252,8 @@ namespace realmz {
 #undef X
                        }),
             _name({
-                          static_cast<char>(upperHalf(buf[303])),
-#define X(offset) static_cast<char>(buf[offset]), static_cast<char>(upperHalf(buf[offset]))
+                          static_cast<char>(buf[303]),
+#define X(offset) static_cast<char>(upperHalf(buf[offset])), static_cast<char>(buf[offset])
                           X(304), // each one of these consumes two characters so we should only do 15 of these entries
                           X(305),
                           X(306),
