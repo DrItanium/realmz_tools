@@ -58,7 +58,13 @@ namespace realmz {
 
     class PrestigeValues {
     public:
-        PrestigeValues(const CharacterDataBuffer& buf);
+        constexpr PrestigeValues(int32_t damageTaken, int32_t damageGiven, int32_t hitsGiven, int32_t hitsTaken, int32_t missedAttacks, int32_t dodgedAttacks,
+                       int32_t enemiesKilled, int32_t timesDied, int32_t timesUnconscious, int32_t combatSpellsCast, int32_t undeadDestroyed, int32_t undeadTurned,
+                       int32_t penaltyPoints) noexcept : _damageTaken(damageTaken), _damageGiven(damageGiven), _hitsGiven(hitsGiven),
+                                            _hitsTaken(hitsTaken), _missedAttacks(missedAttacks), _dodgedAttacks(dodgedAttacks),
+                                            _enemiesKilled(enemiesKilled), _timesDied(timesDied), _timesUnconscious(timesUnconscious),
+                                            _combatSpellsCast(combatSpellsCast), _undeadDestroyed(undeadDestroyed),
+                                            _undeadTurned(undeadTurned), _penaltyPoints(penaltyPoints) {}
         constexpr auto getDamageTaken() const noexcept { return _damageTaken; }
         constexpr auto getDamageGiven() const noexcept { return _damageGiven; }
         constexpr auto getHitsGiven() const noexcept { return _hitsGiven; }
@@ -73,19 +79,19 @@ namespace realmz {
         constexpr auto getUndeadTurned() const noexcept { return _undeadTurned; }
         constexpr auto getPenaltyPoints() const noexcept { return _penaltyPoints; }
     private:
-        int _damageTaken;
-        int _damageGiven;
-        int _hitsGiven;
-        int _hitsTaken;
-        int _missedAttacks;
-        int _dodgedAttacks;
-        int _enemiesKilled;
-        int _timesDied;
-        int _timesUnconscious;
-        int _combatSpellsCast;
-        int _undeadDestroyed;
-        int _undeadTurned;
-        int _penaltyPoints;
+        int32_t _damageTaken;
+        int32_t _damageGiven;
+        int32_t _hitsGiven;
+        int32_t _hitsTaken;
+        int32_t _missedAttacks;
+        int32_t _dodgedAttacks;
+        int32_t _enemiesKilled;
+        int32_t _timesDied;
+        int32_t _timesUnconscious;
+        int32_t _combatSpellsCast;
+        int32_t _undeadDestroyed;
+        int32_t _undeadTurned;
+        int32_t _penaltyPoints;
     };
 
 
@@ -250,20 +256,6 @@ namespace realmz {
         void setField0Xee(int16_t field0Xee) { _field_0xee = field0Xee; }
         void setField0Xf0(int16_t field0Xf0) { _field_0xf0 = field0Xf0; }
         SpecialInfo_CharVersion& getSpecialInfo() noexcept { return _specialInfo; }
-        void setField0X100(uint8_t field0X100) { _field_0x100 = field0X100; }
-        void setField0X101(uint8_t field0X101) { _field_0x101 = field0X101; }
-        void setField0X102(uint8_t field0X102) { _field_0x102 = field0X102; }
-        void setField0X103(uint8_t field0X103) { _field_0x103 = field0X103; }
-        void setField0X104(uint8_t field0X104) { _field_0x104 = field0X104; }
-        void setField0X105(uint8_t field0X105) { _field_0x105 = field0X105; }
-        void setField0X106(uint8_t field0X106) { _field_0x106 = field0X106; }
-        void setField0X107(uint8_t field0X107) { _field_0x107 = field0X107; }
-        void setField0X108(uint8_t field0X108) { _field_0x108 = field0X108; }
-        void setField0X109(uint8_t field0X109) { _field_0x109 = field0X109; }
-        void setField0X10A(uint8_t field0X10A) { _field_0x10a = field0X10A; }
-        void setField0X10B(uint8_t field0X10B) { _field_0x10b = field0X10B; }
-        void setField0X10C(int16_t field0X10C) { _field_0x10c = field0X10C; }
-        void setField0X10E(int16_t field0X10E) { _field_0x10e = field0X10E; }
         void setDamageReductionVsCharm(int16_t damageReductionVsCharm) { _damageReductionVsCharm = damageReductionVsCharm; }
         void setDamageReductionVsHeat(int16_t damageReductionVsHeat) { _damageReductionVsHeat = damageReductionVsHeat; }
         void setDamageReductionVsCold(int16_t damageReductionVsCold) { _damageReductionVsCold = damageReductionVsCold; }
@@ -299,7 +291,6 @@ namespace realmz {
         std::array<SpellLevel, 7>& getSpellList() noexcept { return _spellList; }
         void setName(const std::string &name) { _name = name; }
         void setPrestige(const PrestigeValues &prestige) { _prestige = prestige; }
-        void setTreasureArrayIds(const std::array<int16_t, 40> &treasureArrayIds) { _treasureArrayIds = treasureArrayIds; }
         void setField0X304(int16_t field0X304) { _field_0x304 = field0X304; }
         void setField0X306(int16_t field0X306) { _field_0x306 = field0X306; }
         void setField0X308(int16_t field0X308) { _field_0x308 = field0X308; }
@@ -309,126 +300,115 @@ namespace realmz {
         void setField0X310(int16_t field0X310) { _field_0x310 = field0X310; }
         void setField0X312(int16_t field0X312) { _field_0x312 = field0X312; }
         void setField0X314(size_t index, int16_t value);
-
-        int16_t getLuckFromItems() const { return _luckFromItems; }
-        int16_t getBrawnFromItems() const { return _brawnFromItems; }
-        int16_t getMagicResistance() const { return _magicResistance; }
-        int16_t getMovementBonus() const { return _movementBonus; }
-        int16_t getArmorRating() const { return _armorRating; }
-        int16_t getDamagePlus() const { return _damagePlus; }
-        int16_t getRace() const { return _race; }
-        int16_t getCaste() const { return _caste; }
-        SupportedSpellClass getSupportedSpellClass() const { return _supportedSpellClass; }
-        Gender getGender() const { return _gender; }
-        int16_t getSkillLevel() const { return _skillLevel; }
-        int16_t getField0X3A() const { return _field_0x3a; }
-        int16_t getMovementPoints() const { return _movementPoints; }
-        int16_t getCombatPoints() const { return _combatPoints; }
-        const std::array<int16_t, 7> &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
-        int16_t getStaminaCurrent() const { return _staminaCurrent; }
-        int16_t getStaminaTotal() const { return _staminaTotal; }
-        int16_t getPortraitIndex() const { return _portraitIndex; }
-        int16_t getIconPictureIndex() const { return _iconPictureIndex; }
-        int16_t getSpellPointsCurrent() const { return _spellPointsCurrent; }
-        int16_t getSpellPointsTotal() const { return _spellPointsTotal; }
-        int16_t getField0X5A() const { return _field_0x5a; }
-        int16_t getField0X5C() const { return _field_0x5c; }
-        int16_t getField0X5E() const { return _field_0x5e; }
-        int16_t getHandToHandMax() const { return _handToHandMax; }
-        const CharacterConditions &getConditions() const { return _conditions; }
-        int16_t getStrong() const { return _strong; }
-        int16_t getProtectionFromFoe() const { return _protectionFromFoe; }
-        int16_t getSpeed() const { return _speed; }
-        int16_t getInvisible() const { return _invisible; }
-        int16_t getIsAnimated() const { return _isAnimated; }
-        int16_t getStone() const { return _stone; }
-        int16_t getBlind() const { return _blind; }
-        int16_t getDiseased() const { return _diseased; }
-        int16_t getIsConfused() const { return _isConfused; }
-        int16_t getReflectingSpells() const { return _reflectingSpells; }
-        int16_t getReflectingAttacks() const { return _reflectingAttacks; }
-        int16_t getAttackBonus() const { return _attackBonus; }
-        int16_t getAbsorbEnergy() const { return _absorbEnergy; }
-        int16_t getAbsorbSpellEnergyFromAttacks() const { return _absorbSpellEnergyFromAttacks; }
-        int16_t getField0Xa8() const { return _field_0xa8; }
-        int16_t getHinderedAttack() const { return _hinderedAttack; }
-        int16_t getHinderedDefense() const { return _hinderedDefense; }
-        int16_t getDefensiveBonus() const { return _defensiveBonus; }
-        int16_t getAffectsCastingAbility() const { return _affectsCastingAbility; }
-        int16_t getVsMagicUsingCreatures() const { return _vsMagicUsingCreatures; }
-        int16_t getVsUndeadCreatures() const { return _vsUndeadCreatures; }
-        int16_t getVsDemonicCreatures() const { return _vsDemonicCreatures; }
-        int16_t getVsReptileCreatures() const { return _vsReptileCreatures; }
-        int16_t getVsVeryEvilCreatures() const { return _vsVeryEvilCreatures; }
-        int16_t getVsIntelligentCreatures() const { return _vsIntelligentCreatures; }
-        int16_t getVsGiantSizedCreatures() const { return _vsGiantSizedCreatures; }
-        int16_t getVsNonHumanoidCreature() const { return _vsNonHumanoidCreature; }
-        const std::array<int16_t, 20> &getEquippedItems() const { return _equippedItems; }
-        int16_t getField0Xea() const { return _field_0xea; }
-        int16_t getField0Xec() const { return _field_0xec; }
-        int16_t getField0Xee() const { return _field_0xee; }
-        int16_t getField0Xf0() const { return _field_0xf0; }
-        const SpecialInfo_CharVersion &getSpecialInfo() const { return _specialInfo; }
-        uint8_t getField0X100() const { return _field_0x100; }
-        uint8_t getField0X101() const { return _field_0x101; }
-        uint8_t getField0X102() const { return _field_0x102; }
-        uint8_t getField0X103() const { return _field_0x103; }
-        uint8_t getField0X104() const { return _field_0x104; }
-        uint8_t getField0X105() const { return _field_0x105; }
-        uint8_t getField0X106() const { return _field_0x106; }
-        uint8_t getField0X107() const { return _field_0x107; }
-        uint8_t getField0X108() const { return _field_0x108; }
-        uint8_t getField0X109() const { return _field_0x109; }
-        uint8_t getField0X10A() const { return _field_0x10a; }
-        uint8_t getField0X10B() const { return _field_0x10b; }
-        int16_t getField0X10C() const { return _field_0x10c; }
-        int16_t getField0X10E() const { return _field_0x10e; }
-        int16_t getDamageReductionVsCharm() const { return _damageReductionVsCharm; }
-        int16_t getDamageReductionVsHeat() const { return _damageReductionVsHeat; }
-        int16_t getDamageReductionVsCold() const { return _damageReductionVsCold; }
-        int16_t getDamageReductionVsElectric() const { return _damageReductionVsElectric; }
-        int16_t getDamageReductionVsChemical() const { return _damageReductionVsChemical; }
-        int16_t getDamageReductionVsMental() const { return _damageReductionVsMental; }
-        int16_t getDamageReductionVsMagic() const { return _damageReductionVsMagic; }
-        int16_t getDamageReductionVsSpecial() const { return _damageReductionVsSpecial; }
-        int16_t getAgeClass() const { return _ageClass; }
-        int16_t getVerifyField1() const { return _verifyField1; }
-        const std::array<InventoryItem, 30> &getItems() const { return _items; }
-        const std::array<int, 5> &getAnArray() const { return _anArray; }
-        int32_t getDaysOld() const { return _daysOld; }
-        int32_t getVictoryPoints() const { return _victoryPoints; }
-        int16_t getWeight() const { return _weight; }
-        int16_t getField0X1F6() const { return _field_0x1f6; }
-        int16_t getGold() const { return _gold; }
-        int16_t getGems() const { return _gems; }
-        int16_t getJewelry() const { return _jewelry; }
-        int8_t getField0X1Fe() const { return _field_0x1fe; }
-        bool isIsSpellClass1() const { return _isSpellClass1; }
-        bool isIsSpellClass2() const { return _isSpellClass2; }
-        bool isIsSpellClass3() const { return _isSpellClass3; }
-        bool isItemAtIndex19IsEquipped() const { return _itemAtIndex19IsEquipped; }
-        bool isAlive() const { return _alive; }
-        bool isAFlag() const { return _aFlag; }
-        char getBrawn() const { return _brawn; }
-        char getKnowledge() const { return _knowledge; }
-        char getJudgement() const { return _judgement; }
-        char getAgility() const { return _agility; }
-        char getVitality() const { return _vitality; }
-        char getLuck() const { return _luck; }
-        const std::array<SpellLevel, 7> &getSpellList() const { return _spellList; }
-        const std::string &getName() const { return _name; }
-        int16_t getVerifyField2() const { return _verifyField2; }
-        const PrestigeValues &getPrestige() const { return _prestige; }
-        const std::array<int16_t, 40> &getTreasureArrayIds() const { return _treasureArrayIds; }
-        int16_t getField0X304() const { return _field_0x304; }
-        int16_t getField0X306() const { return _field_0x306; }
-        int16_t getField0X308() const { return _field_0x308; }
-        int16_t getField0X30A() const { return _field_0x30a; }
-        int16_t getField0X30C() const { return _field_0x30c; }
-        int16_t getField0X30E() const { return _field_0x30e; }
-        int16_t getField0X310() const { return _field_0x310; }
-        int16_t getField0X312() const { return _field_0x312; }
-        const std::array<int16_t, 42> &getField0X314() const { return _field_0x314; }
+        void setField0X100(size_t index, int16_t value);
+        void setTreasureArrayId(size_t index, int16_t value);
+    public:
+        [[nodiscard]] constexpr int16_t getLuckFromItems() const noexcept { return _luckFromItems; }
+        [[nodiscard]] constexpr int16_t getBrawnFromItems() const noexcept { return _brawnFromItems; }
+        [[nodiscard]] constexpr int16_t getMagicResistance() const noexcept { return _magicResistance; }
+        [[nodiscard]] constexpr int16_t getMovementBonus() const noexcept { return _movementBonus; }
+        [[nodiscard]] constexpr int16_t getArmorRating() const noexcept { return _armorRating; }
+        [[nodiscard]] constexpr int16_t getDamagePlus() const noexcept { return _damagePlus; }
+        [[nodiscard]] constexpr int16_t getRace() const noexcept { return _race; }
+        [[nodiscard]] constexpr int16_t getCaste() const noexcept { return _caste; }
+        [[nodiscard]] constexpr SupportedSpellClass getSupportedSpellClass() const noexcept { return _supportedSpellClass; }
+        [[nodiscard]] constexpr Gender getGender() const noexcept { return _gender; }
+        [[nodiscard]] constexpr int16_t getSkillLevel() const noexcept { return _skillLevel; }
+        [[nodiscard]] constexpr int16_t getField0X3A() const noexcept { return _field_0x3a; }
+        [[nodiscard]] constexpr int16_t getMovementPoints() const noexcept { return _movementPoints; }
+        [[nodiscard]] constexpr int16_t getCombatPoints() const noexcept { return _combatPoints; }
+        [[nodiscard]] constexpr int16_t getStaminaCurrent() const noexcept { return _staminaCurrent; }
+        [[nodiscard]] constexpr int16_t getStaminaTotal() const noexcept { return _staminaTotal; }
+        [[nodiscard]] constexpr int16_t getPortraitIndex() const noexcept { return _portraitIndex; }
+        [[nodiscard]] constexpr int16_t getIconPictureIndex() const noexcept { return _iconPictureIndex; }
+        [[nodiscard]] constexpr int16_t getSpellPointsCurrent() const noexcept { return _spellPointsCurrent; }
+        [[nodiscard]] constexpr int16_t getSpellPointsTotal() const noexcept { return _spellPointsTotal; }
+        [[nodiscard]] constexpr int16_t getField0X5A() const noexcept { return _field_0x5a; }
+        [[nodiscard]] constexpr int16_t getField0X5C() const noexcept { return _field_0x5c; }
+        [[nodiscard]] constexpr int16_t getField0X5E() const noexcept { return _field_0x5e; }
+        [[nodiscard]] constexpr int16_t getHandToHandMax() const noexcept { return _handToHandMax; }
+        [[nodiscard]] constexpr int16_t getStrong() const noexcept { return _strong; }
+        [[nodiscard]] constexpr int16_t getProtectionFromFoe() const noexcept { return _protectionFromFoe; }
+        [[nodiscard]] constexpr int16_t getSpeed() const noexcept { return _speed; }
+        [[nodiscard]] constexpr int16_t getInvisible() const noexcept { return _invisible; }
+        [[nodiscard]] constexpr int16_t getIsAnimated() const noexcept { return _isAnimated; }
+        [[nodiscard]] constexpr int16_t getStone() const noexcept { return _stone; }
+        [[nodiscard]] constexpr int16_t getBlind() const noexcept { return _blind; }
+        [[nodiscard]] constexpr int16_t getDiseased() const noexcept { return _diseased; }
+        [[nodiscard]] constexpr int16_t getIsConfused() const noexcept { return _isConfused; }
+        [[nodiscard]] constexpr int16_t getReflectingSpells() const noexcept { return _reflectingSpells; }
+        [[nodiscard]] constexpr int16_t getReflectingAttacks() const noexcept { return _reflectingAttacks; }
+        [[nodiscard]] constexpr int16_t getAttackBonus() const noexcept { return _attackBonus; }
+        [[nodiscard]] constexpr int16_t getAbsorbEnergy() const noexcept { return _absorbEnergy; }
+        [[nodiscard]] constexpr int16_t getAbsorbSpellEnergyFromAttacks() const noexcept { return _absorbSpellEnergyFromAttacks; }
+        [[nodiscard]] constexpr int16_t getField0Xa8() const noexcept { return _field_0xa8; }
+        [[nodiscard]] constexpr int16_t getHinderedAttack() const noexcept { return _hinderedAttack; }
+        [[nodiscard]] constexpr int16_t getHinderedDefense() const noexcept { return _hinderedDefense; }
+        [[nodiscard]] constexpr int16_t getDefensiveBonus() const noexcept { return _defensiveBonus; }
+        [[nodiscard]] constexpr int16_t getAffectsCastingAbility() const noexcept { return _affectsCastingAbility; }
+        [[nodiscard]] constexpr int16_t getVsMagicUsingCreatures() const noexcept { return _vsMagicUsingCreatures; }
+        [[nodiscard]] constexpr int16_t getVsUndeadCreatures() const noexcept { return _vsUndeadCreatures; }
+        [[nodiscard]] constexpr int16_t getVsDemonicCreatures() const noexcept { return _vsDemonicCreatures; }
+        [[nodiscard]] constexpr int16_t getVsReptileCreatures() const noexcept { return _vsReptileCreatures; }
+        [[nodiscard]] constexpr int16_t getVsVeryEvilCreatures() const noexcept { return _vsVeryEvilCreatures; }
+        [[nodiscard]] constexpr int16_t getVsIntelligentCreatures() const noexcept { return _vsIntelligentCreatures; }
+        [[nodiscard]] constexpr int16_t getVsGiantSizedCreatures() const noexcept { return _vsGiantSizedCreatures; }
+        [[nodiscard]] constexpr int16_t getVsNonHumanoidCreature() const noexcept { return _vsNonHumanoidCreature; }
+        [[nodiscard]] constexpr int16_t getField0Xea() const noexcept { return _field_0xea; }
+        [[nodiscard]] constexpr int16_t getField0Xec() const noexcept { return _field_0xec; }
+        [[nodiscard]] constexpr int16_t getField0Xee() const noexcept { return _field_0xee; }
+        [[nodiscard]] constexpr int16_t getField0Xf0() const noexcept { return _field_0xf0; }
+        [[nodiscard]] constexpr int16_t getDamageReductionVsCharm() const noexcept { return _damageReductionVsCharm; }
+        [[nodiscard]] constexpr int16_t getDamageReductionVsHeat() const noexcept { return _damageReductionVsHeat; }
+        [[nodiscard]] constexpr int16_t getDamageReductionVsCold() const noexcept { return _damageReductionVsCold; }
+        [[nodiscard]] constexpr int16_t getDamageReductionVsElectric() const noexcept { return _damageReductionVsElectric; }
+        [[nodiscard]] constexpr int16_t getDamageReductionVsChemical() const noexcept { return _damageReductionVsChemical; }
+        [[nodiscard]] constexpr int16_t getDamageReductionVsMental() const noexcept { return _damageReductionVsMental; }
+        [[nodiscard]] constexpr int16_t getDamageReductionVsMagic() const noexcept { return _damageReductionVsMagic; }
+        [[nodiscard]] constexpr int16_t getDamageReductionVsSpecial() const noexcept { return _damageReductionVsSpecial; }
+        [[nodiscard]] constexpr int16_t getAgeClass() const noexcept { return _ageClass; }
+        [[nodiscard]] constexpr int16_t getVerifyField1() const noexcept { return _verifyField1; }
+        [[nodiscard]] constexpr int32_t getDaysOld() const noexcept { return _daysOld; }
+        [[nodiscard]] constexpr int32_t getVictoryPoints() const noexcept { return _victoryPoints; }
+        [[nodiscard]] constexpr int16_t getWeight() const noexcept { return _weight; }
+        [[nodiscard]] constexpr int16_t getField0X1F6() const noexcept { return _field_0x1f6; }
+        [[nodiscard]] constexpr int16_t getGold() const noexcept { return _gold; }
+        [[nodiscard]] constexpr int16_t getGems() const noexcept { return _gems; }
+        [[nodiscard]] constexpr int16_t getJewelry() const noexcept { return _jewelry; }
+        [[nodiscard]] constexpr int8_t getField0X1Fe() const noexcept { return _field_0x1fe; }
+        [[nodiscard]] constexpr bool isIsSpellClass1() const noexcept { return _isSpellClass1; }
+        [[nodiscard]] constexpr bool isIsSpellClass2() const noexcept { return _isSpellClass2; }
+        [[nodiscard]] constexpr bool isIsSpellClass3() const noexcept { return _isSpellClass3; }
+        [[nodiscard]] constexpr bool isItemAtIndex19IsEquipped() const noexcept { return _itemAtIndex19IsEquipped; }
+        [[nodiscard]] constexpr bool isAlive() const noexcept { return _alive; }
+        [[nodiscard]] constexpr bool isAFlag() const noexcept { return _aFlag; }
+        [[nodiscard]] constexpr char getBrawn() const noexcept { return _brawn; }
+        [[nodiscard]] constexpr char getKnowledge() const noexcept { return _knowledge; }
+        [[nodiscard]] constexpr char getJudgement() const noexcept { return _judgement; }
+        [[nodiscard]] constexpr char getAgility() const noexcept { return _agility; }
+        [[nodiscard]] constexpr char getVitality() const noexcept { return _vitality; }
+        [[nodiscard]] constexpr char getLuck() const noexcept { return _luck; }
+        [[nodiscard]] constexpr int16_t getVerifyField2() const noexcept { return _verifyField2; }
+        [[nodiscard]] constexpr int16_t getField0X304() const noexcept { return _field_0x304; }
+        [[nodiscard]] constexpr int16_t getField0X306() const noexcept { return _field_0x306; }
+        [[nodiscard]] constexpr int16_t getField0X308() const noexcept { return _field_0x308; }
+        [[nodiscard]] constexpr int16_t getField0X30A() const noexcept { return _field_0x30a; }
+        [[nodiscard]] constexpr int16_t getField0X30C() const noexcept { return _field_0x30c; }
+        [[nodiscard]] constexpr int16_t getField0X30E() const noexcept { return _field_0x30e; }
+        [[nodiscard]] constexpr int16_t getField0X310() const noexcept { return _field_0x310; }
+        [[nodiscard]] constexpr int16_t getField0X312() const noexcept { return _field_0x312; }
+        [[nodiscard]] const std::array<int16_t, 8> &getField0X100() const { return _field_0x100; }
+        [[nodiscard]] const std::array<SpellLevel, 7> &getSpellList() const { return _spellList; }
+        [[nodiscard]] const std::string &getName() const { return _name; }
+        [[nodiscard]] const PrestigeValues &getPrestige() const { return _prestige; }
+        [[nodiscard]] const std::array<int16_t, 40> &getTreasureArrayIds() const { return _treasureArrayIds; }
+        [[nodiscard]] const std::array<int16_t, 42> &getField0X314() const { return _field_0x314; }
+        [[nodiscard]] const std::array<int16_t, 20> &getEquippedItems() const { return _equippedItems; }
+        [[nodiscard]] const SpecialInfo_CharVersion &getSpecialInfo() const { return _specialInfo; }
+        [[nodiscard]] const std::array<InventoryItem, 30> &getItems() const { return _items; }
+        [[nodiscard]] const std::array<int16_t, 10> &getAnArray() const { return _anArray; }
+        [[nodiscard]] const std::array<int16_t, 7> &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
+        [[nodiscard]] const CharacterConditions &getConditions() const { return _conditions; }
     private:
         uint16_t _id;
         int16_t _verifyField0;

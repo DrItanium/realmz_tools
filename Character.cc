@@ -271,7 +271,21 @@ namespace realmz {
                 X(318)
 #undef X
             }),
-            _verifyField2(buf[319])
+            _verifyField2(buf[319]),
+            _prestige(
+                    make(buf[320], buf[321]),
+                    make(buf[322], buf[323]),
+                    make(buf[324], buf[325]),
+                    make(buf[326], buf[327]),
+                    make(buf[328], buf[329]),
+                    make(buf[330], buf[331]),
+                    make(buf[332], buf[333]),
+                    make(buf[334], buf[335]),
+                    make(buf[336], buf[337]),
+                    make(buf[338], buf[339]),
+                    make(buf[340], buf[341]),
+                    make(buf[342], buf[343]),
+                    make(buf[344], buf[345]))
     {
 
     }
