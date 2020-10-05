@@ -331,11 +331,13 @@ add_library(realmz
 		DRVAdjustments.h
 		CasteConditions.cc
 		CasteConditions.h
-		CasteDataBuffer.h)
+		CasteDataBuffer.h Character.cc Character.h)
 
 add_executable(dumpcaste CasteDecomposer.cpp)
 add_executable(dumprace RaceDecomposer.cc)
 add_executable(realmz_keygen KeyGen.cc)
 target_link_libraries(dumpcaste PUBLIC realmz)
 target_link_libraries(dumprace PUBLIC realmz)
+add_executable(dump_character CharacterDump.cc)
+target_link_libraries(dump_character PUBLIC realmz)
 
