@@ -319,19 +319,67 @@ namespace realmz {
     void
     Character::print(std::ostream& os) const noexcept {
         os << "Name: " << _name << std::endl;
-        auto printStat = [&os](const std::string& title, int8_t value) noexcept { os << title << ": " << static_cast<int>(value) << std::endl; };
-        printStat("Brawn", _brawn);
-        printStat("Knowledge", _knowledge);
-        printStat("Judgement", _judgement);
-        printStat("Agility", _agility);
-        printStat("Vitality", _vitality);
-        printStat("Luck", _luck);
+        auto print8 = [&os](const std::string& title, int8_t value) noexcept { os << title << ": " << static_cast<int>(value) << std::endl; };
+        auto print16 = [&os](const std::string& title, int16_t value) noexcept { os << title << ": " << static_cast<int>(value) << std::endl; };
+        print8("Brawn", _brawn);
+        print8("Knowledge", _knowledge);
+        print8("Judgement", _judgement);
+        print8("Agility", _agility);
+        print8("Vitality", _vitality);
+        print8("Luck", _luck);
+        print16("Verify0", _verifyField0)  ;
+        print16("Verify1", _verifyField1)  ;
+        print16("Verify2", _verifyField2)  ;
+        print16("Chance to hit", _chanceToHit);
+        print16("Dodge Missile", _dodgeMissile);
+        print16("Movement Points", _movementPoints);
+        print16("Missile Adjust", _missileAdjust);
+        os << _conditions << std::endl;
+    }
+
+    void
+    CharacterConditions::print(std::ostream &os) const noexcept {
+        os << "Conditions: {" << std::endl;
+        auto fn = [&os](const std::string& title, int16_t value) noexcept {
+            os << "\t" << title << ": " << value << std::endl;
+        };
+        fn("In Retreat", _inRetreat);
+        fn("Helpless", _helpless);
+        fn("Tangled", _tangled);
+        fn("Cursed", _isCursed);
+        fn("Magic Aura", _conditionMagicAura);
+        fn("Stupid or Silenced", _supidOrSilenced1);
+        fn("Slow", _isSlow);
+        fn("Shielded From Normal Attacks", _conditionShieldedFromNormalAttacks);
+        fn("Shielded From Projectiles", _conditionShieldedFromProjectiles);
+        fn("Poisoned", _poisoned);
+        fn("Regenerating", _regenerating);
+#define X(kind) fn("Protection from " #kind " Attacks", _protectionFrom ## kind ## Attacks)
+#define Y(kind) fn("Protection from " #kind " Level Spells", _protectionFrom ## kind ## LevelSpells)
+        X(Heat);
+        X(Cold);
+        X(Electrical);
+        X(Chemical);
+        X(Mental);
+        Y(1st);
+        Y(2nd);
+        Y(3rd);
+        Y(4th);
+        Y(5th);
+#undef Y
+#undef X
+        os << "}" << std::endl;
     }
 
 }
 
 std::ostream&
 operator<<(std::ostream& os, const realmz::Character& c) noexcept {
+    c.print(os);
+    return os;
+}
+std::ostream&
+operator<<(std::ostream& os, const realmz::CharacterConditions& c) noexcept {
     c.print(os);
     return os;
 }

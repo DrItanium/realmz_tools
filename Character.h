@@ -106,7 +106,7 @@ namespace realmz {
                                       int16_t protectionFromHeatAttacks, int16_t protectionFromColdAttacks, int16_t protectionFromElectricalAttacks,
                                       int16_t protectionFromChemicalAttacks, int16_t protectionFromMentalAttacks,
                                       int16_t protectionFrom1StLevelSpells, int16_t protectionFrom2NdLevelSpells,
-                                      int16_t protectionFrom3ThLevelSpells, int16_t protectionFrom4ThLevelSpells,
+                                      int16_t protectionFrom3rdLevelSpells, int16_t protectionFrom4ThLevelSpells,
                                       int16_t protectionFrom5ThLevelSpells) : _inRetreat(inRetreat), _helpless(helpless), _tangled(tangled),
                                                                               _isCursed(isCursed), _conditionMagicAura(conditionMagicAura),
                                                                               _supidOrSilenced1(supidOrSilenced1), _isSlow(isSlow),
@@ -120,7 +120,7 @@ namespace realmz {
                                                                               _protectionFromMentalAttacks(protectionFromMentalAttacks),
                                                                               _protectionFrom1stLevelSpells(protectionFrom1StLevelSpells),
                                                                               _protectionFrom2ndLevelSpells(protectionFrom2NdLevelSpells),
-                                                                              _protectionFrom3thLevelSpells(protectionFrom3ThLevelSpells),
+                                                                              _protectionFrom3rdLevelSpells(protectionFrom3rdLevelSpells),
                                                                               _protectionFrom4thLevelSpells(protectionFrom4ThLevelSpells),
                                                                               _protectionFrom5thLevelSpells(protectionFrom5ThLevelSpells) {}
         constexpr int16_t getInRetreat() const noexcept { return _inRetreat; }
@@ -139,11 +139,12 @@ namespace realmz {
         constexpr int16_t getProtectionFromElectricalAttacks() const noexcept { return _protectionFromElectricalAttacks; }
         constexpr int16_t getProtectionFromChemicalAttacks() const noexcept { return _protectionFromChemicalAttacks; }
         constexpr int16_t getProtectionFromMentalAttacks() const noexcept { return _protectionFromMentalAttacks; }
-        constexpr int16_t getProtectionFrom1StLevelSpells() const noexcept { return _protectionFrom1stLevelSpells; }
-        constexpr int16_t getProtectionFrom2NdLevelSpells() const noexcept { return _protectionFrom2ndLevelSpells; }
-        constexpr int16_t getProtectionFrom3ThLevelSpells() const noexcept { return _protectionFrom3thLevelSpells; }
-        constexpr int16_t getProtectionFrom4ThLevelSpells() const noexcept { return _protectionFrom4thLevelSpells; }
-        constexpr int16_t getProtectionFrom5ThLevelSpells() const noexcept { return _protectionFrom5thLevelSpells; }
+        constexpr int16_t getProtectionFrom1stLevelSpells() const noexcept { return _protectionFrom1stLevelSpells; }
+        constexpr int16_t getProtectionFrom2ndLevelSpells() const noexcept { return _protectionFrom2ndLevelSpells; }
+        constexpr int16_t getProtectionFrom3rdLevelSpells() const noexcept { return _protectionFrom3rdLevelSpells; }
+        constexpr int16_t getProtectionFrom4thLevelSpells() const noexcept { return _protectionFrom4thLevelSpells; }
+        constexpr int16_t getProtectionFrom5thLevelSpells() const noexcept { return _protectionFrom5thLevelSpells; }
+        void print(std::ostream& os) const noexcept;
     private:
         int16_t _inRetreat;
         int16_t _helpless;
@@ -163,7 +164,7 @@ namespace realmz {
         int16_t _protectionFromMentalAttacks;
         int16_t _protectionFrom1stLevelSpells;
         int16_t _protectionFrom2ndLevelSpells;
-        int16_t _protectionFrom3thLevelSpells;
+        int16_t _protectionFrom3rdLevelSpells;
         int16_t _protectionFrom4thLevelSpells;
         int16_t _protectionFrom5thLevelSpells;
     };
@@ -539,5 +540,6 @@ namespace realmz {
     };
 } // end namespace realmz
 std::ostream& operator<<(std::ostream& os, const realmz::Character& c) noexcept;
+std::ostream& operator<<(std::ostream& os, const realmz::CharacterConditions& c) noexcept;
 
 #endif //REALMZ_TOOLS_CHARACTER_H
