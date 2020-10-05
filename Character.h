@@ -11,7 +11,14 @@ namespace realmz {
     using CharacterDataBuffer = std::array<int16_t, 872/2>;
     class SpecialInfo_CharVersion {
     public:
-        SpecialInfo_CharVersion(const CharacterDataBuffer& buffer);
+        SpecialInfo_CharVersion(int16_t first, int16_t second, int16_t third, int16_t fourth, int16_t fifth, int16_t sixth, int16_t seventh) :
+        _sneakAttack(first & 0xFF), _causeMajorWound((second >> 8) & 0xFF),
+        _detectSecret(third & 0xFF), _acrobaticAct((third >> 8) & 0xFF),
+        _detectTrap(fourth & 0xFF), _disableTrap((fourth >> 8) & 0xFF),
+        _forceLock((fifth >> 8) & 0xFF), _pickLock((sixth >> 8) & 0xFF),
+        _turnUndead((seventh >> 8) & 0xFF) { }
+
+
         constexpr int8_t getSneakAttack() const noexcept { return _sneakAttack; }
         constexpr int8_t getCauseMajorWound() const noexcept { return _causeMajorWound; }
         constexpr int8_t getDetectSecret() const noexcept { return _detectSecret; }
@@ -34,11 +41,12 @@ namespace realmz {
     };
     class InventoryItem {
     public:
-        InventoryItem(int16_t index, uint8_t field2, uint8_t field3, uint16_t flags) : _idx(index), _f2(field2), _f3(field3), _flags(flags) { }
-        constexpr auto getIndex() const noexcept { return _idx; }
-        constexpr auto getField2() const noexcept { return _f2; }
-        constexpr auto getField3() const noexcept { return _f3; }
-        constexpr auto getFlags() const noexcept { return _flags; }
+        constexpr InventoryItem(int16_t index, uint8_t field2, uint8_t field3, uint16_t flags) noexcept : _idx(index), _f2(field2), _f3(field3), _flags(flags) { }
+        constexpr InventoryItem(int16_t index, int16_t unknowns, uint16_t flags) noexcept : InventoryItem(index, unknowns & 0xFF, (unknowns >> 8) & 0xFF, flags) { }
+        [[nodiscard]] constexpr auto getIndex() const noexcept { return _idx; }
+        [[nodiscard]] constexpr auto getField2() const noexcept { return _f2; }
+        [[nodiscard]] constexpr auto getField3() const noexcept { return _f3; }
+        [[nodiscard]] constexpr auto getFlags() const noexcept { return _flags; }
     private:
         uint16_t _idx;
         uint8_t _f2;
@@ -85,7 +93,29 @@ namespace realmz {
 
     class CharacterConditions {
     public:
-        CharacterConditions(const CharacterDataBuffer& buf);
+        constexpr CharacterConditions(int16_t inRetreat, int16_t helpless, int16_t tangled, int16_t isCursed, int16_t conditionMagicAura,
+                                      int16_t supidOrSilenced1, int16_t isSlow, int16_t conditionShieldedFromNormalAttacks,
+                                      int16_t conditionShieldedFromProjectiles, int16_t poisoned, int16_t regenerating,
+                                      int16_t protectionFromHeatAttacks, int16_t protectionFromColdAttacks, int16_t protectionFromElectricalAttacks,
+                                      int16_t protectionFromChemicalAttacks, int16_t protectionFromMentalAttacks,
+                                      int16_t protectionFrom1StLevelSpells, int16_t protectionFrom2NdLevelSpells,
+                                      int16_t protectionFrom3ThLevelSpells, int16_t protectionFrom4ThLevelSpells,
+                                      int16_t protectionFrom5ThLevelSpells) : _inRetreat(inRetreat), _helpless(helpless), _tangled(tangled),
+                                                                              _isCursed(isCursed), _conditionMagicAura(conditionMagicAura),
+                                                                              _supidOrSilenced1(supidOrSilenced1), _isSlow(isSlow),
+                                                                              _conditionShieldedFromNormalAttacks(conditionShieldedFromNormalAttacks),
+                                                                              _conditionShieldedFromProjectiles(conditionShieldedFromProjectiles),
+                                                                              _poisoned(poisoned), _regenerating(regenerating),
+                                                                              _protectionFromHeatAttacks(protectionFromHeatAttacks),
+                                                                              _protectionFromColdAttacks(protectionFromColdAttacks),
+                                                                              _protectionFromElectricalAttacks(protectionFromElectricalAttacks),
+                                                                              _protectionFromChemicalAttacks(protectionFromChemicalAttacks),
+                                                                              _protectionFromMentalAttacks(protectionFromMentalAttacks),
+                                                                              _protectionFrom1stLevelSpells(protectionFrom1StLevelSpells),
+                                                                              _protectionFrom2ndLevelSpells(protectionFrom2NdLevelSpells),
+                                                                              _protectionFrom3thLevelSpells(protectionFrom3ThLevelSpells),
+                                                                              _protectionFrom4thLevelSpells(protectionFrom4ThLevelSpells),
+                                                                              _protectionFrom5thLevelSpells(protectionFrom5ThLevelSpells) {}
         constexpr int16_t getInRetreat() const noexcept { return _inRetreat; }
         constexpr int16_t getHelpless() const noexcept { return _helpless; }
         constexpr int16_t getTangled() const noexcept { return _tangled; }
@@ -477,20 +507,7 @@ namespace realmz {
         int16_t _field_0xee;
         int16_t _field_0xf0;
         SpecialInfo_CharVersion _specialInfo;
-        uint8_t _field_0x100;
-        uint8_t _field_0x101;
-        uint8_t _field_0x102;
-        uint8_t _field_0x103;
-        uint8_t _field_0x104;
-        uint8_t _field_0x105;
-        uint8_t _field_0x106;
-        uint8_t _field_0x107;
-        uint8_t _field_0x108;
-        uint8_t _field_0x109;
-        uint8_t _field_0x10a;
-        uint8_t _field_0x10b;
-        int16_t _field_0x10c;
-        int16_t _field_0x10e;
+        std::array<int16_t, 8> _field_0x100;
         int16_t _damageReductionVsCharm;
         int16_t _damageReductionVsHeat;
         int16_t _damageReductionVsCold;
@@ -502,7 +519,7 @@ namespace realmz {
         int16_t _ageClass;
         int16_t _verifyField1;
         std::array<InventoryItem, 30> _items;
-        std::array<int, 5> _anArray;
+        std::array<int16_t, 10> _anArray;
         int32_t _daysOld;
         int32_t _victoryPoints;
         int16_t _weight;
