@@ -367,7 +367,7 @@ namespace realmz {
         void setGold(int16_t gold) { _gold = gold; }
         void setGems(int16_t gems) { _gems = gems; }
         void setJewelry(int16_t jewelry) { _jewelry = jewelry; }
-        void setField0X1Fe(int8_t field0X1Fe) { _field_0x1fe = field0X1Fe; }
+        void setField0X1Fe(bool field0X1Fe) { _field_0x1fe = field0X1Fe; }
         void setIsSpellClass1(bool isSpellClass1) { _isSpellClass1 = isSpellClass1; }
         void setIsSpellClass2(bool isSpellClass2) { _isSpellClass2 = isSpellClass2; }
         void setIsSpellClass3(bool isSpellClass3) { _isSpellClass3 = isSpellClass3; }
@@ -467,7 +467,7 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getGold() const noexcept { return _gold; }
         [[nodiscard]] constexpr int16_t getGems() const noexcept { return _gems; }
         [[nodiscard]] constexpr int16_t getJewelry() const noexcept { return _jewelry; }
-        [[nodiscard]] constexpr int8_t getField0X1Fe() const noexcept { return _field_0x1fe; }
+        [[nodiscard]] constexpr auto getField0X1Fe() const noexcept { return _field_0x1fe; }
         [[nodiscard]] constexpr bool isIsSpellClass1() const noexcept { return _isSpellClass1; }
         [[nodiscard]] constexpr bool isIsSpellClass2() const noexcept { return _isSpellClass2; }
         [[nodiscard]] constexpr bool isIsSpellClass3() const noexcept { return _isSpellClass3; }
@@ -600,7 +600,7 @@ namespace realmz {
         int16_t _gold;
         int16_t _gems;
         int16_t _jewelry;
-        int8_t _field_0x1fe;
+        bool _field_0x1fe;
         bool _isSpellClass1;
         bool _isSpellClass2;
         bool _isSpellClass3;
