@@ -363,10 +363,10 @@ namespace realmz {
         auto fn = [&os](const std::string& name, int16_t value) noexcept {
             os << "\t" << name << ": " << std::dec << value << std::endl;
         };
-        fn("Field0", _field0);
-        fn("Field1", _field1);
-        fn("Field2", _field2);
-        fn("Field3", _field3);
+        fn("Field 0", _field0);
+        fn("Field 1", _field1);
+        fn("Field 2", _field2);
+        fn("Field 3", _field3);
         fn("Ring 0", _ring0);
         fn("Ring 1", _ring1);
         fn("Weapon", _weapon);
@@ -380,9 +380,9 @@ namespace realmz {
         fn("Quiver", _quiver);
         fn("Belt", _belt);
         fn("Necklace", _necklace);
-        fn("Field17", _field17);
-        fn("Field18", _field18);
-        fn("Field19", _field19);
+        fn("Field 17", _field17);
+        fn("Field 18", _field18);
+        fn("Field 19", _field19);
         os << "}" << std::endl;
     }
 
