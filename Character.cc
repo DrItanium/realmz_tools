@@ -345,9 +345,37 @@ namespace realmz {
         os << "{" << std::endl;
         int index = 1;
         for (const auto& ii : _items) {
-            os << "\t" << index << ": " << ii << std::endl;
+            if (ii.getIndex() != 0) {
+                os << "\t" << std::dec << index << ": " << ii << std::endl;
+            }
             ++index;
         }
+        os << "}" << std::endl;
+
+        os << "Equipped Items {" << std::endl;
+#define X(title, idx) \
+        os << "\t" << #title << ": " << std::dec << _equippedItems[idx] << std::endl
+        X(0, 0);
+        X(1,1);
+        X(2,2);
+        X(3,3);
+        X(Ring0,4);
+        X(Ring1,5);
+        X(Sword/Weapon,6);
+        X(Shield,7);
+        X(Armor,8);
+        X(Gauntlets,9);
+        X(10,10);
+        X(Helm,11);
+        os << "\tLuck Stone/Totem?: " << std::dec << _equippedItems[12] << std::endl;
+        X(Boots,13);
+        X(Quiver,14);
+        X(Belt,15);
+        X(Necklace,16);
+        X(17,17);
+        X(18,18);
+        X(19,19);
+#undef X
         os << "}" << std::endl;
     }
 
