@@ -224,7 +224,7 @@ namespace realmz {
             _isSpellClass1(buf[255]),
             _isSpellClass2(upperHalf(buf[256])),
             _isSpellClass3(buf[256]),
-            _itemAtIndex19IsEquipped(upperHalf(buf[257])),
+            _bowEquipped(upperHalf(buf[257])),
             _alive(buf[257]),
             _aFlag(upperHalf(buf[258])),
             _brawn(buf[258]),
@@ -388,7 +388,7 @@ namespace realmz {
         fn("Necklace", _necklace);
         fn("Field 17", _field17);
         fn("Field 18", _field18);
-        fn("Field 19", _field19);
+        fn("Bow", _bow);
         os << "}" << std::endl;
     }
 

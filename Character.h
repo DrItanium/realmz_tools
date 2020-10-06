@@ -101,7 +101,7 @@ namespace realmz {
                                 int16_t ring0, int16_t ring1, int16_t weapon, int16_t shield,
                                 int16_t armor, int16_t gauntlets, int16_t cloak, int16_t helm,
                                 int16_t luckStone, int16_t boots, int16_t quiver, int16_t belt,
-                                int16_t necklace, int16_t field17, int16_t field18, int16_t field19) : _field0(field0),
+                                int16_t necklace, int16_t field17, int16_t field18, int16_t bow) : _field0(field0),
                                                                                                        _field1(field1),
                                                                                                        _field2(field2),
                                                                                                        _field3(field3),
@@ -120,7 +120,7 @@ namespace realmz {
                                                                                                        _necklace(necklace),
                                                                                                        _field17(field17),
                                                                                                        _field18(field18),
-                                                                                                       _field19(field19) {}
+                                                                                                       _bow(bow) {}
     public:
         void setField0(int16_t field0) noexcept { _field0 = field0; }
         void setField1(int16_t field1) noexcept { _field1 = field1; }
@@ -141,7 +141,7 @@ namespace realmz {
         void setNecklace(int16_t necklace) noexcept { _necklace = necklace; }
         void setField17(int16_t field17) noexcept { _field17 = field17; }
         void setField18(int16_t field18) noexcept { _field18 = field18; }
-        void setField19(int16_t field19) noexcept { _field19 = field19; }
+        void setBow(int16_t value) noexcept { _bow = value; }
     public:
         [[nodiscard]] constexpr int16_t getField0() const noexcept { return _field0; }
         [[nodiscard]] constexpr int16_t getField1() const noexcept { return _field1; }
@@ -162,7 +162,7 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getNecklace() const noexcept { return _necklace; }
         [[nodiscard]] constexpr int16_t getField17() const noexcept { return _field17; }
         [[nodiscard]] constexpr int16_t getField18() const noexcept { return _field18; }
-        [[nodiscard]] constexpr int16_t getField19() const noexcept { return _field19; }
+        [[nodiscard]] constexpr int16_t getBow() const noexcept { return _bow; }
         void print(std::ostream& os) const noexcept;
     private:
         int16_t _field0;
@@ -184,7 +184,7 @@ namespace realmz {
         int16_t _necklace;
         int16_t _field17;
         int16_t _field18;
-        int16_t _field19;
+        int16_t _bow;
     };
 
 
@@ -371,7 +371,7 @@ namespace realmz {
         void setIsSpellClass1(bool isSpellClass1) { _isSpellClass1 = isSpellClass1; }
         void setIsSpellClass2(bool isSpellClass2) { _isSpellClass2 = isSpellClass2; }
         void setIsSpellClass3(bool isSpellClass3) { _isSpellClass3 = isSpellClass3; }
-        void setItemAtIndex19IsEquipped(bool itemAtIndex19IsEquipped) { _itemAtIndex19IsEquipped = itemAtIndex19IsEquipped; }
+        void setBowEquipped(bool value) { _bowEquipped = value; }
         void setAlive(bool alive) { _alive = alive; }
         void setAFlag(bool aFlag) { _aFlag = aFlag; }
         void setBrawn(char brawn) { _brawn = brawn; }
@@ -471,7 +471,7 @@ namespace realmz {
         [[nodiscard]] constexpr bool isIsSpellClass1() const noexcept { return _isSpellClass1; }
         [[nodiscard]] constexpr bool isIsSpellClass2() const noexcept { return _isSpellClass2; }
         [[nodiscard]] constexpr bool isIsSpellClass3() const noexcept { return _isSpellClass3; }
-        [[nodiscard]] constexpr bool isItemAtIndex19IsEquipped() const noexcept { return _itemAtIndex19IsEquipped; }
+        [[nodiscard]] constexpr bool bowEquipped() const noexcept { return _bowEquipped; }
         [[nodiscard]] constexpr bool isAlive() const noexcept { return _alive; }
         [[nodiscard]] constexpr bool isAFlag() const noexcept { return _aFlag; }
         [[nodiscard]] constexpr char getBrawn() const noexcept { return _brawn; }
@@ -604,7 +604,7 @@ namespace realmz {
         bool _isSpellClass1;
         bool _isSpellClass2;
         bool _isSpellClass3;
-        bool _itemAtIndex19IsEquipped;
+        bool _bowEquipped;
         bool _alive;
         bool _aFlag;
         char _brawn;
