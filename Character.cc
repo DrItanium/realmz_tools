@@ -361,7 +361,13 @@ namespace realmz {
     EquippedItems::print(std::ostream &os) const noexcept {
         os << "Equipped Items {" << std::endl;
         auto fn = [&os](const std::string& name, int16_t value) noexcept {
-            os << "\t" << name << ": " << std::dec << value << std::endl;
+            os << "\t" << name << ": ";
+            if (value != 0) {
+                os << std::dec << value;
+            } else {
+                os << "Unequipped";
+            }
+            os << std::endl;
         };
         fn("Field 0", _field0);
         fn("Field 1", _field1);
