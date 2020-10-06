@@ -365,7 +365,7 @@ namespace realmz {
         X(Shield,7);
         X(Armor,8);
         X(Gauntlets,9);
-        X(10,10);
+        X(Cloak,10);
         X(Helm,11);
         os << "\tLuck Stone/Totem?: " << std::dec << _equippedItems[12] << std::endl;
         X(Boots,13);
