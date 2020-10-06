@@ -319,17 +319,21 @@ namespace realmz {
     void
     Character::print(std::ostream& os) const noexcept {
         os << "Name: " << _name << std::endl;
-        auto print8 = [&os](const std::string& title, int8_t value) noexcept { os << title << ": " << static_cast<int>(value) << std::endl; };
-        auto print16 = [&os](const std::string& title, int16_t value) noexcept { os << title << ": " << static_cast<int>(value) << std::endl; };
+        auto print8 = [&os](const std::string &title, int8_t value) noexcept {
+            os << title << ": " << static_cast<int>(value) << std::endl;
+        };
+        auto print16 = [&os](const std::string &title, int16_t value) noexcept {
+            os << title << ": " << static_cast<int>(value) << std::endl;
+        };
         print8("Brawn", _brawn);
         print8("Knowledge", _knowledge);
         print8("Judgement", _judgement);
         print8("Agility", _agility);
         print8("Vitality", _vitality);
         print8("Luck", _luck);
-        print16("Verify0", _verifyField0)  ;
-        print16("Verify1", _verifyField1)  ;
-        print16("Verify2", _verifyField2)  ;
+        print16("Verify0", _verifyField0);
+        print16("Verify1", _verifyField1);
+        print16("Verify2", _verifyField2);
         print16("Chance to hit", _chanceToHit);
         print16("Dodge Missile", _dodgeMissile);
         print16("Movement Points", _movementPoints);
@@ -344,38 +348,41 @@ namespace realmz {
         print16("Num Items", _numItems);
         os << "{" << std::endl;
         int index = 1;
-        for (const auto& ii : _items) {
+        for (const auto &ii : _items) {
             if (ii.getIndex() != 0) {
                 os << "\t" << std::dec << index << ": " << ii << std::endl;
             }
             ++index;
         }
         os << "}" << std::endl;
-
+        os << _equippedItems << std::endl;
+    }
+    void
+    EquippedItems::print(std::ostream &os) const noexcept {
         os << "Equipped Items {" << std::endl;
-#define X(title, idx) \
-        os << "\t" << #title << ": " << std::dec << _equippedItems[idx] << std::endl
-        X(0, 0);
-        X(1,1);
-        X(2,2);
-        X(3,3);
-        X(Ring0,4);
-        X(Ring1,5);
-        X(Sword/Weapon,6);
-        X(Shield,7);
-        X(Armor,8);
-        X(Gauntlets,9);
-        X(Cloak,10);
-        X(Helm,11);
-        os << "\tLuck Stone/Totem?: " << std::dec << _equippedItems[12] << std::endl;
-        X(Boots,13);
-        X(Quiver,14);
-        X(Belt,15);
-        X(Necklace,16);
-        X(17,17);
-        X(18,18);
-        X(19,19);
-#undef X
+        auto fn = [&os](const std::string& name, int16_t value) noexcept {
+            os << "\t" << name << ": " << std::dec << value << std::endl;
+        };
+        fn("Field0", _field0);
+        fn("Field1", _field1);
+        fn("Field2", _field2);
+        fn("Field3", _field3);
+        fn("Ring 0", _ring0);
+        fn("Ring 1", _ring1);
+        fn("Weapon", _weapon);
+        fn("Shield", _shield);
+        fn("Armor", _armor);
+        fn("Gauntlets", _gauntlets);
+        fn("Cloak", _cloak);
+        fn("Helm", _helm);
+        fn("Luck Stone/Totem", _luckStone);
+        fn("Boots", _boots);
+        fn("Quiver", _quiver);
+        fn("Belt", _belt);
+        fn("Necklace", _necklace);
+        fn("Field17", _field17);
+        fn("Field18", _field18);
+        fn("Field19", _field19);
         os << "}" << std::endl;
     }
 
@@ -437,5 +444,11 @@ operator<<(std::ostream& os, const realmz::CharacterConditions& c) noexcept {
 std::ostream&
 operator<<(std::ostream& os, const realmz::InventoryItem& ii) noexcept {
     ii.print(os);
+    return os;
+}
+
+std::ostream&
+operator<<(std::ostream& os, const realmz::EquippedItems& eq) noexcept {
+    eq.print(os);
     return os;
 }

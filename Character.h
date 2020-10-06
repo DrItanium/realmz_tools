@@ -95,7 +95,97 @@ namespace realmz {
         int32_t _penaltyPoints;
     };
 
-
+    class EquippedItems {
+    public:
+        constexpr EquippedItems(int16_t field0, int16_t field1, int16_t field2, int16_t field3,
+                                int16_t ring0, int16_t ring1, int16_t weapon, int16_t shield,
+                                int16_t armor, int16_t gauntlets, int16_t cloak, int16_t helm,
+                                int16_t luckStone, int16_t boots, int16_t quiver, int16_t belt,
+                                int16_t necklace, int16_t field17, int16_t field18, int16_t field19) : _field0(field0),
+                                                                                                       _field1(field1),
+                                                                                                       _field2(field2),
+                                                                                                       _field3(field3),
+                                                                                                       _ring0(ring0),
+                                                                                                       _ring1(ring1),
+                                                                                                       _weapon(weapon),
+                                                                                                       _shield(shield),
+                                                                                                       _armor(armor),
+                                                                                                       _gauntlets(gauntlets),
+                                                                                                       _cloak(cloak),
+                                                                                                       _helm(helm),
+                                                                                                       _luckStone(luckStone),
+                                                                                                       _boots(boots),
+                                                                                                       _quiver(quiver),
+                                                                                                       _belt(belt),
+                                                                                                       _necklace(necklace),
+                                                                                                       _field17(field17),
+                                                                                                       _field18(field18),
+                                                                                                       _field19(field19) {}
+    public:
+        void setField0(int16_t field0) noexcept { _field0 = field0; }
+        void setField1(int16_t field1) noexcept { _field1 = field1; }
+        void setField2(int16_t field2) noexcept { _field2 = field2; }
+        void setField3(int16_t field3) noexcept { _field3 = field3; }
+        void setRing0(int16_t ring0) noexcept { _ring0 = ring0; }
+        void setRing1(int16_t ring1) noexcept { _ring1 = ring1; }
+        void setWeapon(int16_t weapon) noexcept { _weapon = weapon; }
+        void setShield(int16_t shield) noexcept { _shield = shield; }
+        void setArmor(int16_t armor) noexcept { _armor = armor; }
+        void setGauntlets(int16_t gauntlets) noexcept { _gauntlets = gauntlets; }
+        void setCloak(int16_t cloak) noexcept { _cloak = cloak; }
+        void setHelm(int16_t helm) noexcept { _helm = helm; }
+        void setLuckStone(int16_t luckStone) noexcept { _luckStone = luckStone; }
+        void setBoots(int16_t boots) noexcept { _boots = boots; }
+        void setQuiver(int16_t quiver) noexcept { _quiver = quiver; }
+        void setBelt(int16_t belt) noexcept { _belt = belt; }
+        void setNecklace(int16_t necklace) noexcept { _necklace = necklace; }
+        void setField17(int16_t field17) noexcept { _field17 = field17; }
+        void setField18(int16_t field18) noexcept { _field18 = field18; }
+        void setField19(int16_t field19) noexcept { _field19 = field19; }
+    public:
+        [[nodiscard]] constexpr int16_t getField0() const noexcept { return _field0; }
+        [[nodiscard]] constexpr int16_t getField1() const noexcept { return _field1; }
+        [[nodiscard]] constexpr int16_t getField2() const noexcept { return _field2; }
+        [[nodiscard]] constexpr int16_t getField3() const noexcept { return _field3; }
+        [[nodiscard]] constexpr int16_t getRing0() const noexcept { return _ring0; }
+        [[nodiscard]] constexpr int16_t getRing1() const noexcept { return _ring1; }
+        [[nodiscard]] constexpr int16_t getWeapon() const noexcept { return _weapon; }
+        [[nodiscard]] constexpr int16_t getShield() const noexcept { return _shield; }
+        [[nodiscard]] constexpr int16_t getArmor() const noexcept { return _armor; }
+        [[nodiscard]] constexpr int16_t getGauntlets() const noexcept { return _gauntlets; }
+        [[nodiscard]] constexpr int16_t getCloak() const noexcept { return _cloak; }
+        [[nodiscard]] constexpr int16_t getHelm() const noexcept { return _helm; }
+        [[nodiscard]] constexpr int16_t getLuckStone() const noexcept { return _luckStone; }
+        [[nodiscard]] constexpr int16_t getBoots() const noexcept { return _boots; }
+        [[nodiscard]] constexpr int16_t getQuiver() const noexcept { return _quiver; }
+        [[nodiscard]] constexpr int16_t getBelt() const noexcept { return _belt; }
+        [[nodiscard]] constexpr int16_t getNecklace() const noexcept { return _necklace; }
+        [[nodiscard]] constexpr int16_t getField17() const noexcept { return _field17; }
+        [[nodiscard]] constexpr int16_t getField18() const noexcept { return _field18; }
+        [[nodiscard]] constexpr int16_t getField19() const noexcept { return _field19; }
+        void print(std::ostream& os) const noexcept;
+    private:
+        int16_t _field0;
+        int16_t _field1;
+        int16_t _field2;
+        int16_t _field3;
+        int16_t _ring0;
+        int16_t _ring1;
+        int16_t _weapon;
+        int16_t _shield;
+        int16_t _armor;
+        int16_t _gauntlets;
+        int16_t _cloak;
+        int16_t _helm;
+        int16_t _luckStone;
+        int16_t _boots;
+        int16_t _quiver;
+        int16_t _belt;
+        int16_t _necklace;
+        int16_t _field17;
+        int16_t _field18;
+        int16_t _field19;
+    };
 
 
     class CharacterConditions {
@@ -405,7 +495,7 @@ namespace realmz {
         [[nodiscard]] const PrestigeValues &getPrestige() const { return _prestige; }
         [[nodiscard]] const std::array<int16_t, 40> &getTreasureArrayIds() const { return _treasureArrayIds; }
         [[nodiscard]] const std::array<int16_t, 42> &getField0X314() const { return _field_0x314; }
-        [[nodiscard]] const std::array<int16_t, 20> &getEquippedItems() const { return _equippedItems; }
+        [[nodiscard]] const EquippedItems &getEquippedItems() const { return _equippedItems; }
         [[nodiscard]] const SpecialInfo_CharVersion &getSpecialInfo() const { return _specialInfo; }
         [[nodiscard]] const std::array<InventoryItem, 30> &getItems() const { return _items; }
         [[nodiscard]] const std::array<int16_t, 10> &getAnArray() const { return _anArray; }
@@ -484,7 +574,7 @@ namespace realmz {
         int16_t _vsIntelligentCreatures;
         int16_t _vsGiantSizedCreatures;
         int16_t _vsNonHumanoidCreature;
-        std::array<int16_t, 20> _equippedItems;
+        EquippedItems _equippedItems;
         int16_t _field_0xea;
         int16_t _field_0xec;
         int16_t _field_0xee;
@@ -542,5 +632,6 @@ namespace realmz {
 std::ostream& operator<<(std::ostream& os, const realmz::Character& c) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::CharacterConditions& c) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::InventoryItem& c) noexcept;
+std::ostream& operator<<(std::ostream& os, const realmz::EquippedItems& ec) noexcept;
 
 #endif //REALMZ_TOOLS_CHARACTER_H
