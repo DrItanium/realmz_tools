@@ -371,7 +371,7 @@ namespace realmz {
         void setIsSpellClass1(bool isSpellClass1) { _isSpellClass1 = isSpellClass1; }
         void setIsSpellClass2(bool isSpellClass2) { _isSpellClass2 = isSpellClass2; }
         void setIsSpellClass3(bool isSpellClass3) { _isSpellClass3 = isSpellClass3; }
-        void setBowEquipped(bool value) { _bowEquipped = value; }
+        void setRangedWeaponSelected(bool value) { _rangedWeaponSelected = value; }
         void setAlive(bool alive) { _alive = alive; }
         void setAFlag(bool aFlag) { _aFlag = aFlag; }
         void setBrawn(char brawn) { _brawn = brawn; }
@@ -471,7 +471,7 @@ namespace realmz {
         [[nodiscard]] constexpr bool isIsSpellClass1() const noexcept { return _isSpellClass1; }
         [[nodiscard]] constexpr bool isIsSpellClass2() const noexcept { return _isSpellClass2; }
         [[nodiscard]] constexpr bool isIsSpellClass3() const noexcept { return _isSpellClass3; }
-        [[nodiscard]] constexpr bool bowEquipped() const noexcept { return _bowEquipped; }
+        [[nodiscard]] constexpr bool rangedWeaponSelected() const noexcept { return _rangedWeaponSelected; }
         [[nodiscard]] constexpr bool isAlive() const noexcept { return _alive; }
         [[nodiscard]] constexpr bool isAFlag() const noexcept { return _aFlag; }
         [[nodiscard]] constexpr char getBrawn() const noexcept { return _brawn; }
@@ -604,7 +604,7 @@ namespace realmz {
         bool _isSpellClass1;
         bool _isSpellClass2;
         bool _isSpellClass3;
-        bool _bowEquipped;
+        bool _rangedWeaponSelected;
         bool _alive;
         bool _aFlag;
         char _brawn;

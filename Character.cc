@@ -224,7 +224,7 @@ namespace realmz {
             _isSpellClass1(buf[255]),
             _isSpellClass2(upperHalf(buf[256])),
             _isSpellClass3(buf[256]),
-            _bowEquipped(upperHalf(buf[257])),
+            _rangedWeaponSelected(upperHalf(buf[257])),
             _alive(buf[257]),
             _aFlag(upperHalf(buf[258])),
             _brawn(buf[258]),
