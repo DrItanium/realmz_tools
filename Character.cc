@@ -22,16 +22,16 @@ namespace realmz {
             _bareHandDamageMax(buf[5]),
             _allianceClass(buf[6]),
             _attacksPerRound(buf[7]),
-            _field_0x10(buf[8]),
+            _tookNoDamageThisRound(buf[8]),
             _field_0x12(buf[9]),
             _field_0x14(buf[10]),
             _numItems(buf[11]),
-            _field_0x18(buf[12]),
-            _field_0x1a(buf[13]),
-            _field_0x1c(buf[14]),
+            _handToHandSoundIndex(buf[12]),
+            _unusedField1(buf[13]),
+            _combatBodyIconBase(buf[14]),
             _otherAttacksPerRoundModifier(buf[15]),
             _vitalityFromItems(buf[16]),
-            _field_0x22(buf[17]),
+            _battleOrder(buf[17]),
             _luckFromItems(buf[18]),
             _brawnFromItems(buf[19]),
             _magicResistance(buf[20]),
@@ -43,7 +43,7 @@ namespace realmz {
             _supportedSpellClass(static_cast<SupportedSpellClass>(buf[26])),
             _gender(static_cast<Gender>(buf[27])),
             _skillLevel(buf[28]),
-            _field_0x3a(buf[29]),
+            _remainingMovementPoints(buf[29]),
             _movementPoints(buf[30]),
             _combatPoints(buf[31]),
             _totalSpellsRemaining({
@@ -61,9 +61,9 @@ namespace realmz {
             _iconPictureIndex(buf[42]),
             _spellPointsCurrent(buf[43]),
             _spellPointsTotal(buf[44]),
-            _field_0x5a(buf[45]),
-            _field_0x5c(buf[46]),
-            _field_0x5e(buf[47]),
+            _handsUsed(buf[45]),
+            _meleeWeaponEquipped_Probably(buf[46]),
+            _rangedWeaponEquipped_Probably(buf[47]),
             _handToHandMax(buf[48]),
             _conditions(buf[49],
                         buf[50],
@@ -85,26 +85,26 @@ namespace realmz {
                         buf[66],
                         buf[67],
                         buf[68],
-                        buf[69]),
-            _strong(buf[70]),
-            _protectionFromFoe(buf[71]),
-            _speed(buf[72]),
-            _invisible(buf[73]),
-            _isAnimated(buf[74]),
-            _stone(buf[75]),
-            _blind(buf[76]),
-            _diseased(buf[77]),
-            _isConfused(buf[78]),
-            _reflectingSpells(buf[79]),
-            _reflectingAttacks(buf[80]),
-            _attackBonus(buf[81]),
-            _absorbEnergy(buf[82]),
-            _absorbSpellEnergyFromAttacks(buf[83]),
-            _field_0xa8(buf[84]),
-            _hinderedAttack(buf[85]),
-            _hinderedDefense(buf[86]),
-            _defensiveBonus(buf[87]),
-            _affectsCastingAbility(buf[88]),
+                        buf[69],
+                        buf[70],
+                        buf[71],
+                        buf[72],
+                        buf[73],
+                        buf[74],
+                        buf[75],
+                        buf[76],
+                        buf[77],
+                        buf[78],
+                        buf[79],
+                        buf[80],
+                        buf[81],
+                        buf[82],
+                        buf[83],
+                        buf[84],
+                        buf[85],
+                        buf[86],
+                        buf[87],
+                        buf[88]),
             _vsMagicUsingCreatures(buf[89]),
             _vsUndeadCreatures(buf[90]),
             _vsDemonicCreatures(buf[91]),
@@ -341,7 +341,7 @@ namespace realmz {
         print16("Bare Hand Damage Max", _bareHandDamageMax);
         print16("Alliance Class", _allianceClass);
         print16("Attacks Per Round", _attacksPerRound);
-        print16("Field 0x10", _field_0x10);
+        print16("Field 0x10", _tookNoDamageThisRound);
         print16("Field 0x12", _field_0x12);
         print16("Field 0x14", _field_0x14);
         os << _conditions << std::endl;
@@ -403,7 +403,7 @@ namespace realmz {
         fn("Tangled", _tangled);
         fn("Cursed", _isCursed);
         fn("Magic Aura", _conditionMagicAura);
-        fn("Stupid or Silenced", _supidOrSilenced1);
+        fn("Stupid or Silenced", _stupid);
         fn("Slow", _isSlow);
         fn("Shielded From Normal Attacks", _conditionShieldedFromNormalAttacks);
         fn("Shielded From Projectiles", _conditionShieldedFromProjectiles);
@@ -429,9 +429,9 @@ namespace realmz {
     void
     InventoryItem::print(std::ostream &os) const noexcept {
         os << "{" << std::dec << "Index: " << _idx <<
-        ", Field2: " << std::dec << static_cast<int>(_f2) <<
-        ", Field3: " << std::dec << static_cast<int>(_f3) <<
-        ", Flags: " << std::hex << _flags << "}";
+           ", Field2: " << std::dec << static_cast<int>(_f2) <<
+           ", Field3: " << std::dec << static_cast<int>(_f3) <<
+           ", Flags: " << std::hex << _flags << "}";
     }
 
 }

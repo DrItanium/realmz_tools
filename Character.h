@@ -200,34 +200,63 @@ namespace realmz {
     class CharacterConditions {
     public:
         constexpr CharacterConditions(int16_t inRetreat, int16_t helpless, int16_t tangled, int16_t isCursed, int16_t conditionMagicAura,
-                                      int16_t supidOrSilenced1, int16_t isSlow, int16_t conditionShieldedFromNormalAttacks,
-                                      int16_t conditionShieldedFromProjectiles, int16_t poisoned, int16_t regenerating,
-                                      int16_t protectionFromHeatAttacks, int16_t protectionFromColdAttacks, int16_t protectionFromElectricalAttacks,
-                                      int16_t protectionFromChemicalAttacks, int16_t protectionFromMentalAttacks,
-                                      int16_t protectionFrom1StLevelSpells, int16_t protectionFrom2NdLevelSpells,
-                                      int16_t protectionFrom3rdLevelSpells, int16_t protectionFrom4ThLevelSpells,
-                                      int16_t protectionFrom5ThLevelSpells) : _inRetreat(inRetreat), _helpless(helpless), _tangled(tangled),
-                                                                              _isCursed(isCursed), _conditionMagicAura(conditionMagicAura),
-                                                                              _supidOrSilenced1(supidOrSilenced1), _isSlow(isSlow),
-                                                                              _conditionShieldedFromNormalAttacks(conditionShieldedFromNormalAttacks),
-                                                                              _conditionShieldedFromProjectiles(conditionShieldedFromProjectiles),
-                                                                              _poisoned(poisoned), _regenerating(regenerating),
-                                                                              _protectionFromHeatAttacks(protectionFromHeatAttacks),
-                                                                              _protectionFromColdAttacks(protectionFromColdAttacks),
-                                                                              _protectionFromElectricalAttacks(protectionFromElectricalAttacks),
-                                                                              _protectionFromChemicalAttacks(protectionFromChemicalAttacks),
-                                                                              _protectionFromMentalAttacks(protectionFromMentalAttacks),
-                                                                              _protectionFrom1stLevelSpells(protectionFrom1StLevelSpells),
-                                                                              _protectionFrom2ndLevelSpells(protectionFrom2NdLevelSpells),
-                                                                              _protectionFrom3rdLevelSpells(protectionFrom3rdLevelSpells),
-                                                                              _protectionFrom4thLevelSpells(protectionFrom4ThLevelSpells),
-                                                                              _protectionFrom5thLevelSpells(protectionFrom5ThLevelSpells) {}
+                            int16_t supidOrSilenced1, int16_t isSlow, int16_t conditionShieldedFromNormalAttacks,
+                            int16_t conditionShieldedFromProjectiles, int16_t poisoned, int16_t regenerating,
+                            int16_t protectionFromHeatAttacks, int16_t protectionFromColdAttacks, int16_t protectionFromElectricalAttacks,
+                            int16_t protectionFromChemicalAttacks, int16_t protectionFromMentalAttacks,
+                            int16_t protectionFrom1StLevelSpells, int16_t protectionFrom2NdLevelSpells,
+                            int16_t protectionFrom3RdLevelSpells, int16_t protectionFrom4ThLevelSpells,
+                            int16_t protectionFrom5ThLevelSpells, int16_t strong, int16_t protectionFromFoe, int16_t speed,
+                            int16_t invisible, int16_t isAnimated, int16_t stone, int16_t blind, int16_t diseased, int16_t isConfused,
+                            int16_t reflectingSpells, int16_t reflectingAttacks, int16_t attackBonus, int16_t absorbEnergy,
+                            int16_t absorbSpellEnergyFromAttacks, int16_t field0Xa8, int16_t hinderedAttack, int16_t hinderedDefense,
+                            int16_t defensiveBonus, int16_t affectsCastingAbility) : _inRetreat(inRetreat), _helpless(helpless),
+                                                                                     _tangled(tangled), _isCursed(isCursed),
+                                                                                     _conditionMagicAura(conditionMagicAura),
+                                                                                     _stupid(supidOrSilenced1), _isSlow(isSlow),
+                                                                                     _conditionShieldedFromNormalAttacks(
+                                                                                             conditionShieldedFromNormalAttacks),
+                                                                                     _conditionShieldedFromProjectiles(
+                                                                                             conditionShieldedFromProjectiles),
+                                                                                     _poisoned(poisoned), _regenerating(regenerating),
+                                                                                     _protectionFromHeatAttacks(protectionFromHeatAttacks),
+                                                                                     _protectionFromColdAttacks(protectionFromColdAttacks),
+                                                                                     _protectionFromElectricalAttacks(
+                                                                                             protectionFromElectricalAttacks),
+                                                                                     _protectionFromChemicalAttacks(
+                                                                                             protectionFromChemicalAttacks),
+                                                                                     _protectionFromMentalAttacks(
+                                                                                             protectionFromMentalAttacks),
+                                                                                     _protectionFrom1stLevelSpells(
+                                                                                             protectionFrom1StLevelSpells),
+                                                                                     _protectionFrom2ndLevelSpells(
+                                                                                             protectionFrom2NdLevelSpells),
+                                                                                     _protectionFrom3rdLevelSpells(
+                                                                                             protectionFrom3RdLevelSpells),
+                                                                                     _protectionFrom4thLevelSpells(
+                                                                                             protectionFrom4ThLevelSpells),
+                                                                                     _protectionFrom5thLevelSpells(
+                                                                                             protectionFrom5ThLevelSpells), _strong(strong),
+                                                                                     _protectionFromFoe(protectionFromFoe), _speedy(speed),
+                                                                                     _invisible(invisible), _isAnimated(isAnimated),
+                                                                                     _stone(stone), _blind(blind), _diseased(diseased),
+                                                                                     _confused(isConfused),
+                                                                                     _reflectingSpells(reflectingSpells),
+                                                                                     _reflectingAttacks(reflectingAttacks),
+                                                                                     _bonusDamage(attackBonus), _absorbEnergy(absorbEnergy),
+                                                                                     _energyDraining(
+                                                                                             absorbSpellEnergyFromAttacks),
+                                                                                     _absorbSpellEnergyFromAttacks(field0Xa8),
+                                                                                     _hinderedAttack(hinderedAttack),
+                                                                                     _hinderedDefense(hinderedDefense),
+                                                                                     _defensiveBonus(defensiveBonus),
+                                                                                     _silenced(affectsCastingAbility) {}
         constexpr int16_t getInRetreat() const noexcept { return _inRetreat; }
         constexpr int16_t getHelpless() const noexcept { return _helpless; }
         constexpr int16_t getTangled() const noexcept { return _tangled; }
         constexpr int16_t getIsCursed() const noexcept { return _isCursed; }
         constexpr int16_t getConditionMagicAura() const noexcept { return _conditionMagicAura; }
-        constexpr int16_t getSupidOrSilenced1() const noexcept { return _supidOrSilenced1; }
+        constexpr int16_t getSupidOrSilenced1() const noexcept { return _stupid; }
         constexpr int16_t getIsSlow() const noexcept { return _isSlow; }
         constexpr int16_t getConditionShieldedFromNormalAttacks() const noexcept { return _conditionShieldedFromNormalAttacks; }
         constexpr int16_t getConditionShieldedFromProjectiles() const noexcept { return _conditionShieldedFromProjectiles; }
@@ -250,7 +279,7 @@ namespace realmz {
         int16_t _tangled;
         int16_t _isCursed;
         int16_t _conditionMagicAura;
-        int16_t _supidOrSilenced1;
+        int16_t _stupid;
         int16_t _isSlow;
         int16_t _conditionShieldedFromNormalAttacks;
         int16_t _conditionShieldedFromProjectiles;
@@ -266,6 +295,25 @@ namespace realmz {
         int16_t _protectionFrom3rdLevelSpells;
         int16_t _protectionFrom4thLevelSpells;
         int16_t _protectionFrom5thLevelSpells;
+        int16_t _strong;
+        int16_t _protectionFromFoe;
+        int16_t _speedy;
+        int16_t _invisible;
+        int16_t _isAnimated;
+        int16_t _stone;
+        int16_t _blind;
+        int16_t _diseased;
+        int16_t _confused;
+        int16_t _reflectingSpells;
+        int16_t _reflectingAttacks;
+        int16_t _bonusDamage;
+        int16_t _absorbEnergy;
+        int16_t _energyDraining;
+        int16_t _absorbSpellEnergyFromAttacks;
+        int16_t _hinderedAttack;
+        int16_t _hinderedDefense;
+        int16_t _defensiveBonus;
+        int16_t _silenced;
     };
     enum class SupportedSpellClass : int16_t {
         None = 0,
@@ -288,16 +336,16 @@ namespace realmz {
         void setBareHandDamageMax(int16_t bareHandDamageMax) { _bareHandDamageMax = bareHandDamageMax; }
         void setAllianceClass(int16_t allianceClass) { _allianceClass = allianceClass; }
         void setAttacksPerRound(int16_t attacksPerRound) { _attacksPerRound = attacksPerRound; }
-        void setField0X10(int16_t field0X10) { _field_0x10 = field0X10; }
+        void setField0X10(int16_t field0X10) { _tookNoDamageThisRound = field0X10; }
         void setField0X12(int16_t field0X12) { _field_0x12 = field0X12; }
         void setField0X14(int16_t field0X14) { _field_0x14 = field0X14; }
         void setNumItems(int16_t numItems) { _numItems = numItems; }
-        void setField0X18(int16_t field0X18) { _field_0x18 = field0X18; }
-        void setField0X1A(int16_t field0X1A) { _field_0x1a = field0X1A; }
-        void setField0X1C(int16_t field0X1C) { _field_0x1c = field0X1C; }
+        void setField0X18(int16_t field0X18) { _handToHandSoundIndex = field0X18; }
+        void setField0X1A(int16_t field0X1A) { _unusedField1 = field0X1A; }
+        void setField0X1C(int16_t field0X1C) { _combatBodyIconBase = field0X1C; }
         void setOtherAttacksPerRoundModifier(int16_t otherAttacksPerRoundModifier) { _otherAttacksPerRoundModifier = otherAttacksPerRoundModifier; }
         void setVitalityFromItems(int16_t vitalityFromItems) { _vitalityFromItems = vitalityFromItems; }
-        void setField0X22(int16_t field0X22) { _field_0x22 = field0X22; }
+        void setField0X22(int16_t field0X22) { _battleOrder = field0X22; }
         void setLuckFromItems(int16_t luckFromItems) { _luckFromItems = luckFromItems; }
         void setBrawnFromItems(int16_t brawnFromItems) { _brawnFromItems = brawnFromItems; }
         void setMagicResistance(int16_t magicResistance) { _magicResistance = magicResistance; }
@@ -309,7 +357,7 @@ namespace realmz {
         void setSupportedSpellClass(SupportedSpellClass supportedSpellClass) { _supportedSpellClass = supportedSpellClass; }
         void setGender(Gender gender) { _gender = gender; }
         void setSkillLevel(int16_t skillLevel) { _skillLevel = skillLevel; }
-        void setField0X3A(int16_t field0X3A) { _field_0x3a = field0X3A; }
+        void setField0X3A(int16_t field0X3A) { _remainingMovementPoints = field0X3A; }
         void setMovementPoints(int16_t movementPoints) { _movementPoints = movementPoints; }
         void setCombatPoints(int16_t combatPoints) { _combatPoints = combatPoints; }
         void setTotalSpellsRemaining(size_t index, int16_t value);
@@ -319,30 +367,11 @@ namespace realmz {
         void setIconPictureIndex(int16_t iconPictureIndex) { _iconPictureIndex = iconPictureIndex; }
         void setSpellPointsCurrent(int16_t spellPointsCurrent) { _spellPointsCurrent = spellPointsCurrent; }
         void setSpellPointsTotal(int16_t spellPointsTotal) { _spellPointsTotal = spellPointsTotal; }
-        void setField0X5A(int16_t field0X5A) { _field_0x5a = field0X5A; }
-        void setField0X5C(int16_t field0X5C) { _field_0x5c = field0X5C; }
-        void setField0X5E(int16_t field0X5E) { _field_0x5e = field0X5E; }
+        void setField0X5A(int16_t field0X5A) { _handsUsed = field0X5A; }
+        void setField0X5C(int16_t field0X5C) { _meleeWeaponEquipped_Probably = field0X5C; }
+        void setField0X5E(int16_t field0X5E) { _rangedWeaponEquipped_Probably = field0X5E; }
         void setHandToHandMax(int16_t handToHandMax) { _handToHandMax = handToHandMax; }
         void setConditions(const CharacterConditions &conditions) { _conditions = conditions; }
-        void setStrong(int16_t strong) { _strong = strong; }
-        void setProtectionFromFoe(int16_t protectionFromFoe) { _protectionFromFoe = protectionFromFoe; }
-        void setSpeed(int16_t speed) { _speed = speed; }
-        void setInvisible(int16_t invisible) { _invisible = invisible; }
-        void setIsAnimated(int16_t isAnimated) { _isAnimated = isAnimated; }
-        void setStone(int16_t stone) { _stone = stone; }
-        void setBlind(int16_t blind) { _blind = blind; }
-        void setDiseased(int16_t diseased) { _diseased = diseased; }
-        void setIsConfused(int16_t isConfused) { _isConfused = isConfused; }
-        void setReflectingSpells(int16_t reflectingSpells) { _reflectingSpells = reflectingSpells; }
-        void setReflectingAttacks(int16_t reflectingAttacks) { _reflectingAttacks = reflectingAttacks; }
-        void setAttackBonus(int16_t attackBonus) { _attackBonus = attackBonus; }
-        void setAbsorbEnergy(int16_t absorbEnergy) { _absorbEnergy = absorbEnergy; }
-        void setAbsorbSpellEnergyFromAttacks(int16_t absorbSpellEnergyFromAttacks) { _absorbSpellEnergyFromAttacks = absorbSpellEnergyFromAttacks; }
-        void setField0Xa8(int16_t field0Xa8) { _field_0xa8 = field0Xa8; }
-        void setHinderedAttack(int16_t hinderedAttack) { _hinderedAttack = hinderedAttack; }
-        void setHinderedDefense(int16_t hinderedDefense) { _hinderedDefense = hinderedDefense; }
-        void setDefensiveBonus(int16_t defensiveBonus) { _defensiveBonus = defensiveBonus; }
-        void setAffectsCastingAbility(int16_t affectsCastingAbility) { _affectsCastingAbility = affectsCastingAbility; }
         void setVsMagicUsingCreatures(int16_t vsMagicUsingCreatures) { _vsMagicUsingCreatures = vsMagicUsingCreatures; }
         void setVsUndeadCreatures(int16_t vsUndeadCreatures) { _vsUndeadCreatures = vsUndeadCreatures; }
         void setVsDemonicCreatures(int16_t vsDemonicCreatures) { _vsDemonicCreatures = vsDemonicCreatures; }
@@ -415,7 +444,7 @@ namespace realmz {
         [[nodiscard]] constexpr SupportedSpellClass getSupportedSpellClass() const noexcept { return _supportedSpellClass; }
         [[nodiscard]] constexpr Gender getGender() const noexcept { return _gender; }
         [[nodiscard]] constexpr int16_t getSkillLevel() const noexcept { return _skillLevel; }
-        [[nodiscard]] constexpr int16_t getField0X3A() const noexcept { return _field_0x3a; }
+        [[nodiscard]] constexpr int16_t getField0X3A() const noexcept { return _remainingMovementPoints; }
         [[nodiscard]] constexpr int16_t getMovementPoints() const noexcept { return _movementPoints; }
         [[nodiscard]] constexpr int16_t getCombatPoints() const noexcept { return _combatPoints; }
         [[nodiscard]] constexpr int16_t getStaminaCurrent() const noexcept { return _staminaCurrent; }
@@ -424,29 +453,10 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getIconPictureIndex() const noexcept { return _iconPictureIndex; }
         [[nodiscard]] constexpr int16_t getSpellPointsCurrent() const noexcept { return _spellPointsCurrent; }
         [[nodiscard]] constexpr int16_t getSpellPointsTotal() const noexcept { return _spellPointsTotal; }
-        [[nodiscard]] constexpr int16_t getField0X5A() const noexcept { return _field_0x5a; }
-        [[nodiscard]] constexpr int16_t getField0X5C() const noexcept { return _field_0x5c; }
-        [[nodiscard]] constexpr int16_t getField0X5E() const noexcept { return _field_0x5e; }
+        [[nodiscard]] constexpr int16_t getField0X5A() const noexcept { return _handsUsed; }
+        [[nodiscard]] constexpr int16_t getField0X5C() const noexcept { return _meleeWeaponEquipped_Probably; }
+        [[nodiscard]] constexpr int16_t getField0X5E() const noexcept { return _rangedWeaponEquipped_Probably; }
         [[nodiscard]] constexpr int16_t getHandToHandMax() const noexcept { return _handToHandMax; }
-        [[nodiscard]] constexpr int16_t getStrong() const noexcept { return _strong; }
-        [[nodiscard]] constexpr int16_t getProtectionFromFoe() const noexcept { return _protectionFromFoe; }
-        [[nodiscard]] constexpr int16_t getSpeed() const noexcept { return _speed; }
-        [[nodiscard]] constexpr int16_t getInvisible() const noexcept { return _invisible; }
-        [[nodiscard]] constexpr int16_t getIsAnimated() const noexcept { return _isAnimated; }
-        [[nodiscard]] constexpr int16_t getStone() const noexcept { return _stone; }
-        [[nodiscard]] constexpr int16_t getBlind() const noexcept { return _blind; }
-        [[nodiscard]] constexpr int16_t getDiseased() const noexcept { return _diseased; }
-        [[nodiscard]] constexpr int16_t getIsConfused() const noexcept { return _isConfused; }
-        [[nodiscard]] constexpr int16_t getReflectingSpells() const noexcept { return _reflectingSpells; }
-        [[nodiscard]] constexpr int16_t getReflectingAttacks() const noexcept { return _reflectingAttacks; }
-        [[nodiscard]] constexpr int16_t getAttackBonus() const noexcept { return _attackBonus; }
-        [[nodiscard]] constexpr int16_t getAbsorbEnergy() const noexcept { return _absorbEnergy; }
-        [[nodiscard]] constexpr int16_t getAbsorbSpellEnergyFromAttacks() const noexcept { return _absorbSpellEnergyFromAttacks; }
-        [[nodiscard]] constexpr int16_t getField0Xa8() const noexcept { return _field_0xa8; }
-        [[nodiscard]] constexpr int16_t getHinderedAttack() const noexcept { return _hinderedAttack; }
-        [[nodiscard]] constexpr int16_t getHinderedDefense() const noexcept { return _hinderedDefense; }
-        [[nodiscard]] constexpr int16_t getDefensiveBonus() const noexcept { return _defensiveBonus; }
-        [[nodiscard]] constexpr int16_t getAffectsCastingAbility() const noexcept { return _affectsCastingAbility; }
         [[nodiscard]] constexpr int16_t getVsMagicUsingCreatures() const noexcept { return _vsMagicUsingCreatures; }
         [[nodiscard]] constexpr int16_t getVsUndeadCreatures() const noexcept { return _vsUndeadCreatures; }
         [[nodiscard]] constexpr int16_t getVsDemonicCreatures() const noexcept { return _vsDemonicCreatures; }
@@ -516,16 +526,16 @@ namespace realmz {
         int16_t _bareHandDamageMax;
         int16_t _allianceClass;
         int16_t _attacksPerRound;
-        int16_t _field_0x10;
+        int16_t _tookNoDamageThisRound;
         int16_t _field_0x12;
         int16_t _field_0x14;
         int16_t _numItems;
-        int16_t _field_0x18;
-        int16_t _field_0x1a;
-        int16_t _field_0x1c;
+        int16_t _handToHandSoundIndex;
+        int16_t _unusedField1;
+        int16_t _combatBodyIconBase;
         int16_t _otherAttacksPerRoundModifier;
         int16_t _vitalityFromItems;
-        int16_t _field_0x22;
+        int16_t _battleOrder;
         int16_t _luckFromItems;
         int16_t _brawnFromItems;
         int16_t _magicResistance;
@@ -537,7 +547,7 @@ namespace realmz {
         SupportedSpellClass _supportedSpellClass;
         Gender _gender;
         int16_t _skillLevel;
-        int16_t _field_0x3a;
+        int16_t _remainingMovementPoints;
         int16_t _movementPoints;
         int16_t _combatPoints;
         std::array<int16_t, 7> _totalSpellsRemaining;
@@ -547,30 +557,11 @@ namespace realmz {
         int16_t _iconPictureIndex;
         int16_t _spellPointsCurrent;
         int16_t _spellPointsTotal;
-        int16_t _field_0x5a;
-        int16_t _field_0x5c;
-        int16_t _field_0x5e;
+        int16_t _handsUsed;
+        int16_t _meleeWeaponEquipped_Probably;
+        int16_t _rangedWeaponEquipped_Probably;
         int16_t _handToHandMax;
         CharacterConditions _conditions;
-        int16_t _strong;
-        int16_t _protectionFromFoe;
-        int16_t _speed;
-        int16_t _invisible;
-        int16_t _isAnimated;
-        int16_t _stone;
-        int16_t _blind;
-        int16_t _diseased;
-        int16_t _isConfused;
-        int16_t _reflectingSpells;
-        int16_t _reflectingAttacks;
-        int16_t _attackBonus;
-        int16_t _absorbEnergy;
-        int16_t _absorbSpellEnergyFromAttacks;
-        int16_t _field_0xa8;
-        int16_t _hinderedAttack;
-        int16_t _hinderedDefense;
-        int16_t _defensiveBonus;
-        int16_t _affectsCastingAbility;
         int16_t _vsMagicUsingCreatures;
         int16_t _vsUndeadCreatures;
         int16_t _vsDemonicCreatures;
