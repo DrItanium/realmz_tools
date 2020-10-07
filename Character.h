@@ -400,18 +400,18 @@ namespace realmz {
         void setAnArrayValue(size_t index, int value);
         void setDaysOld(int32_t daysOld) { _daysOld = daysOld; }
         void setVictoryPoints(int32_t victoryPoints) { _victoryPoints = victoryPoints; }
-        void setWeight(int16_t weight) { _weight = weight; }
-        void setField0X1F6(int16_t field0X1F6) { _field_0x1f6 = field0X1F6; }
+        void setWeight(int16_t weight) { _currentLoad = weight; }
+        void setField0X1F6(int16_t field0X1F6) { _maximumLoad = field0X1F6; }
         void setGold(int16_t gold) { _gold = gold; }
         void setGems(int16_t gems) { _gems = gems; }
         void setJewelry(int16_t jewelry) { _jewelry = jewelry; }
-        void setField0X1Fe(bool field0X1Fe) { _field_0x1fe = field0X1Fe; }
+        void setField0X1Fe(bool field0X1Fe) { _attemptedToTurnUndeadInCombat = field0X1Fe; }
         void setIsSpellClass1(bool isSpellClass1) { _isSpellClass1 = isSpellClass1; }
         void setIsSpellClass2(bool isSpellClass2) { _isSpellClass2 = isSpellClass2; }
         void setIsSpellClass3(bool isSpellClass3) { _isSpellClass3 = isSpellClass3; }
         void setRangedWeaponSelected(bool value) { _rangedWeaponSelected = value; }
         void setAlive(bool alive) { _alive = alive; }
-        void setAFlag(bool aFlag) { _aFlag = aFlag; }
+        void setAFlag(bool aFlag) { _inAutoMode = aFlag; }
         void setBrawn(char brawn) { _brawn = brawn; }
         void setKnowledge(char knowledge) { _knowledge = knowledge; }
         void setJudgement(char judgement) { _judgement = judgement; }
@@ -477,18 +477,18 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getVerifyField1() const noexcept { return _verifyField1; }
         [[nodiscard]] constexpr int32_t getDaysOld() const noexcept { return _daysOld; }
         [[nodiscard]] constexpr int32_t getVictoryPoints() const noexcept { return _victoryPoints; }
-        [[nodiscard]] constexpr int16_t getWeight() const noexcept { return _weight; }
-        [[nodiscard]] constexpr int16_t getField0X1F6() const noexcept { return _field_0x1f6; }
+        [[nodiscard]] constexpr int16_t getWeight() const noexcept { return _currentLoad; }
+        [[nodiscard]] constexpr int16_t getField0X1F6() const noexcept { return _maximumLoad; }
         [[nodiscard]] constexpr int16_t getGold() const noexcept { return _gold; }
         [[nodiscard]] constexpr int16_t getGems() const noexcept { return _gems; }
         [[nodiscard]] constexpr int16_t getJewelry() const noexcept { return _jewelry; }
-        [[nodiscard]] constexpr auto getField0X1Fe() const noexcept { return _field_0x1fe; }
+        [[nodiscard]] constexpr auto getField0X1Fe() const noexcept { return _attemptedToTurnUndeadInCombat; }
         [[nodiscard]] constexpr bool isIsSpellClass1() const noexcept { return _isSpellClass1; }
         [[nodiscard]] constexpr bool isIsSpellClass2() const noexcept { return _isSpellClass2; }
         [[nodiscard]] constexpr bool isIsSpellClass3() const noexcept { return _isSpellClass3; }
         [[nodiscard]] constexpr bool rangedWeaponSelected() const noexcept { return _rangedWeaponSelected; }
         [[nodiscard]] constexpr bool isAlive() const noexcept { return _alive; }
-        [[nodiscard]] constexpr bool isAFlag() const noexcept { return _aFlag; }
+        [[nodiscard]] constexpr bool isAFlag() const noexcept { return _inAutoMode; }
         [[nodiscard]] constexpr char getBrawn() const noexcept { return _brawn; }
         [[nodiscard]] constexpr char getKnowledge() const noexcept { return _knowledge; }
         [[nodiscard]] constexpr char getJudgement() const noexcept { return _judgement; }
@@ -504,7 +504,7 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getField0X30E() const noexcept { return _field_0x30e; }
         [[nodiscard]] constexpr int16_t getField0X310() const noexcept { return _field_0x310; }
         [[nodiscard]] constexpr int16_t getField0X312() const noexcept { return _field_0x312; }
-        [[nodiscard]] const std::array<int16_t, 8> &getField0X100() const { return _field_0x100; }
+        [[nodiscard]] const std::array<int16_t, 6> &getField0X100() const { return _field_0x100; }
         [[nodiscard]] const std::array<SpellLevel, 7> &getSpellList() const { return _spellList; }
         [[nodiscard]] const std::string &getName() const { return _name; }
         [[nodiscard]] const PrestigeValues &getPrestige() const { return _prestige; }
@@ -513,7 +513,7 @@ namespace realmz {
         [[nodiscard]] const EquippedItems &getEquippedItems() const { return _equippedItems; }
         [[nodiscard]] const SpecialInfo_CharVersion &getSpecialInfo() const { return _specialInfo; }
         [[nodiscard]] const std::array<InventoryItem, 30> &getItems() const { return _items; }
-        [[nodiscard]] const std::array<int16_t, 10> &getAnArray() const { return _anArray; }
+        [[nodiscard]] const std::array<int16_t, 10> &getAnArray() const { return _spellsInScrollCase; }
         [[nodiscard]] const std::array<int16_t, 7> &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
         [[nodiscard]] const CharacterConditions &getConditions() const { return _conditions; }
         void print(std::ostream& os) const noexcept;
@@ -572,7 +572,9 @@ namespace realmz {
         int16_t _vsNonHumanoidCreature;
         EquippedItems _equippedItems;
         SpecialInfo_CharVersion _specialInfo;
-        std::array<int16_t, 8> _field_0x100;
+        std::array<int16_t, 6> _field_0x100;
+        int16_t _turnUndeadAbility;
+        int16_t _field_0x10e;
         int16_t _damageReductionVsCharm;
         int16_t _damageReductionVsHeat;
         int16_t _damageReductionVsCold;
@@ -584,21 +586,21 @@ namespace realmz {
         int16_t _ageClass;
         int16_t _verifyField1;
         std::array<InventoryItem, 30> _items;
-        std::array<int16_t, 10> _anArray;
+        std::array<int16_t, 10> _spellsInScrollCase; // it really should be 5 elements of 4 bytes each
         int32_t _daysOld;
         int32_t _victoryPoints;
-        int16_t _weight;
-        int16_t _field_0x1f6;
+        int16_t _currentLoad;
+        int16_t _maximumLoad;
         int16_t _gold;
         int16_t _gems;
         int16_t _jewelry;
-        bool _field_0x1fe;
+        bool _attemptedToTurnUndeadInCombat;
         bool _isSpellClass1;
         bool _isSpellClass2;
         bool _isSpellClass3;
         bool _rangedWeaponSelected;
         bool _alive;
-        bool _aFlag;
+        bool _inAutoMode;
         char _brawn;
         char _knowledge;
         char _judgement;

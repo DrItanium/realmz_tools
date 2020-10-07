@@ -147,16 +147,16 @@ namespace realmz {
                          buf[125],
                          buf[126],
                          buf[127]),
-            _field_0x100( {
-                                  buf[128]  ,
-                                  buf[129],
-                                  buf[130],
-                                  buf[131],
-                                  buf[132],
-                                  buf[133],
-                                  buf[134],
-                                  buf[135]
-                          }),
+            _field_0x100({
+                                 buf[128],
+                                 buf[129],
+                                 buf[130],
+                                 buf[131],
+                                 buf[132],
+                                 buf[133]
+                         }),
+            _turnUndeadAbility(buf[134]),
+            _field_0x10e(buf[135]),
             _damageReductionVsCharm(buf[136]),
             _damageReductionVsHeat(buf[137]),
             _damageReductionVsCold(buf[138]),
@@ -201,32 +201,32 @@ namespace realmz {
                             X(29),
 #undef X
                     }),
-            _anArray({
-                             buf[236],
-                             buf[237],
-                             buf[238],
-                             buf[239],
-                             buf[240],
-                             buf[241],
-                             buf[242],
-                             buf[243],
-                             buf[244],
-                             buf[245],
-                     }),
+            _spellsInScrollCase({
+                                        buf[236],
+                                        buf[237],
+                                        buf[238],
+                                        buf[239],
+                                        buf[240],
+                                        buf[241],
+                                        buf[242],
+                                        buf[243],
+                                        buf[244],
+                                        buf[245],
+                                }),
             _daysOld(make(buf[246], buf[247])),
             _victoryPoints(make(buf[248], buf[249])),
-            _weight(buf[250]),
-            _field_0x1f6(buf[251]),
+            _currentLoad(buf[250]),
+            _maximumLoad(buf[251]),
             _gold(buf[252]),
             _gems(buf[253]),
             _jewelry(buf[254]),
-            _field_0x1fe(upperHalf(buf[255])),
+            _attemptedToTurnUndeadInCombat(upperHalf(buf[255])),
             _isSpellClass1(buf[255]),
             _isSpellClass2(upperHalf(buf[256])),
             _isSpellClass3(buf[256]),
             _rangedWeaponSelected(upperHalf(buf[257])),
             _alive(buf[257]),
-            _aFlag(upperHalf(buf[258])),
+            _inAutoMode(upperHalf(buf[258])),
             _brawn(buf[258]),
             _knowledge(upperHalf(buf[259])),
             _judgement(buf[259]),
@@ -361,13 +361,15 @@ namespace realmz {
     EquippedItems::print(std::ostream &os) const noexcept {
         os << "Equipped Items {" << std::endl;
         auto fn = [&os](const std::string& name, int16_t value) noexcept {
-            os << "\t" << name << ": ";
             if (value != 0) {
-                os << std::dec << value;
-            } else {
-                os << "Unequipped";
+                os << "\t" << name << ": ";
+                if (value != 0) {
+                    os << std::dec << value;
+                } else {
+                    os << "Unequipped";
+                }
+                os << std::endl;
             }
-            os << std::endl;
         };
         fn("Field 0", _unused0);
         fn("Field 1", _unused1);
@@ -386,9 +388,13 @@ namespace realmz {
         fn("Quiver", _quiver);
         fn("Belt", _belt);
         fn("Necklace", _necklace);
-        fn("Field 17", _scrollCase);
-        fn("Field 18", _unused4);
+        fn("Scroll Case", _scrollCase);
+        fn("Unused 4", _unused4);
         fn("Bow", _bow);
+        fn("Unused 5", _unused5);
+        fn("Unused 6", _unused6);
+        fn("Unused 7", _unused7);
+        fn("Unused 8", _unused8);
         os << "}" << std::endl;
     }
 
