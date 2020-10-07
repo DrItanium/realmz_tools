@@ -101,31 +101,36 @@ namespace realmz {
                                 int16_t ring0, int16_t ring1, int16_t weapon, int16_t shield,
                                 int16_t armor, int16_t gauntlets, int16_t cloak, int16_t helm,
                                 int16_t luckStone, int16_t boots, int16_t quiver, int16_t belt,
-                                int16_t necklace, int16_t field17, int16_t field18, int16_t bow) : _field0(field0),
-                                                                                                       _field1(field1),
-                                                                                                       _field2(field2),
-                                                                                                       _field3(field3),
-                                                                                                       _ring0(ring0),
-                                                                                                       _ring1(ring1),
-                                                                                                       _weapon(weapon),
-                                                                                                       _shield(shield),
-                                                                                                       _armor(armor),
-                                                                                                       _gauntlets(gauntlets),
-                                                                                                       _cloak(cloak),
-                                                                                                       _helm(helm),
-                                                                                                       _luckStone(luckStone),
-                                                                                                       _boots(boots),
-                                                                                                       _quiver(quiver),
-                                                                                                       _belt(belt),
-                                                                                                       _necklace(necklace),
-                                                                                                       _field17(field17),
-                                                                                                       _field18(field18),
-                                                                                                       _bow(bow) {}
+                                int16_t necklace, int16_t scrollCase, int16_t field18, int16_t bow,
+                                int16_t unused5, int16_t unused6, int16_t unused7, int16_t unused8) : _unused0(field0),
+                                                                                                   _unused1(field1),
+                                                                                                   _unused2(field2),
+                                                                                                   _unused3(field3),
+                                                                                                   _ring0(ring0),
+                                                                                                   _ring1(ring1),
+                                                                                                   _weapon(weapon),
+                                                                                                   _shield(shield),
+                                                                                                   _armor(armor),
+                                                                                                   _gauntlets(gauntlets),
+                                                                                                   _cloak(cloak),
+                                                                                                   _helm(helm),
+                                                                                                   _luckStone(luckStone),
+                                                                                                   _boots(boots),
+                                                                                                   _quiver(quiver),
+                                                                                                   _belt(belt),
+                                                                                                   _necklace(necklace),
+                                                                                                   _scrollCase(scrollCase),
+                                                                                                   _unused4(field18),
+                                                                                                   _bow(bow),
+                                                                                                   _unused5(unused5),
+                                                                                                   _unused6(unused6),
+                                                                                                   _unused7(unused7),
+                                                                                                   _unused8(unused8) { }
     public:
-        void setField0(int16_t field0) noexcept { _field0 = field0; }
-        void setField1(int16_t field1) noexcept { _field1 = field1; }
-        void setField2(int16_t field2) noexcept { _field2 = field2; }
-        void setField3(int16_t field3) noexcept { _field3 = field3; }
+        void setField0(int16_t field0) noexcept { _unused0 = field0; }
+        void setField1(int16_t field1) noexcept { _unused1 = field1; }
+        void setField2(int16_t field2) noexcept { _unused2 = field2; }
+        void setField3(int16_t field3) noexcept { _unused3 = field3; }
         void setRing0(int16_t ring0) noexcept { _ring0 = ring0; }
         void setRing1(int16_t ring1) noexcept { _ring1 = ring1; }
         void setWeapon(int16_t weapon) noexcept { _weapon = weapon; }
@@ -139,14 +144,14 @@ namespace realmz {
         void setQuiver(int16_t quiver) noexcept { _quiver = quiver; }
         void setBelt(int16_t belt) noexcept { _belt = belt; }
         void setNecklace(int16_t necklace) noexcept { _necklace = necklace; }
-        void setField17(int16_t field17) noexcept { _field17 = field17; }
-        void setField18(int16_t field18) noexcept { _field18 = field18; }
+        void setScrollCase(int16_t field17) noexcept { _scrollCase = field17; }
+        void setField18(int16_t field18) noexcept { _unused4 = field18; }
         void setBow(int16_t value) noexcept { _bow = value; }
     public:
-        [[nodiscard]] constexpr int16_t getField0() const noexcept { return _field0; }
-        [[nodiscard]] constexpr int16_t getField1() const noexcept { return _field1; }
-        [[nodiscard]] constexpr int16_t getField2() const noexcept { return _field2; }
-        [[nodiscard]] constexpr int16_t getField3() const noexcept { return _field3; }
+        [[nodiscard]] constexpr int16_t getField0() const noexcept { return _unused0; }
+        [[nodiscard]] constexpr int16_t getField1() const noexcept { return _unused1; }
+        [[nodiscard]] constexpr int16_t getField2() const noexcept { return _unused2; }
+        [[nodiscard]] constexpr int16_t getField3() const noexcept { return _unused3; }
         [[nodiscard]] constexpr int16_t getRing0() const noexcept { return _ring0; }
         [[nodiscard]] constexpr int16_t getRing1() const noexcept { return _ring1; }
         [[nodiscard]] constexpr int16_t getWeapon() const noexcept { return _weapon; }
@@ -160,15 +165,15 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getQuiver() const noexcept { return _quiver; }
         [[nodiscard]] constexpr int16_t getBelt() const noexcept { return _belt; }
         [[nodiscard]] constexpr int16_t getNecklace() const noexcept { return _necklace; }
-        [[nodiscard]] constexpr int16_t getField17() const noexcept { return _field17; }
-        [[nodiscard]] constexpr int16_t getField18() const noexcept { return _field18; }
+        [[nodiscard]] constexpr int16_t getScrollCase() const noexcept { return _scrollCase; }
+        [[nodiscard]] constexpr int16_t getField18() const noexcept { return _unused4; }
         [[nodiscard]] constexpr int16_t getBow() const noexcept { return _bow; }
         void print(std::ostream& os) const noexcept;
     private:
-        int16_t _field0;
-        int16_t _field1;
-        int16_t _field2;
-        int16_t _field3;
+        int16_t _unused0;
+        int16_t _unused1;
+        int16_t _unused2;
+        int16_t _unused3;
         int16_t _ring0;
         int16_t _ring1;
         int16_t _weapon;
@@ -182,9 +187,13 @@ namespace realmz {
         int16_t _quiver;
         int16_t _belt;
         int16_t _necklace;
-        int16_t _field17;
-        int16_t _field18;
+        int16_t _scrollCase;
+        int16_t _unused4;
         int16_t _bow;
+        int16_t _unused5;
+        int16_t _unused6;
+        int16_t _unused7;
+        int16_t _unused8;
     };
 
 
@@ -343,10 +352,10 @@ namespace realmz {
         void setVsGiantSizedCreatures(int16_t vsGiantSizedCreatures) { _vsGiantSizedCreatures = vsGiantSizedCreatures; }
         void setVsNonHumanoidCreature(int16_t vsNonHumanoidCreature) { _vsNonHumanoidCreature = vsNonHumanoidCreature; }
         void setEquippedItems(size_t index, int16_t value);
-        void setField0Xea(int16_t field0Xea) { _field_0xea = field0Xea; }
-        void setField0Xec(int16_t field0Xec) { _field_0xec = field0Xec; }
-        void setField0Xee(int16_t field0Xee) { _field_0xee = field0Xee; }
-        void setField0Xf0(int16_t field0Xf0) { _field_0xf0 = field0Xf0; }
+        void setField0Xea(int16_t field0Xea) {}
+        void setField0Xec(int16_t field0Xec) {}
+        void setField0Xee(int16_t field0Xee) {}
+        void setField0Xf0(int16_t field0Xf0) {}
         SpecialInfo_CharVersion& getSpecialInfo() noexcept { return _specialInfo; }
         void setDamageReductionVsCharm(int16_t damageReductionVsCharm) { _damageReductionVsCharm = damageReductionVsCharm; }
         void setDamageReductionVsHeat(int16_t damageReductionVsHeat) { _damageReductionVsHeat = damageReductionVsHeat; }
@@ -446,10 +455,6 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getVsIntelligentCreatures() const noexcept { return _vsIntelligentCreatures; }
         [[nodiscard]] constexpr int16_t getVsGiantSizedCreatures() const noexcept { return _vsGiantSizedCreatures; }
         [[nodiscard]] constexpr int16_t getVsNonHumanoidCreature() const noexcept { return _vsNonHumanoidCreature; }
-        [[nodiscard]] constexpr int16_t getField0Xea() const noexcept { return _field_0xea; }
-        [[nodiscard]] constexpr int16_t getField0Xec() const noexcept { return _field_0xec; }
-        [[nodiscard]] constexpr int16_t getField0Xee() const noexcept { return _field_0xee; }
-        [[nodiscard]] constexpr int16_t getField0Xf0() const noexcept { return _field_0xf0; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsCharm() const noexcept { return _damageReductionVsCharm; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsHeat() const noexcept { return _damageReductionVsHeat; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsCold() const noexcept { return _damageReductionVsCold; }
@@ -575,10 +580,6 @@ namespace realmz {
         int16_t _vsGiantSizedCreatures;
         int16_t _vsNonHumanoidCreature;
         EquippedItems _equippedItems;
-        int16_t _field_0xea;
-        int16_t _field_0xec;
-        int16_t _field_0xee;
-        int16_t _field_0xf0;
         SpecialInfo_CharVersion _specialInfo;
         std::array<int16_t, 8> _field_0x100;
         int16_t _damageReductionVsCharm;

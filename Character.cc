@@ -135,11 +135,11 @@ namespace realmz {
                             buf[114],
                             buf[115],
                             buf[116],
+                            buf[117],
+                            buf[118],
+                            buf[119],
+                            buf[120]
                     } ),
-            _field_0xea(buf[117]),
-            _field_0xec(buf[118]),
-            _field_0xee(buf[119]),
-            _field_0xf0(buf[120]),
             _specialInfo(buf[121],
                          buf[122],
                          buf[123],
@@ -369,10 +369,10 @@ namespace realmz {
             }
             os << std::endl;
         };
-        fn("Field 0", _field0);
-        fn("Field 1", _field1);
-        fn("Field 2", _field2);
-        fn("Field 3", _field3);
+        fn("Field 0", _unused0);
+        fn("Field 1", _unused1);
+        fn("Field 2", _unused2);
+        fn("Field 3", _unused3);
         fn("Ring 0", _ring0);
         fn("Ring 1", _ring1);
         fn("Weapon", _weapon);
@@ -386,8 +386,8 @@ namespace realmz {
         fn("Quiver", _quiver);
         fn("Belt", _belt);
         fn("Necklace", _necklace);
-        fn("Field 17", _field17);
-        fn("Field 18", _field18);
+        fn("Field 17", _scrollCase);
+        fn("Field 18", _unused4);
         fn("Bow", _bow);
         os << "}" << std::endl;
     }
