@@ -29,6 +29,7 @@ namespace realmz {
         constexpr int8_t getForceLock() const noexcept { return _forceLock; }
         constexpr int8_t getPickLock() const noexcept { return _pickLock; }
         constexpr int8_t getTurnUndead() const noexcept { return _turnUndead; }
+        void print(std::ostream& os) const noexcept;
     private:
         int8_t _sneakAttack;
         int8_t _causeMajorWound;
@@ -79,6 +80,7 @@ namespace realmz {
         constexpr auto getUndeadDestroyed() const noexcept { return _undeadDestroyed; }
         constexpr auto getUndeadTurned() const noexcept { return _undeadTurned; }
         constexpr auto getPenaltyPoints() const noexcept { return _penaltyPoints; }
+        void print(std::ostream& os) const noexcept;
     private:
         int32_t _damageTaken;
         int32_t _damageGiven;
@@ -326,6 +328,7 @@ namespace realmz {
         Male = 1,
         Female = 2,
     };
+    using OutOfPair = std::tuple<int16_t, int16_t>;
     class Character {
     public:
         Character(const CharacterDataBuffer& buf);
@@ -379,7 +382,7 @@ namespace realmz {
         void setVsVeryEvilCreatures(int16_t vsVeryEvilCreatures) { _vsVeryEvilCreatures = vsVeryEvilCreatures; }
         void setVsIntelligentCreatures(int16_t vsIntelligentCreatures) { _vsIntelligentCreatures = vsIntelligentCreatures; }
         void setVsGiantSizedCreatures(int16_t vsGiantSizedCreatures) { _vsGiantSizedCreatures = vsGiantSizedCreatures; }
-        void setVsNonHumanoidCreature(int16_t vsNonHumanoidCreature) { _vsNonHumanoidCreature = vsNonHumanoidCreature; }
+        void setVsNonHumanoidCreature(int16_t vsNonHumanoidCreature) { _vsNonHumanoidCreatures = vsNonHumanoidCreature; }
         void setEquippedItems(size_t index, int16_t value);
         SpecialInfo_CharVersion& getSpecialInfo() noexcept { return _specialInfo; }
         void setDamageReductionVsCharm(int16_t damageReductionVsCharm) { _damageReductionVsCharm = damageReductionVsCharm; }
@@ -460,7 +463,7 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getVsVeryEvilCreatures() const noexcept { return _vsVeryEvilCreatures; }
         [[nodiscard]] constexpr int16_t getVsIntelligentCreatures() const noexcept { return _vsIntelligentCreatures; }
         [[nodiscard]] constexpr int16_t getVsGiantSizedCreatures() const noexcept { return _vsGiantSizedCreatures; }
-        [[nodiscard]] constexpr int16_t getVsNonHumanoidCreature() const noexcept { return _vsNonHumanoidCreature; }
+        [[nodiscard]] constexpr int16_t getVsNonHumanoidCreature() const noexcept { return _vsNonHumanoidCreatures; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsCharm() const noexcept { return _damageReductionVsCharm; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsHeat() const noexcept { return _damageReductionVsHeat; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsCold() const noexcept { return _damageReductionVsCold; }
@@ -565,7 +568,7 @@ namespace realmz {
         int16_t _vsVeryEvilCreatures;
         int16_t _vsIntelligentCreatures;
         int16_t _vsGiantSizedCreatures;
-        int16_t _vsNonHumanoidCreature;
+        int16_t _vsNonHumanoidCreatures;
         EquippedItems _equippedItems;
         SpecialInfo_CharVersion _specialInfo;
         std::array<int16_t, 6> _field_0x100;
@@ -623,5 +626,7 @@ std::ostream& operator<<(std::ostream& os, const realmz::Character& c) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::CharacterConditions& c) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::InventoryItem& c) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::EquippedItems& ec) noexcept;
+std::ostream& operator<<(std::ostream& os, const realmz::SpecialInfo_CharVersion& ec) noexcept;
+std::ostream& operator<<(std::ostream& os, const realmz::PrestigeValues& pv) noexcept;
 
 #endif //REALMZ_TOOLS_CHARACTER_H

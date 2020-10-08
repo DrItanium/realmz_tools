@@ -6,6 +6,18 @@
 #include <sstream>
 
 namespace realmz {
+    std::string consumeName(const std::array<char, 31>& chars) noexcept {
+        std::stringstream ss;
+        for (auto c : chars) {
+            if (c == 0)  {
+                break;
+            } else {
+                ss << c;
+            }
+        }
+        auto str = ss.str();
+        return str;
+    }
     constexpr int8_t upperHalf(int16_t value) noexcept {
         return (value >> 8) & 0xFF;
     }
@@ -112,7 +124,7 @@ namespace realmz {
             _vsVeryEvilCreatures(buf[93]),
             _vsIntelligentCreatures(buf[94]),
             _vsGiantSizedCreatures(buf[95]),
-            _vsNonHumanoidCreature(buf[96]),
+            _vsNonHumanoidCreatures(buf[96]),
             _equippedItems(
                     {
                             buf[97],
@@ -325,6 +337,8 @@ namespace realmz {
         os << title << ": ";
         if constexpr (std::is_same_v<K, int8_t> || std::is_same_v<K, uint8_t> || std::is_same_v<K, int16_t> || std::is_same_v<K, uint16_t> || std::is_same_v<K, char> || std::is_same_v<K, unsigned char>) {
             os << std::dec << static_cast<int>(value);
+        } else if constexpr (std::is_same_v<K, bool>) {
+           os << std::boolalpha << value;
         } else {
             os << std::dec << value;
         }
@@ -364,7 +378,87 @@ namespace realmz {
         }
         os << "}" << std::endl;
         os << _equippedItems << std::endl;
-    }
+        printOut(os, "Hand to Hand sound index", _handToHandSoundIndex);
+        printOut(os, "Unused Field 1", _unusedField1);
+        printOut(os, "Combat Body Icon Base", _combatBodyIconBase);
+        printOut(os, "Other Attacks Per Round Modifier", _otherAttacksPerRoundModifier);
+        printOut(os, "Vitality from Items", _vitalityFromItems);
+        printOut(os, "Battle Order", _battleOrder);
+        printOut(os, "Luck from Items", _luckFromItems);
+        printOut(os, "Brawn from Items", _brawnFromItems);
+        printOut(os, "Magic Resistance", _magicResistance);
+        printOut(os, "Movement Bonus", _movementBonus);
+        printOut(os, "Armor Rating", _armorRating);
+        printOut(os, "Damage Plus",_damagePlus);
+        printOut(os, "Race", _race);
+        printOut(os, "Caste", _caste);
+        printOut(os, "Supported Spell Class", static_cast<int16_t>(_supportedSpellClass));
+        printOut(os, "Gender", static_cast<int16_t>(_gender));
+        printOut(os, "Skill Level", _skillLevel);
+        printOut(os, "Remaining Movement Points", _remainingMovementPoints);
+        printOut(os, "Movement Points", _movementPoints);
+        printOut(os, "Combat Points", _combatPoints);
+        index = 1;
+        for (const auto ts : _totalSpellsRemaining) {
+            os << "Spell Level " << std::dec << index << " Spells Remaining: " <<  static_cast<int>(ts) << std::endl;
+            ++index;
+        }
+        printOut(os, "Stamina Current", _staminaCurrent);
+        printOut(os, "Stamina Total", _staminaTotal);
+        printOut(os, "Portrait Index", _portraitIndex);
+        printOut(os, "Icon Picture Index", _iconPictureIndex);
+        printOut(os, "Spell Points Current", _spellPointsCurrent);
+        printOut(os, "Spell Points Total", _spellPointsTotal);
+        printOut(os, "Hands Used", _handsUsed);
+        printOut(os, "Melee Weapon Equipped (Probably)", _meleeWeaponEquipped_Probably);
+        printOut(os, "Ranged Weapon Equipped (Probably)", _rangedWeaponEquipped_Probably);
+        printOut(os, "Hand To Hand Max", _handToHandMax);
+        printOut(os, "VS Magic Using Creatures", _vsMagicUsingCreatures);
+        printOut(os, "VS Undead Creatures", _vsUndeadCreatures);
+        printOut(os, "VS Demonic Creatures", _vsDemonicCreatures);
+        printOut(os, "VS Reptile Creatures", _vsReptileCreatures);
+        printOut(os, "VS Very Evil Creatures", _vsVeryEvilCreatures);
+        printOut(os, "VS Giant Sized Creatures", _vsGiantSizedCreatures);
+        printOut(os, "VS Non Humanoid Creatures", _vsNonHumanoidCreatures);
+        os << _specialInfo;
+        index = 0x100;
+        for (const auto& a : _field_0x100) {
+            os << "Field_0x" << std::hex << index << ": " << std::dec << a << std::endl;
+           index += 2;
+        }
+
+        printOut(os, "Turn Undead Ability", _turnUndeadAbility);
+        printOut(os, "Field 0x10e", _field_0x10e);
+        auto printDRV = [&os](const std::string& kind, uint16_t value) noexcept {
+            std::stringstream ss;
+            ss << "Damage Reduction Vs " << kind;
+            auto str = ss.str();
+            printOut(os, str, value);
+        };
+        printDRV("Charm", _damageReductionVsCharm);
+        printDRV("Heat", _damageReductionVsHeat);
+        printDRV("Cold", _damageReductionVsCold);
+        printDRV("Electric", _damageReductionVsElectric);
+        printDRV("Chemical", _damageReductionVsChemical);
+        printDRV("Mental", _damageReductionVsMental);
+        printDRV("Magic", _damageReductionVsMagic);
+        printDRV("Special", _damageReductionVsSpecial);
+        printOut(os, "Age Class", _ageClass);
+        /// @todo printout spells in scroll case
+        printOut(os, "Days Old", _daysOld);
+        printOut(os, "Victory Points", _victoryPoints);
+        printOut(os, "Current Load", _currentLoad);
+        printOut(os, "Maximum Load", _maximumLoad);
+        printOut(os, "Gold", _gold);
+        printOut(os, "Gems", _gems);
+        printOut(os, "Jewelry", _jewelry);
+        printOut(os, "Attempted To Turn Undead In Combat", _attemptedToTurnUndeadInCombat);
+        printOut(os, "Is Spell Class 1", _isSpellClass1);
+        printOut(os, "Is Spell Class 2", _isSpellClass2);
+        printOut(os, "Is Spell Class 3", _isSpellClass3);
+        printOut(os, "Alive", _alive);
+        printOut(os, "In Auto Mode", _inAutoMode);
+    };
     void
     EquippedItems::print(std::ostream &os) const noexcept {
         static constexpr bool PrintUnusedFields = false;
@@ -474,6 +568,38 @@ namespace realmz {
            ", Flags: " << std::hex << _flags << "}";
     }
 
+    void
+    SpecialInfo_CharVersion::print(std::ostream &os) const noexcept {
+        printOut(os, "Sneak Attack", _sneakAttack);
+        printOut(os, "Cause Major Wound", _causeMajorWound);
+        printOut(os, "Detect Secret", _detectSecret);
+        printOut(os, "Acrobatic Act", _acrobaticAct);
+        printOut(os, "Detect Trap", _detectTrap);
+        printOut(os, "Disable Trap", _disableTrap);
+        printOut(os, "Force Lock", _forceLock);
+        printOut(os, "Pick Lock", _pickLock);
+        printOut(os, "Turn Undead", _turnUndead);
+    }
+
+    void
+    PrestigeValues::print(std::ostream &os) const noexcept {
+        os << "Prestige Values {" << std::endl;
+        printOut(os, "Damage Taken", _damageTaken, true);
+        printOut(os, "Damage Given", _damageGiven, true);
+        printOut(os, "Hits Taken", _hitsTaken, true);
+        printOut(os, "Hits Given", _hitsGiven, true);
+        printOut(os, "Missed Attacks", _missedAttacks, true);
+        printOut(os, "Dodged Attacks", _dodgedAttacks, true);
+        printOut(os, "Enemies Killed", _enemiesKilled, true);
+        printOut(os, "Times Died", _timesDied, true);
+        printOut(os, "Times Unconscious", _timesUnconscious, true);
+        printOut(os, "Combat Spells Cast", _combatSpellsCast, true);
+        printOut(os, "Undead Destroyed", _undeadDestroyed, true);
+        printOut(os, "Undead Turned", _undeadTurned, true);
+        printOut(os, "Penalty Points", _penaltyPoints, true);
+        os << "}" << std::endl;
+    }
+
 }
 
 std::ostream&
@@ -495,6 +621,18 @@ operator<<(std::ostream& os, const realmz::InventoryItem& ii) noexcept {
 
 std::ostream&
 operator<<(std::ostream& os, const realmz::EquippedItems& eq) noexcept {
+    eq.print(os);
+    return os;
+}
+
+std::ostream&
+operator<<(std::ostream& os, const realmz::SpecialInfo_CharVersion& eq) noexcept {
+    eq.print(os);
+    return os;
+}
+
+std::ostream&
+operator<<(std::ostream& os, const realmz::PrestigeValues& eq) noexcept {
     eq.print(os);
     return os;
 }
