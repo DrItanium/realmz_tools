@@ -415,7 +415,9 @@ namespace realmz {
     CharacterConditions::print(std::ostream &os) const noexcept {
         os << "Conditions: {" << std::endl;
         auto fn = [&os](const std::string& title, int16_t value) noexcept {
-            printOut(os, title, value, true);
+            if (value != 0) {
+                printOut(os, title, value, true);
+            }
         };
         fn("In Retreat", _inRetreat);
         fn("Helpless", _helpless);
@@ -442,13 +444,6 @@ namespace realmz {
         Y(5th);
 #undef Y
 #undef X
-#if 0
-        int16_t _absorbSpellEnergyFromAttacks;
-        int16_t _hinderedAttack;
-        int16_t _hinderedDefense;
-        int16_t _defensiveBonus;
-        int16_t _silenced;
-#endif
         fn("Strong", _strong);
         fn("Protection from Foe", _protectionFromFoe);
         fn("Speedy", _speedy);
@@ -466,6 +461,7 @@ namespace realmz {
         fn("Absorb Spell Energy From Attacks", _absorbSpellEnergyFromAttacks);
         fn("Hindered Attack", _hinderedAttack);
         fn("Hindered Defense", _hinderedDefense);
+        fn("Defense Bonus", _defensiveBonus);
         fn("Silenced", _silenced);
         os << "}";
     }
