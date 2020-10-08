@@ -42,15 +42,15 @@ namespace realmz {
     };
     class InventoryItem {
     public:
-        constexpr InventoryItem(int16_t index, uint8_t field2, uint8_t field3, uint16_t flags) noexcept : _idx(index), _f2(field2), _f3(field3), _flags(flags) { }
+        constexpr InventoryItem(int16_t index, bool equipped, uint8_t field3, uint16_t flags) noexcept : _idx(index), _equipped(equipped), _f3(field3), _flags(flags) { }
         [[nodiscard]] constexpr auto getIndex() const noexcept { return _idx; }
-        [[nodiscard]] constexpr auto getField2() const noexcept { return _f2; }
+        [[nodiscard]] constexpr auto isEquipped() const noexcept { return _equipped; }
         [[nodiscard]] constexpr auto getField3() const noexcept { return _f3; }
         [[nodiscard]] constexpr auto getFlags() const noexcept { return _flags; }
         void print(std::ostream& os) const noexcept;
     private:
         uint16_t _idx;
-        uint8_t _f2;
+        bool _equipped;
         uint8_t _f3;
         uint16_t _flags;
     };
