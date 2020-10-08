@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConditionsView</class>
+ <widget class="QWidget" name="ConditionsView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Negative Values are Permanent</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QPushButton" name="clearBadEffectsButton">
+     <property name="text">
+      <string>Clear Bad Effects</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Magic Aura</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="magicAura"/>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Protection From 4th Level Spells</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QLineEdit" name="prot4thLevelSpells"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Shielded From Normal Attacks</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="shieldedFromNormalAttacks"/>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Protection From 5th Level Spells</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QLineEdit" name="prot5thLevelSpells"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Shielded From Projectiles</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="shieldedFromProjectiles"/>
+   </item>
+   <item row="3" column="2">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Strong</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QLineEdit" name="strong"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>Regenerate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="regenerate"/>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Protection From Foe</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QLineEdit" name="protectionFromFoe"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_11">
+     <property name="text">
+      <string>Protection From Heat Attacks</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="heatProtection"/>
+   </item>
+   <item row="5" column="2">
+    <widget class="QLabel" name="label_10">
+     <property name="text">
+      <string>Speed</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="3">
+    <widget class="QLineEdit" name="speed"/>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_13">
+     <property name="text">
+      <string>Protection From Cold Attacks</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="coldProtection"/>
+   </item>
+   <item row="6" column="2">
+    <widget class="QLabel" name="label_12">
+     <property name="text">
+      <string>Invisible</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="3">
+    <widget class="QLineEdit" name="invisible"/>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_15">
+     <property name="text">
+      <string>Protection From Electrical Attacks</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="electricalProtection"/>
+   </item>
+   <item row="7" column="2">
+    <widget class="QLabel" name="label_14">
+     <property name="text">
+      <string>Reflecting Spells</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="3">
+    <widget class="QLineEdit" name="reflectingSpells"/>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_17">
+     <property name="text">
+      <string>Protection From Chemical Attacks</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="chemicalProtection"/>
+   </item>
+   <item row="8" column="2">
+    <widget class="QLabel" name="label_16">
+     <property name="text">
+      <string>Reflecting Attacks</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="3">
+    <widget class="QLineEdit" name="reflectingAttacks"/>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="label_19">
+     <property name="text">
+      <string>Protection From Mental Attacks</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="mentalProtection"/>
+   </item>
+   <item row="9" column="2">
+    <widget class="QLabel" name="label_18">
+     <property name="text">
+      <string>Attack Bonus</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="3">
+    <widget class="QLineEdit" name="attackBonus"/>
+   </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="label_21">
+     <property name="text">
+      <string>Protection From 1st Level Spells</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <widget class="QLineEdit" name="prot1stLevelSpells"/>
+   </item>
+   <item row="10" column="2">
+    <widget class="QLabel" name="label_20">
+     <property name="text">
+      <string>Absorb Energy</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="3">
+    <widget class="QLineEdit" name="absorbEnergy"/>
+   </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="label_23">
+     <property name="text">
+      <string>Protection From 2nd Level Spells</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1">
+    <widget class="QLineEdit" name="prot2ndLevelSpells"/>
+   </item>
+   <item row="11" column="2">
+    <widget class="QLabel" name="label_22">
+     <property name="text">
+      <string>Absorb Spell Energy From Attacks</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="3">
+    <widget class="QLineEdit" name="absorbSpellEnergyFromAttacks"/>
+   </item>
+   <item row="12" column="0">
+    <widget class="QLabel" name="label_25">
+     <property name="text">
+      <string>Protection From 3rd Level Spells</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="1">
+    <widget class="QLineEdit" name="prot3rdLevelSpells"/>
+   </item>
+   <item row="12" column="2">
+    <widget class="QLabel" name="label_24">
+     <property name="text">
+      <string>Defensive Bonus</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="3">
+    <widget class="QLineEdit" name="defensiveBonus"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

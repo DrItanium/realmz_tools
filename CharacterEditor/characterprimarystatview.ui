@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CharacterPrimaryStatView</class>
+ <widget class="QWidget" name="CharacterPrimaryStatView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_9">
+   <item row="0" column="0" rowspan="3">
+    <widget class="QFrame" name="CoreStatsFrame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Brawn</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="BrawnStat"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Knowledge</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="KnowledgeStat"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Judgment</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="JudgmentStat"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Agility</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="AgilityStat"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Vitality</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="VitalityStat"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Luck</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="LuckStat"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Attack Bonus</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="AttackBonusStat">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Defense Bonus</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="DefensiveBonusStat">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Missile Adjust</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Dodge Missile</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Bare Hand Damage 1-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLineEdit" name="BareHandDamageUpperEnd"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="MissileAdjustPercentage"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="3" rowspan="2">
+    <widget class="QFrame" name="frame_5">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_7">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_39">
+        <property name="text">
+         <string>Damage +</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="DamagePlus"/>
+      </item>
+      <item row="0" column="2" colspan="2">
+       <widget class="QLabel" name="label_40">
+        <property name="text">
+         <string>Points</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_42">
+        <property name="text">
+         <string>Chance To Hit</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="ChanceToHitPercentage"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_41">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_44">
+        <property name="text">
+         <string>Spell Points</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="SpellPointsCurrent"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_43">
+        <property name="text">
+         <string>/</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="SpellPointsMaximum"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_46">
+        <property name="text">
+         <string>Stamina</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="StaminaCurrent"/>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="label_45">
+        <property name="text">
+         <string>/</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="StaminaMaximum"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_47">
+        <property name="text">
+         <string>Armor Rating</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="ArmorRating"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_48">
+        <property name="text">
+         <string>Magic Resistance</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="MagicResistancePercentage"/>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLabel" name="label_49">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1" rowspan="2" colspan="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Damage Reduction Vs.</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Charm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="damageReductionVsCharm"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_18">
+        <property name="text">
+         <string>Chemical</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLineEdit" name="damageReductionVsChemical"/>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_20">
+        <property name="text">
+         <string>Heat</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="damageReductionVsHeat"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_21">
+        <property name="text">
+         <string>Mental</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLineEdit" name="damageReductionVsMental"/>
+      </item>
+      <item row="1" column="5">
+       <widget class="QLabel" name="label_22">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_24">
+        <property name="text">
+         <string>Cold</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="damageReductionVsCold"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_23">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_25">
+        <property name="text">
+         <string>Magic</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLineEdit" name="damageReductionVsMagic"/>
+      </item>
+      <item row="2" column="5">
+       <widget class="QLabel" name="label_26">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_28">
+        <property name="text">
+         <string>Electric</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="damageReductionVsElectric"/>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="label_27">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="label_29">
+        <property name="text">
+         <string>Special</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="4">
+       <widget class="QLineEdit" name="damageReductionVsSpecial"/>
+      </item>
+      <item row="3" column="5">
+       <widget class="QLabel" name="label_30">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="3" rowspan="2">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Special Abilities</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_10">
+      <item row="0" column="0">
+       <widget class="QListWidget" name="specialAbilitiesList"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" rowspan="2">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="1">
+       <widget class="QPushButton" name="ItemsListButton">
+        <property name="text">
+         <string>Items</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="ConditionsListButton">
+        <property name="text">
+         <string>Conditions</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QListWidget" name="conditionsItemList"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="1" rowspan="2" colspan="2">
+    <widget class="QFrame" name="frame_4">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_33">
+        <property name="text">
+         <string>Victory Points</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="3">
+       <widget class="QLineEdit" name="victoryPoints"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_34">
+        <property name="text">
+         <string>Caste</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="3">
+       <widget class="QComboBox" name="characterCaste"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_35">
+        <property name="text">
+         <string>Race</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="3">
+       <widget class="QComboBox" name="characterRace"/>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <widget class="QLabel" name="label_36">
+        <property name="text">
+         <string>Movement Bonus     +</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="movementBonusPlus"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_37">
+        <property name="text">
+         <string>Gender</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" colspan="3">
+       <widget class="QComboBox" name="characterGender">
+        <item>
+         <property name="text">
+          <string>Male</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Female</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QLabel" name="label_38">
+        <property name="text">
+         <string>Hand To Hand 1 to</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2" colspan="2">
+       <widget class="QLineEdit" name="handToHandDamage"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="3" rowspan="2">
+    <widget class="QFrame" name="frame_6">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_8">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_50">
+        <property name="text">
+         <string>Gold</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="GoldAmount"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_51">
+        <property name="text">
+         <string>Gems</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="GemsAmount"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_52">
+        <property name="text">
+         <string>Jewelry</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="JewelryAmount"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_53">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="NameField">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QFrame" name="frame_3">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Skill</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="skillLevel"/>
+      </item>
+      <item row="0" column="2" colspan="2">
+       <widget class="QLabel" name="label_31">
+        <property name="text">
+         <string>Age</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLineEdit" name="Age"/>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <widget class="QLabel" name="label_32">
+        <property name="text">
+         <string>Spell Selection Pts.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3" colspan="2">
+       <widget class="QLineEdit" name="SpellSectionPoints"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateBrawn(QString)</signal>
+   <receiver>BrawnStat</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>36</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateKnowledge(QString)</signal>
+   <receiver>KnowledgeStat</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateJudgment(QString)</signal>
+   <receiver>JudgmentStat</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateAgility(QString)</signal>
+   <receiver>AgilityStat</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateVitality(QString)</signal>
+   <receiver>VitalityStat</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateLuck(QString)</signal>
+   <receiver>LuckStat</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateAttackBonus(QString)</signal>
+   <receiver>AttackBonusStat</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>240</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateDefenseBonus(QString)</signal>
+   <receiver>DefensiveBonusStat</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateSkill(QString)</signal>
+   <receiver>skillLevel</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>90</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateAge(QString)</signal>
+   <receiver>Age</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateSpellSelectionPoints(QString)</signal>
+   <receiver>SpellSectionPoints</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>566</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CharacterPrimaryStatView</sender>
+   <signal>updateName(QString)</signal>
+   <receiver>NameField</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>666</x>
+     <y>558</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>NameField</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>CharacterPrimaryStatView</receiver>
+   <slot>nameUpdated(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>666</x>
+     <y>558</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>updateBrawn(QString)</signal>
+  <signal>updateKnowledge(QString)</signal>
+  <signal>updateJudgment(QString)</signal>
+  <signal>updateAgility(QString)</signal>
+  <signal>updateVitality(QString)</signal>
+  <signal>updateLuck(QString)</signal>
+  <signal>updateAttackBonus(QString)</signal>
+  <signal>updateDefenseBonus(QString)</signal>
+  <signal>addCondition(QString)</signal>
+  <signal>addSpecialAbility(QString)</signal>
+  <signal>updateSkill(QString)</signal>
+  <signal>updateAge(QString)</signal>
+  <signal>updateSpellSelectionPoints(QString)</signal>
+  <signal>updateName(QString)</signal>
+  <signal>updateGold(QString)</signal>
+  <signal>updateGems(QString)</signal>
+  <signal>updateJewelry(QString)</signal>
+  <signal>updateMagicResistance(QString)</signal>
+  <signal>updateArmorRating(QString)</signal>
+  <signal>updateStaminaTotal(QString)</signal>
+  <signal>updateStaminaCurrent(QString)</signal>
+  <signal>updateSpellPointsTotal(QString)</signal>
+  <signal>updateSpellPointsCurrent(QString)</signal>
+  <slot>nameUpdated(QString)</slot>
+  <slot>ageUpdated(QString)</slot>
+  <slot>agilityUpdated(QString)</slot>
+  <slot>brawnUpdated(QString)</slot>
+  <slot>judgmentUpdated(QString)</slot>
+  <slot>knowledgeUpdated(QString)</slot>
+  <slot>luckUpdated(QString)</slot>
+  <slot>vitalityUpdated(QString)</slot>
+ </slots>
+</ui>
