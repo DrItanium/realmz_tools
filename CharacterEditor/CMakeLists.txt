@@ -46,4 +46,5 @@ add_executable(CharacterEditor
 	${UI_GENERATED_HEADERS}
 	)
 
-target_link_libraries(CharacterEditor Qt5::Widgets)
+target_link_libraries(CharacterEditor Qt5::Widgets
+									  realmz)
