@@ -336,7 +336,7 @@ namespace realmz {
         void setBareHandDamageMax(int16_t bareHandDamageMax) { _bareHandDamageMax = bareHandDamageMax; }
         void setAllianceClass(int16_t allianceClass) { _allianceClass = allianceClass; }
         void setAttacksPerRound(int16_t attacksPerRound) { _attacksPerRound = attacksPerRound; }
-        void setField0X10(int16_t field0X10) { _tookNoDamageThisRound = field0X10; }
+        void setTookNoDamageThisRound(int16_t field0X10) { _tookNoDamageThisRound = field0X10; }
         void setField0X12(int16_t field0X12) { _field_0x12 = field0X12; }
         void setField0X14(int16_t field0X14) { _field_0x14 = field0X14; }
         void setNumItems(int16_t numItems) { _numItems = numItems; }
@@ -381,10 +381,6 @@ namespace realmz {
         void setVsGiantSizedCreatures(int16_t vsGiantSizedCreatures) { _vsGiantSizedCreatures = vsGiantSizedCreatures; }
         void setVsNonHumanoidCreature(int16_t vsNonHumanoidCreature) { _vsNonHumanoidCreature = vsNonHumanoidCreature; }
         void setEquippedItems(size_t index, int16_t value);
-        void setField0Xea(int16_t field0Xea) {}
-        void setField0Xec(int16_t field0Xec) {}
-        void setField0Xee(int16_t field0Xee) {}
-        void setField0Xf0(int16_t field0Xf0) {}
         SpecialInfo_CharVersion& getSpecialInfo() noexcept { return _specialInfo; }
         void setDamageReductionVsCharm(int16_t damageReductionVsCharm) { _damageReductionVsCharm = damageReductionVsCharm; }
         void setDamageReductionVsHeat(int16_t damageReductionVsHeat) { _damageReductionVsHeat = damageReductionVsHeat; }
@@ -400,18 +396,18 @@ namespace realmz {
         void setAnArrayValue(size_t index, int value);
         void setDaysOld(int32_t daysOld) { _daysOld = daysOld; }
         void setVictoryPoints(int32_t victoryPoints) { _victoryPoints = victoryPoints; }
-        void setWeight(int16_t weight) { _currentLoad = weight; }
-        void setField0X1F6(int16_t field0X1F6) { _maximumLoad = field0X1F6; }
+        void setCurrentLoad(int16_t weight) { _currentLoad = weight; }
+        void setMaximumLoad(int16_t field0X1F6) { _maximumLoad = field0X1F6; }
         void setGold(int16_t gold) { _gold = gold; }
         void setGems(int16_t gems) { _gems = gems; }
         void setJewelry(int16_t jewelry) { _jewelry = jewelry; }
-        void setField0X1Fe(bool field0X1Fe) { _attemptedToTurnUndeadInCombat = field0X1Fe; }
+        void setAttemptdToTurnUndeadInCombat(bool field0X1Fe) { _attemptedToTurnUndeadInCombat = field0X1Fe; }
         void setIsSpellClass1(bool isSpellClass1) { _isSpellClass1 = isSpellClass1; }
         void setIsSpellClass2(bool isSpellClass2) { _isSpellClass2 = isSpellClass2; }
         void setIsSpellClass3(bool isSpellClass3) { _isSpellClass3 = isSpellClass3; }
         void setRangedWeaponSelected(bool value) { _rangedWeaponSelected = value; }
         void setAlive(bool alive) { _alive = alive; }
-        void setAFlag(bool aFlag) { _inAutoMode = aFlag; }
+        void setInAutoMode(bool aFlag) { _inAutoMode = aFlag; }
         void setBrawn(char brawn) { _brawn = brawn; }
         void setKnowledge(char knowledge) { _knowledge = knowledge; }
         void setJudgement(char judgement) { _judgement = judgement; }
@@ -444,7 +440,7 @@ namespace realmz {
         [[nodiscard]] constexpr SupportedSpellClass getSupportedSpellClass() const noexcept { return _supportedSpellClass; }
         [[nodiscard]] constexpr Gender getGender() const noexcept { return _gender; }
         [[nodiscard]] constexpr int16_t getSkillLevel() const noexcept { return _skillLevel; }
-        [[nodiscard]] constexpr int16_t getField0X3A() const noexcept { return _remainingMovementPoints; }
+        [[nodiscard]] constexpr int16_t getRemainingMovementPoints() const noexcept { return _remainingMovementPoints; }
         [[nodiscard]] constexpr int16_t getMovementPoints() const noexcept { return _movementPoints; }
         [[nodiscard]] constexpr int16_t getCombatPoints() const noexcept { return _combatPoints; }
         [[nodiscard]] constexpr int16_t getStaminaCurrent() const noexcept { return _staminaCurrent; }
@@ -453,9 +449,9 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getIconPictureIndex() const noexcept { return _iconPictureIndex; }
         [[nodiscard]] constexpr int16_t getSpellPointsCurrent() const noexcept { return _spellPointsCurrent; }
         [[nodiscard]] constexpr int16_t getSpellPointsTotal() const noexcept { return _spellPointsTotal; }
-        [[nodiscard]] constexpr int16_t getField0X5A() const noexcept { return _handsUsed; }
-        [[nodiscard]] constexpr int16_t getField0X5C() const noexcept { return _meleeWeaponEquipped_Probably; }
-        [[nodiscard]] constexpr int16_t getField0X5E() const noexcept { return _rangedWeaponEquipped_Probably; }
+        [[nodiscard]] constexpr int16_t getHandsUsed() const noexcept { return _handsUsed; }
+        [[nodiscard]] constexpr int16_t meleeWeaponIsEquipped() const noexcept { return _meleeWeaponEquipped_Probably; }
+        [[nodiscard]] constexpr int16_t rangedWeaponIsEquipped() const noexcept { return _rangedWeaponEquipped_Probably; }
         [[nodiscard]] constexpr int16_t getHandToHandMax() const noexcept { return _handToHandMax; }
         [[nodiscard]] constexpr int16_t getVsMagicUsingCreatures() const noexcept { return _vsMagicUsingCreatures; }
         [[nodiscard]] constexpr int16_t getVsUndeadCreatures() const noexcept { return _vsUndeadCreatures; }
@@ -477,18 +473,18 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getVerifyField1() const noexcept { return _verifyField1; }
         [[nodiscard]] constexpr int32_t getDaysOld() const noexcept { return _daysOld; }
         [[nodiscard]] constexpr int32_t getVictoryPoints() const noexcept { return _victoryPoints; }
-        [[nodiscard]] constexpr int16_t getWeight() const noexcept { return _currentLoad; }
-        [[nodiscard]] constexpr int16_t getField0X1F6() const noexcept { return _maximumLoad; }
+        [[nodiscard]] constexpr int16_t getCurrentLoad() const noexcept { return _currentLoad; }
+        [[nodiscard]] constexpr int16_t getMaximumLoad() const noexcept { return _maximumLoad; }
         [[nodiscard]] constexpr int16_t getGold() const noexcept { return _gold; }
         [[nodiscard]] constexpr int16_t getGems() const noexcept { return _gems; }
         [[nodiscard]] constexpr int16_t getJewelry() const noexcept { return _jewelry; }
-        [[nodiscard]] constexpr auto getField0X1Fe() const noexcept { return _attemptedToTurnUndeadInCombat; }
+        [[nodiscard]] constexpr auto attemptedToTurnUndeadInCombat() const noexcept { return _attemptedToTurnUndeadInCombat; }
         [[nodiscard]] constexpr bool isIsSpellClass1() const noexcept { return _isSpellClass1; }
         [[nodiscard]] constexpr bool isIsSpellClass2() const noexcept { return _isSpellClass2; }
         [[nodiscard]] constexpr bool isIsSpellClass3() const noexcept { return _isSpellClass3; }
         [[nodiscard]] constexpr bool rangedWeaponSelected() const noexcept { return _rangedWeaponSelected; }
         [[nodiscard]] constexpr bool isAlive() const noexcept { return _alive; }
-        [[nodiscard]] constexpr bool isAFlag() const noexcept { return _inAutoMode; }
+        [[nodiscard]] constexpr bool inAutoMode() const noexcept { return _inAutoMode; }
         [[nodiscard]] constexpr char getBrawn() const noexcept { return _brawn; }
         [[nodiscard]] constexpr char getKnowledge() const noexcept { return _knowledge; }
         [[nodiscard]] constexpr char getJudgement() const noexcept { return _judgement; }
@@ -513,8 +509,8 @@ namespace realmz {
         [[nodiscard]] const EquippedItems &getEquippedItems() const { return _equippedItems; }
         [[nodiscard]] const SpecialInfo_CharVersion &getSpecialInfo() const { return _specialInfo; }
         [[nodiscard]] const std::array<InventoryItem, 30> &getItems() const { return _items; }
-        [[nodiscard]] const std::array<int16_t, 10> &getAnArray() const { return _spellsInScrollCase; }
-        [[nodiscard]] const std::array<int16_t, 7> &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
+        [[nodiscard]] const auto &getSpellsInScrollCase() const { return _spellsInScrollCase; }
+        [[nodiscard]] const auto &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
         [[nodiscard]] const CharacterConditions &getConditions() const { return _conditions; }
         void print(std::ostream& os) const noexcept;
     private:

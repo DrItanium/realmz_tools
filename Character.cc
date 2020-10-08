@@ -469,7 +469,7 @@ namespace realmz {
     void
     InventoryItem::print(std::ostream &os) const noexcept {
         os << "{" << std::dec << "Index: " << _idx <<
-           ", Field2: " << std::boolalpha << _equipped <<
+           ", Equipped: " << std::boolalpha << _equipped <<
            ", Field3: " << std::dec << static_cast<int>(_f3) <<
            ", Flags: " << std::hex << _flags << "}";
     }
