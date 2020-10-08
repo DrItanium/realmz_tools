@@ -316,36 +316,42 @@ namespace realmz {
     {
 
     }
+    template<typename T>
+    void printOut(std::ostream& os, const std::string& title, T value) noexcept {
+        using K = std::decay_t<T>;
+        static_assert(std::is_integral_v<K>);
+        os << title << ": ";
+        if constexpr (std::is_same_v<K, int8_t> || std::is_same_v<K, uint8_t> || std::is_same_v<K, int16_t> || std::is_same_v<K, uint16_t>) {
+            os << static_cast<int>(value);
+        } else {
+            os << value;
+        }
+        os << std::endl;
+    }
     void
     Character::print(std::ostream& os) const noexcept {
         os << "Name: " << _name << std::endl;
-        auto print8 = [&os](const std::string &title, int8_t value) noexcept {
-            os << title << ": " << static_cast<int>(value) << std::endl;
-        };
-        auto print16 = [&os](const std::string &title, int16_t value) noexcept {
-            os << title << ": " << static_cast<int>(value) << std::endl;
-        };
-        print8("Brawn", _brawn);
-        print8("Knowledge", _knowledge);
-        print8("Judgement", _judgement);
-        print8("Agility", _agility);
-        print8("Vitality", _vitality);
-        print8("Luck", _luck);
-        print16("Verify0", _verifyField0);
-        print16("Verify1", _verifyField1);
-        print16("Verify2", _verifyField2);
-        print16("Chance to hit", _chanceToHit);
-        print16("Dodge Missile", _dodgeMissile);
-        print16("Movement Points", _movementPoints);
-        print16("Missile Adjust", _missileAdjust);
-        print16("Bare Hand Damage Max", _bareHandDamageMax);
-        print16("Alliance Class", _allianceClass);
-        print16("Attacks Per Round", _attacksPerRound);
-        print16("Field 0x10", _tookNoDamageThisRound);
-        print16("Field 0x12", _field_0x12);
-        print16("Field 0x14", _field_0x14);
+        printOut(os, "Brawn", _brawn);
+        printOut(os, "Knowledge", _knowledge);
+        printOut(os, "Judgement", _judgement);
+        printOut(os, "Agility", _agility);
+        printOut(os, "Vitality", _vitality);
+        printOut(os, "Luck", _luck);
+        printOut(os, "Verify0", _verifyField0);
+        printOut(os, "Verify1", _verifyField1);
+        printOut(os, "Verify2", _verifyField2);
+        printOut(os, "Chance to hit", _chanceToHit);
+        printOut(os, "Dodge Missile", _dodgeMissile);
+        printOut(os, "Movement Points", _movementPoints);
+        printOut(os, "Missile Adjust", _missileAdjust);
+        printOut(os, "Bare Hand Damage Max", _bareHandDamageMax);
+        printOut(os, "Alliance Class", _allianceClass);
+        printOut(os, "Attacks Per Round", _attacksPerRound);
+        printOut(os, "Took No Damage This Round?", _tookNoDamageThisRound);
+        printOut(os, "Field 0x12", _field_0x12);
+        printOut(os, "Field 0x14", _field_0x14);
         os << _conditions << std::endl;
-        print16("Num Items", _numItems);
+        printOut(os, "Num Items", _numItems);
         os << "{" << std::endl;
         int index = 1;
         for (const auto &ii : _items) {
@@ -359,22 +365,23 @@ namespace realmz {
     }
     void
     EquippedItems::print(std::ostream &os) const noexcept {
+        static constexpr bool PrintUnusedFields = false;
         os << "Equipped Items {" << std::endl;
-        auto fn = [&os](const std::string& name, int16_t value) noexcept {
+        auto fn = [&os](const std::string &name, int16_t value) noexcept {
+            os << "\t" << name << ": ";
             if (value != 0) {
-                os << "\t" << name << ": ";
-                if (value != 0) {
-                    os << std::dec << value;
-                } else {
-                    os << "Unequipped";
-                }
-                os << std::endl;
+                os << std::dec << value;
+            } else {
+                os << "Unequipped";
             }
+            os << std::endl;
         };
-        fn("Field 0", _unused0);
-        fn("Field 1", _unused1);
-        fn("Field 2", _unused2);
-        fn("Field 3", _unused3);
+        if constexpr (PrintUnusedFields) {
+            fn("Field 0", _unused0);
+            fn("Field 1", _unused1);
+            fn("Field 2", _unused2);
+            fn("Field 3", _unused3);
+        }
         fn("Ring 0", _ring0);
         fn("Ring 1", _ring1);
         fn("Weapon", _weapon);
@@ -389,12 +396,16 @@ namespace realmz {
         fn("Belt", _belt);
         fn("Necklace", _necklace);
         fn("Scroll Case", _scrollCase);
-        fn("Unused 4", _unused4);
+        if constexpr (PrintUnusedFields) {
+            fn("Unused 4", _unused4);
+        }
         fn("Bow", _bow);
-        fn("Unused 5", _unused5);
-        fn("Unused 6", _unused6);
-        fn("Unused 7", _unused7);
-        fn("Unused 8", _unused8);
+        if constexpr (PrintUnusedFields) {
+            fn("Unused 5", _unused5);
+            fn("Unused 6", _unused6);
+            fn("Unused 7", _unused7);
+            fn("Unused 8", _unused8);
+        }
         os << "}" << std::endl;
     }
 
