@@ -317,14 +317,16 @@ namespace realmz {
 
     }
     template<typename T>
-    void printOut(std::ostream& os, const std::string& title, T value) noexcept {
+    void printOut(std::ostream& os, const std::string& title, T value, bool indent = false) noexcept {
         using K = std::decay_t<T>;
-        static_assert(std::is_integral_v<K>);
+        if (indent) {
+            os << "\t";
+        }
         os << title << ": ";
         if constexpr (std::is_same_v<K, int8_t> || std::is_same_v<K, uint8_t> || std::is_same_v<K, int16_t> || std::is_same_v<K, uint16_t>) {
-            os << static_cast<int>(value);
+            os << std::dec << static_cast<int>(value);
         } else {
-            os << value;
+            os << std::dec << value;
         }
         os << std::endl;
     }
@@ -413,14 +415,14 @@ namespace realmz {
     CharacterConditions::print(std::ostream &os) const noexcept {
         os << "Conditions: {" << std::endl;
         auto fn = [&os](const std::string& title, int16_t value) noexcept {
-            os << "\t" << title << ": " << value << std::endl;
+            printOut(os, title, value, true);
         };
         fn("In Retreat", _inRetreat);
         fn("Helpless", _helpless);
         fn("Tangled", _tangled);
         fn("Cursed", _isCursed);
         fn("Magic Aura", _conditionMagicAura);
-        fn("Stupid or Silenced", _stupid);
+        fn("Stupid", _stupid);
         fn("Slow", _isSlow);
         fn("Shielded From Normal Attacks", _conditionShieldedFromNormalAttacks);
         fn("Shielded From Projectiles", _conditionShieldedFromProjectiles);
@@ -440,6 +442,31 @@ namespace realmz {
         Y(5th);
 #undef Y
 #undef X
+#if 0
+        int16_t _absorbSpellEnergyFromAttacks;
+        int16_t _hinderedAttack;
+        int16_t _hinderedDefense;
+        int16_t _defensiveBonus;
+        int16_t _silenced;
+#endif
+        fn("Strong", _strong);
+        fn("Protection from Foe", _protectionFromFoe);
+        fn("Speedy", _speedy);
+        fn("Invisible", _invisible);
+        fn("Animated", _isAnimated);
+        fn("Stone", _stone);
+        fn("Blind", _blind);
+        fn("Diseased", _diseased);
+        fn("Confused", _confused);
+        fn("Reflecting Spells", _reflectingSpells);
+        fn("Reflecting Attacks", _reflectingAttacks);
+        fn("Bonus Damage", _bonusDamage);
+        fn("Absorb Energy", _absorbEnergy);
+        fn("Energy Draining", _energyDraining);
+        fn("Absorb Spell Energy From Attacks", _absorbSpellEnergyFromAttacks);
+        fn("Hindered Attack", _hinderedAttack);
+        fn("Hindered Defense", _hinderedDefense);
+        fn("Silenced", _silenced);
         os << "}";
     }
 
