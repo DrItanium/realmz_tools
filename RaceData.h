@@ -11,6 +11,27 @@
 #include "DRVAdjustments.h"
 #include "Attributes.h"
 namespace realmz {
+    enum class RaceKind : uint16_t {
+        Human,
+        ShadowElf,
+        Elf,
+        Orc,
+        Furfoot,
+        Gnome,
+        Dwarf,
+        HalfElf,
+        HalfOrc,
+        Goblin,
+        Hobgoblin,
+        Kobold,
+        Vampire,
+        LizardMan,
+        Brownie,
+        Pixie,
+        Leprechaun,
+        Demon,
+        Cathoon,
+    };
     /**
      * @brief Realmz calls the attack versus other races "race hatred"...odd
      */

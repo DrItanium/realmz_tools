@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QString>
 #include <tuple>
+#include "../Character.h"
+#include "../Caste.h"
+#include "../RaceData.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,9 +30,9 @@ private: // routine names taken from GHIDRA
     bool question(const QString& message) noexcept;
     void flashMessage(const QString& message) noexcept;
     size_t skillLevel() noexcept;
-    enum class CharacterGender { Male, Female, };
-    CharacterGender gender() noexcept;
-
+    realmz::Gender gender() noexcept;
+    realmz::CasteKind caste() noexcept;
+    realmz::RaceKind race() noexcept;
 public:
     void closeEvent(QCloseEvent* event) override;
 private:

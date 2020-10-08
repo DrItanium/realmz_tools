@@ -66,7 +66,7 @@ MainWindow::skillLevel() noexcept
                                  skillLevels).toInt();
 }
 
-MainWindow::CharacterGender
+realmz::Gender
 MainWindow::gender() noexcept
 {
     QStringList genderOptions;
@@ -77,9 +77,9 @@ MainWindow::gender() noexcept
                                            tr("Select Gender"),
                                            genderOptions);
     if (selection == "Male") {
-        return CharacterGender::Male;
+        return realmz::Gender::Male;
     } else {
-        return CharacterGender::Female;
+        return realmz::Gender::Female;
     }
 }
 
@@ -113,10 +113,22 @@ MainWindow::on_actionGenerate_New_Character_triggered()
     /// @todo lookup the character data listing to see if a character with this name already exists
     auto characterSkillLevel = skillLevel();
     auto characterGender = gender();
+    auto targetCaste = caste();
+    auto targetRace = race();
     /// @todo implement caste selection, will need to read in the information from the resource fork data
     /// @todo implement race selection, will need to read in the information from the resource fork data
     /// @todo implement portrait selection, will need to read in the information from the resource fork data
     /// @todo implement character combat icon select, will need to read in the information from the resource fork data
+}
+
+realmz::CasteKind
+MainWindow::caste() noexcept {
+    return realmz::CasteKind::Fighter;
+}
+
+realmz::RaceKind
+MainWindow::race() noexcept {
+    return realmz::RaceKind::Human;
 }
 
 void
