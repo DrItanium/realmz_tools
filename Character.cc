@@ -323,7 +323,7 @@ namespace realmz {
             os << "\t";
         }
         os << title << ": ";
-        if constexpr (std::is_same_v<K, int8_t> || std::is_same_v<K, uint8_t> || std::is_same_v<K, int16_t> || std::is_same_v<K, uint16_t>) {
+        if constexpr (std::is_same_v<K, int8_t> || std::is_same_v<K, uint8_t> || std::is_same_v<K, int16_t> || std::is_same_v<K, uint16_t> || std::is_same_v<K, char> || std::is_same_v<K, unsigned char>) {
             os << std::dec << static_cast<int>(value);
         } else {
             os << std::dec << value;
