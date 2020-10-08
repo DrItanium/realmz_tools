@@ -12,12 +12,25 @@ namespace realmz {
     using CharacterDataBuffer = std::array<int16_t, 872/2>;
     class SpecialInfo_CharVersion {
     public:
-        SpecialInfo_CharVersion(int16_t first, int16_t second, int16_t third, int16_t fourth, int16_t fifth, int16_t sixth, int16_t seventh) :
-        _sneakAttack(first & 0xFF), _causeMajorWound((second >> 8) & 0xFF),
-        _detectSecret(third & 0xFF), _acrobaticAct((third >> 8) & 0xFF),
-        _detectTrap(fourth & 0xFF), _disableTrap((fourth >> 8) & 0xFF),
-        _forceLock((fifth >> 8) & 0xFF), _pickLock((sixth >> 8) & 0xFF),
-        _turnUndead((seventh >> 8) & 0xFF) { }
+        constexpr SpecialInfo_CharVersion(int8_t sneakAttack, int8_t causeMajorWound, int8_t detectSecret, int8_t acrobaticAct, int8_t detectTrap,
+                                          int8_t disableTrap, int8_t forceLock, int8_t pickLock, int8_t turnUndead) : _sneakAttack(sneakAttack),
+                                                                                                                      _causeMajorWound(
+                                                                                                                              causeMajorWound),
+                                                                                                                      _detectSecret(detectSecret),
+                                                                                                                      _acrobaticAct(acrobaticAct),
+                                                                                                                      _detectTrap(detectTrap),
+                                                                                                                      _disableTrap(disableTrap),
+                                                                                                                      _forceLock(forceLock),
+                                                                                                                      _pickLock(pickLock),
+                                                                                                                      _turnUndead(turnUndead) {}
+        constexpr SpecialInfo_CharVersion(int16_t first, int16_t second, int16_t third, int16_t fourth, int16_t fifth, int16_t sixth, int16_t seventh) :
+                SpecialInfo_CharVersion(first & 0xFF,
+                                        (second>>8) & 0xFF,
+                                        third & 0xFF, (third >> 8) & 0xFF,
+                                        fourth & 0xFF, (fourth >> 8) & 0xFF,
+                                        (fifth>>8) & 0xFF,
+                                        (sixth>>8) & 0xFF,
+                                        (seventh>>8) & 0xFF) { }
         SpecialInfo_CharVersion() = default;
 
         void setSneakAttack(int8_t sneakAttack) noexcept { _sneakAttack = sneakAttack; }
@@ -270,27 +283,27 @@ namespace realmz {
                                                                                      _hinderedDefense(hinderedDefense),
                                                                                      _defensiveBonus(defensiveBonus),
                                                                                      _silenced(affectsCastingAbility) {}
-        constexpr int16_t getInRetreat() const noexcept { return _inRetreat; }
-        constexpr int16_t getHelpless() const noexcept { return _helpless; }
-        constexpr int16_t getTangled() const noexcept { return _tangled; }
-        constexpr int16_t getIsCursed() const noexcept { return _isCursed; }
-        constexpr int16_t getConditionMagicAura() const noexcept { return _conditionMagicAura; }
-        constexpr int16_t getSupidOrSilenced1() const noexcept { return _stupid; }
-        constexpr int16_t getIsSlow() const noexcept { return _isSlow; }
-        constexpr int16_t getConditionShieldedFromNormalAttacks() const noexcept { return _conditionShieldedFromNormalAttacks; }
-        constexpr int16_t getConditionShieldedFromProjectiles() const noexcept { return _conditionShieldedFromProjectiles; }
-        constexpr int16_t getPoisoned() const noexcept { return _poisoned; }
-        constexpr int16_t getRegenerating() const noexcept { return _regenerating; }
-        constexpr int16_t getProtectionFromHeatAttacks() const noexcept { return _protectionFromHeatAttacks; }
-        constexpr int16_t getProtectionFromColdAttacks() const noexcept { return _protectionFromColdAttacks; }
-        constexpr int16_t getProtectionFromElectricalAttacks() const noexcept { return _protectionFromElectricalAttacks; }
-        constexpr int16_t getProtectionFromChemicalAttacks() const noexcept { return _protectionFromChemicalAttacks; }
-        constexpr int16_t getProtectionFromMentalAttacks() const noexcept { return _protectionFromMentalAttacks; }
-        constexpr int16_t getProtectionFrom1stLevelSpells() const noexcept { return _protectionFrom1stLevelSpells; }
-        constexpr int16_t getProtectionFrom2ndLevelSpells() const noexcept { return _protectionFrom2ndLevelSpells; }
-        constexpr int16_t getProtectionFrom3rdLevelSpells() const noexcept { return _protectionFrom3rdLevelSpells; }
-        constexpr int16_t getProtectionFrom4thLevelSpells() const noexcept { return _protectionFrom4thLevelSpells; }
-        constexpr int16_t getProtectionFrom5thLevelSpells() const noexcept { return _protectionFrom5thLevelSpells; }
+        [[nodiscard]] constexpr int16_t getInRetreat() const noexcept { return _inRetreat; }
+        [[nodiscard]] constexpr int16_t getHelpless() const noexcept { return _helpless; }
+        [[nodiscard]] constexpr int16_t getTangled() const noexcept { return _tangled; }
+        [[nodiscard]] constexpr int16_t getIsCursed() const noexcept { return _isCursed; }
+        [[nodiscard]] constexpr int16_t getConditionMagicAura() const noexcept { return _conditionMagicAura; }
+        [[nodiscard]] constexpr int16_t getSupidOrSilenced1() const noexcept { return _stupid; }
+        [[nodiscard]] constexpr int16_t getIsSlow() const noexcept { return _isSlow; }
+        [[nodiscard]] constexpr int16_t getConditionShieldedFromNormalAttacks() const noexcept { return _conditionShieldedFromNormalAttacks; }
+        [[nodiscard]] constexpr int16_t getConditionShieldedFromProjectiles() const noexcept { return _conditionShieldedFromProjectiles; }
+        [[nodiscard]] constexpr int16_t getPoisoned() const noexcept { return _poisoned; }
+        [[nodiscard]] constexpr int16_t getRegenerating() const noexcept { return _regenerating; }
+        [[nodiscard]] constexpr int16_t getProtectionFromHeatAttacks() const noexcept { return _protectionFromHeatAttacks; }
+        [[nodiscard]] constexpr int16_t getProtectionFromColdAttacks() const noexcept { return _protectionFromColdAttacks; }
+        [[nodiscard]] constexpr int16_t getProtectionFromElectricalAttacks() const noexcept { return _protectionFromElectricalAttacks; }
+        [[nodiscard]] constexpr int16_t getProtectionFromChemicalAttacks() const noexcept { return _protectionFromChemicalAttacks; }
+        [[nodiscard]] constexpr int16_t getProtectionFromMentalAttacks() const noexcept { return _protectionFromMentalAttacks; }
+        [[nodiscard]] constexpr int16_t getProtectionFrom1stLevelSpells() const noexcept { return _protectionFrom1stLevelSpells; }
+        [[nodiscard]] constexpr int16_t getProtectionFrom2ndLevelSpells() const noexcept { return _protectionFrom2ndLevelSpells; }
+        [[nodiscard]] constexpr int16_t getProtectionFrom3rdLevelSpells() const noexcept { return _protectionFrom3rdLevelSpells; }
+        [[nodiscard]] constexpr int16_t getProtectionFrom4thLevelSpells() const noexcept { return _protectionFrom4thLevelSpells; }
+        [[nodiscard]] constexpr int16_t getProtectionFrom5thLevelSpells() const noexcept { return _protectionFrom5thLevelSpells; }
         void print(std::ostream& os) const noexcept;
     private:
         int16_t _inRetreat = 0;
