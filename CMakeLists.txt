@@ -341,3 +341,4 @@ target_link_libraries(dumprace PUBLIC realmz)
 add_executable(dump_character CharacterDump.cc)
 target_link_libraries(dump_character PUBLIC realmz)
 
+add_subdirectory(CharacterEditor)
