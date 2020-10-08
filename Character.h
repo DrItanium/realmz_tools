@@ -18,8 +18,17 @@ namespace realmz {
         _detectTrap(fourth & 0xFF), _disableTrap((fourth >> 8) & 0xFF),
         _forceLock((fifth >> 8) & 0xFF), _pickLock((sixth >> 8) & 0xFF),
         _turnUndead((seventh >> 8) & 0xFF) { }
+        SpecialInfo_CharVersion() = default;
 
-
+        void setSneakAttack(int8_t sneakAttack) noexcept { _sneakAttack = sneakAttack; }
+        void setCauseMajorWound(int8_t causeMajorWound) noexcept { _causeMajorWound = causeMajorWound; }
+        void setDetectSecret(int8_t detectSecret) noexcept { _detectSecret = detectSecret; }
+        void setAcrobaticAct(int8_t acrobaticAct) noexcept { _acrobaticAct = acrobaticAct; }
+        void setDetectTrap(int8_t detectTrap) noexcept { _detectTrap = detectTrap; }
+        void setDisableTrap(int8_t disableTrap) noexcept { _disableTrap = disableTrap; }
+        void setForceLock(int8_t forceLock) noexcept { _forceLock = forceLock; }
+        void setPickLock(int8_t pickLock) noexcept { _pickLock = pickLock; }
+        void setTurnUndead(int8_t turnUndead) noexcept { _turnUndead = turnUndead; }
         constexpr int8_t getSneakAttack() const noexcept { return _sneakAttack; }
         constexpr int8_t getCauseMajorWound() const noexcept { return _causeMajorWound; }
         constexpr int8_t getDetectSecret() const noexcept { return _detectSecret; }
@@ -31,35 +40,41 @@ namespace realmz {
         constexpr int8_t getTurnUndead() const noexcept { return _turnUndead; }
         void print(std::ostream& os) const noexcept;
     private:
-        int8_t _sneakAttack;
-        int8_t _causeMajorWound;
-        int8_t _detectSecret;
-        int8_t _acrobaticAct;
-        int8_t _detectTrap;
-        int8_t _disableTrap;
-        int8_t _forceLock;
-        int8_t _pickLock;
-        int8_t _turnUndead;
+        int8_t _sneakAttack = 0;
+        int8_t _causeMajorWound = 0;
+        int8_t _detectSecret = 0;
+        int8_t _acrobaticAct = 0;
+        int8_t _detectTrap = 0;
+        int8_t _disableTrap = 0;
+        int8_t _forceLock = 0;
+        int8_t _pickLock = 0;
+        int8_t _turnUndead = 0;
     };
     class InventoryItem {
     public:
         constexpr InventoryItem(int16_t index, bool equipped, uint8_t field3, uint16_t flags) noexcept : _idx(index), _equipped(equipped), _f3(field3), _flags(flags) { }
+        InventoryItem() = default;
+        void setIndex(uint16_t idx) noexcept { _idx = idx; }
+        void setEquipped(bool value) noexcept { _equipped = value; }
+        void setF3(uint8_t value) noexcept { _f3 = value; }
+        void setFlags(uint16_t value) noexcept { _flags = value; }
         [[nodiscard]] constexpr auto getIndex() const noexcept { return _idx; }
         [[nodiscard]] constexpr auto isEquipped() const noexcept { return _equipped; }
         [[nodiscard]] constexpr auto getField3() const noexcept { return _f3; }
         [[nodiscard]] constexpr auto getFlags() const noexcept { return _flags; }
         void print(std::ostream& os) const noexcept;
     private:
-        uint16_t _idx;
-        bool _equipped;
-        uint8_t _f3;
-        uint16_t _flags;
+        uint16_t _idx = 0;
+        bool _equipped = false;
+        uint8_t _f3 = 0;
+        uint16_t _flags = 0;
     };
 
     using SpellLevel = std::array<bool, 12>;
 
     class PrestigeValues {
     public:
+        PrestigeValues() = default;
         constexpr PrestigeValues(int32_t damageTaken, int32_t damageGiven, int32_t hitsGiven, int32_t hitsTaken, int32_t missedAttacks, int32_t dodgedAttacks,
                        int32_t enemiesKilled, int32_t timesDied, int32_t timesUnconscious, int32_t combatSpellsCast, int32_t undeadDestroyed, int32_t undeadTurned,
                        int32_t penaltyPoints) noexcept : _damageTaken(damageTaken), _damageGiven(damageGiven), _hitsGiven(hitsGiven),
@@ -82,23 +97,24 @@ namespace realmz {
         constexpr auto getPenaltyPoints() const noexcept { return _penaltyPoints; }
         void print(std::ostream& os) const noexcept;
     private:
-        int32_t _damageTaken;
-        int32_t _damageGiven;
-        int32_t _hitsGiven;
-        int32_t _hitsTaken;
-        int32_t _missedAttacks;
-        int32_t _dodgedAttacks;
-        int32_t _enemiesKilled;
-        int32_t _timesDied;
-        int32_t _timesUnconscious;
-        int32_t _combatSpellsCast;
-        int32_t _undeadDestroyed;
-        int32_t _undeadTurned;
-        int32_t _penaltyPoints;
+        int32_t _damageTaken = 0;
+        int32_t _damageGiven = 0;
+        int32_t _hitsGiven = 0;
+        int32_t _hitsTaken = 0;
+        int32_t _missedAttacks = 0;
+        int32_t _dodgedAttacks = 0;
+        int32_t _enemiesKilled = 0;
+        int32_t _timesDied = 0;
+        int32_t _timesUnconscious = 0;
+        int32_t _combatSpellsCast = 0;
+        int32_t _undeadDestroyed = 0;
+        int32_t _undeadTurned = 0;
+        int32_t _penaltyPoints = 0;
     };
 
     class EquippedItems {
     public:
+        EquippedItems() = default;
         constexpr EquippedItems(int16_t field0, int16_t field1, int16_t field2, int16_t field3,
                                 int16_t ring0, int16_t ring1, int16_t weapon, int16_t shield,
                                 int16_t armor, int16_t gauntlets, int16_t cloak, int16_t helm,
@@ -172,35 +188,36 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getBow() const noexcept { return _bow; }
         void print(std::ostream& os) const noexcept;
     private:
-        int16_t _unused0;
-        int16_t _unused1;
-        int16_t _unused2;
-        int16_t _unused3;
-        int16_t _ring0;
-        int16_t _ring1;
-        int16_t _weapon;
-        int16_t _shield;
-        int16_t _armor;
-        int16_t _gauntlets;
-        int16_t _cloak;
-        int16_t _helm;
-        int16_t _luckStone;
-        int16_t _boots;
-        int16_t _quiver;
-        int16_t _belt;
-        int16_t _necklace;
-        int16_t _scrollCase;
-        int16_t _unused4;
-        int16_t _bow;
-        int16_t _unused5;
-        int16_t _unused6;
-        int16_t _unused7;
-        int16_t _unused8;
+        int16_t _unused0 = 0;
+        int16_t _unused1 = 0;
+        int16_t _unused2 = 0;
+        int16_t _unused3 = 0;
+        int16_t _ring0 = 0;
+        int16_t _ring1 = 0;
+        int16_t _weapon = 0;
+        int16_t _shield = 0;
+        int16_t _armor = 0;
+        int16_t _gauntlets = 0;
+        int16_t _cloak = 0;
+        int16_t _helm = 0;
+        int16_t _luckStone = 0;
+        int16_t _boots = 0;
+        int16_t _quiver = 0;
+        int16_t _belt = 0;
+        int16_t _necklace = 0;
+        int16_t _scrollCase = 0;
+        int16_t _unused4 = 0;
+        int16_t _bow = 0;
+        int16_t _unused5 = 0;
+        int16_t _unused6 = 0;
+        int16_t _unused7 = 0;
+        int16_t _unused8 = 0;
     };
 
 
     class CharacterConditions {
     public:
+        CharacterConditions() = default;
         constexpr CharacterConditions(int16_t inRetreat, int16_t helpless, int16_t tangled, int16_t isCursed, int16_t conditionMagicAura,
                             int16_t supidOrSilenced1, int16_t isSlow, int16_t conditionShieldedFromNormalAttacks,
                             int16_t conditionShieldedFromProjectiles, int16_t poisoned, int16_t regenerating,
@@ -276,46 +293,46 @@ namespace realmz {
         constexpr int16_t getProtectionFrom5thLevelSpells() const noexcept { return _protectionFrom5thLevelSpells; }
         void print(std::ostream& os) const noexcept;
     private:
-        int16_t _inRetreat;
-        int16_t _helpless;
-        int16_t _tangled;
-        int16_t _isCursed;
-        int16_t _conditionMagicAura;
-        int16_t _stupid;
-        int16_t _isSlow;
-        int16_t _conditionShieldedFromNormalAttacks;
-        int16_t _conditionShieldedFromProjectiles;
-        int16_t _poisoned;
-        int16_t _regenerating;
-        int16_t _protectionFromHeatAttacks;
-        int16_t _protectionFromColdAttacks;
-        int16_t _protectionFromElectricalAttacks;
-        int16_t _protectionFromChemicalAttacks;
-        int16_t _protectionFromMentalAttacks;
-        int16_t _protectionFrom1stLevelSpells;
-        int16_t _protectionFrom2ndLevelSpells;
-        int16_t _protectionFrom3rdLevelSpells;
-        int16_t _protectionFrom4thLevelSpells;
-        int16_t _protectionFrom5thLevelSpells;
-        int16_t _strong;
-        int16_t _protectionFromFoe;
-        int16_t _speedy;
-        int16_t _invisible;
-        int16_t _isAnimated;
-        int16_t _stone;
-        int16_t _blind;
-        int16_t _diseased;
-        int16_t _confused;
-        int16_t _reflectingSpells;
-        int16_t _reflectingAttacks;
-        int16_t _bonusDamage;
-        int16_t _absorbEnergy;
-        int16_t _energyDraining;
-        int16_t _absorbSpellEnergyFromAttacks;
-        int16_t _hinderedAttack;
-        int16_t _hinderedDefense;
-        int16_t _defensiveBonus;
-        int16_t _silenced;
+        int16_t _inRetreat = 0;
+        int16_t _helpless = 0;
+        int16_t _tangled = 0;
+        int16_t _isCursed = 0;
+        int16_t _conditionMagicAura = 0;
+        int16_t _stupid = 0;
+        int16_t _isSlow = 0;
+        int16_t _conditionShieldedFromNormalAttacks = 0;
+        int16_t _conditionShieldedFromProjectiles = 0;
+        int16_t _poisoned = 0;
+        int16_t _regenerating = 0;
+        int16_t _protectionFromHeatAttacks = 0;
+        int16_t _protectionFromColdAttacks = 0;
+        int16_t _protectionFromElectricalAttacks = 0;
+        int16_t _protectionFromChemicalAttacks = 0;
+        int16_t _protectionFromMentalAttacks = 0;
+        int16_t _protectionFrom1stLevelSpells = 0;
+        int16_t _protectionFrom2ndLevelSpells = 0;
+        int16_t _protectionFrom3rdLevelSpells = 0;
+        int16_t _protectionFrom4thLevelSpells = 0;
+        int16_t _protectionFrom5thLevelSpells = 0;
+        int16_t _strong = 0;
+        int16_t _protectionFromFoe = 0;
+        int16_t _speedy = 0;
+        int16_t _invisible = 0;
+        int16_t _isAnimated = 0;
+        int16_t _stone = 0;
+        int16_t _blind = 0;
+        int16_t _diseased = 0;
+        int16_t _confused = 0;
+        int16_t _reflectingSpells = 0;
+        int16_t _reflectingAttacks = 0;
+        int16_t _bonusDamage = 0;
+        int16_t _absorbEnergy = 0;
+        int16_t _energyDraining = 0;
+        int16_t _absorbSpellEnergyFromAttacks = 0;
+        int16_t _hinderedAttack = 0;
+        int16_t _hinderedDefense = 0;
+        int16_t _defensiveBonus = 0;
+        int16_t _silenced = 0;
     };
     enum class SupportedSpellClass : int16_t {
         None = 0,
@@ -332,6 +349,7 @@ namespace realmz {
     class Character {
     public:
         Character(const CharacterDataBuffer& buf);
+        Character() = default;
         void setId(uint16_t id) { _id = id; }
         void setChanceToHit(int16_t chanceToHit) { _chanceToHit = chanceToHit; }
         void setDodgeMissile(int16_t dodgeMissile) { _dodgeMissile = dodgeMissile; }
@@ -517,109 +535,109 @@ namespace realmz {
         [[nodiscard]] const CharacterConditions &getConditions() const { return _conditions; }
         void print(std::ostream& os) const noexcept;
     private:
-        uint16_t _id;
-        int16_t _verifyField0;
-        int16_t _chanceToHit;
-        int16_t _dodgeMissile;
-        int16_t _missileAdjust;
-        int16_t _bareHandDamageMax;
-        int16_t _allianceClass;
-        int16_t _attacksPerRound;
-        int16_t _tookNoDamageThisRound;
-        int16_t _field_0x12;
-        int16_t _field_0x14;
-        int16_t _numItems;
-        int16_t _handToHandSoundIndex;
-        int16_t _unusedField1;
-        int16_t _combatBodyIconBase;
-        int16_t _otherAttacksPerRoundModifier;
-        int16_t _vitalityFromItems;
-        int16_t _battleOrder;
-        int16_t _luckFromItems;
-        int16_t _brawnFromItems;
-        int16_t _magicResistance;
-        int16_t _movementBonus;
-        int16_t _armorRating;
-        int16_t _damagePlus;
-        int16_t _race;
-        int16_t _caste;
-        SupportedSpellClass _supportedSpellClass;
-        Gender _gender;
-        int16_t _skillLevel;
-        int16_t _remainingMovementPoints;
-        int16_t _movementPoints;
-        int16_t _combatPoints;
-        std::array<int16_t, 7> _totalSpellsRemaining;
-        int16_t _staminaCurrent;
-        int16_t _staminaTotal;
-        int16_t _portraitIndex;
-        int16_t _iconPictureIndex;
-        int16_t _spellPointsCurrent;
-        int16_t _spellPointsTotal;
-        int16_t _handsUsed;
-        int16_t _meleeWeaponEquipped_Probably;
-        int16_t _rangedWeaponEquipped_Probably;
-        int16_t _handToHandMax;
+        uint16_t _id = 0;
+        int16_t _verifyField0 = 0;
+        int16_t _chanceToHit = 0;
+        int16_t _dodgeMissile = 0;
+        int16_t _missileAdjust = 0;
+        int16_t _bareHandDamageMax = 0;
+        int16_t _allianceClass = 0;
+        int16_t _attacksPerRound = 0;
+        int16_t _tookNoDamageThisRound = 0;
+        int16_t _field_0x12 = 0;
+        int16_t _field_0x14 = 0;
+        int16_t _numItems = 0;
+        int16_t _handToHandSoundIndex = 0;
+        int16_t _unusedField1 = 0;
+        int16_t _combatBodyIconBase = 0;
+        int16_t _otherAttacksPerRoundModifier = 0;
+        int16_t _vitalityFromItems = 0;
+        int16_t _battleOrder = 0;
+        int16_t _luckFromItems = 0;
+        int16_t _brawnFromItems = 0;
+        int16_t _magicResistance = 0;
+        int16_t _movementBonus = 0;
+        int16_t _armorRating = 0;
+        int16_t _damagePlus = 0;
+        int16_t _race = 0;
+        int16_t _caste = 0;
+        SupportedSpellClass _supportedSpellClass = SupportedSpellClass::None;
+        Gender _gender = Gender::Undefined;
+        int16_t _skillLevel = 0;
+        int16_t _remainingMovementPoints = 0;
+        int16_t _movementPoints = 0;
+        int16_t _combatPoints = 0;
+        std::array<int16_t, 7> _totalSpellsRemaining = { 0 };
+        int16_t _staminaCurrent = 0;
+        int16_t _staminaTotal = 0;
+        int16_t _portraitIndex = 0;
+        int16_t _iconPictureIndex = 0;
+        int16_t _spellPointsCurrent = 0;
+        int16_t _spellPointsTotal = 0;
+        int16_t _handsUsed = 0;
+        int16_t _meleeWeaponEquipped_Probably = 0;
+        int16_t _rangedWeaponEquipped_Probably = 0;
+        int16_t _handToHandMax = 0;
         CharacterConditions _conditions;
-        int16_t _vsMagicUsingCreatures;
-        int16_t _vsUndeadCreatures;
-        int16_t _vsDemonicCreatures;
-        int16_t _vsReptileCreatures;
-        int16_t _vsVeryEvilCreatures;
-        int16_t _vsIntelligentCreatures;
-        int16_t _vsGiantSizedCreatures;
-        int16_t _vsNonHumanoidCreatures;
+        int16_t _vsMagicUsingCreatures = 0;
+        int16_t _vsUndeadCreatures = 0;
+        int16_t _vsDemonicCreatures = 0;
+        int16_t _vsReptileCreatures = 0;
+        int16_t _vsVeryEvilCreatures = 0;
+        int16_t _vsIntelligentCreatures = 0;
+        int16_t _vsGiantSizedCreatures = 0;
+        int16_t _vsNonHumanoidCreatures = 0;
         EquippedItems _equippedItems;
         SpecialInfo_CharVersion _specialInfo;
-        std::array<int16_t, 6> _field_0x100;
-        int16_t _turnUndeadAbility;
-        int16_t _field_0x10e;
-        int16_t _damageReductionVsCharm;
-        int16_t _damageReductionVsHeat;
-        int16_t _damageReductionVsCold;
-        int16_t _damageReductionVsElectric;
-        int16_t _damageReductionVsChemical;
-        int16_t _damageReductionVsMental;
-        int16_t _damageReductionVsMagic;
-        int16_t _damageReductionVsSpecial;
-        int16_t _ageClass;
-        int16_t _verifyField1;
+        std::array<int16_t, 6> _field_0x100 = { 0 };
+        int16_t _turnUndeadAbility = 0;
+        int16_t _field_0x10e = 0;
+        int16_t _damageReductionVsCharm = 0;
+        int16_t _damageReductionVsHeat = 0;
+        int16_t _damageReductionVsCold = 0;
+        int16_t _damageReductionVsElectric = 0;
+        int16_t _damageReductionVsChemical = 0;
+        int16_t _damageReductionVsMental = 0;
+        int16_t _damageReductionVsMagic = 0;
+        int16_t _damageReductionVsSpecial = 0;
+        int16_t _ageClass = 0;
+        int16_t _verifyField1 = 0;
         std::array<InventoryItem, 30> _items;
-        std::array<int16_t, 10> _spellsInScrollCase; // it really should be 5 elements of 4 bytes each
-        int32_t _daysOld;
-        int32_t _victoryPoints;
-        int16_t _currentLoad;
-        int16_t _maximumLoad;
-        int16_t _gold;
-        int16_t _gems;
-        int16_t _jewelry;
-        bool _attemptedToTurnUndeadInCombat;
-        bool _isSpellClass1;
-        bool _isSpellClass2;
-        bool _isSpellClass3;
-        bool _rangedWeaponSelected;
-        bool _alive;
-        bool _inAutoMode;
-        char _brawn;
-        char _knowledge;
-        char _judgement;
-        char _agility;
-        char _vitality;
-        char _luck;
+        std::array<int16_t, 10> _spellsInScrollCase = { 0 }; // it really should be 5 elements of 4 bytes each
+        int32_t _daysOld = 0;
+        int32_t _victoryPoints = 0;
+        int16_t _currentLoad = 0;
+        int16_t _maximumLoad = 0;
+        int16_t _gold = 0;
+        int16_t _gems = 0;
+        int16_t _jewelry = 0;
+        bool _attemptedToTurnUndeadInCombat = false;
+        bool _isSpellClass1 = false;
+        bool _isSpellClass2 = false;
+        bool _isSpellClass3 = false;
+        bool _rangedWeaponSelected = false;
+        bool _alive = false;
+        bool _inAutoMode = false;
+        char _brawn = 0;
+        char _knowledge = 0;
+        char _judgement = 0;
+        char _agility = 0;
+        char _vitality = 0;
+        char _luck = 0;
         std::array<SpellLevel, 7> _spellList;
         std::string _name;
-        int16_t _verifyField2;
+        int16_t _verifyField2 = 0;
         PrestigeValues _prestige;
-        std::array<int16_t, 40> _treasureArrayIds;
-        int16_t _field_0x304;
-        int16_t _field_0x306;
-        int16_t _field_0x308;
-        int16_t _field_0x30a;
-        int16_t _field_0x30c;
-        int16_t _field_0x30e;
-        int16_t _field_0x310;
-        int16_t _field_0x312;
-        std::array<int16_t, 42> _field_0x314;
+        std::array<int16_t, 40> _treasureArrayIds = { 0 };
+        int16_t _field_0x304 = 0;
+        int16_t _field_0x306 = 0;
+        int16_t _field_0x308 = 0;
+        int16_t _field_0x30a = 0;
+        int16_t _field_0x30c = 0;
+        int16_t _field_0x30e = 0;
+        int16_t _field_0x310 = 0;
+        int16_t _field_0x312 = 0;
+        std::array<int16_t, 42> _field_0x314 = { 0 };
     };
 } // end namespace realmz
 std::ostream& operator<<(std::ostream& os, const realmz::Character& c) noexcept;
