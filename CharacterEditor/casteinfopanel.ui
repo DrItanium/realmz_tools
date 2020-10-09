@@ -1,21 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>CasteInfoPanel</class>
- <widget name="CasteInfoPanel" class="QWidget">
+ <widget class="QWidget" name="CasteInfoPanel">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QComboBox" name="casteSelector">
+     <item>
+      <property name="text">
+       <string>Fighter</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Monk</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Crusader</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Archer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Rogue</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sorcerer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Priest</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Enchanter</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Evoker</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cardinal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cabalist</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Berzerker</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Bard</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fencer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Marksman</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Assassin</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dabbler</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Battle Mage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Warlock</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Minstrel</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="1" rowspan="2">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Attributes</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tableWidget_3">
+        <row>
+         <property name="text">
+          <string>Brawn</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Knowledge</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Judgment</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Agility</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Vitality</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Luck</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Min</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Max</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>+/-</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="2" rowspan="3">
+    <widget class="QGroupBox" name="groupBox_6">
+     <property name="title">
+      <string>Misc Modifications</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tableWidget_4">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <row>
+         <property name="text">
+          <string>Movement Points (+/-)</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Magic Resistance X</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Two Handed Adjustment</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Starting Age Group</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Bonus Attacks</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Max Attacks Per Round</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Max Stamina Bonus</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Can Use Missile Weapons?</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Gets Missile Bonus Damage?</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Value</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="title">
+      <string>Conditions Gained</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tableWidget_5">
+        <column>
+         <property name="text">
+          <string>Condition Gained</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>@ Level</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="1" rowspan="2">
+    <widget class="QGroupBox" name="drvs">
+     <property name="title">
+      <string>Adjustment For Caste (DRVs)</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="drvTable">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <row>
+         <property name="text">
+          <string>Charm</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Heat</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Cold</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Electric</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Chemical</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mental</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Magical</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>+/-</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="2" rowspan="2">
+    <widget class="QGroupBox" name="groupBox_7">
+     <property name="title">
+      <string>Other Information</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tableWidget_6">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <row>
+         <property name="text">
+          <string>Stamina</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Melee Attack</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Missile Attack</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Dodge Missile</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Hand To Hand</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Initial</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Level Up</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="1" rowspan="2">
+    <widget class="QGroupBox" name="spellCastingGroup">
+     <property name="title">
+      <string>Spell Casting</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_8">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tableWidget_2">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <row>
+         <property name="text">
+          <string>Sorcerer</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Priest</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Enchanter</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Starting Level</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Max Level Spells</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Next</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" rowspan="4">
+    <widget class="QGroupBox" name="specialAbilities">
+     <property name="title">
+      <string>Special Abilities</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_7">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <row>
+         <property name="text">
+          <string>Sneak Attack</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Major Wound</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Detect Secret</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Acrobatic Act</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Detect Trap</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Disable Trap</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Force Lock</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Pick Lock</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Turn Undead</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Initial</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignLeading|AlignVCenter</set>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>On Level Up</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignLeading|AlignTop</set>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction/>
+ <resources/>
  <connections/>
 </ui>
