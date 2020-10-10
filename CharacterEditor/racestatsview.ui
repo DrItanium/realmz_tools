@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RaceStatsView</class>
+ <widget class="QWidget" name="RaceStatsView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QComboBox" name="selector">
+     <item>
+      <property name="text">
+       <string>Human</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shadow Elf</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Elf</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Orc</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Furfoot</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Gnome</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dwarf</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Half Elf</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Half Orc</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Goblin</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hobgoblin</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kobold</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Vampire</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Lizard Man</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Brownie</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Pixie</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Leprechaun</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Demon</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cathoon</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="1" rowspan="3">
+    <widget class="QGroupBox" name="attributes">
+     <property name="title">
+      <string>Attributes</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_24">
+        <property name="text">
+         <string>Agility</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_21">
+        <property name="text">
+         <string>Brawn</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_22">
+        <property name="text">
+         <string>Knowledge</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Attributes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_20">
+        <property name="text">
+         <string>+/-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_23">
+        <property name="text">
+         <string>Judgment</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_25">
+        <property name="text">
+         <string>Vitality</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_26">
+        <property name="text">
+         <string>Luck</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="brawnMin"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="brawnMax"/>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="brawnPlusMinus"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="knowledgeMin"/>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="judgmentMin"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="agilityMin"/>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="vitalityMin"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="luckMin"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLineEdit" name="knowledgeMax"/>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLineEdit" name="judgmentMax"/>
+      </item>
+      <item row="6" column="3">
+       <widget class="QLineEdit" name="luckPlusMinus"/>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLineEdit" name="vitalityPlusMinus"/>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="knowledgePlusMinus"/>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="judgmentPlusMinus"/>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLineEdit" name="agilityPlusMinus"/>
+      </item>
+      <item row="6" column="2">
+       <widget class="QLineEdit" name="luckMax"/>
+      </item>
+      <item row="4" column="2">
+       <widget class="QLineEdit" name="agilityMax"/>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLineEdit" name="vitalityMax"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="2" rowspan="3">
+    <widget class="QGroupBox" name="baseMiscStats">
+     <property name="title">
+      <string>Base Misc Stats</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_7">
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_32">
+        <property name="text">
+         <string>Attacks / Round</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_29">
+        <property name="text">
+         <string>Two Handed Adjustment</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_30">
+        <property name="text">
+         <string>Missile Weapon Adjust</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_28">
+        <property name="text">
+         <string>Magic Resistance</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_31">
+        <property name="text">
+         <string>Race Can Regenerate</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_27">
+        <property name="text">
+         <string>Base Movement Points</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_33">
+        <property name="text">
+         <string>Max Attacks / Round</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="baseMovementPoints"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="maxAttacksPerRound"/>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="attacksPerRound"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="raceCanRegenerate"/>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="missileWeaponAdjust"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="twoHandedAdjust"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="magicResistance"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QGroupBox" name="hatred">
+     <property name="title">
+      <string>Hatred</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_40">
+        <property name="text">
+         <string>+ to Hit Giant Size</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_34">
+        <property name="text">
+         <string>+ to Hit Magic Using</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_35">
+        <property name="text">
+         <string>+ to Hit Undead</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_36">
+        <property name="text">
+         <string>+ to Hit Demonic/Devil</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_41">
+        <property name="text">
+         <string>+ to Hit Non-Humanoid</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_38">
+        <property name="text">
+         <string>+ to Hit Very Evil</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_39">
+        <property name="text">
+         <string>+ to Hit Intelligent</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_37">
+        <property name="text">
+         <string>+ to Hit Reptilian</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="hitMagicUsing"/>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="plusNonHumanoid"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="plusVeryEvil"/>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="plusReptilian"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="plusDemonic"/>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="plusIntelligent"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="plusUndead"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="plusGiantSize"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QGroupBox" name="drvs">
+     <property name="title">
+      <string>Racial Adjustment (DRVs)</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="charmDRV"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="chemicalDRV"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Cold</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="coldDRV"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>Charm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>Chemical</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Mental</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="mentalDRV"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Heat</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_18">
+        <property name="text">
+         <string>Magical</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>Electric</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="electricDRV"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="heatDRV"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="magicalDRV"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="conditionsGroup">
+     <property name="title">
+      <string>Conditions</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="1">
+       <widget class="QListWidget" name="condList"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" rowspan="2">
+    <widget class="QGroupBox" name="specialAbilities">
+     <property name="title">
+      <string>Special Abilities</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Force Lock</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Detect Trap</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Detect Secret</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Acrobatic Act</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="causeMajorWoundField"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Cause Major Wound</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Disable Trap</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Pick Lock</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Sneak Attack</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="sneakAttackField"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Turn Undead</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="detectSecretField"/>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="acrobaticActField"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="detectTrapField"/>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="disableTrapField"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="forceLockField"/>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="pickLockField"/>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="turnUndeadField"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -600,6 +600,11 @@ namespace realmz {
         os << "}" << std::endl;
     }
 
+    void
+    Character::dropLast() noexcept {
+        // drop the last item in the inventory
+    }
+
 }
 
 std::ostream&

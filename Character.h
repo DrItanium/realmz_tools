@@ -547,6 +547,11 @@ namespace realmz {
         [[nodiscard]] const auto &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
         [[nodiscard]] const CharacterConditions &getConditions() const { return _conditions; }
         void print(std::ostream& os) const noexcept;
+    public:
+        /**
+         * @brief Drop the last item in the inventory
+         */
+        void dropLast() noexcept;
     private:
         uint16_t _id = 0;
         int16_t _verifyField0 = 0;
