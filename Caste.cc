@@ -173,6 +173,9 @@ namespace realmz {
         casteDataLocation = path;
         loadedCasteData = false;
     }
+    bool casteDataLocationSet() noexcept {
+        return !casteDataLocation.empty();
+    }
 
     const Caste&
     loadCaste(CasteKind ck) {

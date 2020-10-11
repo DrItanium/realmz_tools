@@ -33,6 +33,8 @@ private: // routine names taken from GHIDRA
     realmz::Gender gender() noexcept;
     realmz::CasteKind caste() noexcept;
     realmz::RaceKind race() noexcept;
+private:
+    void promptCasteDataLocation() noexcept;
 public:
     void closeEvent(QCloseEvent* event) override;
 private:

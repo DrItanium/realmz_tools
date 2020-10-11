@@ -164,6 +164,7 @@ namespace realmz {
         int _castePortraitIndex = 0;
     };
     void setCasteDataLocation(const std::filesystem::path& path) noexcept;
+    bool casteDataLocationSet() noexcept;
     const Caste& loadCaste(CasteKind ck);
 
 } // end namespace realmz

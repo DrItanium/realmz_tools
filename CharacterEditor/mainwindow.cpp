@@ -4,6 +4,7 @@
 #include <QString>
 #include <QInputDialog>
 #include <QCloseEvent>
+#include <QFileDialog>
 #include "casteinfopanel.h"
 #include "racestatsview.h"
 MainWindow::MainWindow(QWidget *parent) :
@@ -85,6 +86,15 @@ MainWindow::gender() noexcept
 }
 
 void
+MainWindow::promptCasteDataLocation() noexcept {
+    if (!realmz::casteDataLocationSet()) {
+        auto filePath = QFileDialog::getOpenFileName(this, tr("Location of Caste Data"));
+        std::filesystem::path thePath(filePath.toStdString());
+        realmz::setCasteDataLocation(thePath);
+    }
+}
+
+void
 MainWindow::on_actionGenerate_New_Character_triggered()
  {
    // there are several phases to this process, GHIDRA has been invaluable!
@@ -124,6 +134,7 @@ MainWindow::on_actionGenerate_New_Character_triggered()
 
 realmz::CasteKind
 MainWindow::caste() noexcept {
+    promptCasteDataLocation();
     CasteInfoPanel cif(this);
     cif.exec();
     auto result = cif.getSelectedCasteKind();
