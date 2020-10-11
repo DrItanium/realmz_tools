@@ -1,7 +1,9 @@
 //
 // Created by jwscoggins on 9/20/20.
 //
-
+#include <map>
+#include <optional>
+#include <fstream>
 #include "Caste.h"
 #include "SpecialAbilities.h"
 #include "DRVAdjustments.h"
@@ -123,6 +125,68 @@ namespace realmz {
             auto result = lower | ((upper << 16) & 0xFFFF0000);
             _contents.emplace_back(result); // we need to make sure that these are marked as negative when stored in a character
         }
+    }
+    namespace {
+        bool loadedCasteData = false;
+        std::filesystem::path casteDataLocation;
+        std::map<CasteKind, Caste> registeredCasteData;
+        void
+        loadCasteData() {
+            if (loadedCasteData) {
+                return;
+            }
+            auto readOne = [](std::istream& input) -> std::optional<Caste> {
+                std::array<int16_t, 576 / 2> buf;
+                input.read((char *) buf.data(), 576);
+                if (input.gcount() != 576) {
+                    return std::nullopt;
+                }
+                auto swap = [](int16_t value) noexcept {
+                    auto lower = value & 0xFF;
+                    auto upper = (value >> 8) & 0xFF;
+                    return ((lower << 8) | upper);
+                };
+                // swap all of the shorts to be correctly described
+                for (int i = 0; i < (576 / 2); ++i) {
+                    buf[i] = swap(buf[i]);
+                }
+                return {buf};
+            };
+            std::ifstream casteDataFile(casteDataLocation);
+            if (!casteDataFile.is_open()) {
+                throw "Couldn't open caste data file";
+            }
+            for (int curr = static_cast<int>(CasteKind::Fighter);  curr != static_cast<int>(CasteKind::Done); ++curr) {
+                auto theCaste = static_cast<CasteKind>(curr);
+                if (auto result = readOne(casteDataFile); result) {
+                    registeredCasteData.emplace(theCaste, *result);
+                } else {
+                    throw "Couldn't load all entries";
+                }
+            }
+            casteDataFile.close();
+            loadedCasteData = true;
+        }
+    }
+
+    void setCasteDataLocation(const std::filesystem::path& path) noexcept {
+        casteDataLocation = path;
+        loadedCasteData = false;
+    }
+
+    const Caste&
+    loadCaste(CasteKind ck) {
+        loadCasteData();
+        if (casteDataLocation.empty()) {
+            throw "Caste data not loaded";
+        } else {
+            if (auto pos = registeredCasteData.find(ck); pos != registeredCasteData.end()) {
+                return pos->second;
+            } else {
+                throw "Unknown caste kind!";
+            }
+        }
+
     }
 } // end namespace realmz
 std::ostream &operator<<(std::ostream &os, const realmz::Caste &caste) noexcept {

@@ -9,6 +9,7 @@
 #include <optional>
 #include <array>
 #include <vector>
+#include <filesystem>
 #include "Ability.h"
 #include "CasteDataBuffer.h"
 #include "CasteConditions.h"
@@ -42,6 +43,7 @@ namespace realmz {
         BattleMage,
         Warlock,
         Minstrel,
+        Done,
     };
 
     class SpellClassInfo {
@@ -161,6 +163,8 @@ namespace realmz {
         int64_t _allowedBits = 0; // originally two 32-bit numbers with bits [0,57] being used
         int _castePortraitIndex = 0;
     };
+    void setCasteDataLocation(const std::filesystem::path& path) noexcept;
+    const Caste& loadCaste(CasteKind ck);
 
 } // end namespace realmz
 std::ostream& operator<<(std::ostream& os, const realmz::Caste& caste) noexcept;
