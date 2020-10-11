@@ -18,7 +18,11 @@ set(UI_SOURCES
 	itemsview.ui
 	mainwindow.ui
 	specialinfoview.ui
-	spellsview.ui)
+	spellsview.ui
+		racestatsview.ui
+		casteinfopanel.ui
+		viewagingdialog.ui
+		)
 
 
 qt5_wrap_ui(UI_GENERATED_HEADERS ${UI_SOURCES})
@@ -43,6 +47,12 @@ add_executable(CharacterEditor
 	specialinfoview.h
 	spellsview.cpp
 	spellsview.h
+		racestatsview.cpp
+		racestatsview.h
+		casteinfopanel.cpp
+		casteinfopanel.h
+		viewagingdialog.cpp
+		viewagingdialog.h
 	${UI_GENERATED_HEADERS}
 	)
 

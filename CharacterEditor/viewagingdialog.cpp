@@ -14,7 +14,7 @@ ViewAgingDialog::~ViewAgingDialog()
 }
 
 void
-ViewAgingDialog::setRaceData(const realmz::RaceData& nrd)
+ViewAgingDialog::setRaceData(realmz::RaceKind nrd) noexcept
 {
     rd = nrd;
 }

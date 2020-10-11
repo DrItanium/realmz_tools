@@ -16,7 +16,6 @@ public:
     explicit RaceStatsView(QWidget *parent = nullptr);
     ~RaceStatsView();
 private slots:
-    void on_selector_activated(int index);
     void on_viewAgingButton_clicked();
 
     void on_raceSelect_activated(int index);

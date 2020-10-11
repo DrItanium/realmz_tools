@@ -15,13 +15,8 @@ RaceStatsView::~RaceStatsView()
     delete ui;
 }
 
-void RaceStatsView::addCondition(QString cond) {
-
-}
-
 void RaceStatsView::on_viewAgingButton_clicked()
 {
-   emit onViewAgingPressed();
    ViewAgingDialog vad(this);
    //vad.setRaceData();
    vad.exec();

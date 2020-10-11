@@ -15,10 +15,10 @@ class ViewAgingDialog : public QDialog
 public:
     explicit ViewAgingDialog(QWidget *parent = nullptr);
     ~ViewAgingDialog();
-    void setRaceData(const realmz::RaceData& nrd);
+    void setRaceData(realmz::RaceKind nrd) noexcept;
 private:
     Ui::ViewAgingDialog *ui;
-    realmz::RaceData rd;
+    realmz::RaceKind rd;
 
 };
 
