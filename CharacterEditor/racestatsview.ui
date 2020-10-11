@@ -20,8 +20,8 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
-    <widget class="QComboBox" name="selector">
+   <item row="4" column="0">
+    <widget class="QComboBox" name="raceSelect">
      <item>
       <property name="text">
        <string>Human</string>
@@ -119,7 +119,247 @@
      </item>
     </widget>
    </item>
-   <item row="0" column="1" rowspan="3">
+   <item row="2" column="0" rowspan="2">
+    <widget class="QGroupBox" name="specialAbilities">
+     <property name="title">
+      <string>Special Abilities</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Detect Secret</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="detectSecretField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="label_32">
+        <property name="text">
+         <string>Attacks / Round</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="label_28">
+        <property name="text">
+         <string>Magic Resistance</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QLineEdit" name="attacksPerRound">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="QLabel" name="label_30">
+        <property name="text">
+         <string>Missile Weapon Adjust</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Acrobatic Act</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="forceLockField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Pick Lock</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Cause Major Wound</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Force Lock</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="acrobaticActField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="label_31">
+        <property name="text">
+         <string>Race Can Regenerate</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="label_29">
+        <property name="text">
+         <string>Two Handed Adjustment</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="turnUndeadField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Detect Trap</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="causeMajorWoundField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="detectTrapField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="pickLockField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="sneakAttackField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Sneak Attack</string>
+        </property>
+       </widget>
+      </item>
+      <item row="19" column="0">
+       <widget class="QLabel" name="label_33">
+        <property name="text">
+         <string>Max Attacks / Round</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="disableTrapField">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="17" column="0">
+       <widget class="QLabel" name="label_27">
+        <property name="text">
+         <string>Base Movement Points</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Turn Undead</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QLineEdit" name="raceCanRegenerate">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Disable Trap</string>
+        </property>
+       </widget>
+      </item>
+      <item row="19" column="1">
+       <widget class="QLineEdit" name="maxAttacksPerRound">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="1">
+       <widget class="QLineEdit" name="magicResistance">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="1">
+       <widget class="QLineEdit" name="missileWeaponAdjust">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="twoHandedAdjust">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="17" column="1">
+       <widget class="QLineEdit" name="baseMovementPoints">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QPushButton" name="nextButton">
+     <property name="text">
+      <string>Next</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" rowspan="2">
     <widget class="QGroupBox" name="attributes">
      <property name="title">
       <string>Attributes</string>
@@ -143,13 +383,6 @@
        <widget class="QLabel" name="label_22">
         <property name="text">
          <string>Knowledge</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Attributes</string>
         </property>
        </widget>
       </item>
@@ -196,142 +429,254 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="brawnMin"/>
+       <widget class="QLineEdit" name="brawnMin">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QLineEdit" name="brawnMax"/>
+       <widget class="QLineEdit" name="brawnMax">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QLineEdit" name="brawnPlusMinus"/>
+       <widget class="QLineEdit" name="brawnPlusMinus">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="knowledgeMin"/>
+       <widget class="QLineEdit" name="knowledgeMin">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QLineEdit" name="judgmentMin"/>
+       <widget class="QLineEdit" name="judgmentMin">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QLineEdit" name="agilityMin"/>
+       <widget class="QLineEdit" name="agilityMin">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLineEdit" name="vitalityMin"/>
+       <widget class="QLineEdit" name="vitalityMin">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QLineEdit" name="luckMin"/>
+       <widget class="QLineEdit" name="luckMin">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QLineEdit" name="knowledgeMax"/>
+       <widget class="QLineEdit" name="knowledgeMax">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="3" column="2">
-       <widget class="QLineEdit" name="judgmentMax"/>
+       <widget class="QLineEdit" name="judgmentMax">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="6" column="3">
-       <widget class="QLineEdit" name="luckPlusMinus"/>
+       <widget class="QLineEdit" name="luckPlusMinus">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="5" column="3">
-       <widget class="QLineEdit" name="vitalityPlusMinus"/>
+       <widget class="QLineEdit" name="vitalityPlusMinus">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="2" column="3">
-       <widget class="QLineEdit" name="knowledgePlusMinus"/>
+       <widget class="QLineEdit" name="knowledgePlusMinus">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="3" column="3">
-       <widget class="QLineEdit" name="judgmentPlusMinus"/>
+       <widget class="QLineEdit" name="judgmentPlusMinus">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="4" column="3">
-       <widget class="QLineEdit" name="agilityPlusMinus"/>
+       <widget class="QLineEdit" name="agilityPlusMinus">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="6" column="2">
-       <widget class="QLineEdit" name="luckMax"/>
+       <widget class="QLineEdit" name="luckMax">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="4" column="2">
-       <widget class="QLineEdit" name="agilityMax"/>
+       <widget class="QLineEdit" name="agilityMax">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="5" column="2">
-       <widget class="QLineEdit" name="vitalityMax"/>
+       <widget class="QLineEdit" name="vitalityMax">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="0" column="2" rowspan="3">
-    <widget class="QGroupBox" name="baseMiscStats">
+   <item row="2" column="1">
+    <widget class="QGroupBox" name="drvs">
      <property name="title">
-      <string>Base Misc Stats</string>
+      <string>Racial Adjustment (DRVs)</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_7">
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_32">
-        <property name="text">
-         <string>Attacks / Round</string>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="charmDRV">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="chemicalDRV">
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_29">
+       <widget class="QLabel" name="label_14">
         <property name="text">
-         <string>Two Handed Adjustment</string>
+         <string>Cold</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_30">
-        <property name="text">
-         <string>Missile Weapon Adjust</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_28">
-        <property name="text">
-         <string>Magic Resistance</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_31">
-        <property name="text">
-         <string>Race Can Regenerate</string>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="coldDRV">
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label_27">
+       <widget class="QLabel" name="label_12">
         <property name="text">
-         <string>Base Movement Points</string>
+         <string>Charm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>Chemical</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Mental</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="mentalDRV">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Heat</string>
         </property>
        </widget>
       </item>
       <item row="6" column="0">
-       <widget class="QLabel" name="label_33">
+       <widget class="QLabel" name="label_18">
         <property name="text">
-         <string>Max Attacks / Round</string>
+         <string>Magical</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="baseMovementPoints"/>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="maxAttacksPerRound"/>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="attacksPerRound"/>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="raceCanRegenerate"/>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>Electric</string>
+        </property>
+       </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QLineEdit" name="missileWeaponAdjust"/>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="twoHandedAdjust"/>
+       <widget class="QLineEdit" name="electricDRV">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="magicResistance"/>
+       <widget class="QLineEdit" name="heatDRV">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="magicalDRV">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="conds">
+     <property name="title">
+      <string>Conditions</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QListView" name="conditionsList"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="1">
     <widget class="QGroupBox" name="hatred">
      <property name="title">
       <string>Hatred</string>
@@ -394,220 +739,69 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="hitMagicUsing"/>
+       <widget class="QLineEdit" name="hitMagicUsing">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QLineEdit" name="plusNonHumanoid"/>
+       <widget class="QLineEdit" name="plusNonHumanoid">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QLineEdit" name="plusVeryEvil"/>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="plusReptilian"/>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="plusDemonic"/>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="plusIntelligent"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="plusUndead"/>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="plusGiantSize"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QGroupBox" name="drvs">
-     <property name="title">
-      <string>Racial Adjustment (DRVs)</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_6">
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="charmDRV"/>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="chemicalDRV"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_14">
-        <property name="text">
-         <string>Cold</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="coldDRV"/>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_12">
-        <property name="text">
-         <string>Charm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>Chemical</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_17">
-        <property name="text">
-         <string>Mental</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="mentalDRV"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_13">
-        <property name="text">
-         <string>Heat</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_18">
-        <property name="text">
-         <string>Magical</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string>Electric</string>
+       <widget class="QLineEdit" name="plusVeryEvil">
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QLineEdit" name="electricDRV"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="heatDRV"/>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="magicalDRV"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QGroupBox" name="conditionsGroup">
-     <property name="title">
-      <string>Conditions</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="1" column="1">
-       <widget class="QListWidget" name="condList"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="2" column="0" rowspan="2">
-    <widget class="QGroupBox" name="specialAbilities">
-     <property name="title">
-      <string>Special Abilities</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>Force Lock</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Detect Trap</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Detect Secret</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Acrobatic Act</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="causeMajorWoundField"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Cause Major Wound</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Disable Trap</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Pick Lock</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Sneak Attack</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="sneakAttackField"/>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>Turn Undead</string>
+       <widget class="QLineEdit" name="plusReptilian">
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="detectSecretField"/>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="acrobaticActField"/>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="detectTrapField"/>
+       <widget class="QLineEdit" name="plusDemonic">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLineEdit" name="disableTrapField"/>
+       <widget class="QLineEdit" name="plusIntelligent">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="plusUndead">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QLineEdit" name="forceLockField"/>
-      </item>
-      <item row="7" column="1">
-       <widget class="QLineEdit" name="pickLockField"/>
-      </item>
-      <item row="8" column="1">
-       <widget class="QLineEdit" name="turnUndeadField"/>
+       <widget class="QLineEdit" name="plusGiantSize">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="viewAgingButton">
+     <property name="text">
+      <string>View Aging</string>
+     </property>
     </widget>
    </item>
   </layout>
