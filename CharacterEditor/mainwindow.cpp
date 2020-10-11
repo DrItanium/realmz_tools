@@ -4,7 +4,8 @@
 #include <QString>
 #include <QInputDialog>
 #include <QCloseEvent>
-
+#include "casteinfopanel.h"
+#include "racestatsview.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -123,16 +124,24 @@ MainWindow::on_actionGenerate_New_Character_triggered()
 
 realmz::CasteKind
 MainWindow::caste() noexcept {
-    return realmz::CasteKind::Fighter;
+    CasteInfoPanel cif(this);
+    cif.exec();
+    auto result = cif.getSelectedCasteKind();
+    return result;
 }
 
 realmz::RaceKind
 MainWindow::race() noexcept {
-    return realmz::RaceKind::Human;
+    RaceStatsView rsv(this);
+    rsv.exec();
+    auto result = rsv.getSelectedRaceKind();
+    return result;
 }
 
 void
 MainWindow::closeEvent(QCloseEvent *event) {
-    flashMessage("Thank you for supporting Fantasoft!");
+    // this message comes from the original executable when you shutdown, doesn't show right in wine but I remember it
+    // plus GHIDRA "mentions" it
+    //flashMessage("Thank you for supporting Fantasoft!");
     event->accept();
 }

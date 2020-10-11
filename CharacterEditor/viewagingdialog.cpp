@@ -12,3 +12,9 @@ ViewAgingDialog::~ViewAgingDialog()
 {
     delete ui;
 }
+
+void
+ViewAgingDialog::setRaceData(const realmz::RaceData& nrd)
+{
+    rd = nrd;
+}
