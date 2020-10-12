@@ -134,6 +134,7 @@ MainWindow::on_actionGenerate_New_Character_triggered()
 
 realmz::CasteKind
 MainWindow::caste() noexcept {
+    /// @todo check the result of the exec call (accepted or rejected)
     promptCasteDataLocation();
     CasteInfoPanel cif(this);
     cif.exec();
@@ -143,6 +144,7 @@ MainWindow::caste() noexcept {
 
 realmz::RaceKind
 MainWindow::race() noexcept {
+    /// @todo check the result of the exec call (accepted or rejected)
     RaceStatsView rsv(this);
     rsv.exec();
     auto result = rsv.getSelectedRaceKind();

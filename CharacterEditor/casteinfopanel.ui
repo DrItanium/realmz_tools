@@ -792,13 +792,6 @@
      </item>
     </widget>
    </item>
-   <item row="5" column="2">
-    <widget class="QPushButton" name="nextButton">
-     <property name="text">
-      <string>Next</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="2" rowspan="3">
     <widget class="QGroupBox" name="miscModifications">
      <property name="title">
@@ -1025,6 +1018,13 @@
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
     </widget>
    </item>
   </layout>

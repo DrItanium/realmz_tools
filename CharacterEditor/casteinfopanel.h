@@ -21,7 +21,7 @@ public:
     ~CasteInfoPanel();
 private slots:
     void on_casteSelector_activated(int index);
-    void on_nextButton_clicked();
+
 public:
     constexpr realmz::CasteKind getSelectedCasteKind() const noexcept { return ck; }
 private:

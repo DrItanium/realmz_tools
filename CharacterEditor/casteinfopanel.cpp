@@ -131,15 +131,7 @@ CasteInfoPanel::on_casteSelector_activated(int index)
 }
 
 void
-CasteInfoPanel::on_nextButton_clicked()
-{
-    // call done
-    done(QDialog::Accepted);
-}
-
-void
 CasteInfoPanel::addCondition(const QString &str, int atLevel)
 {
     /// @todo implement
 }
-
