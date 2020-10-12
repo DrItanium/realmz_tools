@@ -72,28 +72,54 @@ CasteInfoPanel::installCaste(const realmz::Caste &targetCaste)
     setFieldWithBool(ui->getsMissileBonusDamage, targetCaste.getsMissileBonusDamage());
 
     const auto& sc = targetCaste.getSpellCasting();
-    if (sc.supportsEnchanterSpellClass()) {
-        setFieldWithInteger(ui->enchanterMaxLevelSpells, sc.getEnchanterInfo().getMaxLevelSpells());
-        setFieldWithInteger(ui->enchanterStartingAtLevel, sc.getEnchanterInfo().getStartingLevel());
-    } else {
-        ui->enchanterMaxLevelSpells->clear();
-        ui->enchanterStartingAtLevel->clear();
+    auto emitSpellClass = [setFieldWithInteger](QLineEdit* maxLevel, QLineEdit* startingAt, const realmz::SpellClassInfo& value) {
+        if (value.isEnabled()) {
+            setFieldWithInteger(maxLevel, value.getMaxLevelSpells());
+            setFieldWithInteger(startingAt, value.getStartingLevel());
+        } else {
+            maxLevel->clear();
+            startingAt->clear();
+        }
+    };
+    emitSpellClass(ui->enchanterMaxLevelSpells, ui->enchanterStartingAtLevel, sc.getEnchanterInfo());
+    emitSpellClass(ui->priestMaxLevelSpells, ui->priestStartingAtLevel, sc.getPriestInfo());
+    emitSpellClass(ui->sorcererMaxLevel, ui->sorcererStartingLvl, sc.getSorcererInfo());
+    switch (targetCaste.getAgeGroup()) {
+        case realmz::AgeGroup::Youth:
+            ui->startingAgeGroup->setText("Youth");
+            break;
+        case realmz::AgeGroup::Young:
+            ui->startingAgeGroup->setText("Young");
+            break;
+        case realmz::AgeGroup::Prime:
+            ui->startingAgeGroup->setText("Prime");
+            break;
+        case realmz::AgeGroup::Adult:
+            ui->startingAgeGroup->setText("Adult");
+            break;
+        case realmz::AgeGroup::Senior:
+            ui->startingAgeGroup->setText("Senior");
+            break;
+        default:
+            ui->startingAgeGroup->setText("ERROR");
+            break;
     }
-    if (sc.supportsPriestSpellClass()) {
-        setFieldWithInteger(ui->priestMaxLevelSpells, sc.getPriestInfo().getMaxLevelSpells());
-        setFieldWithInteger(ui->priestStartingAtLevel, sc.getPriestInfo().getStartingLevel());
-    } else {
-        ui->priestMaxLevelSpells->clear();
-        ui->priestStartingAtLevel->clear();
-
-    }
-
-    if (sc.supportsSorcererSpellClass()) {
-        setFieldWithInteger(ui->sorcererMaxLevel, sc.getSorcererInfo().getMaxLevelSpells());
-        setFieldWithInteger(ui->sorcererStartingLvl, sc.getSorcererInfo().getStartingLevel());
-    } else {
-        ui->sorcererMaxLevel->clear();
-        ui->sorcererStartingLvl->clear();
+    switch (targetCaste.getBonusAttacks()) {
+        case realmz::BonusAttacksStyle::OneAndOneHalf:
+            ui->bonusAttacks->setText("1 1/2");
+            break;
+        case realmz::BonusAttacksStyle::One:
+            ui->bonusAttacks->setText("1");
+            break;
+        case realmz::BonusAttacksStyle::OneHalf:
+            ui->bonusAttacks->setText("1/2");
+            break;
+        case realmz::BonusAttacksStyle::Two:
+            ui->bonusAttacks->setText("2");
+            break;
+        default:
+            ui->bonusAttacks->setText("None");
+            break;
     }
 }
 
