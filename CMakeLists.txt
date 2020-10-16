@@ -331,7 +331,7 @@ add_library(realmz
 		DRVAdjustments.h
 		CasteConditions.cc
 		CasteConditions.h
-		CasteDataBuffer.h Character.cc Character.h Utilities.h Point.h)
+		CasteDataBuffer.h Character.cc Character.h Utilities.h Point.h Item.cc Item.h)
 
 add_executable(dumpcaste CasteDecomposer.cpp)
 add_executable(dumprace RaceDecomposer.cc)

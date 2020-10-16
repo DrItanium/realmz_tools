@@ -4,6 +4,7 @@
 
 #ifndef REALMZ_TOOLS_UTILITIES_H
 #define REALMZ_TOOLS_UTILITIES_H
+#include <cstdint>
 #include <type_traits>
 
 namespace realmz {
@@ -40,6 +41,24 @@ namespace realmz {
             value = max;
         }
         return value;
+    }
+    struct ConstructInt64 { };
+    struct ConstructUInt64 { };
+    struct ConstructInt32 { };
+    struct ConstructUInt32 { };
+    //template<typename T, std::enable_if_t<std::is_integral_v<std::decay_t<T>>, int> = 0> struct ConstructType { };
+    constexpr int64_t make(int16_t a, int16_t b, int16_t c, int16_t d, ConstructInt64) noexcept {
+        return static_cast<int64_t>(a) | (static_cast<int64_t>(b) << 16) | (static_cast<int64_t>(c) << 32) | (static_cast<int64_t>(d) << 48);
+    }
+    constexpr uint64_t make(uint16_t a, uint16_t b, uint16_t c, uint16_t d, ConstructUInt64) noexcept {
+        return static_cast<uint64_t>(a) | (static_cast<uint64_t>(b) << 16) | (static_cast<uint64_t>(c) << 32) | (static_cast<uint64_t>(d) << 48);
+    }
+
+    constexpr int32_t make(int16_t a, int16_t b, ConstructInt32) noexcept {
+        return static_cast<int32_t>(a) | (static_cast<int32_t>(b) << 16);
+    }
+    constexpr uint32_t make(uint16_t a, uint16_t b, ConstructUInt32) noexcept {
+        return static_cast<uint32_t>(a) | (static_cast<uint32_t>(b) << 16);
     }
 
 } // end namespace realmz
