@@ -109,6 +109,24 @@ namespace realmz {
         constexpr auto getUndeadTurned() const noexcept { return _undeadTurned; }
         constexpr auto getPenaltyPoints() const noexcept { return _penaltyPoints; }
         void print(std::ostream& os) const noexcept;
+
+        constexpr auto getCurrentPrestige() const noexcept {
+            auto damagePrestige = (_damageGiven - _damageTaken) / 20;
+            auto combatSpellsCastTotal = _combatSpellsCast * -3;
+            auto hitsTakenTotal = _hitsTaken * -2;
+            auto missedAttacksTotal = _missedAttacks * -2;
+            auto timesUnconsciousTotal = _timesUnconscious * -35;
+            auto timesKilledTotal = _timesDied * -75;
+            auto enemiesKilledTotal = _enemiesKilled * 3;
+            auto hitsGivenTotal = _hitsGiven;
+            auto dodgedAttacksTotal = _dodgedAttacks;
+            auto undeadDestroyedTotal = _undeadDestroyed * 2;
+            auto undeadTurnedTotal = _undeadTurned * 3;
+            return damagePrestige + combatSpellsCastTotal + hitsTakenTotal + missedAttacksTotal +
+            timesUnconsciousTotal + timesKilledTotal + enemiesKilledTotal + hitsGivenTotal +
+            dodgedAttacksTotal + undeadDestroyedTotal +
+            undeadTurnedTotal + _penaltyPoints;
+        }
     private:
         int32_t _damageTaken = 0;
         int32_t _damageGiven = 0;
