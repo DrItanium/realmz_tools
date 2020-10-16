@@ -72,7 +72,7 @@ namespace realmz {
         uint16_t _flags = 0;
         int16_t _isWearable = 0;
         int16_t _unknown2 = 0;
-        int64_t _allowedBits = 0;
+        uint64_t _allowedBits = 0;
         int16_t _raceIneligibility = 0;
         int16_t _casteIneligibility = 0;
         int16_t _specificToAGivenRace = 0;

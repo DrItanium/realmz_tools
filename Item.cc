@@ -25,6 +25,8 @@ namespace realmz {
               _flags(buf[15]),
               _isWearable(buf[16]),
               _unknown2(buf[17]),
+              // swap the order of the words to make it little endian, this sort of nonsense is why I want to migrate
+              // the binary formats to apache avro so that endianness is just handled by the act of packing and unpacking
               _allowedBits(make(buf[21], buf[20], buf[19], buf[18], realmz::ConstructInt64{})),
               _raceIneligibility(buf[22]),
               _casteIneligibility(buf[23]),

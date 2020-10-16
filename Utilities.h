@@ -42,22 +42,16 @@ namespace realmz {
         }
         return value;
     }
-    struct ConstructInt64 { };
-    struct ConstructUInt64 { };
-    struct ConstructInt32 { };
-    struct ConstructUInt32 { };
+    struct ConstructInt64 { constexpr ConstructInt64() = default; };
+    struct ConstructInt32 { constexpr ConstructInt32() = default; };
     //template<typename T, std::enable_if_t<std::is_integral_v<std::decay_t<T>>, int> = 0> struct ConstructType { };
-    constexpr int64_t make(int16_t a, int16_t b, int16_t c, int16_t d, ConstructInt64) noexcept {
-        return static_cast<int64_t>(a) | (static_cast<int64_t>(b) << 16) | (static_cast<int64_t>(c) << 32) | (static_cast<int64_t>(d) << 48);
-    }
-    constexpr uint64_t make(uint16_t a, uint16_t b, uint16_t c, uint16_t d, ConstructUInt64) noexcept {
+    constexpr uint64_t make(uint16_t a, uint16_t b, uint16_t c, uint16_t d, ConstructInt64) noexcept {
         return static_cast<uint64_t>(a) | (static_cast<uint64_t>(b) << 16) | (static_cast<uint64_t>(c) << 32) | (static_cast<uint64_t>(d) << 48);
     }
 
-    constexpr int32_t make(int16_t a, int16_t b, ConstructInt32) noexcept {
-        return static_cast<int32_t>(a) | (static_cast<int32_t>(b) << 16);
-    }
-    constexpr uint32_t make(uint16_t a, uint16_t b, ConstructUInt32) noexcept {
+    static_assert(make(0x6789,0x2345,0xef01,0xabcd, ConstructInt64{}) == 0xABCDEF0123456789);
+
+    constexpr uint32_t make(uint16_t a, uint16_t b, ConstructInt32) noexcept {
         return static_cast<uint32_t>(a) | (static_cast<uint32_t>(b) << 16);
     }
 
