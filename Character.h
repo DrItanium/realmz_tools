@@ -125,7 +125,7 @@ namespace realmz {
             return damagePrestige + combatSpellsCastTotal + hitsTakenTotal + missedAttacksTotal +
             timesUnconsciousTotal + timesKilledTotal + enemiesKilledTotal + hitsGivenTotal +
             dodgedAttacksTotal + undeadDestroyedTotal +
-            undeadTurnedTotal + _penaltyPoints;
+            undeadTurnedTotal + (-_penaltyPoints);
         }
     private:
         int32_t _damageTaken = 0;

@@ -584,6 +584,7 @@ namespace realmz {
 
     void
     PrestigeValues::print(std::ostream &os) const noexcept {
+        os << "Current Prestige: " << getCurrentPrestige() << std::endl;
         os << "Prestige Values {" << std::endl;
         printOut(os, "Damage Taken", _damageTaken, true);
         printOut(os, "Damage Given", _damageGiven, true);
