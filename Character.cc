@@ -446,7 +446,7 @@ namespace realmz {
         printOut(os, "Age Class", _ageClass);
         /// @todo printout spells in scroll case
         printOut(os, "Days Old", _daysOld);
-        os << "\tAge in Years: " << (_daysOld / 365) << std::endl;
+        os << "\tAge in Years: " << getAgeInYears() << std::endl;
         printOut(os, "Victory Points", _victoryPoints);
         printOut(os, "Current Load", _currentLoad);
         printOut(os, "Maximum Load", _maximumLoad);

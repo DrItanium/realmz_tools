@@ -570,6 +570,8 @@ namespace realmz {
          * @brief Drop the last item in the inventory
          */
         void dropLast() noexcept;
+    public:
+        [[nodiscard]] constexpr auto getAgeInYears() const noexcept { return _daysOld / 365; }
     private:
         uint16_t _id = 0;
         int16_t _verifyField0 = 0;
