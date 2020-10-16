@@ -3,6 +3,7 @@
 //
 
 #include "Character.h"
+#include "Utilities.h"
 #include <sstream>
 
 namespace realmz {
@@ -21,9 +22,8 @@ namespace realmz {
     constexpr int8_t upperHalf(int16_t value) noexcept {
         return (value >> 8) & 0xFF;
     }
-    constexpr int32_t make(int16_t lower, int16_t upper) noexcept {
-        return (static_cast<int32_t>(lower) & 0x0000'FFFF) |
-               ((static_cast<int32_t>(upper) << 16 )& 0xFFFF'0000);
+    constexpr int32_t makeSwapped(int16_t upper, int16_t lower) noexcept {
+        return make(lower, upper, ConstructInt32{});
     }
     Character::Character(const CharacterDataBuffer &buf) :
             _id(buf[0]),
@@ -225,8 +225,8 @@ namespace realmz {
                                         buf[244],
                                         buf[245],
                                 }),
-            _daysOld(make(buf[246], buf[247])),
-            _victoryPoints(make(buf[248], buf[249])),
+            _daysOld(makeSwapped(buf[246], buf[247])),
+            _victoryPoints(makeSwapped(buf[248], buf[249])),
             _currentLoad(buf[250]),
             _maximumLoad(buf[251]),
             _gold(buf[252]),
@@ -285,19 +285,19 @@ namespace realmz {
                   }),
             _verifyField2(buf[319]),
             _prestige(
-                    make(buf[320], buf[321]),
-                    make(buf[322], buf[323]),
-                    make(buf[324], buf[325]),
-                    make(buf[326], buf[327]),
-                    make(buf[328], buf[329]),
-                    make(buf[330], buf[331]),
-                    make(buf[332], buf[333]),
-                    make(buf[334], buf[335]),
-                    make(buf[336], buf[337]),
-                    make(buf[338], buf[339]),
-                    make(buf[340], buf[341]),
-                    make(buf[342], buf[343]),
-                    make(buf[344], buf[345])),
+                    makeSwapped(buf[320], buf[321]),
+                    makeSwapped(buf[322], buf[323]),
+                    makeSwapped(buf[324], buf[325]),
+                    makeSwapped(buf[326], buf[327]),
+                    makeSwapped(buf[328], buf[329]),
+                    makeSwapped(buf[330], buf[331]),
+                    makeSwapped(buf[332], buf[333]),
+                    makeSwapped(buf[334], buf[335]),
+                    makeSwapped(buf[336], buf[337]),
+                    makeSwapped(buf[338], buf[339]),
+                    makeSwapped(buf[340], buf[341]),
+                    makeSwapped(buf[342], buf[343]),
+                    makeSwapped(buf[344], buf[345])),
             _treasureArrayIds({
 #define X10(offset) buf[offset], buf[offset+1], buf[offset+2], buf[offset+3], buf[offset+4], buf[offset+5], buf[offset+6], buf[offset+7], buf[offset+8], buf[offset+9]
                                       X10(346),
@@ -458,6 +458,7 @@ namespace realmz {
         printOut(os, "Is Spell Class 3", _isSpellClass3);
         printOut(os, "Alive", _alive);
         printOut(os, "In Auto Mode", _inAutoMode);
+        os << _prestige ;
     };
     void
     EquippedItems::print(std::ostream &os) const noexcept {
