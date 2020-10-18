@@ -10,6 +10,16 @@
 #include <iostream>
 namespace realmz {
     using CharacterDataBuffer = std::array<int16_t, 872/2>;
+    enum class AgeGroup : uint16_t {
+        Youth = 1,
+        Young,
+        Prime,
+        Adult,
+        Senior,
+    };
+    constexpr auto toArrayIndex(AgeGroup ac) noexcept {
+        return static_cast<uint16_t>(ac) - 1;
+    }
     class SpecialInfo_CharVersion {
     public:
         constexpr SpecialInfo_CharVersion(int8_t sneakAttack, int8_t causeMajorWound, int8_t detectSecret, int8_t acrobaticAct, int8_t detectTrap,
@@ -442,7 +452,7 @@ namespace realmz {
         void setDamageReductionVsMental(int16_t damageReductionVsMental) noexcept { _damageReductionVsMental = damageReductionVsMental; }
         void setDamageReductionVsMagic(int16_t damageReductionVsMagic) noexcept { _damageReductionVsMagic = damageReductionVsMagic; }
         void setDamageReductionVsSpecial(int16_t damageReductionVsSpecial) noexcept { _damageReductionVsSpecial = damageReductionVsSpecial; }
-        void setAgeClass(int16_t ageClass) noexcept { _ageClass = ageClass; }
+        void setAgeGroup(int16_t ageClass) noexcept { _ageClass = ageClass; }
         void setVerifyField1(int16_t verifyField1) noexcept { _verifyField1 = verifyField1; }
         void setItem(size_t index, const InventoryItem& item) noexcept;
         void setAnArrayValue(size_t index, int value);
@@ -521,7 +531,7 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getDamageReductionVsMental() const noexcept { return _damageReductionVsMental; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsMagic() const noexcept { return _damageReductionVsMagic; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsSpecial() const noexcept { return _damageReductionVsSpecial; }
-        [[nodiscard]] constexpr int16_t getAgeClass() const noexcept { return _ageClass; }
+        [[nodiscard]] constexpr int16_t getAgeGroup() const noexcept { return _ageClass; }
         [[nodiscard]] constexpr int16_t getVerifyField1() const noexcept { return _verifyField1; }
         [[nodiscard]] constexpr int32_t getDaysOld() const noexcept { return _daysOld; }
         [[nodiscard]] constexpr int32_t getVictoryPoints() const noexcept { return _victoryPoints; }
@@ -572,6 +582,7 @@ namespace realmz {
         void dropLast() noexcept;
     public:
         [[nodiscard]] constexpr auto getAgeInYears() const noexcept { return _daysOld / 365; }
+        void applyAge(realmz::AgeGroup newAgeGroup, int16_t factor) noexcept;
     private:
         uint16_t _id = 0;
         int16_t _verifyField0 = 0;

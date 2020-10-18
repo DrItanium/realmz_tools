@@ -31,6 +31,7 @@ namespace realmz {
         Leprechaun,
         Demon,
         Cathoon,
+        Done,
     };
     /**
      * @brief Realmz calls the attack versus other races "race hatred"...odd
@@ -155,6 +156,9 @@ namespace realmz {
         AgeModifiers _ageModifiers[5];
         int64_t _allowedBits = 0;
     };
+    void setRaceDataLocation(const std::filesystem::path& path) noexcept;
+    bool raceDataLocationSet() noexcept;
+    const RaceData& loadRaceData(realmz::RaceKind kind);
 }
 
 #endif //REALMZ_TOOLS_RACEDATA_H

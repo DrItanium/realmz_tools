@@ -4,6 +4,7 @@
 
 #include "Character.h"
 #include "Utilities.h"
+#include "RaceData.h"
 #include <sstream>
 
 namespace realmz {
@@ -608,6 +609,10 @@ namespace realmz {
         // drop the last item in the inventory
     }
 
+    void
+    Character::applyAge(realmz::AgeGroup newAgeGroup, int16_t factor) noexcept {
+        realmz::
+    }
 }
 
 std::ostream&

@@ -127,12 +127,12 @@ namespace realmz {
         }
     }
     namespace {
-        bool loadedCasteData = false;
+        bool loadedRaceData = false;
         std::filesystem::path casteDataLocation;
         std::map<CasteKind, Caste> registeredCasteData;
         void
         loadCasteData() {
-            if (loadedCasteData) {
+            if (loadedRaceData) {
                 return;
             }
             auto readOne = [](std::istream& input) -> std::optional<Caste> {
@@ -165,13 +165,13 @@ namespace realmz {
                 }
             }
             casteDataFile.close();
-            loadedCasteData = true;
+            loadedRaceData = true;
         }
     }
 
     void setCasteDataLocation(const std::filesystem::path& path) noexcept {
         casteDataLocation = path;
-        loadedCasteData = false;
+        loadedRaceData = false;
     }
     bool casteDataLocationSet() noexcept {
         return !casteDataLocation.empty();

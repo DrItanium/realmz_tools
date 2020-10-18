@@ -8,7 +8,6 @@
 #include <type_traits>
 
 namespace realmz {
-
     /**
      * @brief Is the given value in between a minimum and maximum
      * @tparam T The type to use for comparison

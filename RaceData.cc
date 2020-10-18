@@ -1,8 +1,12 @@
 //
 // Created by jwscoggins on 9/20/20.
 //
-
+#include <filesystem>
+#include <map>
+#include <optional>
+#include <fstream>
 #include "RaceData.h"
+#include "RaceDataBuffer.h"
 
 namespace realmz {
     Hatred::Hatred(const RaceDataBuffer &buffer) :
@@ -133,5 +137,69 @@ namespace realmz {
         int32_t upperHalf = (static_cast<int32_t>(higher) & 0xFFFF) | ((static_cast<int32_t>(highest) << 16) & 0xFFFF0000);
         _allowedBits = ((static_cast<int64_t>(upperHalf) << 32) & 0xFFFF'FFFF'0000'0000) | ((static_cast<int64_t>(lowerHalf)) & 0x0000'0000'FFFF'FFFF);
 
+    }
+    namespace {
+        bool loadedRaceData = false;
+        std::filesystem::path raceDataLocation;
+        std::map<RaceKind, RaceData> registeredRaceData;
+        void
+        loadRaceData() {
+            if (loadedRaceData) {
+                return;
+            }
+            auto readOne = [](std::istream& input) -> std::optional<RaceData> {
+                RaceDataBuffer buf;
+                input.read((char *) buf.data(), RaceDataBufferNumBytes);
+                if (input.gcount() != RaceDataBufferNumBytes) {
+                    return std::nullopt;
+                }
+                auto swap = [](int16_t value) noexcept {
+                    auto lower = value & 0xFF;
+                    auto upper = (value >> 8) & 0xFF;
+                    return ((lower << 8) | upper);
+                };
+                // swap all of the shorts to be correctly described
+                for (int i = 0; i < (576 / 2); ++i) {
+                    buf[i] = swap(buf[i]);
+                }
+                return RaceData(buf);
+            };
+            std::ifstream raceDataFile(raceDataLocation);
+            if (!raceDataFile.is_open()) {
+                throw "Couldn't open caste data file";
+            }
+            for (int curr = static_cast<int>(RaceKind::Human);  curr != static_cast<int>(RaceKind::Done); ++curr) {
+                auto theCaste = static_cast<RaceKind>(curr);
+                if (auto result = readOne(raceDataFile); result) {
+                    registeredRaceData.emplace(theCaste, *result);
+                } else {
+                    throw "Couldn't load all entries";
+                }
+            }
+            raceDataFile.close();
+            loadedRaceData = true;
+        }
+    }
+    void
+    setRaceDataLocation(const std::filesystem::path& path) noexcept {
+        raceDataLocation = path;
+        loadedRaceData = false;
+    }
+    bool
+    raceDataLocationSet() noexcept {
+        return loadedRaceData;
+    }
+    const RaceData&
+    loadRaceData(RaceKind kind) {
+        loadRaceData();
+        if (registeredRaceData.empty()) {
+            throw "Race data not loaded";
+        } else {
+            if (auto pos = registeredRaceData.find(kind); pos != registeredRaceData.end()) {
+                return pos->second;
+            } else {
+                throw "Unknown race kind!";
+            }
+        }
     }
 }
