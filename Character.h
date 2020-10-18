@@ -8,18 +8,10 @@
 #include <array>
 #include <string>
 #include <iostream>
+#include "Caste.h"
+#include "RaceData.h"
 namespace realmz {
     using CharacterDataBuffer = std::array<int16_t, 872/2>;
-    enum class AgeGroup : uint16_t {
-        Youth = 1,
-        Young,
-        Prime,
-        Adult,
-        Senior,
-    };
-    constexpr auto toArrayIndex(AgeGroup ac) noexcept {
-        return static_cast<uint16_t>(ac) - 1;
-    }
     class SpecialInfo_CharVersion {
     public:
         constexpr SpecialInfo_CharVersion(int8_t sneakAttack, int8_t causeMajorWound, int8_t detectSecret, int8_t acrobaticAct, int8_t detectTrap,
@@ -414,8 +406,8 @@ namespace realmz {
         void setMovementBonus(int16_t movementBonus) noexcept { _movementBonus = movementBonus; }
         void setArmorRating(int16_t armorRating) noexcept { _armorRating = armorRating; }
         void setDamagePlus(int16_t damagePlus) noexcept { _damagePlus = damagePlus; }
-        void setRace(int16_t race) noexcept { _race = race; }
-        void setCaste(int16_t caste) noexcept { _caste = caste; }
+        void setRace(RaceKind race) noexcept { _race = race; }
+        void setCaste(CasteKind caste) noexcept { _caste = caste; }
         void setSupportedSpellClass(SupportedSpellClass supportedSpellClass) noexcept { _supportedSpellClass = supportedSpellClass; }
         void setGender(Gender gender) noexcept { _gender = gender; }
         void setSkillLevel(int16_t skillLevel) noexcept { _skillLevel = skillLevel; }
@@ -452,7 +444,7 @@ namespace realmz {
         void setDamageReductionVsMental(int16_t damageReductionVsMental) noexcept { _damageReductionVsMental = damageReductionVsMental; }
         void setDamageReductionVsMagic(int16_t damageReductionVsMagic) noexcept { _damageReductionVsMagic = damageReductionVsMagic; }
         void setDamageReductionVsSpecial(int16_t damageReductionVsSpecial) noexcept { _damageReductionVsSpecial = damageReductionVsSpecial; }
-        void setAgeGroup(int16_t ageClass) noexcept { _ageClass = ageClass; }
+        void setAgeGroup(AgeGroup ageClass) noexcept { _ageClass = ageClass; }
         void setVerifyField1(int16_t verifyField1) noexcept { _verifyField1 = verifyField1; }
         void setItem(size_t index, const InventoryItem& item) noexcept;
         void setAnArrayValue(size_t index, int value);
@@ -497,8 +489,8 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getMovementBonus() const noexcept { return _movementBonus; }
         [[nodiscard]] constexpr int16_t getArmorRating() const noexcept { return _armorRating; }
         [[nodiscard]] constexpr int16_t getDamagePlus() const noexcept { return _damagePlus; }
-        [[nodiscard]] constexpr int16_t getRace() const noexcept { return _race; }
-        [[nodiscard]] constexpr int16_t getCaste() const noexcept { return _caste; }
+        [[nodiscard]] constexpr auto getRace() const noexcept { return _race; }
+        [[nodiscard]] constexpr auto getCaste() const noexcept { return _caste; }
         [[nodiscard]] constexpr SupportedSpellClass getSupportedSpellClass() const noexcept { return _supportedSpellClass; }
         [[nodiscard]] constexpr Gender getGender() const noexcept { return _gender; }
         [[nodiscard]] constexpr int16_t getSkillLevel() const noexcept { return _skillLevel; }
@@ -531,7 +523,7 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getDamageReductionVsMental() const noexcept { return _damageReductionVsMental; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsMagic() const noexcept { return _damageReductionVsMagic; }
         [[nodiscard]] constexpr int16_t getDamageReductionVsSpecial() const noexcept { return _damageReductionVsSpecial; }
-        [[nodiscard]] constexpr int16_t getAgeGroup() const noexcept { return _ageClass; }
+        [[nodiscard]] constexpr auto getAgeGroup() const noexcept { return _ageClass; }
         [[nodiscard]] constexpr int16_t getVerifyField1() const noexcept { return _verifyField1; }
         [[nodiscard]] constexpr int32_t getDaysOld() const noexcept { return _daysOld; }
         [[nodiscard]] constexpr int32_t getVictoryPoints() const noexcept { return _victoryPoints; }
@@ -608,8 +600,8 @@ namespace realmz {
         int16_t _movementBonus = 0;
         int16_t _armorRating = 0;
         int16_t _damagePlus = 0;
-        int16_t _race = 0;
-        int16_t _caste = 0;
+        RaceKind _race = RaceKind::Done;
+        CasteKind _caste = CasteKind::Done;
         SupportedSpellClass _supportedSpellClass = SupportedSpellClass::None;
         Gender _gender = Gender::Undefined;
         int16_t _skillLevel = 0;
@@ -649,7 +641,7 @@ namespace realmz {
         int16_t _damageReductionVsMental = 0;
         int16_t _damageReductionVsMagic = 0;
         int16_t _damageReductionVsSpecial = 0;
-        int16_t _ageClass = 0;
+        AgeGroup _ageClass = AgeGroup::None;
         int16_t _verifyField1 = 0;
         std::array<InventoryItem, 30> _items;
         std::array<int16_t, 10> _spellsInScrollCase = { 0 }; // it really should be 5 elements of 4 bytes each

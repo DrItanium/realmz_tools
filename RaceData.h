@@ -160,5 +160,6 @@ namespace realmz {
     bool raceDataLocationSet() noexcept;
     const RaceData& loadRaceData(realmz::RaceKind kind);
 }
+std::ostream& operator<<(std::ostream &os, realmz::RaceKind r) noexcept;
 
 #endif //REALMZ_TOOLS_RACEDATA_H

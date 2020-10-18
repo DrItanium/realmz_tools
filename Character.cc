@@ -51,8 +51,8 @@ namespace realmz {
             _movementBonus(buf[21]),
             _armorRating(buf[22]),
             _damagePlus(buf[23]),
-            _race(buf[24]),
-            _caste(buf[25]),
+            _race(static_cast<RaceKind>(buf[24])),
+            _caste(static_cast<CasteKind>(buf[25])),
             _supportedSpellClass(static_cast<SupportedSpellClass>(buf[26])),
             _gender(static_cast<Gender>(buf[27])),
             _skillLevel(buf[28]),
@@ -178,7 +178,7 @@ namespace realmz {
             _damageReductionVsMental(buf[141]),
             _damageReductionVsMagic(buf[142]),
             _damageReductionVsSpecial(buf[143]),
-            _ageClass(buf[144]),
+            _ageClass(static_cast<AgeGroup>(buf[144])),
             _verifyField1(buf[145]),
             _items( {
 #define X(offset) InventoryItem(buf[(3*offset) + 146], upperHalf(buf[(3*offset) + 147]), buf[(3*offset) + 147], buf[(3*offset) + 148] )
@@ -611,7 +611,7 @@ namespace realmz {
 
     void
     Character::applyAge(realmz::AgeGroup newAgeGroup, int16_t factor) noexcept {
-        realmz::
+        auto& targetRace = loadRaceData(_race);
     }
 }
 

@@ -203,3 +203,34 @@ namespace realmz {
         }
     }
 }
+
+std::ostream &
+operator<<(std::ostream &os, realmz::RaceKind r) noexcept {
+    switch (r) {
+#define Y(k, s) case realmz::RaceKind:: k : os << s
+#define X(k) Y(k, #k)
+        X(Human);
+        Y(ShadowElf, "Shadow Elf");
+        X(Elf);
+        X(Orc);
+        X(Furfoot);
+        X(Gnome);
+        X(Dwarf);
+        Y(HalfElf, "Half Elf");
+        Y(HalfOrc, "Half Orc");
+        X(Goblin);
+        X(Hobgoblin);
+        X(Kobold);
+        X(Vampire);
+        Y(LizardMan, "Lizard Man");
+        X(Brownie);
+        X(Pixie);
+        X(Leprechaun);
+        X(Demon);
+        X(Cathoon);
+#undef X
+#undef Y
+        default:
+            os << "UNKNOWN!";
+    }
+}
