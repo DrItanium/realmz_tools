@@ -574,7 +574,7 @@ namespace realmz {
         void dropLast() noexcept;
     public:
         [[nodiscard]] constexpr auto getAgeInYears() const noexcept { return _daysOld / 365; }
-        void applyAge(realmz::AgeGroup newAgeGroup, int16_t factor) noexcept;
+        void applyAge(realmz::AgeGroup newAgeGroup, int16_t factor);
     private:
         uint16_t _id = 0;
         int16_t _verifyField0 = 0;

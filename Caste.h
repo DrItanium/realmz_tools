@@ -117,6 +117,18 @@ namespace realmz {
         Adult,
         Senior,
     };
+    constexpr bool legalValue(AgeGroup g) noexcept {
+        switch(g) {
+            case AgeGroup::Young:
+            case AgeGroup::Youth:
+            case AgeGroup::Prime:
+            case AgeGroup::Adult:
+            case AgeGroup::Senior:
+                return true;
+            default:
+                return false;
+        }
+    }
     enum class BonusAttacksStyle {
         None = 0,
         OneHalf = 1,

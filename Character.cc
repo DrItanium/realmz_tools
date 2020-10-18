@@ -610,8 +610,29 @@ namespace realmz {
     }
 
     void
-    Character::applyAge(realmz::AgeGroup newAgeGroup, int16_t factor) noexcept {
+    Character::applyAge(realmz::AgeGroup newAgeGroup, int16_t factor) {
+        if (!legalValue(newAgeGroup)) {
+            throw "Illegal age group presented!";
+        }
         auto& targetRace = loadRaceData(_race);
+        _ageClass = newAgeGroup;
+        auto index = static_cast<size_t>(newAgeGroup) - 1;
+        auto& targetAgeModifier = targetRace.getAgeModifier(index);
+        _brawn += targetAgeModifier.getBrawn() * factor;
+        _knowledge += targetAgeModifier.getKnowledge() * factor;
+        _judgement += targetAgeModifier.getJudgment() * factor;
+        _agility += targetAgeModifier.getAgility() * factor;
+        _vitality += targetAgeModifier.getVitality() * factor;
+        _luck +=  targetAgeModifier.getLuck() * factor;
+        _magicResistance += targetAgeModifier.getMagicResist() * factor;
+        _movementPoints += targetAgeModifier.getMovement() * factor;
+        _damageReductionVsCharm += targetAgeModifier.getCharm() * factor;
+        _damageReductionVsMagic += targetAgeModifier.getMagical() * factor;
+        _damageReductionVsElectric += targetAgeModifier.getElectrical() * factor;
+        _damageReductionVsCold += targetAgeModifier.getCold() * factor;
+        _damageReductionVsHeat += targetAgeModifier.getHeat() * factor;
+        _damageReductionVsChemical += targetAgeModifier.getChemical() * factor;
+        _damageReductionVsMental += targetAgeModifier.getMental() * factor;
     }
 }
 
