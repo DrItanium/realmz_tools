@@ -10,6 +10,7 @@
 #include <iostream>
 #include "Caste.h"
 #include "RaceData.h"
+#include "BinaryManipulation.h"
 namespace realmz {
     using CharacterDataBuffer = std::array<int16_t, 872/2>;
     class SpecialInfo_CharVersion {

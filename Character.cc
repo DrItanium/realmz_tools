@@ -20,9 +20,6 @@ namespace realmz {
         auto str = ss.str();
         return str;
     }
-    constexpr int8_t upperHalf(int16_t value) noexcept {
-        return (value >> 8) & 0xFF;
-    }
     constexpr int32_t makeSwapped(int16_t upper, int16_t lower) noexcept {
         return make(lower, upper, ConstructInt32{});
     }
