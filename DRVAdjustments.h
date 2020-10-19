@@ -12,6 +12,20 @@
 namespace realmz {
     class DRVAdjustments {
     public:
+        explicit constexpr DRVAdjustments(int charm,
+                                          int heat,
+                                          int cold,
+                                          int electric,
+                                          int chemical,
+                                          int mental,
+                                          int magical) noexcept :
+                                          _charm(charm),
+                                          _heat(heat),
+                                          _cold(cold),
+                                          _electric(electric),
+                                          _chemical(chemical),
+                                          _mental(mental),
+                                          _magical(magical) { }
         explicit DRVAdjustments(const realmz::CasteDataBuffer &buf);
         explicit DRVAdjustments(const realmz::RaceDataBuffer& buf);
         void print(std::ostream &os) const noexcept;
