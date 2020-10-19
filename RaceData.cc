@@ -11,21 +11,14 @@
 
 namespace realmz {
     Hatred::Hatred(const RaceDataBuffer &buffer) : Hatred(buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7]) { }
-
     RaceData::RaceData(const RaceDataBuffer &buf) :
     _hatred(buf),
     _specialAbilities(buf),
     _drvs(buf),
     _attributes(buf),
     _unused0({
-        buf[48],
-        buf[49],
-        buf[50],
-        buf[51],
-        buf[52],
-        buf[53],
-        buf[54],
-        buf[55],
+        buf[48], buf[49], buf[50], buf[51],
+        buf[52], buf[53], buf[54], buf[55],
     }),
     _conditions({
         buf[56], buf[57], buf[58], buf[59], buf[60],
@@ -46,22 +39,12 @@ namespace realmz {
     _attacksPerRound(buf[102]),
     _maxAttacksPerRound(buf[103]),
     _flags({
-#define X(ind) static_cast<uint8_t>(buf[ind] & 0xFF), static_cast<uint8_t>((buf[ind] >> 8) & 0xFF)
-                   X(104),
-                   X(105),
-                   X(106),
-                   X(107),
-                   X(108),
-                   X(109),
-                   X(110),
-                   X(111),
-                   X(112),
-                   X(113),
-                   X(114),
-                   X(115),
-                   X(116),
-                   X(117),
-                   X(118),
+#define X(ind) lowerHalf(ind), upperHalf(ind)
+                   X(104), X(105), X(106),
+                   X(107), X(108), X(109),
+                   X(110), X(111), X(112),
+                   X(113), X(114), X(115),
+                   X(116), X(117), X(118),
 #undef X
     }),
     _ageRanges({
@@ -73,93 +56,70 @@ namespace realmz {
         X(127),
 #undef X
     }),
-    _canRegenerate(buf[166] >> 8),
+    _ageModifiers({
+                          // these are chars which are not buffered
+                          // manually unpack to be on the safe side
+                          // This code is gross being manually extracted but I want it working correctly rather than compact
+                          AgeModifiers(buf[129], buf[129]>>8,
+                                       buf[130], buf[130]>>8,
+                                       buf[131], buf[131]>>8,
+                                       buf[132], buf[132]>>8,
+                                       buf[133], buf[133]>>8,
+                                       buf[134], buf[134]>>8,
+                                       buf[135], buf[135]>>8,
+                                       buf[136]),
+                          AgeModifiers(buf[136]>>8,
+                                       buf[137], buf[137]>>8,
+                                       buf[138], buf[138]>>8,
+                                       buf[139], buf[139]>>8,
+                                       buf[140], buf[140]>>8,
+                                       buf[141], buf[141]>>8,
+                                       buf[142], buf[142]>>8,
+                                       buf[143], buf[143]>>8),
+                          AgeModifiers(buf[144], buf[144]>>8,
+                                       buf[145], buf[145]>>8,
+                                       buf[146], buf[146]>>8,
+                                       buf[147], buf[147]>>8,
+                                       buf[148], buf[148]>>8,
+                                       buf[149], buf[149]>>8,
+                                       buf[150], buf[150]>>8,
+                                       buf[151]),
+                          AgeModifiers(buf[151]>>8,
+                                       buf[152], buf[152]>>8,
+                                       buf[153], buf[153]>>8,
+                                       buf[154], buf[154]>>8,
+                                       buf[155], buf[155]>>8,
+                                       buf[156], buf[156]>>8,
+                                       buf[157], buf[157]>>8,
+                                       buf[158], buf[158]>>8),
+                          AgeModifiers(buf[159], buf[159]>>8,
+                                       buf[160], buf[160]>>8,
+                                       buf[161], buf[161]>>8,
+                                       buf[162], buf[162]>>8,
+                                       buf[163], buf[163]>>8,
+                                       buf[164], buf[164]>>8,
+                                       buf[165], buf[165]>>8,
+                                       buf[166]),
+                  }),
+    _canRegenerate(upperHalf(buf[166])),
     _portraitId(buf[167]),
             // allowedBits, need to figure out if I got the bit ordering correct or not :)
     _allowedBits(make(buf[168], buf[169], buf[170], buf[171], ConstructInt64{})),
-    _ineligibilityBits(buf[172])
+    _ineligibilityBits({
+        buf[172],
+        buf[173], buf[174], buf[175],
+        buf[176], buf[177], buf[178],
+        buf[179], buf[180], buf[181],
+        buf[182], buf[183], buf[184],
+        buf[185], buf[186], buf[187],
+        buf[188], buf[189], buf[190],
+        buf[191], buf[192], buf[193],
+        buf[194], buf[195], buf[196],
+        buf[197], buf[198], buf[199],
+        buf[200], buf[201], buf[202],
+        buf[203],
+    })
     {
-        // these are chars which are not buffered
-        // manually unpack to be on the safe side
-        // This code is gross being manually extracted but I want it working correctly rather than compact
-        auto pos0 = buf[129];
-        auto pos1 = buf[130];
-        auto pos2 = buf[131];
-        auto pos3 = buf[132];
-        auto pos4 = buf[133];
-        auto pos5 = buf[134];
-        auto pos6 = buf[135];
-        auto pos7 = buf[136]; // this spans two parts
-        auto pos8 = buf[137];
-        auto pos9 = buf[138];
-        auto pos10 = buf[139];
-        auto pos11 = buf[140];
-        auto pos12 = buf[141];
-        auto pos13 = buf[142];
-        auto pos14 = buf[143]; // does not span
-        auto pos15 = buf[144];
-        auto pos16 = buf[145];
-        auto pos17 = buf[146];
-        auto pos18 = buf[147];
-        auto pos19 = buf[148];
-        auto pos20 = buf[149];
-        auto pos21 = buf[150];
-        auto pos22 = buf[151]; // does span
-        auto pos23 = buf[152];
-        auto pos24 = buf[153];
-        auto pos25 = buf[154];
-        auto pos26 = buf[155];
-        auto pos27 = buf[156];
-        auto pos28 = buf[157];
-        auto pos29 = buf[158]; // does not span
-        auto pos30 = buf[159];
-        auto pos31 = buf[160];
-        auto pos32 = buf[161];
-        auto pos33 = buf[162];
-        auto pos34 = buf[163];
-        auto pos35 = buf[164];
-        auto pos36 = buf[165];
-        auto pos37 = buf[166]; // spans
-        _ageModifiers[0] = AgeModifiers(pos0, pos0>>8,
-                                        pos1, pos1>>8,
-                                        pos2, pos2>>8,
-                                        pos3, pos3>>8,
-                                        pos4, pos4>>8,
-                                        pos5, pos5>>8,
-                                        pos6, pos6>>8,
-                                        pos7);
-        _ageModifiers[1] = AgeModifiers(pos7>>8,
-                                        pos8, pos8 >> 8,
-                                        pos9, pos9>>8,
-                                        pos10, pos10>>8,
-                                        pos11, pos11>>8,
-                                        pos12, pos12>>8,
-                                        pos13, pos13>>8,
-                                        pos14, pos14>>8 );
-        _ageModifiers[2] = AgeModifiers(pos15, pos15>>8,
-                                        pos16, pos16>>8,
-                                        pos17, pos17>>8,
-                                        pos18, pos18 >>8,
-                                        pos19, pos19>>8,
-                                        pos20, pos20>>8,
-                                        pos21, pos21>>8,
-                                        pos22);
-        _ageModifiers[3] = AgeModifiers(pos22 >>8,
-                                        pos23, pos23>>8,
-                                        pos24, pos24>>8,
-                                        pos25, pos25>>8,
-                                        pos26, pos26>>8,
-                                        pos27, pos27>>8,
-                                        pos28, pos28>>8,
-                                        pos29, pos29>>8);
-        _ageModifiers[4] = AgeModifiers(pos30, pos30>>8,
-                                        pos31, pos31>>8,
-                                        pos32, pos32>>8,
-                                        pos33, pos33>>8,
-                                        pos34, pos34>>8,
-                                        pos35, pos35>>8,
-                                        pos36, pos36>>8,
-                                        pos37 );
 
     }
     namespace {
@@ -202,6 +162,14 @@ namespace realmz {
             }
             raceDataFile.close();
             loadedRaceData = true;
+        }
+    }
+    int16_t
+    RaceData::getIneligibilityBits(size_t index) const {
+        if (index >= 32) {
+            throw "Out of range";
+        } else {
+            return _ineligibilityBits[index];
         }
     }
     void

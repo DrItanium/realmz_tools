@@ -143,7 +143,7 @@ namespace realmz {
         [[nodiscard]] constexpr auto getMaxAttacksPerRound() const noexcept { return _maxAttacksPerRound; }
         [[nodiscard]] constexpr auto canRegenerate() const noexcept { return _canRegenerate; }
         [[nodiscard]] constexpr auto getPortraitId() const noexcept { return _portraitId; }
-        [[nodiscard]] constexpr auto getIneligibilityBits() const noexcept { return _ineligibilityBits; }
+        int16_t getIneligibilityBits(size_t index) const;
         [[nodiscard]] constexpr auto getAllowedBits() const noexcept { return _allowedBits; }
         [[nodiscard]] constexpr auto getFlags(size_t index) const noexcept { return _flags[index >= 30 ? 29 : index]; }
         [[nodiscard]] const AgeRange& getAgeRange(size_t index) const noexcept {return _ageRanges[index < 5 ? index : 4]; }
@@ -169,8 +169,7 @@ namespace realmz {
         bool _canRegenerate = false;
         int _portraitId = 0;
         int64_t _allowedBits = 0;
-        int _ineligibilityBits = 0;
-        std::array<int,31> _unused3 = { 0};
+        std::array<int16_t, 32> _ineligibilityBits = { 0};
     };
     void setRaceDataLocation(const std::filesystem::path& path) noexcept;
     bool raceDataLocationSet() noexcept;
