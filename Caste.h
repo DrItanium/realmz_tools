@@ -50,9 +50,9 @@ namespace realmz {
     public:
         constexpr SpellClassInfo(bool enabled, int startingLevel, int maxLevelSpells) : _enabled(enabled), _startingLevel(startingLevel),
                                                                                         _maxLevelSpells(maxLevelSpells) {}
-        constexpr auto isEnabled() const noexcept { return _enabled; }
-        constexpr auto getStartingLevel() const noexcept { return _startingLevel; }
-        constexpr auto getMaxLevelSpells() const noexcept { return _maxLevelSpells; }
+        [[nodiscard]] constexpr auto isEnabled() const noexcept { return _enabled; }
+        [[nodiscard]] constexpr auto getStartingLevel() const noexcept { return _startingLevel; }
+        [[nodiscard]] constexpr auto getMaxLevelSpells() const noexcept { return _maxLevelSpells; }
         void print(std::ostream &out) const noexcept;
     private:
         bool _enabled = false;
@@ -63,19 +63,19 @@ namespace realmz {
 
     struct SpellCastingAbilities {
     public:
-        SpellCastingAbilities(const CasteDataBuffer &buf);
-        const SpellClassInfo &getSorcererInfo() const noexcept { return _sorcerer; }
-        const SpellClassInfo &getPriestInfo() const noexcept { return _priest; }
-        const SpellClassInfo &getEnchanterInfo() const noexcept { return _enchanter; }
-        const SpellClassInfo &getUnusedInfo() const noexcept { return _unused; }
-        constexpr bool canCastSpells() const noexcept {
+        explicit SpellCastingAbilities(const CasteDataBuffer &buf);
+        [[nodiscard]] const SpellClassInfo &getSorcererInfo() const noexcept { return _sorcerer; }
+        [[nodiscard]] const SpellClassInfo &getPriestInfo() const noexcept { return _priest; }
+        [[nodiscard]] const SpellClassInfo &getEnchanterInfo() const noexcept { return _enchanter; }
+        [[nodiscard]] const SpellClassInfo &getUnusedInfo() const noexcept { return _unused; }
+        [[nodiscard]] constexpr bool canCastSpells() const noexcept {
             return _sorcerer.isEnabled() || _priest.isEnabled() || _enchanter.isEnabled() || _unused.isEnabled();
         }
-        constexpr bool supportsSorcererSpellClass() const noexcept { return _sorcerer.isEnabled(); }
-        constexpr bool supportsPriestSpellClass() const noexcept { return _priest.isEnabled(); }
-        constexpr bool supportsEnchanterSpellClass() const noexcept { return _enchanter.isEnabled(); }
-        constexpr bool supportsUnusedSpellClass() const noexcept { return _unused.isEnabled(); }
-        constexpr auto getStartingLevel() const noexcept {
+        [[nodiscard]] constexpr bool supportsSorcererSpellClass() const noexcept { return _sorcerer.isEnabled(); }
+        [[nodiscard]] constexpr bool supportsPriestSpellClass() const noexcept { return _priest.isEnabled(); }
+        [[nodiscard]] constexpr bool supportsEnchanterSpellClass() const noexcept { return _enchanter.isEnabled(); }
+        [[nodiscard]] constexpr bool supportsUnusedSpellClass() const noexcept { return _unused.isEnabled(); }
+        [[nodiscard]] constexpr auto getStartingLevel() const noexcept {
             if (_sorcerer.isEnabled()) {
                 return _sorcerer.getStartingLevel();
             } else if (_priest.isEnabled()) {
@@ -88,7 +88,7 @@ namespace realmz {
                 return -1;
             }
         }
-        constexpr auto getMaxLevelSpells() const noexcept {
+        [[nodiscard]] constexpr auto getMaxLevelSpells() const noexcept {
             if (_sorcerer.isEnabled()) {
                 return _sorcerer.getMaxLevelSpells();
             } else if (_priest.isEnabled()) {
@@ -138,10 +138,12 @@ namespace realmz {
     };
     class VictoryPoints {
     public:
-        VictoryPoints(const CasteDataBuffer& buf);
+        explicit VictoryPoints(const CasteDataBuffer& buf);
+        [[nodiscard]] int32_t getVictoryPointsAtLevel(int level) const noexcept;
         void print(std::ostream& os) const noexcept;
+        [[nodiscard]] auto size() const noexcept { return _contents.size(); }
     private:
-        std::vector<std::int32_t> _contents;
+        std::vector<int32_t> _contents;
     };
     class Caste {
     public:

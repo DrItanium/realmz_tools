@@ -191,6 +191,14 @@ namespace realmz {
         }
 
     }
+    int32_t
+    VictoryPoints::getVictoryPointsAtLevel(int level) const noexcept {
+        if (_contents.size() < level) {
+            return -1;
+        } else {
+            return _contents[level];
+        }
+    }
 } // end namespace realmz
 std::ostream &operator<<(std::ostream &os, const realmz::Caste &caste) noexcept {
     caste.print(os);
