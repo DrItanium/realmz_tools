@@ -38,8 +38,23 @@ namespace realmz {
      */
     class Hatred {
     public:
-        Hatred() = default;
         explicit Hatred(const RaceDataBuffer& buffer);
+        explicit constexpr Hatred(int vsMagic = 0,
+                                  int vsUndead = 0,
+                                  int vsDemonic = 0,
+                                  int vsReptilian = 0,
+                                  int vsVeryEvil = 0,
+                                  int vsIntelligent = 0,
+                                  int vsGiantSized = 0,
+                                  int vsNonHumanoid = 0) noexcept :
+        _hitMagicUsing(vsMagic),
+        _hitUndead(vsUndead),
+        _hitDemonic(vsDemonic),
+        _hitReptilian(vsReptilian),
+        _hitVeryEvil(vsVeryEvil),
+        _hitIntelligent(vsIntelligent),
+        _hitGiantSize(vsGiantSized),
+        _hitNonHumanoid(vsNonHumanoid) { }
         [[nodiscard]] constexpr auto getHitVsMagicUsing() const noexcept { return _hitMagicUsing; }
         [[nodiscard]] constexpr auto getHitVsUndead() const noexcept { return _hitUndead; }
         [[nodiscard]] constexpr auto getHitVsDemonic() const noexcept { return _hitDemonic; }
@@ -74,21 +89,21 @@ namespace realmz {
         : _brawn(brawn), _knowledge(knowledge), _judgment(judgment), _agility(agility), _vitality(vitality), _luck(luck),
         _magicResist(magicResist), _movement(movement), _charm(charm), _heat(heat), _cold(cold), _electrical(electrical),
         _chemical(chemical), _mental(mental), _magical(magical) {}
-        [[nodiscard]] constexpr char getBrawn() const noexcept { return _brawn; }
-        [[nodiscard]] constexpr char getKnowledge() const noexcept { return _knowledge; }
-        [[nodiscard]] constexpr char getJudgment() const noexcept { return _judgment; }
-        [[nodiscard]] constexpr char getAgility() const noexcept { return _agility; }
-        [[nodiscard]] constexpr char getVitality() const noexcept { return _vitality; }
-        [[nodiscard]] constexpr char getLuck() const noexcept { return _luck; }
-        [[nodiscard]] constexpr char getMagicResist() const noexcept { return _magicResist; }
-        [[nodiscard]] constexpr char getMovement() const noexcept { return _movement; }
-        [[nodiscard]] constexpr char getCharm() const noexcept { return _charm; }
-        [[nodiscard]] constexpr char getHeat() const noexcept { return _heat; }
-        [[nodiscard]] constexpr char getCold() const noexcept { return _cold; }
-        [[nodiscard]] constexpr char getElectrical() const noexcept { return _electrical; }
-        [[nodiscard]] constexpr char getChemical() const noexcept { return _chemical; }
-        [[nodiscard]] constexpr char getMental() const noexcept { return _mental; }
-        [[nodiscard]] constexpr char getMagical() const noexcept { return _magical; }
+        [[nodiscard]] constexpr auto getBrawn() const noexcept { return _brawn; }
+        [[nodiscard]] constexpr auto getKnowledge() const noexcept { return _knowledge; }
+        [[nodiscard]] constexpr auto getJudgment() const noexcept { return _judgment; }
+        [[nodiscard]] constexpr auto getAgility() const noexcept { return _agility; }
+        [[nodiscard]] constexpr auto getVitality() const noexcept { return _vitality; }
+        [[nodiscard]] constexpr auto getLuck() const noexcept { return _luck; }
+        [[nodiscard]] constexpr auto getMagicResist() const noexcept { return _magicResist; }
+        [[nodiscard]] constexpr auto getMovement() const noexcept { return _movement; }
+        [[nodiscard]] constexpr auto getCharm() const noexcept { return _charm; }
+        [[nodiscard]] constexpr auto getHeat() const noexcept { return _heat; }
+        [[nodiscard]] constexpr auto getCold() const noexcept { return _cold; }
+        [[nodiscard]] constexpr auto getElectrical() const noexcept { return _electrical; }
+        [[nodiscard]] constexpr auto getChemical() const noexcept { return _chemical; }
+        [[nodiscard]] constexpr auto getMental() const noexcept { return _mental; }
+        [[nodiscard]] constexpr auto getMagical() const noexcept { return _magical; }
     private:
         char _brawn = 0;
         char _knowledge = 0;

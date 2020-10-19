@@ -9,10 +9,7 @@
 #include "RaceDataBuffer.h"
 
 namespace realmz {
-    Hatred::Hatred(const RaceDataBuffer &buffer) :
-    _hitMagicUsing(buffer[0]), _hitUndead(buffer[1]), _hitDemonic(buffer[2]),
-    _hitReptilian(buffer[3]), _hitVeryEvil(buffer[4]), _hitIntelligent(buffer[5]),
-    _hitGiantSize(buffer[6]), _hitNonHumanoid(buffer[7]) { }
+    Hatred::Hatred(const RaceDataBuffer &buffer) : Hatred(buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7]) { }
 
     RaceData::RaceData(const RaceDataBuffer &buf) :
     _hatred(buf),
@@ -233,4 +230,5 @@ operator<<(std::ostream &os, realmz::RaceKind r) noexcept {
         default:
             os << "UNKNOWN!";
     }
+    return os;
 }
