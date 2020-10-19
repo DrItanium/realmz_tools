@@ -29,16 +29,13 @@ namespace realmz {
         explicit DRVAdjustments(const realmz::CasteDataBuffer &buf);
         explicit DRVAdjustments(const realmz::RaceDataBuffer& buf);
         void print(std::ostream &os) const noexcept;
-#define X(capital, lowercase) \
-        [[nodiscard]] constexpr auto get ## capital () const noexcept { return _ ## lowercase ; }
-        X(Charm, charm);
-        X(Heat, heat);
-        X(Cold, cold);
-        X(Electric, electric);
-        X(Chemical, chemical);
-        X(Mental, mental);
-        X(Magical, magical);
-#undef X
+        [[nodiscard]] constexpr auto getCharm() const noexcept { return _charm; }
+        [[nodiscard]] constexpr auto getHeat() const noexcept { return _heat; }
+        [[nodiscard]] constexpr auto getCold() const noexcept { return _cold; }
+        [[nodiscard]] constexpr auto getElectric() const noexcept { return _electric; }
+        [[nodiscard]] constexpr auto getChemical() const noexcept { return _chemical; }
+        [[nodiscard]] constexpr auto getMental() const noexcept { return _mental; }
+        [[nodiscard]] constexpr auto getMagical() const noexcept { return _magical; }
     private:
         int _charm = 0;
         int _heat = 0;
