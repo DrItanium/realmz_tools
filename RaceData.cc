@@ -7,6 +7,7 @@
 #include <fstream>
 #include "RaceData.h"
 #include "RaceDataBuffer.h"
+#include "BinaryManipulation.h"
 
 namespace realmz {
     Hatred::Hatred(const RaceDataBuffer &buffer) : Hatred(buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7]) { }
@@ -16,6 +17,26 @@ namespace realmz {
     _specialAbilities(buf),
     _drvs(buf),
     _attributes(buf),
+    _unused0({
+        buf[48],
+        buf[49],
+        buf[50],
+        buf[51],
+        buf[52],
+        buf[53],
+        buf[54],
+        buf[55],
+    }),
+    _conditions({
+        buf[56], buf[57], buf[58], buf[59], buf[60],
+        buf[61], buf[62], buf[63], buf[64], buf[65],
+        buf[66], buf[67], buf[68], buf[69], buf[70],
+        buf[71], buf[72], buf[73], buf[74], buf[75],
+        buf[76], buf[77], buf[78], buf[79], buf[80],
+        buf[81], buf[82], buf[83], buf[84], buf[85],
+        buf[86], buf[87], buf[88], buf[89], buf[90],
+        buf[91], buf[92], buf[93], buf[94], buf[95],
+    }),
     _unused1(buf[96]),
     _unused2(buf[97]),
     _baseMovementPoints(buf[98]),
@@ -24,26 +45,40 @@ namespace realmz {
     _missileWeaponAdjust(buf[101]),
     _attacksPerRound(buf[102]),
     _maxAttacksPerRound(buf[103]),
+    _flags({
+#define X(ind) static_cast<uint8_t>(buf[ind] & 0xFF), static_cast<uint8_t>((buf[ind] >> 8) & 0xFF)
+                   X(104),
+                   X(105),
+                   X(106),
+                   X(107),
+                   X(108),
+                   X(109),
+                   X(110),
+                   X(111),
+                   X(112),
+                   X(113),
+                   X(114),
+                   X(115),
+                   X(116),
+                   X(117),
+                   X(118),
+#undef X
+    }),
+    _ageRanges({
+#define X(ind) AgeRange(buf[ind], buf[ind+1])
+        X(119),
+        X(121),
+        X(123),
+        X(125),
+        X(127),
+#undef X
+    }),
     _canRegenerate(buf[166] >> 8),
     _portraitId(buf[167]),
+            // allowedBits, need to figure out if I got the bit ordering correct or not :)
+    _allowedBits(make(buf[168], buf[169], buf[170], buf[171], ConstructInt64{})),
     _ineligibilityBits(buf[172])
     {
-        for (int i = 48, j = 0; i < 48 + 8; ++i, ++j) {
-            _unused0[j] = buf[i];
-        }
-        for (int i = 56, j = 0; i < 96; ++i, ++j) {
-            _conditions[j] = buf[i];
-        }
-        for (int i = 104, j = 0; i < 119; ++i, j+=2) {
-            // its two bytes per entry
-            _flags[j] = buf[i] & 0xFF;
-            _flags[j+1] = (buf[i] >> 8) & 0xFF;
-        }
-        for (int i = 119,j = 0; i < 129; i+=2, ++j) {
-            auto from = buf[i];
-            auto to = buf[i+1];
-            _ageRanges[j] = AgeRange(from, to);
-        }
         // these are chars which are not buffered
         // manually unpack to be on the safe side
         // This code is gross being manually extracted but I want it working correctly rather than compact
@@ -125,14 +160,6 @@ namespace realmz {
                                         pos35, pos35>>8,
                                         pos36, pos36>>8,
                                         pos37 );
-        // allowedBits, need to figure out if I got the bit ordering correct or not :)
-        auto lowest = buf[168];
-        auto lower = buf[169];
-        int32_t lowerHalf = (static_cast<int32_t>(lowest) & 0xFFFF) | ((static_cast<int32_t>(lower) << 16) & 0xFFFF0000);
-        auto higher = buf[170];
-        auto highest = buf[171];
-        int32_t upperHalf = (static_cast<int32_t>(higher) & 0xFFFF) | ((static_cast<int32_t>(highest) << 16) & 0xFFFF0000);
-        _allowedBits = ((static_cast<int64_t>(upperHalf) << 32) & 0xFFFF'FFFF'0000'0000) | ((static_cast<int64_t>(lowerHalf)) & 0x0000'0000'FFFF'FFFF);
 
     }
     namespace {
