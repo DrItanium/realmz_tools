@@ -41,21 +41,6 @@ namespace realmz {
         }
         return value;
     }
-    struct ConstructInt64 { constexpr ConstructInt64() = default; };
-    struct ConstructInt32 { constexpr ConstructInt32() = default; };
-    //template<typename T, std::enable_if_t<std::is_integral_v<std::decay_t<T>>, int> = 0> struct ConstructType { };
-    constexpr uint64_t make(uint16_t a, uint16_t b, uint16_t c, uint16_t d, ConstructInt64) noexcept {
-        return (static_cast<uint64_t>(a) & 0x0000'0000'0000'FFFF) |
-                ((static_cast<uint64_t>(b) << 16) & 0x0000'0000'FFFF'0000) |
-                ((static_cast<uint64_t>(c) << 32) & 0x0000'FFFF'0000'0000) |
-                ((static_cast<uint64_t>(d) << 48) & 0xFFFF'0000'0000'0000);
-    }
-
-    static_assert(make(0x6789,0x2345,0xef01,0xabcd, ConstructInt64{}) == 0xABCDEF0123456789);
-
-    constexpr uint32_t make(uint16_t a, uint16_t b, ConstructInt32) noexcept {
-        return (static_cast<uint32_t>(a) & 0xFFFF) | ((static_cast<uint32_t>(b) << 16) & 0xFFFF'0000);
-    }
 
 } // end namespace realmz
 #endif //REALMZ_TOOLS_UTILITIES_H

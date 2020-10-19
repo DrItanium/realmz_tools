@@ -4,6 +4,7 @@
 
 #include "Item.h"
 #include "Utilities.h"
+#include "BinaryManipulation.h"
 
 namespace realmz {
     Item::Item(const RawData &buf)
