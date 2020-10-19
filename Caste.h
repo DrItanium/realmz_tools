@@ -147,29 +147,29 @@ namespace realmz {
     };
     class Caste {
     public:
-        Caste(const CasteDataBuffer &buffer);
+        explicit Caste(const CasteDataBuffer &buffer);
         void print(std::ostream &os) const noexcept;
-        const SpecialAbilities& getInitialAbilities() const noexcept { return _initial; }
-        const DRVAdjustments& getDRVs() const noexcept { return _drvs; }
-        const Attributes& getAttributes() const noexcept { return _attributes; }
-        const SpellCastingAbilities& getSpellCasting() const noexcept { return _spellCasting; }
-        const CasteConditions& getConditions() const noexcept { return _conditions; }
-        constexpr auto canUseMissileWeapons() const noexcept { return _canUseMissileWeapons; }
-        constexpr auto getsMissileBonusDamage() const noexcept { return _getsMissileBonusDamage; }
-        const Ability& getStamina() const noexcept { return _stamina; }
-        const Ability& getDodgeMissile() const noexcept { return _dodgeMissile; }
-        const Ability& getMeleeAttack() const noexcept { return _meleeAttack; }
-        const Ability& getMissileAttack() const noexcept { return _missileAttack; }
-        const Ability& getHandToHand() const noexcept { return _handToHand; }
-        constexpr auto getAgeGroup() const noexcept { return _startingAgeGroup; }
-        constexpr int getMovementPoints() const noexcept { return _movementPoints; }
-        constexpr int getMagicResistance() const noexcept { return _magicResistance; }
-        constexpr int getTwoHandedAdjust() const noexcept { return _twoHandedAdjust; }
-        constexpr int getMaxStaminaBonus() const noexcept { return _maxStaminaBonus; }
-        constexpr BonusAttacksStyle getBonusAttacks() const noexcept { return _bonusAttacks; }
-        constexpr int getMaxAttacksPerRound() const noexcept { return _maxAttacksPerRound; }
-        const VictoryPoints& getVictoryPointsAtLevel() const noexcept { return _victoryPointsAtLevel; }
-        constexpr auto getInitialGoldAmount() const noexcept { return _initialGoldAmount; }
+        [[nodiscard]] const SpecialAbilities& getInitialAbilities() const noexcept { return _initial; }
+        [[nodiscard]] const DRVAdjustments& getDRVs() const noexcept { return _drvs; }
+        [[nodiscard]] const Attributes& getAttributes() const noexcept { return _attributes; }
+        [[nodiscard]] const SpellCastingAbilities& getSpellCasting() const noexcept { return _spellCasting; }
+        [[nodiscard]] const CasteConditions& getConditions() const noexcept { return _conditions; }
+        [[nodiscard]] constexpr auto canUseMissileWeapons() const noexcept { return _canUseMissileWeapons; }
+        [[nodiscard]] constexpr auto getsMissileBonusDamage() const noexcept { return _getsMissileBonusDamage; }
+        [[nodiscard]] const Ability& getStamina() const noexcept { return _stamina; }
+        [[nodiscard]] const Ability& getDodgeMissile() const noexcept { return _dodgeMissile; }
+        [[nodiscard]] const Ability& getMeleeAttack() const noexcept { return _meleeAttack; }
+        [[nodiscard]] const Ability& getMissileAttack() const noexcept { return _missileAttack; }
+        [[nodiscard]] const Ability& getHandToHand() const noexcept { return _handToHand; }
+        [[nodiscard]] constexpr auto getAgeGroup() const noexcept { return _startingAgeGroup; }
+        [[nodiscard]] constexpr int getMovementPoints() const noexcept { return _movementPoints; }
+        [[nodiscard]] constexpr int getMagicResistance() const noexcept { return _magicResistance; }
+        [[nodiscard]] constexpr int getTwoHandedAdjust() const noexcept { return _twoHandedAdjust; }
+        [[nodiscard]] constexpr int getMaxStaminaBonus() const noexcept { return _maxStaminaBonus; }
+        [[nodiscard]] constexpr BonusAttacksStyle getBonusAttacks() const noexcept { return _bonusAttacks; }
+        [[nodiscard]] constexpr int getMaxAttacksPerRound() const noexcept { return _maxAttacksPerRound; }
+        [[nodiscard]] const VictoryPoints& getVictoryPointsAtLevel() const noexcept { return _victoryPointsAtLevel; }
+        [[nodiscard]] constexpr auto getInitialGoldAmount() const noexcept { return _initialGoldAmount; }
     private:
         SpecialAbilities _initial;
         DRVAdjustments _drvs;

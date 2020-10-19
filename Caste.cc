@@ -136,8 +136,9 @@ namespace realmz {
                 return;
             }
             auto readOne = [](std::istream& input) -> std::optional<Caste> {
-                std::array<int16_t, 576 / 2> buf;
-                input.read((char *) buf.data(), 576);
+                constexpr auto numBytes = 576;
+                std::array<int16_t, numBytes / 2> buf;
+                input.read((char *) buf.data(), numBytes);
                 if (input.gcount() != 576) {
                     return std::nullopt;
                 }
@@ -150,7 +151,7 @@ namespace realmz {
                 for (int i = 0; i < (576 / 2); ++i) {
                     buf[i] = swap(buf[i]);
                 }
-                return {buf};
+                return Caste(buf);
             };
             std::ifstream casteDataFile(casteDataLocation);
             if (!casteDataFile.is_open()) {
