@@ -17,6 +17,7 @@ void
 ViewAgingDialog::setRaceData(realmz::RaceKind nrd) noexcept
 {
         rd = nrd;
+        installRaceData();
 }
 
 void
