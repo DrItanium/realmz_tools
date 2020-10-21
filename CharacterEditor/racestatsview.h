@@ -21,8 +21,6 @@ private slots:
     void on_viewAgingButton_clicked();
 
     void on_raceSelect_activated(int index);
-
-    void on_nextButton_clicked();
 private:
     void installRace(const realmz::RaceData& targetRace);
 public:

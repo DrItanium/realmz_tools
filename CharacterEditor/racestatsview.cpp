@@ -33,13 +33,6 @@ RaceStatsView::on_raceSelect_activated(int index)
 }
 
 void
-RaceStatsView::on_nextButton_clicked()
-{
-    done(QDialog::Accepted);
-}
-
-
-void
 RaceStatsView::installRace(const realmz::RaceData &targetRace)
 {
     emit updateCoreStats(targetRace.getAttributes());

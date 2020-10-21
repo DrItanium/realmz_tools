@@ -649,8 +649,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>okayCancel</sender>
+   <signal>accepted()</signal>
+   <receiver>RaceStatsView</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>785</x>
+     <y>745</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>okayCancel</sender>
+   <signal>rejected()</signal>
+   <receiver>RaceStatsView</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>785</x>
+     <y>745</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>updateCoreStats(realmz::Attributes)</signal>
+  <slot>reject()</slot>
+  <slot>accept()</slot>
  </slots>
 </ui>
