@@ -313,6 +313,8 @@ add_library(maya_extensions
 	maya/NandFrameView.h
 	maya/NandFrameView.cc)
 add_library(realmz
+		AgeGroup.cc
+		AgeGroup.h
 		Attribute.h
 		Attribute.cc
 		Attributes.cc
