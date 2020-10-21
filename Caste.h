@@ -16,6 +16,7 @@
 #include "SpecialAbilities.h"
 #include "DRVAdjustments.h"
 #include "Attributes.h"
+#include "AgeGroup.h"
 
 namespace realmz {
 
@@ -109,14 +110,6 @@ namespace realmz {
         SpellClassInfo _unused;
     };
 
-    enum class AgeGroup {
-        None = 0,
-        Young = 1,
-        Youth,
-        Prime,
-        Adult,
-        Senior,
-    };
     constexpr bool legalValue(AgeGroup g) noexcept {
         switch(g) {
             case AgeGroup::Young:
@@ -207,7 +200,6 @@ std::ostream& operator<<(std::ostream& os, const realmz::Caste& caste) noexcept;
 std::ostream& operator<<(std::ostream& os, realmz::CasteKind ck) noexcept;
 std::ostream& operator<<(std::ostream& os, realmz::BonusAttacksStyle group) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::SpellCastingAbilities& sci) noexcept;
-std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept;
 std::ostream & operator<<(std::ostream &os, const realmz::SpellClassInfo &sci) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::VictoryPoints& vp) noexcept;
 #endif //REALMZ_TOOLS_CASTE_H

@@ -2,6 +2,7 @@
 // Created by jwscoggins on 9/20/20.
 //
 
+#include "AgeGroup.h"
 #include "Caste.h"
 #include "Ability.h"
 namespace realmz {

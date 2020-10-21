@@ -9,6 +9,7 @@
 #include "DRVAdjustments.h"
 #include "Attributes.h"
 #include "Attribute.h"
+#include "AgeGroup.h"
 
 namespace realmz {
     void
@@ -264,29 +265,6 @@ operator<<(std::ostream &os, realmz::BonusAttacksStyle group) noexcept {
 }
 std::ostream &operator<<(std::ostream &os, const realmz::SpellCastingAbilities &sci) noexcept {
     sci.print(os);
-    return os;
-}
-std::ostream &operator<<(std::ostream &os, realmz::AgeGroup group) noexcept {
-    switch (group) {
-        case realmz::AgeGroup::Youth:
-            os << "Youth";
-            break;
-        case realmz::AgeGroup::Young:
-            os << "Young";
-            break;
-        case realmz::AgeGroup::Prime:
-            os << "Prime";
-            break;
-        case realmz::AgeGroup::Adult:
-            os << "Adult";
-            break;
-        case realmz::AgeGroup::Senior:
-            os << "Senior";
-            break;
-        default:
-            os << "UNKNOWN_AGE_GROUP(" << static_cast<int>(group) << ")!";
-            break;
-    }
     return os;
 }
 

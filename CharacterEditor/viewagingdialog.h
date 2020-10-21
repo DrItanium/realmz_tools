@@ -17,8 +17,10 @@ public:
     ~ViewAgingDialog();
     void setRaceData(realmz::RaceKind nrd) noexcept;
 private:
+    void installRaceData();
+private:
     Ui::ViewAgingDialog *ui;
-    realmz::RaceKind rd;
+    realmz::RaceKind rd = realmz::RaceKind::Human;
 
 };
 

@@ -95,6 +95,15 @@ MainWindow::promptCasteDataLocation() noexcept {
 }
 
 void
+MainWindow::promptRaceDataLocation() noexcept {
+    if (!realmz::raceDataLocationSet()) {
+        auto filePath = QFileDialog::getOpenFileName(this, tr("Location of Race Data"));
+        std::filesystem::path thePath(filePath.toStdString());
+        realmz::setRaceDataLocation(thePath);
+    }
+}
+
+void
 MainWindow::on_actionGenerate_New_Character_triggered()
  {
    // there are several phases to this process, GHIDRA has been invaluable!
@@ -145,6 +154,7 @@ MainWindow::caste() noexcept {
 realmz::RaceKind
 MainWindow::race() noexcept {
     /// @todo check the result of the exec call (accepted or rejected)
+    promptRaceDataLocation();
     RaceStatsView rsv(this);
     rsv.exec();
     auto result = rsv.getSelectedRaceKind();

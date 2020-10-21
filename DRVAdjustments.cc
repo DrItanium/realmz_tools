@@ -4,6 +4,7 @@
 
 #include "SpecialAbilities.h"
 #include "Caste.h"
+#include "AgeGroup.h"
 #include "DRVAdjustments.h"
 
 namespace realmz {

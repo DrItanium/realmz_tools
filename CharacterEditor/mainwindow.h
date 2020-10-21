@@ -35,6 +35,7 @@ private: // routine names taken from GHIDRA
     realmz::RaceKind race() noexcept;
 private:
     void promptCasteDataLocation() noexcept;
+    void promptRaceDataLocation() noexcept;
 public:
     void closeEvent(QCloseEvent* event) override;
 private:

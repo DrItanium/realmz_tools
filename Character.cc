@@ -5,6 +5,7 @@
 #include "Character.h"
 #include "Utilities.h"
 #include "RaceData.h"
+#include "AgeGroup.h"
 #include <sstream>
 
 namespace realmz {
@@ -607,7 +608,7 @@ namespace realmz {
     }
 
     void
-    Character::applyAge(realmz::AgeGroup newAgeGroup, int16_t factor) {
+    Character::applyAge(AgeGroup newAgeGroup, int16_t factor) {
         if (!legalValue(newAgeGroup)) {
             throw "Illegal age group presented!";
         }

@@ -6,6 +6,7 @@
 #define REALMZ_TOOLS_RACEDATA_H
 #include <cstdint>
 #include <array>
+#include <filesystem>
 #include "RaceDataBuffer.h"
 #include "SpecialAbilities.h"
 #include "DRVAdjustments.h"

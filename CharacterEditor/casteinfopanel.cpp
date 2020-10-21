@@ -2,6 +2,7 @@
 #include "casteinfopanel.h"
 #include "ui_casteinfopanel.h"
 #include "../Caste.h"
+#include "../AgeGroup.h"
 
 CasteInfoPanel::CasteInfoPanel(QWidget *parent) :
         QDialog(parent),
@@ -37,15 +38,15 @@ CasteInfoPanel::installCaste(const realmz::Caste &targetCaste)
         initial->setText(QString::number(ability.getInitial()));
         lvlUp->setText(QString::number(ability.getLevelUp()));
     };
-    setInitialAndLevelUp(ui->sneakInitial, ui->sneakLvlUp, targetCaste.getInitialAbilities()._sneakAttack);
-    setInitialAndLevelUp(ui->majorWoundInitial, ui->majorWoundLvlUp, targetCaste.getInitialAbilities()._majorWound);
-    setInitialAndLevelUp(ui->detectSecretInitial, ui->detectSecretLvlUp, targetCaste.getInitialAbilities()._detectSecret);
-    setInitialAndLevelUp(ui->acrobaticActInitial, ui->acrobaticActLvlUp, targetCaste.getInitialAbilities()._acrobaticAct);
-    setInitialAndLevelUp(ui->detectTrapInitial, ui->detectTrapLvlUp, targetCaste.getInitialAbilities()._detectTrap);
-    setInitialAndLevelUp(ui->disableTrapInitial, ui->disableTrapLvlUp, targetCaste.getInitialAbilities()._disableTrap);
-    setInitialAndLevelUp(ui->forceLockInitial, ui->forceLockLvlUp, targetCaste.getInitialAbilities()._forceLock);
-    setInitialAndLevelUp(ui->pickLockInitial, ui->pickLockLvlUp, targetCaste.getInitialAbilities()._pickLock);
-    setInitialAndLevelUp(ui->turnUndead, ui->turnUndeadLvlUp, targetCaste.getInitialAbilities()._turnUndead);
+    setInitialAndLevelUp(ui->sneakInitial, ui->sneakLvlUp, targetCaste.getInitialAbilities().getSneakAttack());
+    setInitialAndLevelUp(ui->majorWoundInitial, ui->majorWoundLvlUp, targetCaste.getInitialAbilities().getMajorWound());
+    setInitialAndLevelUp(ui->detectSecretInitial, ui->detectSecretLvlUp, targetCaste.getInitialAbilities().getDetectSecret());
+    setInitialAndLevelUp(ui->acrobaticActInitial, ui->acrobaticActLvlUp, targetCaste.getInitialAbilities().getAcrobaticAct());
+    setInitialAndLevelUp(ui->detectTrapInitial, ui->detectTrapLvlUp, targetCaste.getInitialAbilities().getDetectTrap());
+    setInitialAndLevelUp(ui->disableTrapInitial, ui->disableTrapLvlUp, targetCaste.getInitialAbilities().getDisableTrap());
+    setInitialAndLevelUp(ui->forceLockInitial, ui->forceLockLvlUp, targetCaste.getInitialAbilities().getForceLock());
+    setInitialAndLevelUp(ui->pickLockInitial, ui->pickLockLvlUp, targetCaste.getInitialAbilities().getPickLock());
+    setInitialAndLevelUp(ui->turnUndead, ui->turnUndeadLvlUp, targetCaste.getInitialAbilities().getTurnUndead());
     setInitialAndLevelUp(ui->staminaInitial, ui->staminaLevelUp, targetCaste.getStamina());
     setInitialAndLevelUp(ui->meleeAttackInitial, ui->meleeAttackLevelUp, targetCaste.getMeleeAttack());
     setInitialAndLevelUp(ui->missileAttackInitial, ui->missileAttackLevelUp, targetCaste.getMissileAttack());
