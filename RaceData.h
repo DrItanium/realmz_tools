@@ -11,6 +11,7 @@
 #include "SpecialAbilities.h"
 #include "DRVAdjustments.h"
 #include "Attributes.h"
+#include "AgeGroup.h"
 namespace realmz {
     enum class RaceKind : uint16_t {
         Human,
@@ -147,8 +148,10 @@ namespace realmz {
         int16_t getIneligibilityBits(size_t index) const;
         [[nodiscard]] constexpr auto getAllowedBits() const noexcept { return _allowedBits; }
         [[nodiscard]] constexpr auto getFlags(size_t index) const noexcept { return _flags[index >= 30 ? 29 : index]; }
-        [[nodiscard]] const AgeRange& getAgeRange(size_t index) const noexcept {return _ageRanges[index < 5 ? index : 4]; }
+        [[nodiscard]] const AgeRange& getAgeRange(size_t index) const noexcept { return _ageRanges[index < 5 ? index : 4]; }
+        [[nodiscard]] const AgeRange& getAgeRange(AgeGroup g) const noexcept { return getAgeRange(static_cast<size_t>(g) - 1); }
         [[nodiscard]] const AgeModifiers& getAgeModifier(size_t index) const noexcept {return _ageModifiers[index < 5 ? index : 4]; }
+        [[nodiscard]] const AgeModifiers& getAgeModifier(AgeGroup g) const noexcept { return getAgeModifier(static_cast<size_t>(g) -1); }
     private:
         Hatred _hatred;
         SpecialAbilities _specialAbilities;
