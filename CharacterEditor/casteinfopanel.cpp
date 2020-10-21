@@ -21,19 +21,7 @@ CasteInfoPanel::~CasteInfoPanel()
 void
 CasteInfoPanel::installCaste(const realmz::Caste &targetCaste)
 {
-    auto setCoreAttribute = [](QLineEdit* min, QLineEdit* max, QLineEdit* adjust, const realmz::Attribute& attr) {
-        min->setText(QString::number(attr.getMin()));
-        max->setText(QString::number(attr.getMax()));
-        adjust->setText(QString::number(attr.getAdjustment()));
-    };
-    const auto& attr = targetCaste.getAttributes();
-    setCoreAttribute(ui->agilityMin, ui->agilityMax, ui->agilityPlusMinus, attr.getAgility());
-    setCoreAttribute(ui->brawnMin, ui->brawnMax, ui->brawnPlusMinus, attr.getBrawn());
-    setCoreAttribute(ui->knowledgeMin, ui->knowledgeMax, ui->knowledgePlusMinus, attr.getKnowledge());
-    setCoreAttribute(ui->judgmentMin, ui->judgmentMax, ui->judgmentPlusMinus, attr.getJudgment());
-    setCoreAttribute(ui->vitalityMin, ui->vitalityMax, ui->vitalityPlusMinus, attr.getVitality());
-    setCoreAttribute(ui->luckMin, ui->luckMax, ui->luckPlusMinus, attr.getLuck());
-
+    emit updateCoreStats(targetCaste.getAttributes());
     auto setInitialAndLevelUp = [](QLineEdit* initial, QLineEdit* lvlUp, const realmz::Ability& ability) {
         initial->setText(QString::number(ability.getInitial()));
         lvlUp->setText(QString::number(ability.getLevelUp()));

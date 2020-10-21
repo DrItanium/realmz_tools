@@ -15,6 +15,8 @@ class RaceStatsView : public QDialog
 public:
     explicit RaceStatsView(QWidget *parent = nullptr);
     ~RaceStatsView();
+signals:
+    void updateCoreStats(realmz::Attributes);
 private slots:
     void on_viewAgingButton_clicked();
 

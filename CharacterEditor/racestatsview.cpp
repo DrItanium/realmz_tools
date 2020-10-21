@@ -42,18 +42,7 @@ RaceStatsView::on_nextButton_clicked()
 void
 RaceStatsView::installRace(const realmz::RaceData &targetRace)
 {
-    auto setCoreAttribute = [](auto* min, auto* max, auto* adjust, const realmz::Attribute& attr) {
-        min->setText(QString::number(attr.getMin()));
-        max->setText(QString::number(attr.getMax()));
-        adjust->setText(QString::number(attr.getAdjustment()));
-    };
-    const auto& attribs = targetRace.getAttributes();
-    setCoreAttribute(ui->agilityMin, ui->agilityMax, ui->agilityPlusMinus, attribs.getAgility());
-    setCoreAttribute(ui->brawnMin, ui->brawnMax, ui->brawnPlusMinus, attribs.getBrawn());
-    setCoreAttribute(ui->knowledgeMin, ui->knowledgeMax, ui->knowledgePlusMinus, attribs.getKnowledge());
-    setCoreAttribute(ui->judgmentMin, ui->judgmentMax, ui->judgmentPlusMinus, attribs.getJudgment());
-    setCoreAttribute(ui->vitalityMin, ui->vitalityMax, ui->vitalityPlusMinus, attribs.getVitality());
-    setCoreAttribute(ui->luckMin, ui->luckMax, ui->luckPlusMinus, attribs.getLuck());
+    emit updateCoreStats(targetRace.getAttributes());
 
     auto setSpecialAttribute = [](auto* result, const realmz::Ability& ability) {
         result->setText(QString::number(ability.getInitial()));

@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 set(UI_SOURCES
+		characterprimaryattributeswidget.ui
 		agegroupdisplayelement.ui
 		abilitiesview.ui
 		conditionsview.ui
@@ -29,6 +30,8 @@ set(UI_SOURCES
 qt5_wrap_ui(UI_GENERATED_HEADERS ${UI_SOURCES})
 
 add_executable(CharacterEditor
+		characterprimaryattributeswidget.cpp
+		characterprimaryattributeswidget.h
 		agegroupdisplayelement.cpp
 		agegroupdisplayelement.h
 	abilitiesview.cpp
