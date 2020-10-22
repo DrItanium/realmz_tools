@@ -621,106 +621,11 @@
    <item row="2" column="2">
     <widget class="QGroupBox" name="drvs">
      <property name="title">
-      <string>Adjustment For Caste</string>
+      <string>Adjustment For Caste (DRV)</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="chemicalDrv">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label_13">
-        <property name="text">
-         <string>Charm DRV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_17">
-        <property name="text">
-         <string>Chemical DRV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="heatDrv">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="coldDrv">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string>Cold DRV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_18">
-        <property name="text">
-         <string>Mental DRV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="mentalDrv">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="charmDrv">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_14">
-        <property name="text">
-         <string>Heat DRV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="electricDrv">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>Electric DRV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_19">
-        <property name="text">
-         <string>Magical DRV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="magicalDrv">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="CoreDRVsView" name="widget" native="true"/>
       </item>
      </layout>
     </widget>
@@ -837,6 +742,15 @@
     <slot>updateFields(realmz::Attributes)</slot>
    </slots>
   </customwidget>
+  <customwidget>
+   <class>CoreDRVsView</class>
+   <extends>QWidget</extends>
+   <header>coredrvsview.h</header>
+   <container>1</container>
+   <slots>
+    <slot>populate(realmz::DRVAdjustments)</slot>
+   </slots>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
@@ -888,9 +802,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>CasteInfoPanel</sender>
+   <signal>updateDRVs(realmz::DRVAdjustments)</signal>
+   <receiver>widget</receiver>
+   <slot>populate(realmz::DRVAdjustments)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>349</x>
+     <y>1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>441</x>
+     <y>340</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>updateCoreStats(realmz::Attributes)</signal>
+  <signal>updateDRVs(realmz::DRVAdjustments)</signal>
   <slot>accept()</slot>
   <slot>reject()</slot>
  </slots>

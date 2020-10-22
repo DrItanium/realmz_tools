@@ -41,14 +41,7 @@ CasteInfoPanel::installCaste(const realmz::Caste &targetCaste)
     setInitialAndLevelUp(ui->dodgeMissileInitial, ui->dodgeMissileLevelUp, targetCaste.getDodgeMissile());
     setInitialAndLevelUp(ui->handToHandInitial, ui->handToHandLevelUp, targetCaste.getHandToHand());
     auto setFieldWithInteger = [](QLineEdit* le, int value) { le->setText(QString::number(value)); };
-    const auto& drvs = targetCaste.getDRVs();
-    setFieldWithInteger(ui->charmDrv, drvs.getCharm());
-    setFieldWithInteger(ui->coldDrv, drvs.getCold());
-    setFieldWithInteger(ui->heatDrv, drvs.getHeat());
-    setFieldWithInteger(ui->electricDrv, drvs.getElectric());
-    setFieldWithInteger(ui->chemicalDrv, drvs.getChemical());
-    setFieldWithInteger(ui->mentalDrv, drvs.getMental());
-    setFieldWithInteger(ui->magicalDrv, drvs.getMagical());
+    emit updateDRVs(targetCaste.getDRVs());
 
     setFieldWithInteger(ui->movementPointsAdjust, targetCaste.getMovementPoints());
     setFieldWithInteger(ui->magicResistance, targetCaste.getMagicResistance());
