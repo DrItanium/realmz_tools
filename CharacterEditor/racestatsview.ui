@@ -265,103 +265,8 @@
       <string>Racial Adjustment (DRVs)</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_6">
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="charmDRV">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="chemicalDRV">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_14">
-        <property name="text">
-         <string>Cold</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="coldDRV">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label_12">
-        <property name="text">
-         <string>Charm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>Chemical</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_17">
-        <property name="text">
-         <string>Mental</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="mentalDRV">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_13">
-        <property name="text">
-         <string>Heat</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_18">
-        <property name="text">
-         <string>Magical</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string>Electric</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="electricDRV">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="heatDRV">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="magicalDRV">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="CoreDRVsView" name="widget" native="true"/>
       </item>
      </layout>
     </widget>
@@ -621,6 +526,15 @@
     <slot>updateFields(realmz::Attributes)</slot>
    </slots>
   </customwidget>
+  <customwidget>
+   <class>CoreDRVsView</class>
+   <extends>QWidget</extends>
+   <header>coredrvsview.h</header>
+   <container>1</container>
+   <slots>
+    <slot>populate(realmz::DRVAdjustments)</slot>
+   </slots>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
@@ -672,9 +586,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>RaceStatsView</sender>
+   <signal>updateDRVs(realmz::DRVAdjustments)</signal>
+   <receiver>widget</receiver>
+   <slot>populate(realmz::DRVAdjustments)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>472</x>
+     <y>6</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>526</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>updateCoreStats(realmz::Attributes)</signal>
+  <signal>updateDRVs(realmz::DRVAdjustments)</signal>
   <slot>reject()</slot>
   <slot>accept()</slot>
  </slots>

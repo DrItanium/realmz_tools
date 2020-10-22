@@ -61,14 +61,7 @@ RaceStatsView::installRace(const realmz::RaceData &targetRace)
     setField(ui->baseMovementPoints, targetRace.getBaseMovementPoints());
     setField(ui->maxAttacksPerRound, targetRace.getMaxAttacksPerRound());
 
-    const auto& drvs = targetRace.getDrvs();
-    setField(ui->charmDRV, drvs.getCharm());
-    setField(ui->heatDRV, drvs.getHeat());
-    setField(ui->coldDRV, drvs.getCold());
-    setField(ui->electricDRV, drvs.getElectric());
-    setField(ui->chemicalDRV, drvs.getChemical());
-    setField(ui->mentalDRV, drvs.getMental());
-    setField(ui->magicalDRV, drvs.getMagical());
+    emit updateDRVs(targetRace.getDrvs());
 
     const auto& hatred = targetRace.getRaceHatredStats();
     setField(ui->hitMagicUsing, hatred.getHitVsMagicUsing());

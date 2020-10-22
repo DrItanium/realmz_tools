@@ -17,6 +17,7 @@ public:
     ~RaceStatsView();
 signals:
     void updateCoreStats(realmz::Attributes);
+    void updateDRVs(realmz::DRVAdjustments);
 private slots:
     void on_viewAgingButton_clicked();
 
