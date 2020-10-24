@@ -384,7 +384,6 @@ namespace realmz {
         Male = 1,
         Female = 2,
     };
-    using OutOfPair = std::tuple<int16_t, int16_t>;
     class Character {
     public:
         Character(const CharacterDataBuffer& buf);
@@ -689,5 +688,6 @@ std::ostream& operator<<(std::ostream& os, const realmz::InventoryItem& c) noexc
 std::ostream& operator<<(std::ostream& os, const realmz::EquippedItems& ec) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::SpecialInfo& ec) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::PrestigeValues& pv) noexcept;
+std::ostream& operator<<(std::ostream& os, realmz::Gender g) noexcept;
 
 #endif //REALMZ_TOOLS_CHARACTER_H

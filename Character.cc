@@ -390,7 +390,8 @@ namespace realmz {
         printOut(os, "Race", _race);
         printOut(os, "Caste", _caste);
         printOut(os, "Supported Spell Class", static_cast<int16_t>(_supportedSpellClass));
-        printOut(os, "Gender", static_cast<int16_t>(_gender));
+
+        printOut(os, "Gender", _gender);
         printOut(os, "Skill Level", _skillLevel);
         printOut(os, "Remaining Movement Points", _remainingMovementPoints);
         printOut(os, "Movement Points", _movementPoints);
@@ -657,5 +658,21 @@ operator<<(std::ostream& os, const realmz::SpecialInfo& eq) noexcept {
 std::ostream&
 operator<<(std::ostream& os, const realmz::PrestigeValues& eq) noexcept {
     eq.print(os);
+    return os;
+}
+
+std::ostream&
+operator<<(std::ostream& os, realmz::Gender gender) noexcept {
+    switch (gender) {
+        case realmz::Gender::Female:
+            os << "Female";
+            break;
+        case realmz::Gender::Male:
+            os << "Male";
+            break;
+        default:
+            os << "Undefined";
+            break;
+    }
     return os;
 }
