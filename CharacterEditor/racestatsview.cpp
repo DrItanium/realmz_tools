@@ -55,8 +55,7 @@ RaceStatsView::installRace(const realmz::RaceData &targetRace)
     setSpecialAttribute(ui->turnUndeadField, sas.getTurnUndead());
     setField(ui->twoHandedAdjust, targetRace.getTwoHandedAdjustment());
     setField(ui->attacksPerRound, targetRace.getAttacksPerRound());
-    setField(ui->raceCanRegenerate, targetRace.canRegenerate());
-    //ui->raceCanRegenerate->setText(targetRace.canRegenerate() ? tr("Yes") : tr("No"));
+    ui->raceCanRegenerate->setText(targetRace.canRegenerate() ? tr("Yes") : tr("No"));
     setField(ui->magicResistance, targetRace.getMagicResistance());
     setField(ui->missileWeaponAdjust, targetRace.getMissileWeaponAdjust());
     setField(ui->baseMovementPoints, targetRace.getBaseMovementPoints());
