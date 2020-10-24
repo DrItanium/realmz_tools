@@ -8,8 +8,8 @@
 namespace realmz {
     enum class AgeGroup {
         None = 0,
-        Young = 1,
-        Youth,
+        Youth = 1,
+        Young,
         Prime,
         Adult,
         Senior,

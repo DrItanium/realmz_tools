@@ -170,7 +170,7 @@ namespace realmz {
         std::array<uint8_t, 30> _flags = { 0 };
         std::array<AgeRange, 5> _ageRanges;
         std::array<AgeModifiers, 5> _ageModifiers;
-        bool _canRegenerate = false;
+        int _canRegenerate = false;
         int _portraitId = 0;
         int64_t _allowedBits = 0;
         std::array<int16_t, 32> _ineligibilityBits = { 0};
