@@ -14,6 +14,7 @@
 #include "AgeGroup.h"
 namespace realmz {
     enum class RaceKind : uint16_t {
+        None = 0,
         Human,
         ShadowElf,
         Elf,

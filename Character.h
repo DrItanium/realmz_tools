@@ -14,58 +14,62 @@
 #include "AgeGroup.h"
 namespace realmz {
     using CharacterDataBuffer = std::array<int16_t, 872/2>;
-    class SpecialInfo_CharVersion {
+    class SpecialInfo {
     public:
-        constexpr SpecialInfo_CharVersion(int8_t sneakAttack, int8_t causeMajorWound, int8_t detectSecret, int8_t acrobaticAct, int8_t detectTrap,
-                                          int8_t disableTrap, int8_t forceLock, int8_t pickLock, int8_t turnUndead) : _sneakAttack(sneakAttack),
-                                                                                                                      _causeMajorWound(
-                                                                                                                              causeMajorWound),
-                                                                                                                      _detectSecret(detectSecret),
-                                                                                                                      _acrobaticAct(acrobaticAct),
-                                                                                                                      _detectTrap(detectTrap),
-                                                                                                                      _disableTrap(disableTrap),
-                                                                                                                      _forceLock(forceLock),
-                                                                                                                      _pickLock(pickLock),
-                                                                                                                      _turnUndead(turnUndead) {}
-        constexpr SpecialInfo_CharVersion(int16_t first, int16_t second, int16_t third, int16_t fourth, int16_t fifth, int16_t sixth, int16_t seventh) :
-                SpecialInfo_CharVersion(first & 0xFF,
-                                        (second>>8) & 0xFF,
-                                        third & 0xFF, (third >> 8) & 0xFF,
-                                        fourth & 0xFF, (fourth >> 8) & 0xFF,
-                                        (fifth>>8) & 0xFF,
-                                        (sixth>>8) & 0xFF,
-                                        (seventh>>8) & 0xFF) { }
-        SpecialInfo_CharVersion() = default;
 
-        void setSneakAttack(int8_t sneakAttack) noexcept { _sneakAttack = sneakAttack; }
-        void setCauseMajorWound(int8_t causeMajorWound) noexcept { _causeMajorWound = causeMajorWound; }
-        void setDetectSecret(int8_t detectSecret) noexcept { _detectSecret = detectSecret; }
-        void setAcrobaticAct(int8_t acrobaticAct) noexcept { _acrobaticAct = acrobaticAct; }
-        void setDetectTrap(int8_t detectTrap) noexcept { _detectTrap = detectTrap; }
-        void setDisableTrap(int8_t disableTrap) noexcept { _disableTrap = disableTrap; }
-        void setForceLock(int8_t forceLock) noexcept { _forceLock = forceLock; }
-        void setPickLock(int8_t pickLock) noexcept { _pickLock = pickLock; }
-        void setTurnUndead(int8_t turnUndead) noexcept { _turnUndead = turnUndead; }
-        constexpr int8_t getSneakAttack() const noexcept { return _sneakAttack; }
-        constexpr int8_t getCauseMajorWound() const noexcept { return _causeMajorWound; }
-        constexpr int8_t getDetectSecret() const noexcept { return _detectSecret; }
-        constexpr int8_t getAcrobaticAct() const noexcept { return _acrobaticAct; }
-        constexpr int8_t getDetectTrap() const noexcept { return _detectTrap; }
-        constexpr int8_t getDisableTrap() const noexcept { return _disableTrap; }
-        constexpr int8_t getForceLock() const noexcept { return _forceLock; }
-        constexpr int8_t getPickLock() const noexcept { return _pickLock; }
-        constexpr int8_t getTurnUndead() const noexcept { return _turnUndead; }
+        constexpr SpecialInfo(int16_t sneakAttack, int16_t unused0, int16_t unused1, int16_t causeMajorWound, int16_t detectSecret,
+                                 int16_t acrobaticAct, int16_t detectTrap, int16_t disableTrap, int16_t unused2, int16_t forceLock,
+                                 int16_t unused3, int16_t pickLock, int16_t unused4, int16_t turnUndead, int16_t unused5) : _sneakAttack(sneakAttack),
+                                                                                                           _unused0(unused0), _unused1(unused1),
+                                                                                                           _causeMajorWound(causeMajorWound),
+                                                                                                           _detectSecret(detectSecret),
+                                                                                                           _acrobaticAct(acrobaticAct),
+                                                                                                           _detectTrap(detectTrap),
+                                                                                                           _disableTrap(disableTrap),
+                                                                                                           _unused2(unused2),
+                                                                                                           _forceLock(forceLock),
+                                                                                                           _unused3(unused3),
+                                                                                                           _pickLock(pickLock),
+                                                                                                           _unused4(unused4),
+                                                                                                           _turnUndead(turnUndead),
+                                                                                                           _unused5(unused5){}
+        SpecialInfo() = default;
+
+        void setSneakAttack(int16_t sneakAttack) noexcept { _sneakAttack = sneakAttack; }
+        void setCauseMajorWound(int16_t causeMajorWound) noexcept { _causeMajorWound = causeMajorWound; }
+        void setDetectSecret(int16_t detectSecret) noexcept { _detectSecret = detectSecret; }
+        void setAcrobaticAct(int16_t acrobaticAct) noexcept { _acrobaticAct = acrobaticAct; }
+        void setDetectTrap(int16_t detectTrap) noexcept { _detectTrap = detectTrap; }
+        void setDisableTrap(int16_t disableTrap) noexcept { _disableTrap = disableTrap; }
+        void setForceLock(int16_t forceLock) noexcept { _forceLock = forceLock; }
+        void setPickLock(int16_t pickLock) noexcept { _pickLock = pickLock; }
+        void setTurnUndead(int16_t turnUndead) noexcept { _turnUndead = turnUndead; }
+        [[nodiscard]] constexpr auto getSneakAttack() const noexcept { return _sneakAttack; }
+        [[nodiscard]] constexpr auto getCauseMajorWound() const noexcept { return _causeMajorWound; }
+        [[nodiscard]] constexpr auto getDetectSecret() const noexcept { return _detectSecret; }
+        [[nodiscard]] constexpr auto getAcrobaticAct() const noexcept { return _acrobaticAct; }
+        [[nodiscard]] constexpr auto getDetectTrap() const noexcept { return _detectTrap; }
+        [[nodiscard]] constexpr auto getDisableTrap() const noexcept { return _disableTrap; }
+        [[nodiscard]] constexpr auto getForceLock() const noexcept { return _forceLock; }
+        [[nodiscard]] constexpr auto getPickLock() const noexcept { return _pickLock; }
+        [[nodiscard]] constexpr auto getTurnUndead() const noexcept { return _turnUndead; }
         void print(std::ostream& os) const noexcept;
     private:
-        int8_t _sneakAttack = 0;
-        int8_t _causeMajorWound = 0;
-        int8_t _detectSecret = 0;
-        int8_t _acrobaticAct = 0;
-        int8_t _detectTrap = 0;
-        int8_t _disableTrap = 0;
-        int8_t _forceLock = 0;
-        int8_t _pickLock = 0;
-        int8_t _turnUndead = 0;
+        int16_t _sneakAttack = 0;
+        int16_t _unused0 = 0;
+        int16_t _unused1 = 0;
+        int16_t _causeMajorWound = 0;
+        int16_t _detectSecret = 0;
+        int16_t _acrobaticAct = 0;
+        int16_t _detectTrap = 0;
+        int16_t _disableTrap = 0;
+        int16_t _unused2 = 0;
+        int16_t _forceLock = 0;
+        int16_t _unused3 = 0;
+        int16_t _pickLock = 0;
+        int16_t _unused4 = 0;
+        int16_t _turnUndead = 0;
+        int16_t _unused5 = 0;
     };
     class InventoryItem {
     public:
@@ -437,7 +441,7 @@ namespace realmz {
         void setVsGiantSizedCreatures(int16_t vsGiantSizedCreatures) noexcept { _vsGiantSizedCreatures = vsGiantSizedCreatures; }
         void setVsNonHumanoidCreature(int16_t vsNonHumanoidCreature) noexcept { _vsNonHumanoidCreatures = vsNonHumanoidCreature; }
         void setEquippedItems(size_t index, int16_t value);
-        SpecialInfo_CharVersion& getSpecialInfo() noexcept { return _specialInfo; }
+        SpecialInfo& getSpecialInfo() noexcept { return _specialInfo; }
         void setDamageReductionVsCharm(int16_t damageReductionVsCharm) noexcept { _damageReductionVsCharm = damageReductionVsCharm; }
         void setDamageReductionVsHeat(int16_t damageReductionVsHeat) noexcept { _damageReductionVsHeat = damageReductionVsHeat; }
         void setDamageReductionVsCold(int16_t damageReductionVsCold) noexcept { _damageReductionVsCold = damageReductionVsCold; }
@@ -556,14 +560,13 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getField0X30E() const noexcept { return _field_0x30e; }
         [[nodiscard]] constexpr int16_t getField0X310() const noexcept { return _field_0x310; }
         [[nodiscard]] constexpr int16_t getField0X312() const noexcept { return _field_0x312; }
-        [[nodiscard]] const std::array<int16_t, 6> &getField0X100() const { return _field_0x100; }
         [[nodiscard]] const std::array<SpellLevel, 7> &getSpellList() const { return _spellList; }
         [[nodiscard]] const std::string &getName() const { return _name; }
         [[nodiscard]] const PrestigeValues &getPrestige() const { return _prestige; }
         [[nodiscard]] const std::array<int16_t, 40> &getTreasureArrayIds() const { return _treasureArrayIds; }
         [[nodiscard]] const std::array<int16_t, 42> &getField0X314() const { return _field_0x314; }
         [[nodiscard]] const EquippedItems &getEquippedItems() const { return _equippedItems; }
-        [[nodiscard]] const SpecialInfo_CharVersion &getSpecialInfo() const { return _specialInfo; }
+        [[nodiscard]] const SpecialInfo &getSpecialInfo() const { return _specialInfo; }
         [[nodiscard]] const std::array<InventoryItem, 30> &getItems() const { return _items; }
         [[nodiscard]] const auto &getSpellsInScrollCase() const { return _spellsInScrollCase; }
         [[nodiscard]] const auto &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
@@ -631,10 +634,7 @@ namespace realmz {
         int16_t _vsGiantSizedCreatures = 0;
         int16_t _vsNonHumanoidCreatures = 0;
         EquippedItems _equippedItems;
-        SpecialInfo_CharVersion _specialInfo;
-        std::array<int16_t, 6> _field_0x100 = { 0 };
-        int16_t _turnUndeadAbility = 0;
-        int16_t _field_0x10e = 0;
+        SpecialInfo _specialInfo;
         int16_t _damageReductionVsCharm = 0;
         int16_t _damageReductionVsHeat = 0;
         int16_t _damageReductionVsCold = 0;
@@ -687,7 +687,7 @@ std::ostream& operator<<(std::ostream& os, const realmz::Character& c) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::CharacterConditions& c) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::InventoryItem& c) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::EquippedItems& ec) noexcept;
-std::ostream& operator<<(std::ostream& os, const realmz::SpecialInfo_CharVersion& ec) noexcept;
+std::ostream& operator<<(std::ostream& os, const realmz::SpecialInfo& ec) noexcept;
 std::ostream& operator<<(std::ostream& os, const realmz::PrestigeValues& pv) noexcept;
 
 #endif //REALMZ_TOOLS_CHARACTER_H

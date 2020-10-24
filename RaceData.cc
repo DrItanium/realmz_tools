@@ -199,7 +199,7 @@ namespace realmz {
 std::ostream &
 operator<<(std::ostream &os, realmz::RaceKind r) noexcept {
     switch (r) {
-#define Y(k, s) case realmz::RaceKind:: k : os << s
+#define Y(k, s) case realmz::RaceKind:: k : os << s; break
 #define X(k) Y(k, #k)
         X(Human);
         Y(ShadowElf, "Shadow Elf");

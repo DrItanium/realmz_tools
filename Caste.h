@@ -24,7 +24,8 @@ namespace realmz {
      * @brief The kind of caste we are currently looking at
      */
     enum class CasteKind {
-        Fighter = 0,
+        None = 0,
+        Fighter = 1,
         Monk,
         Crusader,
         Archer,

@@ -157,17 +157,15 @@ namespace realmz {
                          buf[124],
                          buf[125],
                          buf[126],
-                         buf[127]),
-            _field_0x100({
-                                 buf[128],
-                                 buf[129],
-                                 buf[130],
-                                 buf[131],
-                                 buf[132],
-                                 buf[133]
-                         }),
-            _turnUndeadAbility(buf[134]),
-            _field_0x10e(buf[135]),
+                         buf[127],
+                         buf[128],
+                         buf[129],
+                         buf[130],
+                         buf[131],
+                         buf[132],
+                         buf[133],
+                         buf[134],
+                         buf[135]),
             _damageReductionVsCharm(buf[136]),
             _damageReductionVsHeat(buf[137]),
             _damageReductionVsCold(buf[138]),
@@ -420,14 +418,7 @@ namespace realmz {
         printOut(os, "VS Giant Sized Creatures", _vsGiantSizedCreatures);
         printOut(os, "VS Non Humanoid Creatures", _vsNonHumanoidCreatures);
         os << _specialInfo;
-        index = 0x100;
-        for (const auto& a : _field_0x100) {
-            os << "Field_0x" << std::hex << index << ": " << std::dec << a << std::endl;
-           index += 2;
-        }
 
-        printOut(os, "Turn Undead Ability", _turnUndeadAbility);
-        printOut(os, "Field 0x10e", _field_0x10e);
         auto printDRV = [&os](const std::string& kind, uint16_t value) noexcept {
             std::stringstream ss;
             ss << "Damage Reduction Vs " << kind;
@@ -570,7 +561,7 @@ namespace realmz {
     }
 
     void
-    SpecialInfo_CharVersion::print(std::ostream &os) const noexcept {
+    SpecialInfo::print(std::ostream &os) const noexcept {
         printOut(os, "Sneak Attack", _sneakAttack);
         printOut(os, "Cause Major Wound", _causeMajorWound);
         printOut(os, "Detect Secret", _detectSecret);
@@ -658,7 +649,7 @@ operator<<(std::ostream& os, const realmz::EquippedItems& eq) noexcept {
 }
 
 std::ostream&
-operator<<(std::ostream& os, const realmz::SpecialInfo_CharVersion& eq) noexcept {
+operator<<(std::ostream& os, const realmz::SpecialInfo& eq) noexcept {
     eq.print(os);
     return os;
 }
