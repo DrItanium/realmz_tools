@@ -18,7 +18,9 @@ Right now the most important parts are going to be:
 
 1) The key generator which will allow you to generate your own registration codes for realmz itself and all scenarios made by fantasoft.
    The logic for custom scenarios is implemented but not hooked up to the tool front end. I do not think this code will run afoul
-   of anything because Realmz is not being actively sold at the moment. Hopefully, someone will find it useful :).
+   of anything because Realmz is not being actively sold at the moment. Hopefully, someone will find it useful :). NOTE: The generator
+   only works for the Windows version, the codes generated do not work on the
+   classic mac os version (finally got BasiliskII running again).
 2) Caste decomposer and printing utility - This was the initial tool to print out the contents of the Data Caste file, 
    this tool will eventually be used to convert Data Caste to something like JSON so it can be read regardless of platform 
    (right now bytes have to be swapped)
