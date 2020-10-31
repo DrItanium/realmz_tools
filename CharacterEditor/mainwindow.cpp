@@ -5,6 +5,7 @@
 #include <QInputDialog>
 #include <QCloseEvent>
 #include <QFileDialog>
+#include <optional>
 #include "casteinfopanel.h"
 #include "racestatsview.h"
 MainWindow::MainWindow(QWidget *parent) :
@@ -103,11 +104,9 @@ MainWindow::promptRaceDataLocation() noexcept {
     }
 }
 
-void
-MainWindow::on_actionGenerate_New_Character_triggered()
- {
-   // there are several phases to this process, GHIDRA has been invaluable!
-    /// @todo check and question about saving the current character
+std::optional<QString>
+MainWindow::name() noexcept
+{
     QString name;
     bool needToPrompt = true;
     while (needToPrompt) {
@@ -115,7 +114,7 @@ MainWindow::on_actionGenerate_New_Character_triggered()
         needToPrompt = false;
         if (name.isEmpty()) {
             if (question(tr("Would you like to cancel character generation?"))) {
-                return;
+                return std::nullopt;
             } else {
                 needToPrompt = true;
                 continue;
@@ -130,11 +129,43 @@ MainWindow::on_actionGenerate_New_Character_triggered()
             }
         }
     }
+    return name;
+}
+int16_t
+MainWindow::portrait(realmz::RaceKind characterRace) noexcept
+{
+    auto defaultPortrait = static_cast<int16_t>(characterRace) * 6 + 0xfb;
+
+    return defaultPortrait;
+}
+
+int16_t
+MainWindow::iconPictureIndex(int16_t portraitIndex, int16_t value) noexcept
+{
+    auto defaultIndex = portraitIndex + 0x2227;
+
+    return defaultIndex;
+}
+void
+MainWindow::on_actionGenerate_New_Character_triggered()
+ {
+   // there are several phases to this process, GHIDRA has been invaluable!
+    /// @todo check and question about saving the current character
     /// @todo lookup the character data listing to see if a character with this name already exists
-    auto characterSkillLevel = skillLevel();
-    auto characterGender = gender();
-    auto targetCaste = caste();
-    auto targetRace = race();
+    auto nameResult = name();
+    if (!nameResult) {
+        return;
+    }
+    QString theName = *nameResult;
+    realmz::Character theChar;
+    theChar.setName(theName.toStdString());
+    theChar.setSkillLevel(skillLevel());
+    theChar.setGender(gender());
+    theChar.setCaste(caste());
+    theChar.setRace(race());
+    // compute the defualt portrait index
+    theChar.setPortraitIndex(portrait(theChar.getRace()));
+    theChar.setIconPictureIndex(iconPictureIndex(theChar.getIconPictureIndex(), 1));
     /// @todo implement caste selection, will need to read in the information from the resource fork data
     /// @todo implement race selection, will need to read in the information from the resource fork data
     /// @todo implement portrait selection, will need to read in the information from the resource fork data
