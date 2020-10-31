@@ -25,12 +25,15 @@ set(UI_SOURCES
 		racestatsview.ui
 		casteinfopanel.ui
 		viewagingdialog.ui
+		characterportraitselector.ui
 		)
 
 
 qt5_wrap_ui(UI_GENERATED_HEADERS ${UI_SOURCES})
 
 add_executable(CharacterEditor
+		characterportraitselector.cpp
+		characterportraitselector.h
 		coredrvsview.cpp
 		coredrvsview.h
 		characterprimaryattributeswidget.cpp
