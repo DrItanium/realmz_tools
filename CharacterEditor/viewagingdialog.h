@@ -5,6 +5,7 @@
 #include "../RaceData.h"
 #include "../AgeGroup.h"
 #include <QAbstractTableModel>
+#include "../CommonUIElements/ViewAgingTableModel.h"
 
 namespace Ui {
 class ViewAgingDialog;
@@ -23,6 +24,7 @@ private:
 private:
     Ui::ViewAgingDialog *ui;
     realmz::RaceKind rd = realmz::RaceKind::Human;
+    std::unique_ptr<ViewAgingTableModel> vatm;
 };
 
 #endif // VIEWAGINGDIALOG_H

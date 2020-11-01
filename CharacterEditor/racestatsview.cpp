@@ -27,7 +27,7 @@ void
 RaceStatsView::on_raceSelect_activated(int index)
 {
     /// @todo implement
-    this->rk = static_cast<realmz::RaceKind>(index);
+    this->rk = static_cast<realmz::RaceKind>(index + 1);
     /// @todo load the corresponding race info using loadrace
     installRace(realmz::loadRaceData(rk));
 }

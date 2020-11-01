@@ -16,7 +16,7 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
     void setRaceKind(realmz::RaceKind k) noexcept;
 private:
-    realmz::RaceKind _rk = realmz::RaceKind::None;
+    realmz::RaceKind _rk = realmz::RaceKind::Human;
 
 
 };

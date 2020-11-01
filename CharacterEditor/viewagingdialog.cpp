@@ -3,9 +3,11 @@
 
 ViewAgingDialog::ViewAgingDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ViewAgingDialog)
+    ui(new Ui::ViewAgingDialog),
+    vatm(new ViewAgingTableModel(this))
 {
         ui->setupUi(this);
+        ui->tableView->setModel(vatm.get());
 }
 
 ViewAgingDialog::~ViewAgingDialog()
@@ -17,12 +19,13 @@ void
 ViewAgingDialog::setRaceData(realmz::RaceKind nrd) noexcept
 {
         rd = nrd;
+        vatm->setRaceKind(nrd);
         installRaceData();
 }
 
 void
 ViewAgingDialog::installRaceData() {
-        const auto& targetData = realmz::loadRaceData(rd);
+
 #if 0
         auto emitTarget = [this, &targetData](realmz::AgeGroup g) {
                 const auto& ar = targetData.getAgeRange(g);

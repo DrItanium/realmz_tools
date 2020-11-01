@@ -5,7 +5,6 @@
 #include "ViewAgingTableModel.h"
 #include "../AgeGroup.h"
 #include <sstream>
-#include <vector>
 QVariant
 ViewAgingTableModel::data(const QModelIndex &index, int role) const {
     if (role == Qt::DisplayRole) {
@@ -78,4 +77,9 @@ ViewAgingTableModel::headerData(int section, Qt::Orientation orientation, int ro
         }
     }
     return QVariant();
+}
+
+void
+ViewAgingTableModel::setRaceKind(realmz::RaceKind k) noexcept {
+    _rk = k;
 }
