@@ -18,14 +18,16 @@ namespace realmz {
                                           int electric,
                                           int chemical,
                                           int mental,
-                                          int magical) noexcept :
+                                          int magical,
+                                          int special) noexcept :
                                           _charm(charm),
                                           _heat(heat),
                                           _cold(cold),
                                           _electric(electric),
                                           _chemical(chemical),
                                           _mental(mental),
-                                          _magical(magical) { }
+                                          _magical(magical),
+                                          _special(special) { }
         explicit DRVAdjustments(const realmz::CasteDataBuffer &buf);
         explicit DRVAdjustments(const realmz::RaceDataBuffer& buf);
         void print(std::ostream &os) const noexcept;
@@ -36,6 +38,7 @@ namespace realmz {
         [[nodiscard]] constexpr auto getChemical() const noexcept { return _chemical; }
         [[nodiscard]] constexpr auto getMental() const noexcept { return _mental; }
         [[nodiscard]] constexpr auto getMagical() const noexcept { return _magical; }
+        [[nodiscard]] constexpr auto getSpecial() const noexcept { return _special; }
     private:
         int _charm = 0;
         int _heat = 0;
@@ -44,6 +47,7 @@ namespace realmz {
         int _chemical = 0;
         int _mental = 0;
         int _magical = 0;
+        int _special = 0;
     };
 }
 std::ostream &operator<<(std::ostream &os, const realmz::DRVAdjustments &drv) noexcept;

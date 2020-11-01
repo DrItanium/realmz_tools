@@ -10,6 +10,7 @@
 #include "Attributes.h"
 #include "Attribute.h"
 #include "AgeGroup.h"
+#include "Character.h"
 
 namespace realmz {
     void
@@ -200,6 +201,11 @@ namespace realmz {
         } else {
             return _contents[level];
         }
+    }
+
+    void
+    Caste::accept(CharacterConditions& cc) const noexcept {
+        _conditions.accept(cc);
     }
 } // end namespace realmz
 std::ostream &operator<<(std::ostream &os, const realmz::Caste &caste) noexcept {

@@ -162,19 +162,19 @@ MainWindow::on_actionGenerate_New_Character_triggered()
         return;
     }
     QString theName = *nameResult;
-    realmz::Character theChar;
-    theChar.setName(theName.toStdString());
-    theChar.setSkillLevel(skillLevel());
-    theChar.setGender(gender());
-    theChar.setCaste(caste());
-    theChar.setRace(race());
-    // compute the defualt portrait index
-    theChar.setPortraitIndex(portrait());
-    theChar.setIconPictureIndex(iconPictureIndex());
-    /// @todo implement caste selection, will need to read in the information from the resource fork data
-    /// @todo implement race selection, will need to read in the information from the resource fork data
-    /// @todo implement portrait selection, will need to read in the information from the resource fork data
-    /// @todo implement character combat icon select, will need to read in the information from the resource fork data
+    //realmz::Character theChar;
+    std::string name(theName.toStdString());
+    auto theSkillLevel = skillLevel();
+    auto theGender = gender();
+    auto theCaste = caste();
+    auto theRace = race();
+    auto thePortraitIndex = portrait();
+    auto theIconPictureIndex = iconPictureIndex();
+    //realmz::Character newChar(name, theSkillLevel, theGender, theCaste, theRace, thePortraitIndex, theIconPictureIndex);
+    // next compute the character primary stats + spell stuff
+    // there needs to be a separate function which is responsible for this since it needs to be shared
+    // between two different programs. The constructor makes the perfect place for that.
+    // However, in this case, we need to actually delay object construction until the user is cool with what they see
 }
 
 realmz::CasteKind

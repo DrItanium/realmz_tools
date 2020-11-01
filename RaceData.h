@@ -13,6 +13,7 @@
 #include "Attributes.h"
 #include "AgeGroup.h"
 namespace realmz {
+    class CharacterConditions;
     enum class RaceKind : uint16_t {
         None = 0,
         Human,
@@ -153,6 +154,7 @@ namespace realmz {
         [[nodiscard]] const AgeRange& getAgeRange(AgeGroup g) const noexcept { return getAgeRange(static_cast<size_t>(g) - 1); }
         [[nodiscard]] const AgeModifiers& getAgeModifier(size_t index) const noexcept {return _ageModifiers[index < 5 ? index : 4]; }
         [[nodiscard]] const AgeModifiers& getAgeModifier(AgeGroup g) const noexcept { return getAgeModifier(static_cast<size_t>(g) -1); }
+        void accept(CharacterConditions& cc) const;
     private:
         Hatred _hatred;
         SpecialAbilities _specialAbilities;

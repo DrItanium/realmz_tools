@@ -3,6 +3,9 @@
 //
 
 #include "CasteConditions.h"
+#include "Character.h"
+#include <type_traits>
+#include <array>
 
 namespace realmz {
 
@@ -23,6 +26,15 @@ namespace realmz {
             }
         }
         os << "}" << std::endl;
+    }
+
+    void
+    CasteConditions::accept(CharacterConditions &cc) const noexcept {
+        for (int i = 0; i < _contents.size(); ++i) {
+            if (auto value = _contents[i]; value == 1) {
+                cc.setCondition(i, -1);
+            }
+        }
     }
 
 } // end namespace realmz

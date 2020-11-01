@@ -330,7 +330,48 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getProtectionFrom3rdLevelSpells() const noexcept { return _protectionFrom3rdLevelSpells; }
         [[nodiscard]] constexpr int16_t getProtectionFrom4thLevelSpells() const noexcept { return _protectionFrom4thLevelSpells; }
         [[nodiscard]] constexpr int16_t getProtectionFrom5thLevelSpells() const noexcept { return _protectionFrom5thLevelSpells; }
+        void setInRetreat(int16_t inRetreat) noexcept { _inRetreat = inRetreat; }
+        void setHelpless(int16_t helpless) noexcept { _helpless = helpless; }
+        void setTangled(int16_t tangled) noexcept { _tangled = tangled; }
+        void setIsCursed(int16_t isCursed) noexcept { _isCursed = isCursed; }
+        void setConditionMagicAura(int16_t conditionMagicAura) noexcept { _conditionMagicAura = conditionMagicAura; }
+        void setStupid(int16_t stupid) noexcept { _stupid = stupid; }
+        void setIsSlow(int16_t isSlow) noexcept { _isSlow = isSlow; }
+        void setConditionShieldedFromNormalAttacks(int16_t conditionShieldedFromNormalAttacks) noexcept { _conditionShieldedFromNormalAttacks = conditionShieldedFromNormalAttacks; }
+        void setConditionShieldedFromProjectiles(int16_t conditionShieldedFromProjectiles) noexcept { _conditionShieldedFromProjectiles = conditionShieldedFromProjectiles; }
+        void setPoisoned(int16_t poisoned) noexcept { _poisoned = poisoned; }
+        void setRegenerating(int16_t regenerating) noexcept { _regenerating = regenerating; }
+        void setProtectionFromHeatAttacks(int16_t protectionFromHeatAttacks) noexcept { _protectionFromHeatAttacks = protectionFromHeatAttacks; }
+        void setProtectionFromColdAttacks(int16_t protectionFromColdAttacks) noexcept { _protectionFromColdAttacks = protectionFromColdAttacks; }
+        void setProtectionFromElectricalAttacks(int16_t protectionFromElectricalAttacks) noexcept { _protectionFromElectricalAttacks = protectionFromElectricalAttacks; }
+        void setProtectionFromChemicalAttacks(int16_t protectionFromChemicalAttacks) noexcept { _protectionFromChemicalAttacks = protectionFromChemicalAttacks; }
+        void setProtectionFromMentalAttacks(int16_t protectionFromMentalAttacks) noexcept { _protectionFromMentalAttacks = protectionFromMentalAttacks; }
+        void setProtectionFrom1StLevelSpells(int16_t protectionFrom1StLevelSpells) noexcept { _protectionFrom1stLevelSpells = protectionFrom1StLevelSpells; }
+        void setProtectionFrom2NdLevelSpells(int16_t protectionFrom2NdLevelSpells) noexcept { _protectionFrom2ndLevelSpells = protectionFrom2NdLevelSpells; }
+        void setProtectionFrom3RdLevelSpells(int16_t protectionFrom3RdLevelSpells) noexcept { _protectionFrom3rdLevelSpells = protectionFrom3RdLevelSpells; }
+        void setProtectionFrom4ThLevelSpells(int16_t protectionFrom4ThLevelSpells) noexcept { _protectionFrom4thLevelSpells = protectionFrom4ThLevelSpells; }
+        void setProtectionFrom5ThLevelSpells(int16_t protectionFrom5ThLevelSpells) noexcept { _protectionFrom5thLevelSpells = protectionFrom5ThLevelSpells; }
+        void setStrong(int16_t strong) noexcept { _strong = strong; }
+        void setProtectionFromFoe(int16_t protectionFromFoe) noexcept { _protectionFromFoe = protectionFromFoe; }
+        void setSpeedy(int16_t speedy) noexcept { _speedy = speedy; }
+        void setInvisible(int16_t invisible) noexcept { _invisible = invisible; }
+        void setIsAnimated(int16_t isAnimated) noexcept { _isAnimated = isAnimated; }
+        void setStone(int16_t stone) noexcept { _stone = stone; }
+        void setBlind(int16_t blind) noexcept { _blind = blind; }
+        void setDiseased(int16_t diseased) noexcept { _diseased = diseased; }
+        void setConfused(int16_t confused) noexcept { _confused = confused; }
+        void setReflectingSpells(int16_t reflectingSpells) noexcept { _reflectingSpells = reflectingSpells; }
+        void setReflectingAttacks(int16_t reflectingAttacks) noexcept { _reflectingAttacks = reflectingAttacks; }
+        void setBonusDamage(int16_t bonusDamage) noexcept { _bonusDamage = bonusDamage; }
+        void setAbsorbEnergy(int16_t absorbEnergy) noexcept { _absorbEnergy = absorbEnergy; }
+        void setEnergyDraining(int16_t energyDraining) noexcept { _energyDraining = energyDraining; }
+        void setAbsorbSpellEnergyFromAttacks(int16_t absorbSpellEnergyFromAttacks) noexcept { _absorbSpellEnergyFromAttacks = absorbSpellEnergyFromAttacks; }
+        void setHinderedAttack(int16_t hinderedAttack) noexcept { _hinderedAttack = hinderedAttack; }
+        void setHinderedDefense(int16_t hinderedDefense) noexcept { _hinderedDefense = hinderedDefense; }
+        void setDefensiveBonus(int16_t defensiveBonus) noexcept { _defensiveBonus = defensiveBonus; }
+        void setSilenced(int16_t silenced) noexcept { _silenced = silenced; }
         void print(std::ostream& os) const noexcept;
+        void setCondition(int index, int16_t value) noexcept;
     private:
         int16_t _inRetreat = 0;
         int16_t _helpless = 0;
@@ -386,8 +427,12 @@ namespace realmz {
     };
     class Character {
     public:
-        Character(const CharacterDataBuffer& buf);
+        explicit Character(const CharacterDataBuffer& buf);
+        Character(const std::string& name, size_t skillLevel, Gender g, CasteKind c, RaceKind r, int16_t pIdx, int16_t cIdx);
         Character() = default;
+    private:
+        void apply(const Caste& data, const RaceData& race) noexcept;
+    public:
         void setId(uint16_t id) noexcept { _id = id; }
         void setChanceToHit(int16_t chanceToHit) noexcept { _chanceToHit = chanceToHit; }
         void setDodgeMissile(int16_t dodgeMissile) noexcept { _dodgeMissile = dodgeMissile; }

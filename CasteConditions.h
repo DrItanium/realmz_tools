@@ -7,10 +7,12 @@
 #include "CasteDataBuffer.h"
 #include <iostream>
 namespace realmz {
+    class CharacterConditions;
     class CasteConditions {
     public:
         CasteConditions(const CasteDataBuffer &);
         void print(std::ostream&) const noexcept;
+        void accept(CharacterConditions& cc) const noexcept;
     private:
         std::array<int16_t, 40> _contents = { 0 };
     };

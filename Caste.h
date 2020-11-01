@@ -139,6 +139,7 @@ namespace realmz {
     private:
         std::vector<int32_t> _contents;
     };
+    class CharacterConditions;
     class Caste {
     public:
         explicit Caste(const CasteDataBuffer &buffer);
@@ -164,6 +165,7 @@ namespace realmz {
         [[nodiscard]] constexpr int getMaxAttacksPerRound() const noexcept { return _maxAttacksPerRound; }
         [[nodiscard]] const VictoryPoints& getVictoryPointsAtLevel() const noexcept { return _victoryPointsAtLevel; }
         [[nodiscard]] constexpr auto getInitialGoldAmount() const noexcept { return _initialGoldAmount; }
+        void accept(CharacterConditions&) const noexcept;
     private:
         SpecialAbilities _initial;
         DRVAdjustments _drvs;

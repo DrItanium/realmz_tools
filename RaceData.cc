@@ -8,7 +8,7 @@
 #include "RaceData.h"
 #include "RaceDataBuffer.h"
 #include "BinaryManipulation.h"
-
+#include "Character.h"
 namespace realmz {
     Hatred::Hatred(const RaceDataBuffer &buffer) : Hatred(buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7]) { }
     RaceData::RaceData(const RaceDataBuffer &buf) :
@@ -194,7 +194,13 @@ namespace realmz {
             }
         }
     }
-}
+    void
+    RaceData::accept(CharacterConditions &cc) const {
+        for (int i = 0; i < 40; ++i) {
+            cc.setCondition(i, _conditions[i]);
+        }
+    }
+} // end namespace realmz
 
 std::ostream &
 operator<<(std::ostream &os, realmz::RaceKind r) noexcept {

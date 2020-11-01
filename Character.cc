@@ -335,7 +335,7 @@ namespace realmz {
         if constexpr (std::is_same_v<K, int8_t> || std::is_same_v<K, uint8_t> || std::is_same_v<K, int16_t> || std::is_same_v<K, uint16_t> || std::is_same_v<K, char> || std::is_same_v<K, unsigned char>) {
             os << std::dec << static_cast<int>(value);
         } else if constexpr (std::is_same_v<K, bool>) {
-           os << std::boolalpha << value;
+            os << std::boolalpha << value;
         } else {
             os << std::dec << value;
         }
@@ -624,7 +624,103 @@ namespace realmz {
         _damageReductionVsChemical += targetAgeModifier.getChemical() * factor;
         _damageReductionVsMental += targetAgeModifier.getMental() * factor;
     }
-}
+    void
+    Character::apply(const Caste &caste, const RaceData& race) noexcept {
+        const auto casteDrvs = caste.getDRVs();
+        const auto raceDrvs = race.getDrvs();
+        const auto hatred = race.getRaceHatredStats();
+        // apply racial and caste conditions
+        const auto casteConds = caste.getConditions();
+        // race conditions are currently a
+        race.accept(_conditions);
+        caste.accept(_conditions);
+
+        // update the drvs first
+        _damageReductionVsCharm = 0x32 + casteDrvs.getCharm() + raceDrvs.getCharm();
+        _damageReductionVsMental = 0x32 + casteDrvs.getMental() + raceDrvs.getMental();
+        _damageReductionVsChemical = 0x32 + casteDrvs.getChemical() + raceDrvs.getChemical();
+        _damageReductionVsCold = 0x32 + casteDrvs.getCold() + raceDrvs.getCold();
+        _damageReductionVsElectric = 0x32 + casteDrvs.getElectric() + raceDrvs.getElectric();
+        _damageReductionVsHeat = 0x32 + casteDrvs.getHeat() + raceDrvs.getHeat();
+        _damageReductionVsMagic = 0x32 + casteDrvs.getMagical() + raceDrvs.getMagical();
+        _damageReductionVsSpecial = 0x32 + casteDrvs.getSpecial() + raceDrvs.getSpecial();
+        // then the race hatred stats
+        _vsUndeadCreatures = hatred.getHitVsUndead();
+        _vsMagicUsingCreatures = hatred.getHitVsMagicUsing();
+        _vsGiantSizedCreatures = hatred.getHitGiantSize();
+        _vsIntelligentCreatures = hatred.getHitVsIntelligent();
+        _vsVeryEvilCreatures = hatred.getHitVsVeryEvil();
+        _vsReptileCreatures = hatred.getHitVsReptilian();
+        _vsDemonicCreatures = hatred.getHitVsDemonic();
+        _vsNonHumanoidCreatures = hatred.getHitNonHumanoid();
+        _attacksPerRound = race.getAttacksPerRound() + static_cast<int>(caste.getBonusAttacks());
+        _combatPoints = _attacksPerRound;
+        /// @todo Call GetExp here
+        _handToHandMax = caste.getHandToHand().getInitial();
+        _chanceToHit = caste.getMeleeAttack().getInitial();
+    }
+    void
+    CharacterConditions::setCondition(int index, int16_t value) noexcept {
+        switch(index) {
+            case 0: setInRetreat(value); break;
+            case 1: setHelpless(value); break;
+            case 2: setTangled(value); break;
+            case 3: setIsCursed(value); break;
+            case 4: setConditionMagicAura(value); break;
+            case 5: setStupid(value); break;
+            case 6: setIsSlow(value); break;
+            case 7: setConditionShieldedFromNormalAttacks(value); break;
+            case 8: setConditionShieldedFromProjectiles(value); break;
+            case 9: setPoisoned(value); break;
+            case 10: setRegenerating(value); break;
+            case 11: setProtectionFromHeatAttacks(value); break;
+            case 12: setProtectionFromColdAttacks(value); break;
+            case 13: setProtectionFromElectricalAttacks(value); break;
+            case 14: setProtectionFromChemicalAttacks(value); break;
+            case 15: setProtectionFromMentalAttacks(value); break;
+            case 16: setProtectionFrom1StLevelSpells(value); break;
+            case 17: setProtectionFrom2NdLevelSpells(value); break;
+            case 18: setProtectionFrom3RdLevelSpells(value); break;
+            case 19: setProtectionFrom4ThLevelSpells(value); break;
+            case 20: setProtectionFrom5ThLevelSpells(value); break;
+            case 21: setStrong(value); break;
+            case 22: setProtectionFromFoe(value); break;
+            case 23: setSpeedy(value); break;
+            case 24: setInvisible(value); break;
+            case 25: setIsAnimated(value); break;
+            case 26: setStone(value); break;
+            case 27: setBlind(value); break;
+            case 28: setDiseased(value); break;
+            case 29: setConfused(value); break;
+            case 30: setReflectingSpells(value); break;
+            case 31: setReflectingAttacks(value); break;
+            case 32: setBonusDamage(value); break;
+            case 33: setAbsorbEnergy(value); break;
+            case 34: setEnergyDraining(value); break;
+            case 35: setAbsorbSpellEnergyFromAttacks(value); break;
+            case 36: setHinderedAttack(value); break;
+            case 37: setHinderedDefense(value); break;
+            case 38: setDefensiveBonus(value); break;
+            case 39: setSilenced(value); break;
+            default: break;
+        }
+
+    }
+
+    Character::Character(const std::string &name, size_t skillLevel, Gender g, CasteKind c, RaceKind r, int16_t pIdx, int16_t cIdx) :
+            _name(name),
+            _skillLevel(skillLevel),
+            _gender(g),
+            _caste(c),
+            _race(r),
+            _portraitIndex(pIdx),
+            _iconPictureIndex(cIdx)
+    {
+        auto& currentRace = loadRaceData(_race);
+        auto& currentCaste = loadCaste(_caste);
+        apply(currentCaste, currentRace);
+    }
+} // end namespace realmz
 
 std::ostream&
 operator<<(std::ostream& os, const realmz::Character& c) noexcept {

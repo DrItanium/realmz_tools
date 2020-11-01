@@ -9,8 +9,8 @@
 
 namespace realmz {
 
-    DRVAdjustments::DRVAdjustments(const CasteDataBuffer &buf) : DRVAdjustments(buf[28], buf[29], buf[30], buf[31], buf[32], buf[33], buf[34]) { }
-    DRVAdjustments::DRVAdjustments(const RaceDataBuffer &buf) : DRVAdjustments(buf[22], buf[23], buf[24], buf[25], buf[26], buf[27], buf[28]) { }
+    DRVAdjustments::DRVAdjustments(const CasteDataBuffer &buf) : DRVAdjustments(buf[28], buf[29], buf[30], buf[31], buf[32], buf[33], buf[34], buf[35]) { }
+    DRVAdjustments::DRVAdjustments(const RaceDataBuffer &buf) : DRVAdjustments(buf[22], buf[23], buf[24], buf[25], buf[26], buf[27], buf[28], buf[29]) { }
 
     void
     DRVAdjustments::print(std::ostream &os) const noexcept {
@@ -23,6 +23,7 @@ namespace realmz {
         X(chemical);
         X(mental);
         X(magical);
+        X(special);
 #undef X
     }
 }
