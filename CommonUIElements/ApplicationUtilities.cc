@@ -35,7 +35,7 @@ getPortraitsDirectory() noexcept {
     static std::filesystem::path dir;
     if (!init) {
         init = true;
-        dir = getApplicationDirectory() / "portraits";
+        dir = getResourcesDirectory() / "portraits";
     }
     return dir;
 }
@@ -46,7 +46,7 @@ getTacticalsDirectory() noexcept {
     static std::filesystem::path dir;
     if (!init) {
         init = true;
-        dir = getApplicationDirectory() / "directory";
+        dir = getResourcesDirectory() / "directory";
     }
     return dir;
 }
@@ -56,7 +56,7 @@ getBinaryResourcesDir() noexcept {
     static std::filesystem::path dir;
     if (!init) {
         init = true;
-        dir = getApplicationDirectory() / "binary";
+        dir = getResourcesDirectory() / "binary";
     }
     return dir;
 }

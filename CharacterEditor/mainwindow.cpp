@@ -8,6 +8,7 @@
 #include <optional>
 #include "casteinfopanel.h"
 #include "racestatsview.h"
+#include "../CommonUIElements/ApplicationUtilities.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -89,8 +90,12 @@ MainWindow::gender() noexcept
 void
 MainWindow::promptCasteDataLocation() noexcept {
     if (!realmz::casteDataLocationSet()) {
-        auto filePath = QFileDialog::getOpenFileName(this, tr("Location of Caste Data"));
-        std::filesystem::path thePath(filePath.toStdString());
+        std::filesystem::path thePath(getBinaryResourcesDir() / "Data Caste");
+        if (!std::filesystem::exists(thePath)) {
+            QMessageBox::information(this, tr("Note"), QString(thePath.string().c_str()) + tr(" does not exist"));
+            auto qPath = QFileDialog::getOpenFileName(this, tr("Location of Caste Data"));
+            thePath = qPath.toStdString();
+        }
         realmz::setCasteDataLocation(thePath);
     }
 }
@@ -98,8 +103,11 @@ MainWindow::promptCasteDataLocation() noexcept {
 void
 MainWindow::promptRaceDataLocation() noexcept {
     if (!realmz::raceDataLocationSet()) {
-        auto filePath = QFileDialog::getOpenFileName(this, tr("Location of Race Data"));
-        std::filesystem::path thePath(filePath.toStdString());
+        std::filesystem::path thePath(getBinaryResourcesDir() / "Data Race");
+        if (!std::filesystem::exists(thePath)) {
+            auto qPath = QFileDialog::getOpenFileName(this, tr("Location of Race Data"));
+            thePath = qPath.toStdString();
+        }
         realmz::setRaceDataLocation(thePath);
     }
 }

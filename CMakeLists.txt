@@ -334,7 +334,10 @@ add_library(realmz
 		CasteConditions.cc
 		CasteConditions.h
 		CasteDataBuffer.h Character.cc Character.h Utilities.h Point.h Item.cc Item.h Spell.cc Spell.h)
-
+add_custom_command(
+		TARGET realmz POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy_directory
+		${CMAKE_SOURCE_DIR}/resources $<TARGET_FILE_DIR:realmz>/resources)
 add_executable(dumpcaste CasteDecomposer.cpp)
 add_executable(dumprace RaceDecomposer.cc)
 add_executable(realmz_keygen KeyGen.cc)

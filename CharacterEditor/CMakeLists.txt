@@ -65,5 +65,11 @@ add_executable(CharacterEditor
 	${UI_GENERATED_HEADERS}
 	)
 
-target_link_libraries(CharacterEditor Qt5::Widgets
-									  realmz)
+add_custom_command(
+		TARGET CharacterEditor POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy_directory
+		${CMAKE_SOURCE_DIR}/resources $<TARGET_FILE_DIR:CharacterEditor>/resources)
+target_link_libraries(CharacterEditor
+		Qt5::Widgets
+		realmz
+		realmzqt)
