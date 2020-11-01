@@ -26,15 +26,12 @@ set(UI_SOURCES
 		casteinfopanel.ui
 		viewagingdialog.ui
 		characterportraitselector.ui
-		sixpicturewidget.ui
 		)
 
 
 qt5_wrap_ui(UI_GENERATED_HEADERS ${UI_SOURCES})
 
 add_executable(CharacterEditor
-		sixpicturewidget.cpp
-		sixpicturewidget.h
 		characterportraitselector.cpp
 		characterportraitselector.h
 		coredrvsview.cpp
