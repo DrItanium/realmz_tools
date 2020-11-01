@@ -13,7 +13,11 @@ public:
     int columnCount(const QModelIndex& idx) const override;
     int rowCount(const QModelIndex& idx) const override;
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-
+public:
+    static constexpr auto computePortraitIndex(int row, int column) noexcept -> int {
+        return ((row * 6) + column) + 257;
+    }
+    QString generatePortraitPath(int row, int column) const noexcept;
 };
 
 #endif //REALMZ_TOOLS_PORTRAITMODEL_H
