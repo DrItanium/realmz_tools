@@ -63,5 +63,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tableView</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>CharacterRepresentationSelector</receiver>
+   <slot>setTargetRepresentation(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>setTargetRepresentation(QModelIndex)</slot>
+ </slots>
 </ui>

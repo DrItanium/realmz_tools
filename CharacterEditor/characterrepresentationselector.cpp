@@ -1,5 +1,6 @@
 #include "characterrepresentationselector.h"
 #include "ui_characterrepresentationselector.h"
+#include <QException>
 
 CharacterRepresentationSelector::CharacterRepresentationSelector(QWidget *parent) :
     QDialog(parent),
@@ -16,6 +17,15 @@ CharacterRepresentationSelector::~CharacterRepresentationSelector()
 }
 
 void
-CharacterRepresentationSelector::setModel(QAbstractTableModel *theModel) noexcept {
+CharacterRepresentationSelector::setModel(RepresentationModel* theModel) noexcept {
     ui->tableView->setModel(theModel);
+    _rmi = theModel;
+}
+
+void
+CharacterRepresentationSelector::setTargetRepresentation(QModelIndex qmi) {
+    if (_rmi == nullptr) {
+        throw "model not set";
+    }
+    targetRepresentation = _rmi->computeProperIndex(qmi.row(), qmi.column());
 }
