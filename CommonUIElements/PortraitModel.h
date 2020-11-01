@@ -17,6 +17,7 @@ public:
     static constexpr auto computePortraitIndex(int row, int column) noexcept -> int {
         return ((row * 6) + column) + 257;
     }
+
     QString generatePortraitPath(int row, int column) const noexcept;
 };
 

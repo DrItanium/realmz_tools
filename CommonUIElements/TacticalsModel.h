@@ -15,7 +15,10 @@ public:
     static constexpr int computeTacticalIndex(int portraitIndex) noexcept {
         return portraitIndex + 0x2227;
     }
-    QString generateTacticalPath(int id) const noexcept;
+    static constexpr int computeTacticalIndex(int row, int column) noexcept {
+        return ((row * 6) + column) + 9000;
+    }
+    QString generateTacticalPath(int row, int column) const noexcept;
 };
 
 #endif //REALMZ_TOOLS_TACTICALSMODEL_H
