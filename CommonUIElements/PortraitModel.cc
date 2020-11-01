@@ -9,3 +9,4 @@ PortraitModel::data(const QModelIndex &index, int role) const {
 
 }
 
+

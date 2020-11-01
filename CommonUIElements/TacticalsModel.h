@@ -10,7 +10,6 @@ class TacticalsModel : public RepresentationModel {
 public:
     explicit TacticalsModel(QObject* parent = nullptr) : RepresentationModel(parent) { }
     ~TacticalsModel() override = default;
-    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
     static constexpr int computeTacticalIndex(int row, int column) noexcept {
         return ((row * 6) + column) + 9000;
     }
