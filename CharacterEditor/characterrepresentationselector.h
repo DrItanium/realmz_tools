@@ -18,6 +18,7 @@ public:
     void setModel(QAbstractTableModel* theModel) noexcept;
 private:
     Ui::CharacterRepresentationSelector *ui;
+
 };
 
 #endif // CHARACTERPORTRAITSELECTOR_H
