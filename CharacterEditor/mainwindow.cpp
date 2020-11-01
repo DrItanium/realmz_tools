@@ -15,9 +15,17 @@
 #include "characterrepresentationselector.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    pm(new PortraitModel()),
+    tm(new TacticalsModel())
 {
     ui->setupUi(this);
+    ui->portraitView->setModel(pm.get());
+    ui->portraitView->resizeRowsToContents();
+    ui->portraitView->resizeColumnsToContents();
+    ui->combatIconView->setModel(tm.get());
+    ui->combatIconView->resizeRowsToContents();
+    ui->combatIconView->resizeColumnsToContents();
 }
 
 MainWindow::~MainWindow()
@@ -201,7 +209,6 @@ int
 MainWindow::portrait() noexcept
 {
     CharacterRepresentationSelector csr(this);
-    auto pm = std::make_unique<PortraitModel>();
     csr.setModel(pm.get());
     csr.exec();
     return csr.getSelectedRepresentation();
@@ -211,8 +218,17 @@ int
 MainWindow::iconPictureIndex() noexcept
 {
     CharacterRepresentationSelector csr(this);
-    auto pm = std::make_unique<TacticalsModel>();
-    csr.setModel(pm.get());
+    csr.setModel(tm.get());
     csr.exec();
     return csr.getSelectedRepresentation();
+}
+
+void MainWindow::on_portraitView_clicked(const QModelIndex &index)
+{
+
+}
+
+void MainWindow::on_combatIconView_clicked(const QModelIndex &index)
+{
+
 }

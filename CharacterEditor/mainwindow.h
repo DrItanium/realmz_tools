@@ -8,7 +8,9 @@
 #include "../Character.h"
 #include "../Caste.h"
 #include "../RaceData.h"
-
+#include "../CommonUIElements/PortraitModel.h"
+#include "../CommonUIElements/TacticalsModel.h"
+#include <memory>
 namespace Ui {
 class MainWindow;
 }
@@ -26,6 +28,10 @@ private slots:
     void on_actionAbout_Realmz_Character_Editor_triggered();
 
     void on_actionGenerate_New_Character_triggered();
+    void on_portraitView_clicked(const QModelIndex &index);
+
+    void on_combatIconView_clicked(const QModelIndex &index);
+
 private: // routine names taken from GHIDRA
 
     bool question(const QString& message) noexcept;
@@ -44,6 +50,8 @@ public:
     void closeEvent(QCloseEvent* event) override;
 private:
     Ui::MainWindow *ui;
+    std::unique_ptr<PortraitModel> pm;
+    std::unique_ptr<TacticalsModel> tm;
 };
 
 #endif // MAINWINDOW_H

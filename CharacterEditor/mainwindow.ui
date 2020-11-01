@@ -96,11 +96,21 @@
        <attribute name="title">
         <string>Portrait</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_9">
+        <item row="0" column="0">
+         <widget class="QTableView" name="portraitView"/>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="CombatIcon">
        <attribute name="title">
         <string>Combat Icon</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="0" column="0">
+         <widget class="QTableView" name="combatIconView"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
