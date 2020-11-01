@@ -4,6 +4,7 @@
 
 #include "TacticalsModel.h"
 #include "ApplicationUtilities.h"
+#include <QMessageBox>
 
 QString
 TacticalsModel::generateTacticalPath(int row, int column) const noexcept {

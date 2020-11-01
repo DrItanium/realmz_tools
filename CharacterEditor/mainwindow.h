@@ -35,8 +35,8 @@ private: // routine names taken from GHIDRA
     realmz::CasteKind caste() noexcept;
     realmz::RaceKind race() noexcept;
     std::optional<QString> name() noexcept;
-    int16_t portrait(realmz::RaceKind characterRace) noexcept;
-    int16_t iconPictureIndex(int16_t portraitIndex, int16_t value) noexcept;
+    int portrait() noexcept;
+    int iconPictureIndex() noexcept;
 private:
     void promptCasteDataLocation() noexcept;
     void promptRaceDataLocation() noexcept;

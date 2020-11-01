@@ -7,8 +7,6 @@ CharacterRepresentationSelector::CharacterRepresentationSelector(QWidget *parent
     ui(new Ui::CharacterRepresentationSelector)
 {
     ui->setupUi(this);
-    ui->tableView->resizeColumnsToContents();
-    ui->tableView->resizeRowsToContents();
 }
 
 CharacterRepresentationSelector::~CharacterRepresentationSelector()
@@ -20,6 +18,8 @@ void
 CharacterRepresentationSelector::setModel(RepresentationModel* theModel) noexcept {
     ui->tableView->setModel(theModel);
     _rmi = theModel;
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->resizeRowsToContents();
 }
 
 void

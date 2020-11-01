@@ -6,9 +6,13 @@
 #include <QCloseEvent>
 #include <QFileDialog>
 #include <optional>
+#include <memory>
 #include "casteinfopanel.h"
 #include "racestatsview.h"
 #include "../CommonUIElements/ApplicationUtilities.h"
+#include "../CommonUIElements/TacticalsModel.h"
+#include "../CommonUIElements/PortraitModel.h"
+#include "characterrepresentationselector.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -139,21 +143,6 @@ MainWindow::name() noexcept
     }
     return name;
 }
-int16_t
-MainWindow::portrait(realmz::RaceKind characterRace) noexcept
-{
-    auto defaultPortrait = static_cast<int16_t>(characterRace) * 6 + 0xfb;
-
-    return defaultPortrait;
-}
-
-int16_t
-MainWindow::iconPictureIndex(int16_t portraitIndex, int16_t value) noexcept
-{
-    auto defaultIndex = portraitIndex + 0x2227;
-
-    return defaultIndex;
-}
 void
 MainWindow::on_actionGenerate_New_Character_triggered()
  {
@@ -172,8 +161,8 @@ MainWindow::on_actionGenerate_New_Character_triggered()
     theChar.setCaste(caste());
     theChar.setRace(race());
     // compute the defualt portrait index
-    theChar.setPortraitIndex(portrait(theChar.getRace()));
-    theChar.setIconPictureIndex(iconPictureIndex(theChar.getIconPictureIndex(), 1));
+    theChar.setPortraitIndex(portrait());
+    theChar.setIconPictureIndex(iconPictureIndex());
     /// @todo implement caste selection, will need to read in the information from the resource fork data
     /// @todo implement race selection, will need to read in the information from the resource fork data
     /// @todo implement portrait selection, will need to read in the information from the resource fork data
@@ -206,4 +195,24 @@ MainWindow::closeEvent(QCloseEvent *event) {
     // plus GHIDRA "mentions" it
     //flashMessage("Thank you for supporting Fantasoft!");
     event->accept();
+}
+
+int
+MainWindow::portrait() noexcept
+{
+    CharacterRepresentationSelector csr(this);
+    auto pm = std::make_unique<PortraitModel>();
+    csr.setModel(pm.get());
+    csr.exec();
+    return csr.getSelectedRepresentation();
+}
+
+int
+MainWindow::iconPictureIndex() noexcept
+{
+    CharacterRepresentationSelector csr(this);
+    auto pm = std::make_unique<TacticalsModel>();
+    csr.setModel(pm.get());
+    csr.exec();
+    return csr.getSelectedRepresentation();
 }

@@ -46,7 +46,7 @@ getTacticalsDirectory() noexcept {
     static std::filesystem::path dir;
     if (!init) {
         init = true;
-        dir = getResourcesDirectory() / "directory";
+        dir = getResourcesDirectory() / "tacticals";
     }
     return dir;
 }
