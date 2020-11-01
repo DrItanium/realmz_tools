@@ -3,9 +3,10 @@
 //
 
 #include "TacticalsModel.h"
+#include "ApplicationUtilities.h"
 
-QVariant
-TacticalsModel::data(const QModelIndex &index, int role) const {
-
+QString
+TacticalsModel::generateTacticalPath(int row, int column) const noexcept {
+    auto fsPath = getTacticalsDirectory() / (QString::number(computeProperIndex(row,column)) + tr(".png")).toStdString();
+    return QString(fsPath.string().c_str());
 }
-

@@ -11,7 +11,6 @@ class PortraitModel : public RepresentationModel {
 public:
     explicit PortraitModel(QObject* parent = nullptr) : RepresentationModel(parent) { }
     ~PortraitModel() override = default;
-    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 public:
     static constexpr auto computePortraitIndex(int row, int column) noexcept -> int {
         return ((row * 6) + column) + 257;

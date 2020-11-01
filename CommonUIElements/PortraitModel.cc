@@ -3,10 +3,11 @@
 //
 
 #include "PortraitModel.h"
+#include "ApplicationUtilities.h"
 
-QVariant
-PortraitModel::data(const QModelIndex &index, int role) const {
-
+QString
+PortraitModel::generatePortraitPath(int row, int column) const noexcept {
+    auto fsPath = getPortraitsDirectory() / (QString::number(computeProperIndex(row,column)) + tr(".png")).toStdString();
+    return QString(fsPath.string().c_str());
 }
-
 
