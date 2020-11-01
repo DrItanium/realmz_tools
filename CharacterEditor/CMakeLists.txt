@@ -17,7 +17,6 @@ set(UI_SOURCES
 		conditionsview.ui
 		charactercombaticonview.ui
 		characterprimarystatsview.ui
-		iconselect6.ui
 		itemsview.ui
 		mainwindow.ui
 		specialinfoview.ui
@@ -48,8 +47,6 @@ add_executable(CharacterEditor
 	characterprimarystatview.h
 	conditionsview.cpp
 	conditionsview.h
-	iconselect6.cpp
-	iconselect6.h
 	itemsview.cpp
 	itemsview.h
 	main.cpp
