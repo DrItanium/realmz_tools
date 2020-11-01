@@ -23,6 +23,7 @@ ViewAgingDialog::setRaceData(realmz::RaceKind nrd) noexcept
 void
 ViewAgingDialog::installRaceData() {
         const auto& targetData = realmz::loadRaceData(rd);
+#if 0
         auto emitTarget = [this, &targetData](realmz::AgeGroup g) {
                 const auto& ar = targetData.getAgeRange(g);
                 const auto& am = targetData.getAgeModifier(g);
@@ -40,4 +41,5 @@ ViewAgingDialog::installRaceData() {
         emitTarget(realmz::AgeGroup::Adult);
         emitTarget(realmz::AgeGroup::Prime);
         emitTarget(realmz::AgeGroup::Senior);
+#endif
 }

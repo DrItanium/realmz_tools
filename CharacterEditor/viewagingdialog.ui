@@ -20,19 +20,10 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_16">
-   <item row="0" column="0" rowspan="3">
-    <widget class="QGroupBox" name="youthGroup">
-     <property name="title">
-      <string>Youth</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="AgeGroupDisplayElement" name="youth" native="true"/>
-      </item>
-     </layout>
-    </widget>
+   <item row="0" column="0">
+    <widget class="QTableView" name="tableView"/>
    </item>
-   <item row="3" column="7">
+   <item row="1" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -42,67 +33,8 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" rowspan="3">
-    <widget class="QGroupBox" name="youngGroup">
-     <property name="title">
-      <string>Young</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <widget class="AgeGroupDisplayElement" name="young" native="true"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="2" rowspan="3" colspan="3">
-    <widget class="QGroupBox" name="primeGroup">
-     <property name="title">
-      <string>Prime</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="AgeGroupDisplayElement" name="prime" native="true"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="5" rowspan="3">
-    <widget class="QGroupBox" name="adultGroup">
-     <property name="title">
-      <string>Adult</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="6" column="2">
-       <widget class="AgeGroupDisplayElement" name="adult" native="true"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="7" rowspan="3">
-    <widget class="QGroupBox" name="seniorGroup">
-     <property name="title">
-      <string>Senior</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="AgeGroupDisplayElement" name="senior" native="true"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>AgeGroupDisplayElement</class>
-   <extends>QWidget</extends>
-   <header>agegroupdisplayelement.h</header>
-   <container>1</container>
-   <slots>
-    <slot>updateFields(realmz::AgeRange,realmz::AgeModifiers)</slot>
-   </slots>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -137,92 +69,5 @@
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>ViewAgingDialog</sender>
-   <signal>update_Adult(realmz::AgeRange,realmz::AgeModifiers)</signal>
-   <receiver>adult</receiver>
-   <slot>updateFields(realmz::AgeRange,realmz::AgeModifiers)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>383</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>259</x>
-     <y>378</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ViewAgingDialog</sender>
-   <signal>update_Prime(realmz::AgeRange,realmz::AgeModifiers)</signal>
-   <receiver>prime</receiver>
-   <slot>updateFields(realmz::AgeRange,realmz::AgeModifiers)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>383</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>378</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ViewAgingDialog</sender>
-   <signal>update_Senior(realmz::AgeRange,realmz::AgeModifiers)</signal>
-   <receiver>senior</receiver>
-   <slot>updateFields(realmz::AgeRange,realmz::AgeModifiers)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>383</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>655</x>
-     <y>378</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ViewAgingDialog</sender>
-   <signal>update_Young(realmz::AgeRange,realmz::AgeModifiers)</signal>
-   <receiver>young</receiver>
-   <slot>updateFields(realmz::AgeRange,realmz::AgeModifiers)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>383</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>115</x>
-     <y>378</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ViewAgingDialog</sender>
-   <signal>update_Youth(realmz::AgeRange,realmz::AgeModifiers)</signal>
-   <receiver>youth</receiver>
-   <slot>updateFields(realmz::AgeRange,realmz::AgeModifiers)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>383</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>42</x>
-     <y>378</y>
-    </hint>
-   </hints>
-  </connection>
  </connections>
- <slots>
-  <signal>update_Young(realmz::AgeRange,realmz::AgeModifiers)</signal>
-  <signal>update_Youth(realmz::AgeRange,realmz::AgeModifiers)</signal>
-  <signal>update_Adult(realmz::AgeRange,realmz::AgeModifiers)</signal>
-  <signal>update_Prime(realmz::AgeRange,realmz::AgeModifiers)</signal>
-  <signal>update_Senior(realmz::AgeRange,realmz::AgeModifiers)</signal>
- </slots>
 </ui>
