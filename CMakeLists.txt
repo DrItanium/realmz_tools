@@ -348,3 +348,4 @@ target_link_libraries(dump_character PUBLIC realmz)
 
 add_subdirectory(CharacterEditor)
 add_subdirectory(CommonUIElements)
+add_subdirectory(GraphicalCharacterViewer)
