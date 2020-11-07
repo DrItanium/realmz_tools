@@ -105,6 +105,23 @@ PrimaryCharacterModel::data(const QModelIndex &index, int role) const {
             case CharacterFieldIndex::HandToHand: return mkStr(_cc->getHandToHandMax());
             case CharacterFieldIndex::DamagePlus: return mkStr(_cc->getDamagePlus());
             case CharacterFieldIndex::ChanceToHit: return mkStr(_cc->getChanceToHit());
+            case CharacterFieldIndex::SpellPointsCurrent: return mkStr(_cc->getSpellPointsCurrent());
+            case CharacterFieldIndex::SpellPointsTotal: return mkStr(_cc->getSpellPointsTotal());
+            case CharacterFieldIndex::StaminaCurrent: return mkStr(_cc->getStaminaCurrent());
+            case CharacterFieldIndex::StaminaTotal: return mkStr(_cc->getStaminaTotal());
+            case CharacterFieldIndex::ArmorRating: return mkStr(_cc->getArmorRating());
+            case CharacterFieldIndex::MagicResistance: return mkStr(_cc->getMagicResistance());
+            case CharacterFieldIndex::CharmDRV: return mkStr(_cc->getDamageReductionVsCharm());
+            case CharacterFieldIndex::HeatDRV: return mkStr(_cc->getDamageReductionVsHeat());
+            case CharacterFieldIndex::ColdDRV: return mkStr(_cc->getDamageReductionVsCold());
+            case CharacterFieldIndex::ElectricDRV: return mkStr(_cc->getDamageReductionVsElectric());
+            case CharacterFieldIndex::ChemicalDRV: return mkStr(_cc->getDamageReductionVsChemical());
+            case CharacterFieldIndex::MentalDRV: return mkStr(_cc->getDamageReductionVsMental());
+            case CharacterFieldIndex::MagicDRV: return mkStr(_cc->getDamageReductionVsMagic());
+            case CharacterFieldIndex::SpecialDRV: return mkStr(_cc->getDamageReductionVsSpecial());
+            case CharacterFieldIndex::Gold: return mkStr(_cc->getGold());
+            case CharacterFieldIndex::Gems: return mkStr(_cc->getGems());
+            case CharacterFieldIndex::Jewelry: return mkStr(_cc->getJewelry());
             default:
                 break;
         }
