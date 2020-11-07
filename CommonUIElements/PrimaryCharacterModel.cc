@@ -122,6 +122,7 @@ PrimaryCharacterModel::data(const QModelIndex &index, int role) const {
             case CharacterFieldIndex::Gold: return mkStr(_cc->getGold());
             case CharacterFieldIndex::Gems: return mkStr(_cc->getGems());
             case CharacterFieldIndex::Jewelry: return mkStr(_cc->getJewelry());
+            case CharacterFieldIndex::SpellSelectionPoints: return mkStr(_cc->getSpellSelectionPoints());
             default:
                 break;
         }

@@ -732,6 +732,38 @@ namespace realmz {
         }
         /// @todo Continue implementing movecalc
     }
+
+    int
+    Character::getSpellSelectionPoints() const noexcept {
+        const auto& targetCaste = realmz::loadCaste(_caste);
+        auto clvl = _skillLevel -
+                (targetCaste.getSpellCasting().getSorcererInfo().getStartingLevel() +
+                 targetCaste.getSpellCasting().getPriestInfo().getStartingLevel() +
+                 targetCaste.getSpellCasting().getEnchanterInfo().getStartingLevel() - 1);
+        if (clvl < 1) {
+            return 0;
+        } else {
+            if (_supportedSpellClass == realmz::SupportedSpellClass::None) {
+                return 0;
+            } else {
+                int amount = 0;
+                if (_supportedSpellClass == realmz::SupportedSpellClass::Priest) {
+                    if (_judgement >= 15) {
+                        amount = (static_cast<int>(_judgement) - 15) * clvl;
+                    }
+                } else {
+                    if (_knowledge >= 15) {
+                        amount = (static_cast<int>(_knowledge) - 15) * clvl;
+                    }
+                }
+                amount += (clvl * 3);
+                for (int i = 1; i < clvl; ++i) {
+                    amount += i;
+                }
+                return amount;
+            }
+        }
+    }
 } // end namespace realmz
 
 std::ostream&

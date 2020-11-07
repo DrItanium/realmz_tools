@@ -622,6 +622,7 @@ namespace realmz {
         [[nodiscard]] constexpr auto getDodgeMissile() const noexcept { return _dodgeMissile; }
         [[nodiscard]] constexpr auto getBareHandDamage() const noexcept { return _bareHandDamageMax; }
         [[nodiscard]] constexpr auto getChanceToHit() const noexcept { return _chanceToHit; }
+        int getSpellSelectionPoints() const noexcept;
     public:
         /**
          * @brief Drop the last item in the inventory

@@ -3,6 +3,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QMessageBox>
+#include "../CommonUIElements/ApplicationUtilities.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tableView->setModel(pcm.get());
+    realmz::setCasteDataLocation(getBinaryResourcesDir() / "Data Caste");
+    realmz::setRaceDataLocation(getBinaryResourcesDir() / "Data Race");
 }
 
 MainWindow::~MainWindow()

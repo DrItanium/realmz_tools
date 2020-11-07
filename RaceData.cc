@@ -9,6 +9,7 @@
 #include "RaceDataBuffer.h"
 #include "BinaryManipulation.h"
 #include "Character.h"
+
 namespace realmz {
     Hatred::Hatred(const RaceDataBuffer &buffer) : Hatred(buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7]) { }
     RaceData::RaceData(const RaceDataBuffer &buf) :
@@ -150,7 +151,7 @@ namespace realmz {
             };
             std::ifstream raceDataFile(raceDataLocation);
             if (!raceDataFile.is_open()) {
-                throw "Couldn't open caste data file";
+                throw "Couldn't open race data file";
             }
             for (int curr = static_cast<int>(RaceKind::Human);  curr != static_cast<int>(RaceKind::Done); ++curr) {
                 auto theCaste = static_cast<RaceKind>(curr);
@@ -185,7 +186,7 @@ namespace realmz {
     loadRaceData(RaceKind kind) {
         loadRaceData();
         if (registeredRaceData.empty()) {
-            throw "Race data not loaded";
+            throw "race data not setup";
         } else {
             if (auto pos = registeredRaceData.find(kind); pos != registeredRaceData.end()) {
                 return pos->second;
