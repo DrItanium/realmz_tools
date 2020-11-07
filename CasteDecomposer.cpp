@@ -21,7 +21,7 @@ readOne(std::istream &input, std::ostream &output) noexcept {
     for (int i = 0; i < (576 / 2); ++i) {
         buf[i] = swap(buf[i]);
     }
-    return { buf };
+    return std::make_optional<realmz::Caste>(buf);
 }
 int main() {
     int index = 0;
