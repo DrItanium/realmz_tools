@@ -15,7 +15,7 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 add_library(realmzqt
         #${UI_GENERATED_HEADERS}
-        PortraitModel.cc PortraitModel.h TacticalsModel.cc TacticalsModel.h ApplicationUtilities.h ApplicationUtilities.cc RepresentationModel.h RepresentationModel.cc ViewAgingTableModel.cc ViewAgingTableModel.h)
+        PortraitModel.cc PortraitModel.h TacticalsModel.cc TacticalsModel.h ApplicationUtilities.h ApplicationUtilities.cc RepresentationModel.h RepresentationModel.cc ViewAgingTableModel.cc ViewAgingTableModel.h DRVModel.cc DRVModel.h)
 
 target_link_libraries(realmzqt Qt5::Widgets
         realmz)
