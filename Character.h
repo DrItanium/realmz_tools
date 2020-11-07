@@ -618,6 +618,10 @@ namespace realmz {
         [[nodiscard]] const auto &getTotalSpellsRemaining() const { return _totalSpellsRemaining; }
         [[nodiscard]] const CharacterConditions &getConditions() const { return _conditions; }
         void print(std::ostream& os) const noexcept;
+        [[nodiscard]] constexpr auto getMissileAdjust() const noexcept { return _missileAdjust; }
+        [[nodiscard]] constexpr auto getDodgeMissile() const noexcept { return _dodgeMissile; }
+        [[nodiscard]] constexpr auto getBareHandDamage() const noexcept { return _bareHandDamageMax; }
+        [[nodiscard]] constexpr auto getChanceToHit() const noexcept { return _chanceToHit; }
     public:
         /**
          * @brief Drop the last item in the inventory
