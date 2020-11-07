@@ -433,6 +433,8 @@ namespace realmz {
     private:
         void apply(const Caste& data, const RaceData& race) noexcept;
     public:
+        void calculateMovementPoints() noexcept;
+    public:
         void setId(uint16_t id) noexcept { _id = id; }
         void setChanceToHit(int16_t chanceToHit) noexcept { _chanceToHit = chanceToHit; }
         void setDodgeMissile(int16_t dodgeMissile) noexcept { _dodgeMissile = dodgeMissile; }

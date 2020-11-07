@@ -720,6 +720,18 @@ namespace realmz {
         auto& currentCaste = loadCaste(_caste);
         apply(currentCaste, currentRace);
     }
+
+    void
+    Character::calculateMovementPoints() noexcept {
+        auto maxLoad = (_brawn + _brawnFromItems) *
+                       ((_brawn + _brawnFromItems) * 0x14);
+        if (maxLoad < 500) {
+            _maximumLoad = 500;
+        } else {
+            _maximumLoad = maxLoad;
+        }
+        /// @todo Continue implementing movecalc
+    }
 } // end namespace realmz
 
 std::ostream&
