@@ -8,10 +8,12 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    pcm(new PrimaryCharacterModel(nullptr, this))
+    pcm(new PrimaryCharacterModel(nullptr, this)),
+    pvm(new PrestigeViewingModel(nullptr, this))
 {
     ui->setupUi(this);
-    ui->tableView->setModel(pcm.get());
+    ui->statsView->setModel(pcm.get());
+    ui->prestigeView->setModel(pvm.get());
     realmz::setCasteDataLocation(getBinaryResourcesDir() / "Data Caste");
     realmz::setRaceDataLocation(getBinaryResourcesDir() / "Data Race");
 }
@@ -30,6 +32,9 @@ void MainWindow::on_actionClose_triggered()
 {
     currentCharacter.reset();
     pcm->setTargetCharacter(currentCharacter);
+    pvm->setTargetCharacter(currentCharacter);
+    ui->statsView->update();
+    ui->prestigeView->update();
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -58,6 +63,7 @@ void MainWindow::on_actionOpen_triggered()
             }
             currentCharacter = std::make_shared<realmz::Character>(buf);
             pcm->setTargetCharacter(currentCharacter);
+            pvm->setTargetCharacter(currentCharacter);
         }
     }
 }

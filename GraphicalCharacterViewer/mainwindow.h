@@ -5,6 +5,7 @@
 #include <memory>
 #include "../Character.h"
 #include "../CommonUIElements/PrimaryCharacterModel.h"
+#include "../CommonUIElements/PrestigeViewingModel.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,6 +29,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<PrimaryCharacterModel> pcm;
+    std::unique_ptr<PrestigeViewingModel> pvm;
     std::shared_ptr<realmz::Character> currentCharacter = nullptr;
 };
 
