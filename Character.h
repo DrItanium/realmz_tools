@@ -330,6 +330,8 @@ namespace realmz {
         [[nodiscard]] constexpr int16_t getProtectionFrom3rdLevelSpells() const noexcept { return _protectionFrom3rdLevelSpells; }
         [[nodiscard]] constexpr int16_t getProtectionFrom4thLevelSpells() const noexcept { return _protectionFrom4thLevelSpells; }
         [[nodiscard]] constexpr int16_t getProtectionFrom5thLevelSpells() const noexcept { return _protectionFrom5thLevelSpells; }
+        [[nodiscard]] constexpr int16_t getStrong() const noexcept { return _strong; }
+        [[nodiscard]] constexpr auto getProtectionFromFoe() const noexcept { return _protectionFromFoe; }
         void setInRetreat(int16_t inRetreat) noexcept { _inRetreat = inRetreat; }
         void setHelpless(int16_t helpless) noexcept { _helpless = helpless; }
         void setTangled(int16_t tangled) noexcept { _tangled = tangled; }
@@ -396,6 +398,25 @@ namespace realmz {
         int16_t _protectionFrom5thLevelSpells = 0;
         int16_t _strong = 0;
         int16_t _protectionFromFoe = 0;
+    public:
+        [[nodiscard]] constexpr auto getSpeedy() const noexcept { return _speedy; }
+        [[nodiscard]] constexpr auto getInvisible() const noexcept { return _invisible; }
+        [[nodiscard]] constexpr auto getIsAnimated() const noexcept { return _isAnimated; }
+        [[nodiscard]] constexpr auto isStone() const noexcept { return _stone; }
+        [[nodiscard]] constexpr auto isBlind() const noexcept { return _blind; }
+        constexpr auto isDiseased() const noexcept { return _diseased; }
+        constexpr auto isConfused() const noexcept { return _confused; }
+        constexpr auto getReflectingSpells() const noexcept { return _reflectingSpells; }
+        constexpr auto getReflectingAttacks() const noexcept { return _reflectingAttacks; }
+        constexpr auto getBonusDamage() const noexcept { return _bonusDamage; }
+        constexpr auto getAbsorbEnergy() const noexcept { return _absorbEnergy; }
+        constexpr auto getEnergyDraining() const noexcept { return _energyDraining; }
+        constexpr auto getAbsorbSpellEnergyFromAttacks() const noexcept { return _absorbSpellEnergyFromAttacks; }
+        constexpr auto getHinderedAttack() const noexcept { return _hinderedAttack; }
+        constexpr auto getHinderedDefense() const noexcept { return _hinderedDefense; }
+        constexpr auto getDefensiveBonus() const noexcept { return _defensiveBonus; }
+        constexpr auto getSilenced() const noexcept { return _silenced; }
+    private:
         int16_t _speedy = 0;
         int16_t _invisible = 0;
         int16_t _isAnimated = 0;

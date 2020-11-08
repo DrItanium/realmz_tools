@@ -46,9 +46,50 @@ enum class CharacterFieldIndex {
     Gold,
     Gems,
     Jewelry,
+
+    SneakAttack,
+    CauseMajorWound,
+    DetectSecret,
+    AcrobaticAct,
+    DetectTrap,
+    DisableTrap,
+    ForceLock,
+    PickLock,
+    TurnUndead,
+    MagicAura,
+    ShieldedFromNormalAttacks,
+    ShieldedFromProjectiles,
+    Regenerate,
+    ProtectionFromHeatAttacks,
+    ProtectionFromColdAttacks,
+    ProtectionFromElectricalAttacks,
+    ProtectionFromChemicalAttacks,
+    ProtectionFromMentalAttacks,
+    ProtectionFrom1stLevelSpells,
+    ProtectionFrom2ndLevelSpells,
+    ProtectionFrom3rdLevelSpells,
+    ProtectionFrom4thLevelSpells,
+    ProtectionFrom5thLevelSpells,
+    Strong,
+    ProtectionFromFoe,
+    Speed,
+    Invisible,
+    ReflectingSpells,
+    ReflectingAttacks,
+    AttackBonusCondition,
+    AbsorbEnergy,
+    AbsorbSpellEnergyFromAttacks,
+    DefensiveBonus,
+    VsMagicCreatures,
+    VsUndeadCreatures,
+    VsDemonicCreatures,
+    VsReptilianCreatures,
+    VsVeryEvilCreatures,
+    VsIntelligentCreatures,
+    VsGiantSizedCreatures,
+    VsNonHumanoidCreatures,
     Count,
 };
-static_assert(static_cast<int>(CharacterFieldIndex::Count) == 40);
 
 int
 PrimaryCharacterModel::rowCount(const QModelIndex& idx) const {
@@ -123,6 +164,47 @@ PrimaryCharacterModel::data(const QModelIndex &index, int role) const {
             case CharacterFieldIndex::Gems: return mkStr(_cc->getGems());
             case CharacterFieldIndex::Jewelry: return mkStr(_cc->getJewelry());
             case CharacterFieldIndex::SpellSelectionPoints: return mkStr(_cc->getSpellSelectionPoints());
+            case CharacterFieldIndex::SneakAttack: return mkStr(_cc->getSpecialInfo().getSneakAttack());
+            case CharacterFieldIndex::CauseMajorWound: return mkStr(_cc->getSpecialInfo().getCauseMajorWound());
+            case CharacterFieldIndex::DetectSecret: return mkStr(_cc->getSpecialInfo().getDetectSecret());
+            case CharacterFieldIndex::AcrobaticAct: return mkStr(_cc->getSpecialInfo().getAcrobaticAct());
+            case CharacterFieldIndex::DetectTrap: return mkStr(_cc->getSpecialInfo().getDetectTrap());
+            case CharacterFieldIndex::DisableTrap: return mkStr(_cc->getSpecialInfo().getDisableTrap());
+            case CharacterFieldIndex::ForceLock: return mkStr(_cc->getSpecialInfo().getForceLock());
+            case CharacterFieldIndex::PickLock: return mkStr(_cc->getSpecialInfo().getPickLock());
+            case CharacterFieldIndex::TurnUndead: return mkStr(_cc->getSpecialInfo().getTurnUndead());
+            case CharacterFieldIndex::MagicAura: return mkStr(_cc->getConditions().getConditionMagicAura());
+            case CharacterFieldIndex::ShieldedFromNormalAttacks: return mkStr(_cc->getConditions().getConditionShieldedFromNormalAttacks());
+            case CharacterFieldIndex::ShieldedFromProjectiles: return mkStr(_cc->getConditions().getConditionShieldedFromProjectiles());
+            case CharacterFieldIndex::Regenerate: return mkStr(_cc->getConditions().getRegenerating());
+            case CharacterFieldIndex::ProtectionFromHeatAttacks: return mkStr(_cc->getConditions().getProtectionFromHeatAttacks());
+            case CharacterFieldIndex::ProtectionFromColdAttacks: return mkStr(_cc->getConditions().getProtectionFromColdAttacks());
+            case CharacterFieldIndex::ProtectionFromElectricalAttacks: return mkStr(_cc->getConditions().getProtectionFromElectricalAttacks());
+            case CharacterFieldIndex::ProtectionFromChemicalAttacks: return mkStr(_cc->getConditions().getProtectionFromChemicalAttacks());
+            case CharacterFieldIndex::ProtectionFromMentalAttacks: return mkStr(_cc->getConditions().getProtectionFromMentalAttacks());
+            case CharacterFieldIndex::ProtectionFrom1stLevelSpells: return mkStr(_cc->getConditions().getProtectionFrom1stLevelSpells());
+            case CharacterFieldIndex::ProtectionFrom2ndLevelSpells: return mkStr(_cc->getConditions().getProtectionFrom2ndLevelSpells());
+            case CharacterFieldIndex::ProtectionFrom3rdLevelSpells: return mkStr(_cc->getConditions().getProtectionFrom3rdLevelSpells());
+            case CharacterFieldIndex::ProtectionFrom4thLevelSpells: return mkStr(_cc->getConditions().getProtectionFrom4thLevelSpells());
+            case CharacterFieldIndex::ProtectionFrom5thLevelSpells: return mkStr(_cc->getConditions().getProtectionFrom5thLevelSpells());
+            case CharacterFieldIndex::Strong: return mkStr(_cc->getConditions().getStrong());
+            case CharacterFieldIndex::ProtectionFromFoe: return mkStr(_cc->getConditions().getProtectionFromFoe());
+            case CharacterFieldIndex::Speed: return mkStr(_cc->getConditions().getSpeedy());
+            case CharacterFieldIndex::Invisible: return mkStr(_cc->getConditions().getInvisible());
+            case CharacterFieldIndex::ReflectingSpells: return mkStr(_cc->getConditions().getReflectingSpells());
+            case CharacterFieldIndex::ReflectingAttacks: return mkStr(_cc->getConditions().getReflectingAttacks());
+            case CharacterFieldIndex::AttackBonusCondition: return mkStr(_cc->getConditions().getBonusDamage());
+            case CharacterFieldIndex::AbsorbEnergy: return mkStr(_cc->getConditions().getAbsorbEnergy());
+            case CharacterFieldIndex::AbsorbSpellEnergyFromAttacks: return mkStr(_cc->getConditions().getAbsorbSpellEnergyFromAttacks());
+            case CharacterFieldIndex::DefensiveBonus: return mkStr(_cc->getConditions().getDefensiveBonus());
+            case CharacterFieldIndex::VsDemonicCreatures: return mkStr(_cc->getVsDemonicCreatures());
+            case CharacterFieldIndex::VsMagicCreatures: return mkStr(_cc->getVsMagicUsingCreatures());
+            case CharacterFieldIndex::VsUndeadCreatures: return mkStr(_cc->getVsUndeadCreatures());
+            case CharacterFieldIndex::VsReptilianCreatures: return mkStr(_cc->getVsReptileCreatures());
+            case CharacterFieldIndex::VsVeryEvilCreatures: return mkStr(_cc->getVsVeryEvilCreatures());
+            case CharacterFieldIndex::VsIntelligentCreatures: return mkStr(_cc->getVsIntelligentCreatures());
+            case CharacterFieldIndex::VsGiantSizedCreatures: return mkStr(_cc->getVsGiantSizedCreatures());
+            case CharacterFieldIndex::VsNonHumanoidCreatures: return mkStr(_cc->getVsNonHumanoidCreature());
             default:
                 break;
         }
@@ -132,7 +214,7 @@ PrimaryCharacterModel::data(const QModelIndex &index, int role) const {
 
 QVariant
 PrimaryCharacterModel::headerData(int section, Qt::Orientation orientation, int role) const {
-    static const std::array<QString, 40> RowHeaders {
+    static const std::array<QString, static_cast<size_t>(CharacterFieldIndex::Count)> RowHeaders {
             tr("Name"), tr("Skill"), tr("Age"),
             tr("Spell Selection Points"), tr("Gender"), tr("Caste"),
             tr("Race"), tr("Victory Points"),
@@ -148,9 +230,42 @@ PrimaryCharacterModel::headerData(int section, Qt::Orientation orientation, int 
             tr("DRV Electric"), tr("DRV Chemical"), tr("DRV Mental"),
             tr("DRV Magic"), tr("DRV Special"),
 
-            tr("Gold"),
-            tr("Gems"),
-            tr("Jewelry"),
+            tr("Gold"), tr("Gems"), tr("Jewelry"),
+
+            tr("Sneak Attack"), tr("Cause Major Wound"), tr("Detect Secret"),
+            tr("Acrobatic Act"), tr("Detect Trap"), tr("Disable Trap"),
+            tr("Force Lock"), tr("Pick Lock"), tr("Turn Undead"),
+            tr("Magic Aura"), tr("Shielded From Normal Attacks"), tr("Shielded From Projectiles"),
+            tr("Regenerate"),
+            tr("Protection From Heat Attacks"),
+            tr("Protection From Cold Attacks"),
+            tr("Protection From Electrical Attacks"),
+            tr("Protection From Chemical Attacks"),
+            tr("Protection From Mental Attacks"),
+            tr("Protection From 1st Level Spells"),
+            tr("Protection From 2nd Level Spells"),
+            tr("Protection From 3rd Level Spells"),
+            tr("Protection From 4th Level Spells"),
+            tr("Protection From 5th Level Spells"),
+            tr("Strong"),
+            tr("Protection From Foe"),
+            tr("Speed"),
+            tr("Invisible"),
+            tr("Reflecting Spells"),
+            tr("Reflecting Attacks"),
+            tr("Attack Bonus (Condition)"),
+            tr("Absorb Energy"),
+            tr("Absorb Spell Energy From Attacks"),
+            tr("Defensive Bonus"),
+            tr("Vs Magic Using Creatures"),
+            tr("Vs Undead Creatures"),
+            tr("Vs Demonic Creatures"),
+            tr("Vs Reptilian Creatures"),
+            tr("Vs Very Evil Creatures"),
+            tr("Vs Intelligent Creatures"),
+            tr("Vs Giant Sized Creatures"),
+            tr("Vs Non-Humanoid Creatures")
+
     };
     if (role == Qt::DisplayRole) {
         if (orientation == Qt::Orientation::Vertical) {
